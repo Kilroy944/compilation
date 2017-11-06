@@ -1,0 +1,9 @@
+grammar esir.compilation.Whdsl with org.eclipse.xtext.common.Terminals
+
+generate whdsl "http://www.compilation.esir/Whdsl"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';

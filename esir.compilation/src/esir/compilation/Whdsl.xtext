@@ -1,0 +1,31 @@
+grammar esir.compilation.Whdsl with org.eclipse.xtext.common.Terminals
+
+generate whdsl "http://www.compilation.esir/Whdsl"
+
+
+Program:
+	(function+=Function)*
+;
+
+Function:
+	'function'symbol=SYMBOLE':'definition=Definition
+;
+
+Definition:
+	'read'inoutput=InOutput'%'
+	
+	'%''write'inoutput2=InOutput
+;
+	
+	
+InOutput:
+	(variable=VARIABLE','inoutput=InOutput)|variable2=VARIABLE
+;
+	
+terminal VARIABLE:
+	('A'..'Z')*
+;
+
+terminal SYMBOLE:
+	('a'..'z')*
+;

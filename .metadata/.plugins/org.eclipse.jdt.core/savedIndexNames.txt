@@ -1,0 +1,8 @@
+INDEX VERSION 1.129+/home/valentin/workspace/XText/.metadata/.plugins/org.eclipse.jdt.core
+1929719162.index
+1572926940.index
+1086417955.index
+2864311624.index
+1566662076.index
+3121388936.index
+21790668.index
