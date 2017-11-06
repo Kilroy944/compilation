@@ -2,7 +2,6 @@ grammar esir.compilation.Whdsl with org.eclipse.xtext.common.Terminals
 
 generate whdsl "http://www.compilation.esir/Whdsl"
 
-
 Program:
 	(function+=Function)*
 ;
@@ -16,12 +15,13 @@ Definition:
 	
 	'%''write'inoutput2=InOutput
 ;
-	
-	
+		
 InOutput:
 	(variable=VARIABLE','inoutput=InOutput)|variable2=VARIABLE
 ;
 	
+	
+/*TERMINAL */	
 terminal VARIABLE:
 	('A'..'Z')*
 ;
