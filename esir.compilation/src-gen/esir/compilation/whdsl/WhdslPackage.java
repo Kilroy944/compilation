@@ -133,22 +133,22 @@ public interface WhdslPackage extends EPackage
   int DEFINITION = 2;
 
   /**
-   * The feature id for the '<em><b>Inoutput</b></em>' containment reference.
+   * The feature id for the '<em><b>Input</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DEFINITION__INOUTPUT = 0;
+  int DEFINITION__INPUT = 0;
 
   /**
-   * The feature id for the '<em><b>Inoutput2</b></em>' containment reference.
+   * The feature id for the '<em><b>Output</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DEFINITION__INOUTPUT2 = 1;
+  int DEFINITION__OUTPUT = 1;
 
   /**
    * The number of structural features of the '<em>Definition</em>' class.
@@ -160,6 +160,44 @@ public interface WhdslPackage extends EPackage
   int DEFINITION_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link esir.compilation.whdsl.impl.InputImpl <em>Input</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see esir.compilation.whdsl.impl.InputImpl
+   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getInput()
+   * @generated
+   */
+  int INPUT = 3;
+
+  /**
+   * The number of structural features of the '<em>Input</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INPUT_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link esir.compilation.whdsl.impl.OutputImpl <em>Output</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see esir.compilation.whdsl.impl.OutputImpl
+   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getOutput()
+   * @generated
+   */
+  int OUTPUT = 4;
+
+  /**
+   * The number of structural features of the '<em>Output</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OUTPUT_FEATURE_COUNT = 0;
+
+  /**
    * The meta object id for the '{@link esir.compilation.whdsl.impl.InOutputImpl <em>In Output</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -167,7 +205,7 @@ public interface WhdslPackage extends EPackage
    * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getInOutput()
    * @generated
    */
-  int IN_OUTPUT = 3;
+  int IN_OUTPUT = 5;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -176,7 +214,7 @@ public interface WhdslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int IN_OUTPUT__VARIABLE = 0;
+  int IN_OUTPUT__VARIABLE = INPUT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Inoutput</b></em>' containment reference.
@@ -185,16 +223,7 @@ public interface WhdslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int IN_OUTPUT__INOUTPUT = 1;
-
-  /**
-   * The feature id for the '<em><b>Variable2</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IN_OUTPUT__VARIABLE2 = 2;
+  int IN_OUTPUT__INOUTPUT = INPUT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>In Output</em>' class.
@@ -203,7 +232,7 @@ public interface WhdslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int IN_OUTPUT_FEATURE_COUNT = 3;
+  int IN_OUTPUT_FEATURE_COUNT = INPUT_FEATURE_COUNT + 2;
 
 
   /**
@@ -270,26 +299,46 @@ public interface WhdslPackage extends EPackage
   EClass getDefinition();
 
   /**
-   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.Definition#getInoutput <em>Inoutput</em>}'.
+   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.Definition#getInput <em>Input</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Inoutput</em>'.
-   * @see esir.compilation.whdsl.Definition#getInoutput()
+   * @return the meta object for the containment reference '<em>Input</em>'.
+   * @see esir.compilation.whdsl.Definition#getInput()
    * @see #getDefinition()
    * @generated
    */
-  EReference getDefinition_Inoutput();
+  EReference getDefinition_Input();
 
   /**
-   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.Definition#getInoutput2 <em>Inoutput2</em>}'.
+   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.Definition#getOutput <em>Output</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Inoutput2</em>'.
-   * @see esir.compilation.whdsl.Definition#getInoutput2()
+   * @return the meta object for the containment reference '<em>Output</em>'.
+   * @see esir.compilation.whdsl.Definition#getOutput()
    * @see #getDefinition()
    * @generated
    */
-  EReference getDefinition_Inoutput2();
+  EReference getDefinition_Output();
+
+  /**
+   * Returns the meta object for class '{@link esir.compilation.whdsl.Input <em>Input</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Input</em>'.
+   * @see esir.compilation.whdsl.Input
+   * @generated
+   */
+  EClass getInput();
+
+  /**
+   * Returns the meta object for class '{@link esir.compilation.whdsl.Output <em>Output</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Output</em>'.
+   * @see esir.compilation.whdsl.Output
+   * @generated
+   */
+  EClass getOutput();
 
   /**
    * Returns the meta object for class '{@link esir.compilation.whdsl.InOutput <em>In Output</em>}'.
@@ -322,17 +371,6 @@ public interface WhdslPackage extends EPackage
    * @generated
    */
   EReference getInOutput_Inoutput();
-
-  /**
-   * Returns the meta object for the attribute '{@link esir.compilation.whdsl.InOutput#getVariable2 <em>Variable2</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Variable2</em>'.
-   * @see esir.compilation.whdsl.InOutput#getVariable2()
-   * @see #getInOutput()
-   * @generated
-   */
-  EAttribute getInOutput_Variable2();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -412,20 +450,40 @@ public interface WhdslPackage extends EPackage
     EClass DEFINITION = eINSTANCE.getDefinition();
 
     /**
-     * The meta object literal for the '<em><b>Inoutput</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Input</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DEFINITION__INOUTPUT = eINSTANCE.getDefinition_Inoutput();
+    EReference DEFINITION__INPUT = eINSTANCE.getDefinition_Input();
 
     /**
-     * The meta object literal for the '<em><b>Inoutput2</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Output</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DEFINITION__INOUTPUT2 = eINSTANCE.getDefinition_Inoutput2();
+    EReference DEFINITION__OUTPUT = eINSTANCE.getDefinition_Output();
+
+    /**
+     * The meta object literal for the '{@link esir.compilation.whdsl.impl.InputImpl <em>Input</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see esir.compilation.whdsl.impl.InputImpl
+     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getInput()
+     * @generated
+     */
+    EClass INPUT = eINSTANCE.getInput();
+
+    /**
+     * The meta object literal for the '{@link esir.compilation.whdsl.impl.OutputImpl <em>Output</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see esir.compilation.whdsl.impl.OutputImpl
+     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getOutput()
+     * @generated
+     */
+    EClass OUTPUT = eINSTANCE.getOutput();
 
     /**
      * The meta object literal for the '{@link esir.compilation.whdsl.impl.InOutputImpl <em>In Output</em>}' class.
@@ -452,14 +510,6 @@ public interface WhdslPackage extends EPackage
      * @generated
      */
     EReference IN_OUTPUT__INOUTPUT = eINSTANCE.getInOutput_Inoutput();
-
-    /**
-     * The meta object literal for the '<em><b>Variable2</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute IN_OUTPUT__VARIABLE2 = eINSTANCE.getInOutput_Variable2();
 
   }
 

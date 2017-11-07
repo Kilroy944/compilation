@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,12 +24,11 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link esir.compilation.whdsl.impl.InOutputImpl#getVariable <em>Variable</em>}</li>
  *   <li>{@link esir.compilation.whdsl.impl.InOutputImpl#getInoutput <em>Inoutput</em>}</li>
- *   <li>{@link esir.compilation.whdsl.impl.InOutputImpl#getVariable2 <em>Variable2</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class InOutputImpl extends MinimalEObjectImpl.Container implements InOutput
+public class InOutputImpl extends InputImpl implements InOutput
 {
   /**
    * The default value of the '{@link #getVariable() <em>Variable</em>}' attribute.
@@ -61,26 +59,6 @@ public class InOutputImpl extends MinimalEObjectImpl.Container implements InOutp
    * @ordered
    */
   protected InOutput inoutput;
-
-  /**
-   * The default value of the '{@link #getVariable2() <em>Variable2</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getVariable2()
-   * @generated
-   * @ordered
-   */
-  protected static final String VARIABLE2_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getVariable2() <em>Variable2</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getVariable2()
-   * @generated
-   * @ordered
-   */
-  protected String variable2 = VARIABLE2_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -179,29 +157,6 @@ public class InOutputImpl extends MinimalEObjectImpl.Container implements InOutp
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getVariable2()
-  {
-    return variable2;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setVariable2(String newVariable2)
-  {
-    String oldVariable2 = variable2;
-    variable2 = newVariable2;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.IN_OUTPUT__VARIABLE2, oldVariable2, variable2));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -227,8 +182,6 @@ public class InOutputImpl extends MinimalEObjectImpl.Container implements InOutp
         return getVariable();
       case WhdslPackage.IN_OUTPUT__INOUTPUT:
         return getInoutput();
-      case WhdslPackage.IN_OUTPUT__VARIABLE2:
-        return getVariable2();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -248,9 +201,6 @@ public class InOutputImpl extends MinimalEObjectImpl.Container implements InOutp
         return;
       case WhdslPackage.IN_OUTPUT__INOUTPUT:
         setInoutput((InOutput)newValue);
-        return;
-      case WhdslPackage.IN_OUTPUT__VARIABLE2:
-        setVariable2((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -272,9 +222,6 @@ public class InOutputImpl extends MinimalEObjectImpl.Container implements InOutp
       case WhdslPackage.IN_OUTPUT__INOUTPUT:
         setInoutput((InOutput)null);
         return;
-      case WhdslPackage.IN_OUTPUT__VARIABLE2:
-        setVariable2(VARIABLE2_EDEFAULT);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -293,8 +240,6 @@ public class InOutputImpl extends MinimalEObjectImpl.Container implements InOutp
         return VARIABLE_EDEFAULT == null ? variable != null : !VARIABLE_EDEFAULT.equals(variable);
       case WhdslPackage.IN_OUTPUT__INOUTPUT:
         return inoutput != null;
-      case WhdslPackage.IN_OUTPUT__VARIABLE2:
-        return VARIABLE2_EDEFAULT == null ? variable2 != null : !VARIABLE2_EDEFAULT.equals(variable2);
     }
     return super.eIsSet(featureID);
   }
@@ -312,8 +257,6 @@ public class InOutputImpl extends MinimalEObjectImpl.Container implements InOutp
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (variable: ");
     result.append(variable);
-    result.append(", variable2: ");
-    result.append(variable2);
     result.append(')');
     return result.toString();
   }

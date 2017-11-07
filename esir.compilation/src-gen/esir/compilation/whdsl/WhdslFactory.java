@@ -51,6 +51,24 @@ public interface WhdslFactory extends EFactory
   Definition createDefinition();
 
   /**
+   * Returns a new object of class '<em>Input</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Input</em>'.
+   * @generated
+   */
+  Input createInput();
+
+  /**
+   * Returns a new object of class '<em>Output</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Output</em>'.
+   * @generated
+   */
+  Output createOutput();
+
+  /**
    * Returns a new object of class '<em>In Output</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

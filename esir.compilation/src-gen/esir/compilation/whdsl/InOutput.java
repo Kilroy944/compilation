@@ -3,7 +3,6 @@
  */
 package esir.compilation.whdsl;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,14 +15,13 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link esir.compilation.whdsl.InOutput#getVariable <em>Variable</em>}</li>
  *   <li>{@link esir.compilation.whdsl.InOutput#getInoutput <em>Inoutput</em>}</li>
- *   <li>{@link esir.compilation.whdsl.InOutput#getVariable2 <em>Variable2</em>}</li>
  * </ul>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getInOutput()
  * @model
  * @generated
  */
-public interface InOutput extends EObject
+public interface InOutput extends Input, Output
 {
   /**
    * Returns the value of the '<em><b>Variable</b></em>' attribute.
@@ -76,31 +74,5 @@ public interface InOutput extends EObject
    * @generated
    */
   void setInoutput(InOutput value);
-
-  /**
-   * Returns the value of the '<em><b>Variable2</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Variable2</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Variable2</em>' attribute.
-   * @see #setVariable2(String)
-   * @see esir.compilation.whdsl.WhdslPackage#getInOutput_Variable2()
-   * @model
-   * @generated
-   */
-  String getVariable2();
-
-  /**
-   * Sets the value of the '{@link esir.compilation.whdsl.InOutput#getVariable2 <em>Variable2</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Variable2</em>' attribute.
-   * @see #getVariable2()
-   * @generated
-   */
-  void setVariable2(String value);
 
 } // InOutput

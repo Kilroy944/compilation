@@ -14,13 +14,14 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Function/definition"/>
     </genClasses>
     <genClasses ecoreClass="Whdsl.ecore#//Definition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Definition/inoutput"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Definition/inoutput2"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Definition/input"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Definition/output"/>
     </genClasses>
+    <genClasses ecoreClass="Whdsl.ecore#//Input"/>
+    <genClasses ecoreClass="Whdsl.ecore#//Output"/>
     <genClasses ecoreClass="Whdsl.ecore#//InOutput">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//InOutput/variable"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//InOutput/inoutput"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//InOutput/variable2"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

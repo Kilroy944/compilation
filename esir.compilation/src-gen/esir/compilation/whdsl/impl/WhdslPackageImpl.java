@@ -6,6 +6,8 @@ package esir.compilation.whdsl.impl;
 import esir.compilation.whdsl.Definition;
 import esir.compilation.whdsl.Function;
 import esir.compilation.whdsl.InOutput;
+import esir.compilation.whdsl.Input;
+import esir.compilation.whdsl.Output;
 import esir.compilation.whdsl.Program;
 import esir.compilation.whdsl.WhdslFactory;
 import esir.compilation.whdsl.WhdslPackage;
@@ -45,6 +47,20 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * @generated
    */
   private EClass definitionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass inputEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass outputEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -181,7 +197,7 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDefinition_Inoutput()
+  public EReference getDefinition_Input()
   {
     return (EReference)definitionEClass.getEStructuralFeatures().get(0);
   }
@@ -191,9 +207,29 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDefinition_Inoutput2()
+  public EReference getDefinition_Output()
   {
     return (EReference)definitionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getInput()
+  {
+    return inputEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getOutput()
+  {
+    return outputEClass;
   }
 
   /**
@@ -224,16 +260,6 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
   public EReference getInOutput_Inoutput()
   {
     return (EReference)inOutputEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getInOutput_Variable2()
-  {
-    return (EAttribute)inOutputEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -274,13 +300,16 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
     createEReference(functionEClass, FUNCTION__DEFINITION);
 
     definitionEClass = createEClass(DEFINITION);
-    createEReference(definitionEClass, DEFINITION__INOUTPUT);
-    createEReference(definitionEClass, DEFINITION__INOUTPUT2);
+    createEReference(definitionEClass, DEFINITION__INPUT);
+    createEReference(definitionEClass, DEFINITION__OUTPUT);
+
+    inputEClass = createEClass(INPUT);
+
+    outputEClass = createEClass(OUTPUT);
 
     inOutputEClass = createEClass(IN_OUTPUT);
     createEAttribute(inOutputEClass, IN_OUTPUT__VARIABLE);
     createEReference(inOutputEClass, IN_OUTPUT__INOUTPUT);
-    createEAttribute(inOutputEClass, IN_OUTPUT__VARIABLE2);
   }
 
   /**
@@ -312,6 +341,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    inOutputEClass.getESuperTypes().add(this.getInput());
+    inOutputEClass.getESuperTypes().add(this.getOutput());
 
     // Initialize classes and features; add operations and parameters
     initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -322,13 +353,16 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
     initEReference(getFunction_Definition(), this.getDefinition(), null, "definition", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(definitionEClass, Definition.class, "Definition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getDefinition_Inoutput(), this.getInOutput(), null, "inoutput", null, 0, 1, Definition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDefinition_Inoutput2(), this.getInOutput(), null, "inoutput2", null, 0, 1, Definition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDefinition_Input(), this.getInput(), null, "input", null, 0, 1, Definition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDefinition_Output(), this.getOutput(), null, "output", null, 0, 1, Definition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(inputEClass, Input.class, "Input", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(outputEClass, Output.class, "Output", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(inOutputEClass, InOutput.class, "InOutput", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getInOutput_Variable(), ecorePackage.getEString(), "variable", null, 0, 1, InOutput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInOutput_Inoutput(), this.getInOutput(), null, "inoutput", null, 0, 1, InOutput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getInOutput_Variable2(), ecorePackage.getEString(), "variable2", null, 0, 1, InOutput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

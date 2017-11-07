@@ -57,18 +57,18 @@ public class WhdslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Definition returns Definition
 	 *
 	 * Constraint:
-	 *     (inoutput=InOutput inoutput2=InOutput)
+	 *     (input=Input output=Output)
 	 */
 	protected void sequence_Definition(ISerializationContext context, Definition semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.DEFINITION__INOUTPUT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.DEFINITION__INOUTPUT));
-			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.DEFINITION__INOUTPUT2) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.DEFINITION__INOUTPUT2));
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.DEFINITION__INPUT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.DEFINITION__INPUT));
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.DEFINITION__OUTPUT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.DEFINITION__OUTPUT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getDefinitionAccess().getInoutputInOutputParserRuleCall_1_0(), semanticObject.getInoutput());
-		feeder.accept(grammarAccess.getDefinitionAccess().getInoutput2InOutputParserRuleCall_5_0(), semanticObject.getInoutput2());
+		feeder.accept(grammarAccess.getDefinitionAccess().getInputInputParserRuleCall_0_0(), semanticObject.getInput());
+		feeder.accept(grammarAccess.getDefinitionAccess().getOutputOutputParserRuleCall_3_0(), semanticObject.getOutput());
 		feeder.finish();
 	}
 	
@@ -96,10 +96,12 @@ public class WhdslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
+	 *     Input returns InOutput
+	 *     Output returns InOutput
 	 *     InOutput returns InOutput
 	 *
 	 * Constraint:
-	 *     ((variable=VARIABLE inoutput=InOutput) | variable2=VARIABLE)
+	 *     (variable=VARIABLE | (variable=VARIABLE inoutput=InOutput))
 	 */
 	protected void sequence_InOutput(ISerializationContext context, InOutput semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

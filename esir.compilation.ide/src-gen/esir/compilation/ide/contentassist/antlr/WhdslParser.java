@@ -34,15 +34,17 @@ public class WhdslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getInOutputAccess().getAlternatives(), "rule__InOutput__Alternatives");
 					put(grammarAccess.getFunctionAccess().getGroup(), "rule__Function__Group__0");
 					put(grammarAccess.getDefinitionAccess().getGroup(), "rule__Definition__Group__0");
-					put(grammarAccess.getInOutputAccess().getGroup_0(), "rule__InOutput__Group_0__0");
+					put(grammarAccess.getInputAccess().getGroup(), "rule__Input__Group__0");
+					put(grammarAccess.getOutputAccess().getGroup(), "rule__Output__Group__0");
+					put(grammarAccess.getInOutputAccess().getGroup_1(), "rule__InOutput__Group_1__0");
 					put(grammarAccess.getProgramAccess().getFunctionAssignment(), "rule__Program__FunctionAssignment");
 					put(grammarAccess.getFunctionAccess().getSymbolAssignment_1(), "rule__Function__SymbolAssignment_1");
 					put(grammarAccess.getFunctionAccess().getDefinitionAssignment_3(), "rule__Function__DefinitionAssignment_3");
-					put(grammarAccess.getDefinitionAccess().getInoutputAssignment_1(), "rule__Definition__InoutputAssignment_1");
-					put(grammarAccess.getDefinitionAccess().getInoutput2Assignment_5(), "rule__Definition__Inoutput2Assignment_5");
-					put(grammarAccess.getInOutputAccess().getVariableAssignment_0_0(), "rule__InOutput__VariableAssignment_0_0");
-					put(grammarAccess.getInOutputAccess().getInoutputAssignment_0_2(), "rule__InOutput__InoutputAssignment_0_2");
-					put(grammarAccess.getInOutputAccess().getVariable2Assignment_1(), "rule__InOutput__Variable2Assignment_1");
+					put(grammarAccess.getDefinitionAccess().getInputAssignment_0(), "rule__Definition__InputAssignment_0");
+					put(grammarAccess.getDefinitionAccess().getOutputAssignment_3(), "rule__Definition__OutputAssignment_3");
+					put(grammarAccess.getInOutputAccess().getVariableAssignment_0(), "rule__InOutput__VariableAssignment_0");
+					put(grammarAccess.getInOutputAccess().getVariableAssignment_1_0(), "rule__InOutput__VariableAssignment_1_0");
+					put(grammarAccess.getInOutputAccess().getInoutputAssignment_1_2(), "rule__InOutput__InoutputAssignment_1_2");
 				}
 			};
 		}

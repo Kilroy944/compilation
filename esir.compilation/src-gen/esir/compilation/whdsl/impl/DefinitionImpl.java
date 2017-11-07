@@ -4,7 +4,8 @@
 package esir.compilation.whdsl.impl;
 
 import esir.compilation.whdsl.Definition;
-import esir.compilation.whdsl.InOutput;
+import esir.compilation.whdsl.Input;
+import esir.compilation.whdsl.Output;
 import esir.compilation.whdsl.WhdslPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -24,8 +25,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.DefinitionImpl#getInoutput <em>Inoutput</em>}</li>
- *   <li>{@link esir.compilation.whdsl.impl.DefinitionImpl#getInoutput2 <em>Inoutput2</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.DefinitionImpl#getInput <em>Input</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.DefinitionImpl#getOutput <em>Output</em>}</li>
  * </ul>
  *
  * @generated
@@ -33,24 +34,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class DefinitionImpl extends MinimalEObjectImpl.Container implements Definition
 {
   /**
-   * The cached value of the '{@link #getInoutput() <em>Inoutput</em>}' containment reference.
+   * The cached value of the '{@link #getInput() <em>Input</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInoutput()
+   * @see #getInput()
    * @generated
    * @ordered
    */
-  protected InOutput inoutput;
+  protected Input input;
 
   /**
-   * The cached value of the '{@link #getInoutput2() <em>Inoutput2</em>}' containment reference.
+   * The cached value of the '{@link #getOutput() <em>Output</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInoutput2()
+   * @see #getOutput()
    * @generated
    * @ordered
    */
-  protected InOutput inoutput2;
+  protected Output output;
 
   /**
    * <!-- begin-user-doc -->
@@ -78,9 +79,9 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
    * <!-- end-user-doc -->
    * @generated
    */
-  public InOutput getInoutput()
+  public Input getInput()
   {
-    return inoutput;
+    return input;
   }
 
   /**
@@ -88,13 +89,13 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetInoutput(InOutput newInoutput, NotificationChain msgs)
+  public NotificationChain basicSetInput(Input newInput, NotificationChain msgs)
   {
-    InOutput oldInoutput = inoutput;
-    inoutput = newInoutput;
+    Input oldInput = input;
+    input = newInput;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.DEFINITION__INOUTPUT, oldInoutput, newInoutput);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.DEFINITION__INPUT, oldInput, newInput);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -105,20 +106,20 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setInoutput(InOutput newInoutput)
+  public void setInput(Input newInput)
   {
-    if (newInoutput != inoutput)
+    if (newInput != input)
     {
       NotificationChain msgs = null;
-      if (inoutput != null)
-        msgs = ((InternalEObject)inoutput).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.DEFINITION__INOUTPUT, null, msgs);
-      if (newInoutput != null)
-        msgs = ((InternalEObject)newInoutput).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.DEFINITION__INOUTPUT, null, msgs);
-      msgs = basicSetInoutput(newInoutput, msgs);
+      if (input != null)
+        msgs = ((InternalEObject)input).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.DEFINITION__INPUT, null, msgs);
+      if (newInput != null)
+        msgs = ((InternalEObject)newInput).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.DEFINITION__INPUT, null, msgs);
+      msgs = basicSetInput(newInput, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.DEFINITION__INOUTPUT, newInoutput, newInoutput));
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.DEFINITION__INPUT, newInput, newInput));
   }
 
   /**
@@ -126,9 +127,9 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
    * <!-- end-user-doc -->
    * @generated
    */
-  public InOutput getInoutput2()
+  public Output getOutput()
   {
-    return inoutput2;
+    return output;
   }
 
   /**
@@ -136,13 +137,13 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetInoutput2(InOutput newInoutput2, NotificationChain msgs)
+  public NotificationChain basicSetOutput(Output newOutput, NotificationChain msgs)
   {
-    InOutput oldInoutput2 = inoutput2;
-    inoutput2 = newInoutput2;
+    Output oldOutput = output;
+    output = newOutput;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.DEFINITION__INOUTPUT2, oldInoutput2, newInoutput2);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.DEFINITION__OUTPUT, oldOutput, newOutput);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -153,20 +154,20 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setInoutput2(InOutput newInoutput2)
+  public void setOutput(Output newOutput)
   {
-    if (newInoutput2 != inoutput2)
+    if (newOutput != output)
     {
       NotificationChain msgs = null;
-      if (inoutput2 != null)
-        msgs = ((InternalEObject)inoutput2).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.DEFINITION__INOUTPUT2, null, msgs);
-      if (newInoutput2 != null)
-        msgs = ((InternalEObject)newInoutput2).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.DEFINITION__INOUTPUT2, null, msgs);
-      msgs = basicSetInoutput2(newInoutput2, msgs);
+      if (output != null)
+        msgs = ((InternalEObject)output).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.DEFINITION__OUTPUT, null, msgs);
+      if (newOutput != null)
+        msgs = ((InternalEObject)newOutput).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.DEFINITION__OUTPUT, null, msgs);
+      msgs = basicSetOutput(newOutput, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.DEFINITION__INOUTPUT2, newInoutput2, newInoutput2));
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.DEFINITION__OUTPUT, newOutput, newOutput));
   }
 
   /**
@@ -179,10 +180,10 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
   {
     switch (featureID)
     {
-      case WhdslPackage.DEFINITION__INOUTPUT:
-        return basicSetInoutput(null, msgs);
-      case WhdslPackage.DEFINITION__INOUTPUT2:
-        return basicSetInoutput2(null, msgs);
+      case WhdslPackage.DEFINITION__INPUT:
+        return basicSetInput(null, msgs);
+      case WhdslPackage.DEFINITION__OUTPUT:
+        return basicSetOutput(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -197,10 +198,10 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
   {
     switch (featureID)
     {
-      case WhdslPackage.DEFINITION__INOUTPUT:
-        return getInoutput();
-      case WhdslPackage.DEFINITION__INOUTPUT2:
-        return getInoutput2();
+      case WhdslPackage.DEFINITION__INPUT:
+        return getInput();
+      case WhdslPackage.DEFINITION__OUTPUT:
+        return getOutput();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -215,11 +216,11 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
   {
     switch (featureID)
     {
-      case WhdslPackage.DEFINITION__INOUTPUT:
-        setInoutput((InOutput)newValue);
+      case WhdslPackage.DEFINITION__INPUT:
+        setInput((Input)newValue);
         return;
-      case WhdslPackage.DEFINITION__INOUTPUT2:
-        setInoutput2((InOutput)newValue);
+      case WhdslPackage.DEFINITION__OUTPUT:
+        setOutput((Output)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -235,11 +236,11 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
   {
     switch (featureID)
     {
-      case WhdslPackage.DEFINITION__INOUTPUT:
-        setInoutput((InOutput)null);
+      case WhdslPackage.DEFINITION__INPUT:
+        setInput((Input)null);
         return;
-      case WhdslPackage.DEFINITION__INOUTPUT2:
-        setInoutput2((InOutput)null);
+      case WhdslPackage.DEFINITION__OUTPUT:
+        setOutput((Output)null);
         return;
     }
     super.eUnset(featureID);
@@ -255,10 +256,10 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
   {
     switch (featureID)
     {
-      case WhdslPackage.DEFINITION__INOUTPUT:
-        return inoutput != null;
-      case WhdslPackage.DEFINITION__INOUTPUT2:
-        return inoutput2 != null;
+      case WhdslPackage.DEFINITION__INPUT:
+        return input != null;
+      case WhdslPackage.DEFINITION__OUTPUT:
+        return output != null;
     }
     return super.eIsSet(featureID);
   }

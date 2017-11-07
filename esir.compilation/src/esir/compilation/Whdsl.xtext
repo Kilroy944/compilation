@@ -11,15 +11,25 @@ Function:
 ;
 
 Definition:
-	'read'inoutput=InOutput'%'
-	
-	'%''write'inoutput2=InOutput
+	input=Input'%'
+	'%'output=Output
 ;
-		
+
+/*Input Output */
+	
+Input:
+	'read'InOutput
+;
+
+Output:
+	'write'InOutput
+;
+
 InOutput:
-	(variable=VARIABLE','inoutput=InOutput)|variable2=VARIABLE
+	(variable=VARIABLE)|(variable=VARIABLE','inoutput=InOutput)
 ;
-	
+
+/*COMMAND */	
 	
 /*TERMINAL */	
 terminal VARIABLE:

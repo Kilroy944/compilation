@@ -91,6 +91,16 @@ public class WhdslAdapterFactory extends AdapterFactoryImpl
         return createDefinitionAdapter();
       }
       @Override
+      public Adapter caseInput(Input object)
+      {
+        return createInputAdapter();
+      }
+      @Override
+      public Adapter caseOutput(Output object)
+      {
+        return createOutputAdapter();
+      }
+      @Override
       public Adapter caseInOutput(InOutput object)
       {
         return createInOutputAdapter();
@@ -158,6 +168,36 @@ public class WhdslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDefinitionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.Input <em>Input</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see esir.compilation.whdsl.Input
+   * @generated
+   */
+  public Adapter createInputAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.Output <em>Output</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see esir.compilation.whdsl.Output
+   * @generated
+   */
+  public Adapter createOutputAdapter()
   {
     return null;
   }

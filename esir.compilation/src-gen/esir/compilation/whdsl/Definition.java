@@ -14,8 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.Definition#getInoutput <em>Inoutput</em>}</li>
- *   <li>{@link esir.compilation.whdsl.Definition#getInoutput2 <em>Inoutput2</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.Definition#getInput <em>Input</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.Definition#getOutput <em>Output</em>}</li>
  * </ul>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getDefinition()
@@ -25,55 +25,55 @@ import org.eclipse.emf.ecore.EObject;
 public interface Definition extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Inoutput</b></em>' containment reference.
+   * Returns the value of the '<em><b>Input</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Inoutput</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Input</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Inoutput</em>' containment reference.
-   * @see #setInoutput(InOutput)
-   * @see esir.compilation.whdsl.WhdslPackage#getDefinition_Inoutput()
+   * @return the value of the '<em>Input</em>' containment reference.
+   * @see #setInput(Input)
+   * @see esir.compilation.whdsl.WhdslPackage#getDefinition_Input()
    * @model containment="true"
    * @generated
    */
-  InOutput getInoutput();
+  Input getInput();
 
   /**
-   * Sets the value of the '{@link esir.compilation.whdsl.Definition#getInoutput <em>Inoutput</em>}' containment reference.
+   * Sets the value of the '{@link esir.compilation.whdsl.Definition#getInput <em>Input</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Inoutput</em>' containment reference.
-   * @see #getInoutput()
+   * @param value the new value of the '<em>Input</em>' containment reference.
+   * @see #getInput()
    * @generated
    */
-  void setInoutput(InOutput value);
+  void setInput(Input value);
 
   /**
-   * Returns the value of the '<em><b>Inoutput2</b></em>' containment reference.
+   * Returns the value of the '<em><b>Output</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Inoutput2</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Output</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Inoutput2</em>' containment reference.
-   * @see #setInoutput2(InOutput)
-   * @see esir.compilation.whdsl.WhdslPackage#getDefinition_Inoutput2()
+   * @return the value of the '<em>Output</em>' containment reference.
+   * @see #setOutput(Output)
+   * @see esir.compilation.whdsl.WhdslPackage#getDefinition_Output()
    * @model containment="true"
    * @generated
    */
-  InOutput getInoutput2();
+  Output getOutput();
 
   /**
-   * Sets the value of the '{@link esir.compilation.whdsl.Definition#getInoutput2 <em>Inoutput2</em>}' containment reference.
+   * Sets the value of the '{@link esir.compilation.whdsl.Definition#getOutput <em>Output</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Inoutput2</em>' containment reference.
-   * @see #getInoutput2()
+   * @param value the new value of the '<em>Output</em>' containment reference.
+   * @see #getOutput()
    * @generated
    */
-  void setInoutput2(InOutput value);
+  void setOutput(Output value);
 
 } // Definition

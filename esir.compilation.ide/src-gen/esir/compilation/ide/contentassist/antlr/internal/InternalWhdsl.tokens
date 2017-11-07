@@ -1,8 +1,8 @@
-'%'=16
+'%'=15
 ','=18
 ':'=14
 'function'=13
-'read'=15
+'read'=16
 'write'=17
 RULE_ANY_OTHER=12
 RULE_ID=6

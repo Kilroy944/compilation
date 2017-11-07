@@ -176,60 +176,114 @@ ruleDefinition returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='read'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getDefinitionAccess().getReadKeyword_0());
-		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getDefinitionAccess().getInoutputInOutputParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getDefinitionAccess().getInputInputParserRuleCall_0_0());
 				}
-				lv_inoutput_1_0=ruleInOutput
+				lv_input_0_0=ruleInput
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getDefinitionRule());
 					}
 					set(
 						$current,
-						"inoutput",
-						lv_inoutput_1_0,
-						"esir.compilation.Whdsl.InOutput");
+						"input",
+						lv_input_0_0,
+						"esir.compilation.Whdsl.Input");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
+		otherlv_1='%'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getDefinitionAccess().getPercentSignKeyword_1());
+		}
 		otherlv_2='%'
 		{
 			newLeafNode(otherlv_2, grammarAccess.getDefinitionAccess().getPercentSignKeyword_2());
 		}
-		otherlv_3='%'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getDefinitionAccess().getPercentSignKeyword_3());
-		}
-		otherlv_4='write'
-		{
-			newLeafNode(otherlv_4, grammarAccess.getDefinitionAccess().getWriteKeyword_4());
-		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getDefinitionAccess().getInoutput2InOutputParserRuleCall_5_0());
+					newCompositeNode(grammarAccess.getDefinitionAccess().getOutputOutputParserRuleCall_3_0());
 				}
-				lv_inoutput2_5_0=ruleInOutput
+				lv_output_3_0=ruleOutput
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getDefinitionRule());
 					}
 					set(
 						$current,
-						"inoutput2",
-						lv_inoutput2_5_0,
-						"esir.compilation.Whdsl.InOutput");
+						"output",
+						lv_output_3_0,
+						"esir.compilation.Whdsl.Output");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
+	)
+;
+
+// Entry rule entryRuleInput
+entryRuleInput returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getInputRule()); }
+	iv_ruleInput=ruleInput
+	{ $current=$iv_ruleInput.current; }
+	EOF;
+
+// Rule Input
+ruleInput returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='read'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getInputAccess().getReadKeyword_0());
+		}
+		{
+			newCompositeNode(grammarAccess.getInputAccess().getInOutputParserRuleCall_1());
+		}
+		this_InOutput_1=ruleInOutput
+		{
+			$current = $this_InOutput_1.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleOutput
+entryRuleOutput returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getOutputRule()); }
+	iv_ruleOutput=ruleOutput
+	{ $current=$iv_ruleOutput.current; }
+	EOF;
+
+// Rule Output
+ruleOutput returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='write'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getOutputAccess().getWriteKeyword_0());
+		}
+		{
+			newCompositeNode(grammarAccess.getOutputAccess().getInOutputParserRuleCall_1());
+		}
+		this_InOutput_1=ruleInOutput
+		{
+			$current = $this_InOutput_1.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -251,10 +305,29 @@ ruleInOutput returns [EObject current=null]
 	(
 		(
 			(
+				lv_variable_0_0=RULE_VARIABLE
+				{
+					newLeafNode(lv_variable_0_0, grammarAccess.getInOutputAccess().getVariableVARIABLETerminalRuleCall_0_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getInOutputRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"variable",
+						lv_variable_0_0,
+						"esir.compilation.Whdsl.VARIABLE");
+				}
+			)
+		)
+		    |
+		(
+			(
 				(
-					lv_variable_0_0=RULE_VARIABLE
+					lv_variable_1_0=RULE_VARIABLE
 					{
-						newLeafNode(lv_variable_0_0, grammarAccess.getInOutputAccess().getVariableVARIABLETerminalRuleCall_0_0_0());
+						newLeafNode(lv_variable_1_0, grammarAccess.getInOutputAccess().getVariableVARIABLETerminalRuleCall_1_0_0());
 					}
 					{
 						if ($current==null) {
@@ -263,21 +336,21 @@ ruleInOutput returns [EObject current=null]
 						setWithLastConsumed(
 							$current,
 							"variable",
-							lv_variable_0_0,
+							lv_variable_1_0,
 							"esir.compilation.Whdsl.VARIABLE");
 					}
 				)
 			)
-			otherlv_1=','
+			otherlv_2=','
 			{
-				newLeafNode(otherlv_1, grammarAccess.getInOutputAccess().getCommaKeyword_0_1());
+				newLeafNode(otherlv_2, grammarAccess.getInOutputAccess().getCommaKeyword_1_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getInOutputAccess().getInoutputInOutputParserRuleCall_0_2_0());
+						newCompositeNode(grammarAccess.getInOutputAccess().getInoutputInOutputParserRuleCall_1_2_0());
 					}
-					lv_inoutput_2_0=ruleInOutput
+					lv_inoutput_3_0=ruleInOutput
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getInOutputRule());
@@ -285,30 +358,11 @@ ruleInOutput returns [EObject current=null]
 						set(
 							$current,
 							"inoutput",
-							lv_inoutput_2_0,
+							lv_inoutput_3_0,
 							"esir.compilation.Whdsl.InOutput");
 						afterParserOrEnumRuleCall();
 					}
 				)
-			)
-		)
-		    |
-		(
-			(
-				lv_variable2_3_0=RULE_VARIABLE
-				{
-					newLeafNode(lv_variable2_3_0, grammarAccess.getInOutputAccess().getVariable2VARIABLETerminalRuleCall_1_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getInOutputRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"variable2",
-						lv_variable2_3_0,
-						"esir.compilation.Whdsl.VARIABLE");
-				}
 			)
 		)
 	)

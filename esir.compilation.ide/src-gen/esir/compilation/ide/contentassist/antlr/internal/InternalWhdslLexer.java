@@ -88,11 +88,10 @@ public class InternalWhdslLexer extends Lexer {
         try {
             int _type = T__15;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalWhdsl.g:13:7: ( 'read' )
-            // InternalWhdsl.g:13:9: 'read'
+            // InternalWhdsl.g:13:7: ( '%' )
+            // InternalWhdsl.g:13:9: '%'
             {
-            match("read"); 
-
+            match('%'); 
 
             }
 
@@ -109,10 +108,11 @@ public class InternalWhdslLexer extends Lexer {
         try {
             int _type = T__16;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalWhdsl.g:14:7: ( '%' )
-            // InternalWhdsl.g:14:9: '%'
+            // InternalWhdsl.g:14:7: ( 'read' )
+            // InternalWhdsl.g:14:9: 'read'
             {
-            match('%'); 
+            match("read"); 
+
 
             }
 
@@ -170,10 +170,10 @@ public class InternalWhdslLexer extends Lexer {
         try {
             int _type = RULE_VARIABLE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalWhdsl.g:644:15: ( ( 'A' .. 'Z' )* )
-            // InternalWhdsl.g:644:17: ( 'A' .. 'Z' )*
+            // InternalWhdsl.g:748:15: ( ( 'A' .. 'Z' )* )
+            // InternalWhdsl.g:748:17: ( 'A' .. 'Z' )*
             {
-            // InternalWhdsl.g:644:17: ( 'A' .. 'Z' )*
+            // InternalWhdsl.g:748:17: ( 'A' .. 'Z' )*
             loop1:
             do {
                 int alt1=2;
@@ -186,7 +186,7 @@ public class InternalWhdslLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // InternalWhdsl.g:644:18: 'A' .. 'Z'
+            	    // InternalWhdsl.g:748:18: 'A' .. 'Z'
             	    {
             	    matchRange('A','Z'); 
 
@@ -214,10 +214,10 @@ public class InternalWhdslLexer extends Lexer {
         try {
             int _type = RULE_SYMBOLE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalWhdsl.g:646:14: ( ( 'a' .. 'z' )* )
-            // InternalWhdsl.g:646:16: ( 'a' .. 'z' )*
+            // InternalWhdsl.g:750:14: ( ( 'a' .. 'z' )* )
+            // InternalWhdsl.g:750:16: ( 'a' .. 'z' )*
             {
-            // InternalWhdsl.g:646:16: ( 'a' .. 'z' )*
+            // InternalWhdsl.g:750:16: ( 'a' .. 'z' )*
             loop2:
             do {
                 int alt2=2;
@@ -230,7 +230,7 @@ public class InternalWhdslLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // InternalWhdsl.g:646:17: 'a' .. 'z'
+            	    // InternalWhdsl.g:750:17: 'a' .. 'z'
             	    {
             	    matchRange('a','z'); 
 
@@ -258,10 +258,10 @@ public class InternalWhdslLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalWhdsl.g:648:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalWhdsl.g:648:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalWhdsl.g:752:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalWhdsl.g:752:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalWhdsl.g:648:11: ( '^' )?
+            // InternalWhdsl.g:752:11: ( '^' )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -270,7 +270,7 @@ public class InternalWhdslLexer extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // InternalWhdsl.g:648:11: '^'
+                    // InternalWhdsl.g:752:11: '^'
                     {
                     match('^'); 
 
@@ -288,7 +288,7 @@ public class InternalWhdslLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalWhdsl.g:648:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalWhdsl.g:752:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop4:
             do {
                 int alt4=2;
@@ -337,10 +337,10 @@ public class InternalWhdslLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalWhdsl.g:650:10: ( ( '0' .. '9' )+ )
-            // InternalWhdsl.g:650:12: ( '0' .. '9' )+
+            // InternalWhdsl.g:754:10: ( ( '0' .. '9' )+ )
+            // InternalWhdsl.g:754:12: ( '0' .. '9' )+
             {
-            // InternalWhdsl.g:650:12: ( '0' .. '9' )+
+            // InternalWhdsl.g:754:12: ( '0' .. '9' )+
             int cnt5=0;
             loop5:
             do {
@@ -354,7 +354,7 @@ public class InternalWhdslLexer extends Lexer {
 
                 switch (alt5) {
             	case 1 :
-            	    // InternalWhdsl.g:650:13: '0' .. '9'
+            	    // InternalWhdsl.g:754:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -386,10 +386,10 @@ public class InternalWhdslLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalWhdsl.g:652:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalWhdsl.g:652:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalWhdsl.g:756:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalWhdsl.g:756:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalWhdsl.g:652:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalWhdsl.g:756:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -407,10 +407,10 @@ public class InternalWhdslLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // InternalWhdsl.g:652:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalWhdsl.g:756:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalWhdsl.g:652:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalWhdsl.g:756:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop6:
                     do {
                         int alt6=3;
@@ -426,7 +426,7 @@ public class InternalWhdslLexer extends Lexer {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // InternalWhdsl.g:652:21: '\\\\' .
+                    	    // InternalWhdsl.g:756:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -434,7 +434,7 @@ public class InternalWhdslLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalWhdsl.g:652:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalWhdsl.g:756:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -459,10 +459,10 @@ public class InternalWhdslLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalWhdsl.g:652:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalWhdsl.g:756:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalWhdsl.g:652:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalWhdsl.g:756:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop7:
                     do {
                         int alt7=3;
@@ -478,7 +478,7 @@ public class InternalWhdslLexer extends Lexer {
 
                         switch (alt7) {
                     	case 1 :
-                    	    // InternalWhdsl.g:652:54: '\\\\' .
+                    	    // InternalWhdsl.g:756:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -486,7 +486,7 @@ public class InternalWhdslLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalWhdsl.g:652:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalWhdsl.g:756:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -529,12 +529,12 @@ public class InternalWhdslLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalWhdsl.g:654:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalWhdsl.g:654:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalWhdsl.g:758:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalWhdsl.g:758:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalWhdsl.g:654:24: ( options {greedy=false; } : . )*
+            // InternalWhdsl.g:758:24: ( options {greedy=false; } : . )*
             loop9:
             do {
                 int alt9=2;
@@ -559,7 +559,7 @@ public class InternalWhdslLexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // InternalWhdsl.g:654:52: .
+            	    // InternalWhdsl.g:758:52: .
             	    {
             	    matchAny(); 
 
@@ -589,12 +589,12 @@ public class InternalWhdslLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalWhdsl.g:656:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalWhdsl.g:656:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalWhdsl.g:760:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalWhdsl.g:760:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalWhdsl.g:656:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalWhdsl.g:760:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop10:
             do {
                 int alt10=2;
@@ -607,7 +607,7 @@ public class InternalWhdslLexer extends Lexer {
 
                 switch (alt10) {
             	case 1 :
-            	    // InternalWhdsl.g:656:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalWhdsl.g:760:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -627,7 +627,7 @@ public class InternalWhdslLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalWhdsl.g:656:40: ( ( '\\r' )? '\\n' )?
+            // InternalWhdsl.g:760:40: ( ( '\\r' )? '\\n' )?
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -636,9 +636,9 @@ public class InternalWhdslLexer extends Lexer {
             }
             switch (alt12) {
                 case 1 :
-                    // InternalWhdsl.g:656:41: ( '\\r' )? '\\n'
+                    // InternalWhdsl.g:760:41: ( '\\r' )? '\\n'
                     {
-                    // InternalWhdsl.g:656:41: ( '\\r' )?
+                    // InternalWhdsl.g:760:41: ( '\\r' )?
                     int alt11=2;
                     int LA11_0 = input.LA(1);
 
@@ -647,7 +647,7 @@ public class InternalWhdslLexer extends Lexer {
                     }
                     switch (alt11) {
                         case 1 :
-                            // InternalWhdsl.g:656:41: '\\r'
+                            // InternalWhdsl.g:760:41: '\\r'
                             {
                             match('\r'); 
 
@@ -679,10 +679,10 @@ public class InternalWhdslLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalWhdsl.g:658:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalWhdsl.g:658:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalWhdsl.g:762:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalWhdsl.g:762:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalWhdsl.g:658:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalWhdsl.g:762:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt13=0;
             loop13:
             do {
@@ -736,8 +736,8 @@ public class InternalWhdslLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalWhdsl.g:660:16: ( . )
-            // InternalWhdsl.g:660:18: .
+            // InternalWhdsl.g:764:16: ( . )
+            // InternalWhdsl.g:764:18: .
             {
             matchAny(); 
 
@@ -869,23 +869,23 @@ public class InternalWhdslLexer extends Lexer {
 
     protected DFA14 dfa14 = new DFA14(this);
     static final String DFA14_eotS =
-        "\1\10\1\23\1\uffff\1\23\1\uffff\1\23\1\uffff\1\10\1\uffff\1\23\1\21\2\uffff\3\21\2\uffff\1\23\1\uffff\1\23\2\uffff\1\23\1\uffff\1\23\1\uffff\1\10\5\uffff\4\23\1\50\2\23\1\uffff\1\53\1\23\1\uffff\1\23\1\56\1\uffff";
+        "\1\10\1\23\2\uffff\2\23\1\uffff\1\10\1\uffff\1\23\1\21\2\uffff\3\21\2\uffff\1\23\1\uffff\1\23\3\uffff\2\23\1\uffff\1\10\5\uffff\4\23\1\50\2\23\1\uffff\1\53\1\23\1\uffff\1\23\1\56\1\uffff";
     static final String DFA14_eofS =
         "\57\uffff";
     static final String DFA14_minS =
-        "\1\0\1\60\1\uffff\1\60\1\uffff\1\60\1\uffff\1\60\1\uffff\1\60\1\101\2\uffff\2\0\1\52\2\uffff\1\60\1\uffff\1\60\2\uffff\1\60\1\uffff\1\60\1\uffff\1\60\5\uffff\7\60\1\uffff\2\60\1\uffff\2\60\1\uffff";
+        "\1\0\1\60\2\uffff\2\60\1\uffff\1\60\1\uffff\1\60\1\101\2\uffff\2\0\1\52\2\uffff\1\60\1\uffff\1\60\3\uffff\2\60\1\uffff\1\60\5\uffff\7\60\1\uffff\2\60\1\uffff\2\60\1\uffff";
     static final String DFA14_maxS =
-        "\1\uffff\1\172\1\uffff\1\172\1\uffff\1\172\1\uffff\1\172\1\uffff\2\172\2\uffff\2\uffff\1\57\2\uffff\1\172\1\uffff\1\172\2\uffff\1\172\1\uffff\1\172\1\uffff\1\172\5\uffff\7\172\1\uffff\2\172\1\uffff\2\172\1\uffff";
+        "\1\uffff\1\172\2\uffff\2\172\1\uffff\1\172\1\uffff\2\172\2\uffff\2\uffff\1\57\2\uffff\1\172\1\uffff\1\172\3\uffff\2\172\1\uffff\1\172\5\uffff\7\172\1\uffff\2\172\1\uffff\2\172\1\uffff";
     static final String DFA14_acceptS =
-        "\2\uffff\1\2\1\uffff\1\4\1\uffff\1\6\1\uffff\1\7\2\uffff\1\11\1\12\3\uffff\1\16\1\17\1\uffff\1\10\1\uffff\1\11\1\2\1\uffff\1\4\1\uffff\1\6\1\uffff\1\12\1\13\1\14\1\15\1\16\7\uffff\1\3\2\uffff\1\5\2\uffff\1\1";
+        "\2\uffff\1\2\1\3\2\uffff\1\6\1\uffff\1\7\2\uffff\1\11\1\12\3\uffff\1\16\1\17\1\uffff\1\10\1\uffff\1\11\1\2\1\3\2\uffff\1\6\1\uffff\1\12\1\13\1\14\1\15\1\16\7\uffff\1\4\2\uffff\1\5\2\uffff\1\1";
     static final String DFA14_specialS =
-        "\1\0\14\uffff\1\2\1\1\40\uffff}>";
+        "\1\2\14\uffff\1\1\1\0\40\uffff}>";
     static final String[] DFA14_transitionS = {
-            "\11\21\2\20\2\21\1\20\22\21\1\20\1\21\1\15\2\21\1\4\1\21\1\16\4\21\1\6\2\21\1\17\12\14\1\2\6\21\32\7\3\21\1\12\1\13\1\21\5\11\1\1\13\11\1\3\4\11\1\5\3\11\uff85\21",
+            "\11\21\2\20\2\21\1\20\22\21\1\20\1\21\1\15\2\21\1\3\1\21\1\16\4\21\1\6\2\21\1\17\12\14\1\2\6\21\32\7\3\21\1\12\1\13\1\21\5\11\1\1\13\11\1\4\4\11\1\5\3\11\uff85\21",
             "\12\25\7\uffff\32\25\4\uffff\1\25\1\uffff\24\24\1\22\5\24",
             "",
-            "\12\25\7\uffff\32\25\4\uffff\1\25\1\uffff\4\24\1\27\25\24",
             "",
+            "\12\25\7\uffff\32\25\4\uffff\1\25\1\uffff\4\24\1\30\25\24",
             "\12\25\7\uffff\32\25\4\uffff\1\25\1\uffff\21\24\1\31\10\24",
             "",
             "\12\25\7\uffff\32\33\4\uffff\1\25\1\uffff\32\25",
@@ -904,8 +904,8 @@ public class InternalWhdslLexer extends Lexer {
             "\12\25\7\uffff\32\25\4\uffff\1\25\1\uffff\32\24",
             "",
             "",
-            "\12\25\7\uffff\32\25\4\uffff\1\25\1\uffff\1\42\31\24",
             "",
+            "\12\25\7\uffff\32\25\4\uffff\1\25\1\uffff\1\42\31\24",
             "\12\25\7\uffff\32\25\4\uffff\1\25\1\uffff\10\24\1\43\21\24",
             "",
             "\12\25\7\uffff\32\33\4\uffff\1\25\1\uffff\32\25",
@@ -967,6 +967,26 @@ public class InternalWhdslLexer extends Lexer {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
+                        int LA14_14 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA14_14>='\u0000' && LA14_14<='\uFFFF')) ) {s = 29;}
+
+                        else s = 17;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA14_13 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA14_13>='\u0000' && LA14_13<='\uFFFF')) ) {s = 29;}
+
+                        else s = 17;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
                         int LA14_0 = input.LA(1);
 
                         s = -1;
@@ -974,9 +994,9 @@ public class InternalWhdslLexer extends Lexer {
 
                         else if ( (LA14_0==':') ) {s = 2;}
 
-                        else if ( (LA14_0=='r') ) {s = 3;}
+                        else if ( (LA14_0=='%') ) {s = 3;}
 
-                        else if ( (LA14_0=='%') ) {s = 4;}
+                        else if ( (LA14_0=='r') ) {s = 4;}
 
                         else if ( (LA14_0=='w') ) {s = 5;}
 
@@ -1003,26 +1023,6 @@ public class InternalWhdslLexer extends Lexer {
                         else if ( ((LA14_0>='\u0000' && LA14_0<='\b')||(LA14_0>='\u000B' && LA14_0<='\f')||(LA14_0>='\u000E' && LA14_0<='\u001F')||LA14_0=='!'||(LA14_0>='#' && LA14_0<='$')||LA14_0=='&'||(LA14_0>='(' && LA14_0<='+')||(LA14_0>='-' && LA14_0<='.')||(LA14_0>=';' && LA14_0<='@')||(LA14_0>='[' && LA14_0<=']')||LA14_0=='`'||(LA14_0>='{' && LA14_0<='\uFFFF')) ) {s = 17;}
 
                         else s = 8;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA14_14 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA14_14>='\u0000' && LA14_14<='\uFFFF')) ) {s = 29;}
-
-                        else s = 17;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA14_13 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA14_13>='\u0000' && LA14_13<='\uFFFF')) ) {s = 29;}
-
-                        else s = 17;
 
                         if ( s>=0 ) return s;
                         break;
