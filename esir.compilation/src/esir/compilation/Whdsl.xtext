@@ -7,13 +7,15 @@ Program:
 ;
 
 Function:
-	'function'symbol=SYMBOLE':'definition=Definition
+	'function'name=SYMBOLE':'definition=Definition
 ;
 
 Definition:
 	input=Input'%'
 	'%'output=Output
 ;
+
+
 
 /*Input Output */
 	
@@ -30,6 +32,7 @@ InOutput:
 ;
 
 /*COMMAND */	
+
 	
 /*TERMINAL */	
 terminal VARIABLE:

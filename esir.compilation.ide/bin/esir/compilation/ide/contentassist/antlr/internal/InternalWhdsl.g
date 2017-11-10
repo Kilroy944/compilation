@@ -265,9 +265,9 @@ rule__Function__Group__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getFunctionAccess().getSymbolAssignment_1()); }
-	(rule__Function__SymbolAssignment_1)
-	{ after(grammarAccess.getFunctionAccess().getSymbolAssignment_1()); }
+	{ before(grammarAccess.getFunctionAccess().getNameAssignment_1()); }
+	(rule__Function__NameAssignment_1)
+	{ after(grammarAccess.getFunctionAccess().getNameAssignment_1()); }
 )
 ;
 finally {
@@ -640,15 +640,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Function__SymbolAssignment_1
+rule__Function__NameAssignment_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getFunctionAccess().getSymbolSYMBOLETerminalRuleCall_1_0()); }
+		{ before(grammarAccess.getFunctionAccess().getNameSYMBOLETerminalRuleCall_1_0()); }
 		RULE_SYMBOLE
-		{ after(grammarAccess.getFunctionAccess().getSymbolSYMBOLETerminalRuleCall_1_0()); }
+		{ after(grammarAccess.getFunctionAccess().getNameSYMBOLETerminalRuleCall_1_0()); }
 	)
 ;
 finally {

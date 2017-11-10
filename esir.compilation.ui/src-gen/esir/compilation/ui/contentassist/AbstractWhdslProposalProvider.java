@@ -20,7 +20,7 @@ public abstract class AbstractWhdslProposalProvider extends TerminalsProposalPro
 	public void completeProgram_Function(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
-	public void completeFunction_Symbol(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+	public void completeFunction_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
 	public void completeFunction_Definition(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {

@@ -96,13 +96,13 @@ public interface WhdslPackage extends EPackage
   int FUNCTION = 1;
 
   /**
-   * The feature id for the '<em><b>Symbol</b></em>' attribute.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNCTION__SYMBOL = 0;
+  int FUNCTION__NAME = 0;
 
   /**
    * The feature id for the '<em><b>Definition</b></em>' containment reference.
@@ -267,15 +267,15 @@ public interface WhdslPackage extends EPackage
   EClass getFunction();
 
   /**
-   * Returns the meta object for the attribute '{@link esir.compilation.whdsl.Function#getSymbol <em>Symbol</em>}'.
+   * Returns the meta object for the attribute '{@link esir.compilation.whdsl.Function#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Symbol</em>'.
-   * @see esir.compilation.whdsl.Function#getSymbol()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see esir.compilation.whdsl.Function#getName()
    * @see #getFunction()
    * @generated
    */
-  EAttribute getFunction_Symbol();
+  EAttribute getFunction_Name();
 
   /**
    * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.Function#getDefinition <em>Definition</em>}'.
@@ -424,12 +424,12 @@ public interface WhdslPackage extends EPackage
     EClass FUNCTION = eINSTANCE.getFunction();
 
     /**
-     * The meta object literal for the '<em><b>Symbol</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FUNCTION__SYMBOL = eINSTANCE.getFunction_Symbol();
+    EAttribute FUNCTION__NAME = eINSTANCE.getFunction_Name();
 
     /**
      * The meta object literal for the '<em><b>Definition</b></em>' containment reference feature.

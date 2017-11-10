@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.FunctionImpl#getSymbol <em>Symbol</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.FunctionImpl#getName <em>Name</em>}</li>
  *   <li>{@link esir.compilation.whdsl.impl.FunctionImpl#getDefinition <em>Definition</em>}</li>
  * </ul>
  *
@@ -33,24 +33,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class FunctionImpl extends MinimalEObjectImpl.Container implements Function
 {
   /**
-   * The default value of the '{@link #getSymbol() <em>Symbol</em>}' attribute.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSymbol()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String SYMBOL_EDEFAULT = null;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getSymbol() <em>Symbol</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSymbol()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected String symbol = SYMBOL_EDEFAULT;
+  protected String name = NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getDefinition() <em>Definition</em>}' containment reference.
@@ -88,9 +88,9 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getSymbol()
+  public String getName()
   {
-    return symbol;
+    return name;
   }
 
   /**
@@ -98,12 +98,12 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSymbol(String newSymbol)
+  public void setName(String newName)
   {
-    String oldSymbol = symbol;
-    symbol = newSymbol;
+    String oldName = name;
+    name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.FUNCTION__SYMBOL, oldSymbol, symbol));
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.FUNCTION__NAME, oldName, name));
   }
 
   /**
@@ -180,8 +180,8 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
   {
     switch (featureID)
     {
-      case WhdslPackage.FUNCTION__SYMBOL:
-        return getSymbol();
+      case WhdslPackage.FUNCTION__NAME:
+        return getName();
       case WhdslPackage.FUNCTION__DEFINITION:
         return getDefinition();
     }
@@ -198,8 +198,8 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
   {
     switch (featureID)
     {
-      case WhdslPackage.FUNCTION__SYMBOL:
-        setSymbol((String)newValue);
+      case WhdslPackage.FUNCTION__NAME:
+        setName((String)newValue);
         return;
       case WhdslPackage.FUNCTION__DEFINITION:
         setDefinition((Definition)newValue);
@@ -218,8 +218,8 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
   {
     switch (featureID)
     {
-      case WhdslPackage.FUNCTION__SYMBOL:
-        setSymbol(SYMBOL_EDEFAULT);
+      case WhdslPackage.FUNCTION__NAME:
+        setName(NAME_EDEFAULT);
         return;
       case WhdslPackage.FUNCTION__DEFINITION:
         setDefinition((Definition)null);
@@ -238,8 +238,8 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
   {
     switch (featureID)
     {
-      case WhdslPackage.FUNCTION__SYMBOL:
-        return SYMBOL_EDEFAULT == null ? symbol != null : !SYMBOL_EDEFAULT.equals(symbol);
+      case WhdslPackage.FUNCTION__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case WhdslPackage.FUNCTION__DEFINITION:
         return definition != null;
     }
@@ -257,8 +257,8 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (symbol: ");
-    result.append(symbol);
+    result.append(" (name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }

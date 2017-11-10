@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.Function#getSymbol <em>Symbol</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.Function#getName <em>Name</em>}</li>
  *   <li>{@link esir.compilation.whdsl.Function#getDefinition <em>Definition</em>}</li>
  * </ul>
  *
@@ -25,30 +25,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface Function extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Symbol</b></em>' attribute.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Symbol</em>' attribute isn't clear,
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Symbol</em>' attribute.
-   * @see #setSymbol(String)
-   * @see esir.compilation.whdsl.WhdslPackage#getFunction_Symbol()
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see esir.compilation.whdsl.WhdslPackage#getFunction_Name()
    * @model
    * @generated
    */
-  String getSymbol();
+  String getName();
 
   /**
-   * Sets the value of the '{@link esir.compilation.whdsl.Function#getSymbol <em>Symbol</em>}' attribute.
+   * Sets the value of the '{@link esir.compilation.whdsl.Function#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Symbol</em>' attribute.
-   * @see #getSymbol()
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
    * @generated
    */
-  void setSymbol(String value);
+  void setName(String value);
 
   /**
    * Returns the value of the '<em><b>Definition</b></em>' containment reference.

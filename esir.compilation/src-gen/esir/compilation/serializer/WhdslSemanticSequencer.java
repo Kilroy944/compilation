@@ -78,17 +78,17 @@ public class WhdslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Function returns Function
 	 *
 	 * Constraint:
-	 *     (symbol=SYMBOLE definition=Definition)
+	 *     (name=SYMBOLE definition=Definition)
 	 */
 	protected void sequence_Function(ISerializationContext context, Function semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.FUNCTION__SYMBOL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.FUNCTION__SYMBOL));
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.FUNCTION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.FUNCTION__NAME));
 			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.FUNCTION__DEFINITION) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.FUNCTION__DEFINITION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getFunctionAccess().getSymbolSYMBOLETerminalRuleCall_1_0(), semanticObject.getSymbol());
+		feeder.accept(grammarAccess.getFunctionAccess().getNameSYMBOLETerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getFunctionAccess().getDefinitionDefinitionParserRuleCall_3_0(), semanticObject.getDefinition());
 		feeder.finish();
 	}

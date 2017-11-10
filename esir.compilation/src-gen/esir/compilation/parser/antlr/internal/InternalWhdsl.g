@@ -118,9 +118,9 @@ ruleFunction returns [EObject current=null]
 		}
 		(
 			(
-				lv_symbol_1_0=RULE_SYMBOLE
+				lv_name_1_0=RULE_SYMBOLE
 				{
-					newLeafNode(lv_symbol_1_0, grammarAccess.getFunctionAccess().getSymbolSYMBOLETerminalRuleCall_1_0());
+					newLeafNode(lv_name_1_0, grammarAccess.getFunctionAccess().getNameSYMBOLETerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
@@ -128,8 +128,8 @@ ruleFunction returns [EObject current=null]
 					}
 					setWithLastConsumed(
 						$current,
-						"symbol",
-						lv_symbol_1_0,
+						"name",
+						lv_name_1_0,
 						"esir.compilation.Whdsl.SYMBOLE");
 				}
 			)

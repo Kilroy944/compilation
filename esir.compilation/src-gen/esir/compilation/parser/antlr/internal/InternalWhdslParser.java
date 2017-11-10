@@ -235,12 +235,12 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFunction"
-    // InternalWhdsl.g:107:1: ruleFunction returns [EObject current=null] : (otherlv_0= 'function' ( (lv_symbol_1_0= RULE_SYMBOLE ) ) otherlv_2= ':' ( (lv_definition_3_0= ruleDefinition ) ) ) ;
+    // InternalWhdsl.g:107:1: ruleFunction returns [EObject current=null] : (otherlv_0= 'function' ( (lv_name_1_0= RULE_SYMBOLE ) ) otherlv_2= ':' ( (lv_definition_3_0= ruleDefinition ) ) ) ;
     public final EObject ruleFunction() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
-        Token lv_symbol_1_0=null;
+        Token lv_name_1_0=null;
         Token otherlv_2=null;
         EObject lv_definition_3_0 = null;
 
@@ -249,25 +249,25 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalWhdsl.g:113:2: ( (otherlv_0= 'function' ( (lv_symbol_1_0= RULE_SYMBOLE ) ) otherlv_2= ':' ( (lv_definition_3_0= ruleDefinition ) ) ) )
-            // InternalWhdsl.g:114:2: (otherlv_0= 'function' ( (lv_symbol_1_0= RULE_SYMBOLE ) ) otherlv_2= ':' ( (lv_definition_3_0= ruleDefinition ) ) )
+            // InternalWhdsl.g:113:2: ( (otherlv_0= 'function' ( (lv_name_1_0= RULE_SYMBOLE ) ) otherlv_2= ':' ( (lv_definition_3_0= ruleDefinition ) ) ) )
+            // InternalWhdsl.g:114:2: (otherlv_0= 'function' ( (lv_name_1_0= RULE_SYMBOLE ) ) otherlv_2= ':' ( (lv_definition_3_0= ruleDefinition ) ) )
             {
-            // InternalWhdsl.g:114:2: (otherlv_0= 'function' ( (lv_symbol_1_0= RULE_SYMBOLE ) ) otherlv_2= ':' ( (lv_definition_3_0= ruleDefinition ) ) )
-            // InternalWhdsl.g:115:3: otherlv_0= 'function' ( (lv_symbol_1_0= RULE_SYMBOLE ) ) otherlv_2= ':' ( (lv_definition_3_0= ruleDefinition ) )
+            // InternalWhdsl.g:114:2: (otherlv_0= 'function' ( (lv_name_1_0= RULE_SYMBOLE ) ) otherlv_2= ':' ( (lv_definition_3_0= ruleDefinition ) ) )
+            // InternalWhdsl.g:115:3: otherlv_0= 'function' ( (lv_name_1_0= RULE_SYMBOLE ) ) otherlv_2= ':' ( (lv_definition_3_0= ruleDefinition ) )
             {
             otherlv_0=(Token)match(input,13,FOLLOW_4); 
 
             			newLeafNode(otherlv_0, grammarAccess.getFunctionAccess().getFunctionKeyword_0());
             		
-            // InternalWhdsl.g:119:3: ( (lv_symbol_1_0= RULE_SYMBOLE ) )
-            // InternalWhdsl.g:120:4: (lv_symbol_1_0= RULE_SYMBOLE )
+            // InternalWhdsl.g:119:3: ( (lv_name_1_0= RULE_SYMBOLE ) )
+            // InternalWhdsl.g:120:4: (lv_name_1_0= RULE_SYMBOLE )
             {
-            // InternalWhdsl.g:120:4: (lv_symbol_1_0= RULE_SYMBOLE )
-            // InternalWhdsl.g:121:5: lv_symbol_1_0= RULE_SYMBOLE
+            // InternalWhdsl.g:120:4: (lv_name_1_0= RULE_SYMBOLE )
+            // InternalWhdsl.g:121:5: lv_name_1_0= RULE_SYMBOLE
             {
-            lv_symbol_1_0=(Token)match(input,RULE_SYMBOLE,FOLLOW_5); 
+            lv_name_1_0=(Token)match(input,RULE_SYMBOLE,FOLLOW_5); 
 
-            					newLeafNode(lv_symbol_1_0, grammarAccess.getFunctionAccess().getSymbolSYMBOLETerminalRuleCall_1_0());
+            					newLeafNode(lv_name_1_0, grammarAccess.getFunctionAccess().getNameSYMBOLETerminalRuleCall_1_0());
             				
 
             					if (current==null) {
@@ -275,8 +275,8 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
             					}
             					setWithLastConsumed(
             						current,
-            						"symbol",
-            						lv_symbol_1_0,
+            						"name",
+            						lv_name_1_0,
             						"esir.compilation.Whdsl.SYMBOLE");
             				
 

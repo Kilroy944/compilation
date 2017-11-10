@@ -771,31 +771,31 @@ public class InternalWhdslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Function__Group__1__Impl"
-    // InternalWhdsl.g:262:1: rule__Function__Group__1__Impl : ( ( rule__Function__SymbolAssignment_1 ) ) ;
+    // InternalWhdsl.g:262:1: rule__Function__Group__1__Impl : ( ( rule__Function__NameAssignment_1 ) ) ;
     public final void rule__Function__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalWhdsl.g:266:1: ( ( ( rule__Function__SymbolAssignment_1 ) ) )
-            // InternalWhdsl.g:267:1: ( ( rule__Function__SymbolAssignment_1 ) )
+            // InternalWhdsl.g:266:1: ( ( ( rule__Function__NameAssignment_1 ) ) )
+            // InternalWhdsl.g:267:1: ( ( rule__Function__NameAssignment_1 ) )
             {
-            // InternalWhdsl.g:267:1: ( ( rule__Function__SymbolAssignment_1 ) )
-            // InternalWhdsl.g:268:2: ( rule__Function__SymbolAssignment_1 )
+            // InternalWhdsl.g:267:1: ( ( rule__Function__NameAssignment_1 ) )
+            // InternalWhdsl.g:268:2: ( rule__Function__NameAssignment_1 )
             {
-             before(grammarAccess.getFunctionAccess().getSymbolAssignment_1()); 
-            // InternalWhdsl.g:269:2: ( rule__Function__SymbolAssignment_1 )
-            // InternalWhdsl.g:269:3: rule__Function__SymbolAssignment_1
+             before(grammarAccess.getFunctionAccess().getNameAssignment_1()); 
+            // InternalWhdsl.g:269:2: ( rule__Function__NameAssignment_1 )
+            // InternalWhdsl.g:269:3: rule__Function__NameAssignment_1
             {
             pushFollow(FOLLOW_2);
-            rule__Function__SymbolAssignment_1();
+            rule__Function__NameAssignment_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getFunctionAccess().getSymbolAssignment_1()); 
+             after(grammarAccess.getFunctionAccess().getNameAssignment_1()); 
 
             }
 
@@ -1866,9 +1866,9 @@ public class InternalWhdslParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Program__FunctionAssignment"
 
 
-    // $ANTLR start "rule__Function__SymbolAssignment_1"
-    // InternalWhdsl.g:643:1: rule__Function__SymbolAssignment_1 : ( RULE_SYMBOLE ) ;
-    public final void rule__Function__SymbolAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__Function__NameAssignment_1"
+    // InternalWhdsl.g:643:1: rule__Function__NameAssignment_1 : ( RULE_SYMBOLE ) ;
+    public final void rule__Function__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -1879,9 +1879,9 @@ public class InternalWhdslParser extends AbstractInternalContentAssistParser {
             // InternalWhdsl.g:648:2: ( RULE_SYMBOLE )
             // InternalWhdsl.g:649:3: RULE_SYMBOLE
             {
-             before(grammarAccess.getFunctionAccess().getSymbolSYMBOLETerminalRuleCall_1_0()); 
+             before(grammarAccess.getFunctionAccess().getNameSYMBOLETerminalRuleCall_1_0()); 
             match(input,RULE_SYMBOLE,FOLLOW_2); 
-             after(grammarAccess.getFunctionAccess().getSymbolSYMBOLETerminalRuleCall_1_0()); 
+             after(grammarAccess.getFunctionAccess().getNameSYMBOLETerminalRuleCall_1_0()); 
 
             }
 
@@ -1900,7 +1900,7 @@ public class InternalWhdslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Function__SymbolAssignment_1"
+    // $ANTLR end "rule__Function__NameAssignment_1"
 
 
     // $ANTLR start "rule__Function__DefinitionAssignment_3"

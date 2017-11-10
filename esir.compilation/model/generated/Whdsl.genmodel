@@ -10,7 +10,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Program/function"/>
     </genClasses>
     <genClasses ecoreClass="Whdsl.ecore#//Function">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//Function/symbol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//Function/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Function/definition"/>
     </genClasses>
     <genClasses ecoreClass="Whdsl.ecore#//Definition">

@@ -38,7 +38,7 @@ public class WhdslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getOutputAccess().getGroup(), "rule__Output__Group__0");
 					put(grammarAccess.getInOutputAccess().getGroup_1(), "rule__InOutput__Group_1__0");
 					put(grammarAccess.getProgramAccess().getFunctionAssignment(), "rule__Program__FunctionAssignment");
-					put(grammarAccess.getFunctionAccess().getSymbolAssignment_1(), "rule__Function__SymbolAssignment_1");
+					put(grammarAccess.getFunctionAccess().getNameAssignment_1(), "rule__Function__NameAssignment_1");
 					put(grammarAccess.getFunctionAccess().getDefinitionAssignment_3(), "rule__Function__DefinitionAssignment_3");
 					put(grammarAccess.getDefinitionAccess().getInputAssignment_0(), "rule__Definition__InputAssignment_0");
 					put(grammarAccess.getDefinitionAccess().getOutputAssignment_3(), "rule__Definition__OutputAssignment_3");

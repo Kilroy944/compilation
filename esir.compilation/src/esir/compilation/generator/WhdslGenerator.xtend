@@ -7,16 +7,15 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import org.xtext.example.tl.tL.Function
-import org.xtext.example.tl.tL.Program
-import org.xtext.example.tl.tL.Commands
+import esir.compilation.whdsl.Function
+import esir.compilation.whdsl.Program
 
 /**
  * Generates code from your model files on save.
  * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
-class TLGenerator extends AbstractGenerator {
+class WhdslGenerator extends AbstractGenerator {
 
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
@@ -39,7 +38,7 @@ class TLGenerator extends AbstractGenerator {
 	
 	def compile (Function c){
 		'''
-		function «c.symbol»:
+		function «c.name»:
 		
 		'''	
 	}
@@ -64,7 +63,7 @@ class TLGenerator extends AbstractGenerator {
 	
 	
 	def static void main(String[] args){
-		val generator = new TLGenerator
+		val generator = new WhdslGenerator
 		println(generator.generateMethod("m",'''System.out.println("Hello"); return;'''));
 
 	}

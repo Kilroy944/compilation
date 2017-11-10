@@ -3,10 +3,18 @@
  */
 package esir.compilation.generator;
 
+import com.google.common.collect.Iterables;
+import esir.compilation.whdsl.Function;
+import esir.compilation.whdsl.Program;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 /**
  * Generates code from your model files on save.
@@ -17,5 +25,73 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 public class WhdslGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    Iterable<Program> _filter = Iterables.<Program>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Program.class);
+    for (final Program e : _filter) {
+      fsa.generateFile("result_output.whpp", this.compile(e));
+    }
+  }
+  
+  public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context, final String sortie) {
+    Iterable<Program> _filter = Iterables.<Program>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Program.class);
+    for (final Program e : _filter) {
+      fsa.generateFile(sortie, this.compile(e));
+    }
+  }
+  
+  public CharSequence compile(final Program p) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      EList<Function> _function = p.getFunction();
+      for(final Function f : _function) {
+        CharSequence _compile = this.compile(f);
+        _builder.append(_compile);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+  
+  public CharSequence compile(final Function c) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("function ");
+    String _name = c.getName();
+    _builder.append(_name);
+    _builder.append(":");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence generatorBody(final String name, final String body) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("/* body of ");
+    _builder.append(name);
+    _builder.append(" */");
+    _builder.newLineIfNotEmpty();
+    _builder.append(body);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  public CharSequence generateMethod(final String name, final String body) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("public void ");
+    _builder.append(name);
+    _builder.append("(){");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    CharSequence _generatorBody = this.generatorBody(name, body);
+    _builder.append(_generatorBody, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public static void main(final String[] args) {
+    final WhdslGenerator generator = new WhdslGenerator();
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("System.out.println(\"Hello\"); return;");
+    InputOutput.<CharSequence>println(generator.generateMethod("m", _builder.toString()));
   }
 }

@@ -6,7 +6,7 @@
         eType="#//Function" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Function">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="symbol" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="definition" eType="#//Definition"
         containment="true"/>
   </eClassifiers>

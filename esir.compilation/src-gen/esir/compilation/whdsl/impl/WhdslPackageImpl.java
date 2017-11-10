@@ -167,7 +167,7 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFunction_Symbol()
+  public EAttribute getFunction_Name()
   {
     return (EAttribute)functionEClass.getEStructuralFeatures().get(0);
   }
@@ -296,7 +296,7 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
     createEReference(programEClass, PROGRAM__FUNCTION);
 
     functionEClass = createEClass(FUNCTION);
-    createEAttribute(functionEClass, FUNCTION__SYMBOL);
+    createEAttribute(functionEClass, FUNCTION__NAME);
     createEReference(functionEClass, FUNCTION__DEFINITION);
 
     definitionEClass = createEClass(DEFINITION);
@@ -349,7 +349,7 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
     initEReference(getProgram_Function(), this.getFunction(), null, "function", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(functionEClass, Function.class, "Function", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFunction_Symbol(), ecorePackage.getEString(), "symbol", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFunction_Name(), ecorePackage.getEString(), "name", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunction_Definition(), this.getDefinition(), null, "definition", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(definitionEClass, Definition.class, "Definition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -41,27 +41,27 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.Function");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cFunctionKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cSymbolAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cSymbolSYMBOLETerminalRuleCall_1_0 = (RuleCall)cSymbolAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameSYMBOLETerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cDefinitionAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cDefinitionDefinitionParserRuleCall_3_0 = (RuleCall)cDefinitionAssignment_3.eContents().get(0);
 		
 		//Function:
-		//	'function' symbol=SYMBOLE ':' definition=Definition;
+		//	'function' name=SYMBOLE ':' definition=Definition;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'function' symbol=SYMBOLE ':' definition=Definition
+		//'function' name=SYMBOLE ':' definition=Definition
 		public Group getGroup() { return cGroup; }
 		
 		//'function'
 		public Keyword getFunctionKeyword_0() { return cFunctionKeyword_0; }
 		
-		//symbol=SYMBOLE
-		public Assignment getSymbolAssignment_1() { return cSymbolAssignment_1; }
+		//name=SYMBOLE
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
 		//SYMBOLE
-		public RuleCall getSymbolSYMBOLETerminalRuleCall_1_0() { return cSymbolSYMBOLETerminalRuleCall_1_0; }
+		public RuleCall getNameSYMBOLETerminalRuleCall_1_0() { return cNameSYMBOLETerminalRuleCall_1_0; }
 		
 		//':'
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
@@ -114,7 +114,7 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cReadKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final RuleCall cInOutputParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
 		
-		//Input:
+		///*Input Output */ Input:
 		//	'read' InOutput;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -257,7 +257,7 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Function:
-	//	'function' symbol=SYMBOLE ':' definition=Definition;
+	//	'function' name=SYMBOLE ':' definition=Definition;
 	public FunctionElements getFunctionAccess() {
 		return pFunction;
 	}
@@ -277,7 +277,7 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 		return getDefinitionAccess().getRule();
 	}
 	
-	//Input:
+	///*Input Output */ Input:
 	//	'read' InOutput;
 	public InputElements getInputAccess() {
 		return pInput;
