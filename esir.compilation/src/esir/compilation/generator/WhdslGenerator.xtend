@@ -7,19 +7,66 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.xtext.example.tl.tL.Function
+import org.xtext.example.tl.tL.Program
+import org.xtext.example.tl.tL.Commands
 
 /**
  * Generates code from your model files on save.
  * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
-class WhdslGenerator extends AbstractGenerator {
+class TLGenerator extends AbstractGenerator {
 
+	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(Greeting)
-//				.map[name]
-//				.join(', '))
+		for (e : resource.allContents.toIterable.filter(typeof(Program))){
+			fsa.generateFile("result_output.whpp",	e.compile())
+		}
 	}
+	def doGenerate (Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context, String sortie) {
+		for (e : resource.allContents.toIterable.filter(typeof(Program))){
+			fsa.generateFile(sortie, e.compile())
+		}
+	}
+	
+	def compile (Program p){'''
+		«FOR f : p.function»
+		«f.compile()»
+		«ENDFOR»
+		'''
+	}
+	
+	def compile (Function c){
+		'''
+		function «c.symbol»:
+		
+		'''	
+	}
+	
+
+
+	
+
+	
+	def generatorBody(String name,String body)'''
+	/* body of «name» */
+	«body»
+		'''
+	
+	def generateMethod(String name, String body)'''
+	public void «name»(){
+		«generatorBody(name,body)»
+	}
+	'''
+	
+	
+	
+	
+	def static void main(String[] args){
+		val generator = new TLGenerator
+		println(generator.generateMethod("m",'''System.out.println("Hello"); return;'''));
+
+	}
+	
 }
