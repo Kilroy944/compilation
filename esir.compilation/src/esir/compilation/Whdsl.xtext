@@ -32,7 +32,86 @@ InOutput:
 ;
 
 /*COMMAND */	
+Commands:
+	commands+=Command (';' commands+=Command)*
+;
 
+Command:
+   cmd=(Nop | Affect | If | For | While)
+;
+
+If:
+	'if' expr=Expr 'then' commands1=Commands ('else' commands2=Commands)? 'fi'
+;
+
+
+Nop:
+	nop='nop'
+;
+
+Affect:
+	vars+=VARIABLE (',' vars+=VARIABLE)* ':=' exprs+=Expr (',' exprs+=Expr)*
+;
+
+For:
+	'for' expr=Expr 'do' cmds=Commands 'od'
+;
+
+While:
+	'while' expr=Expr 'do' cmds=Commands 'od'
+;
+
+/*EXPRESSION */	
+Expr:
+	expr = ExprAnd | expr = ExprOr | expr =ExprSimple | expr=ExprCons | 
+	expr=ExprList | expr=ExprHd | expr=ExprTl | expr=ExprSym | expr=ExprNot | exprEq=ExprEq |'(' expr=Expr ')'
+;
+
+ExprSimple:
+	=>str=NIL | varSimple=VARIABLE | sym=SYMBOLE  | '(' nameFunction=SYMBOLE vars=Input ')'//pas de fonction dans les param
+;
+
+ExprAnd:
+	arg1=ExprSimple 'and' arg2=Expr 
+;
+
+ExprOr:
+	arg1=ExprSimple 'or' arg2=Expr
+;
+
+ExprCons:
+	'(''cons' arg1=Expr arg2=Expr ')'
+;
+
+ExprList:
+	'(' 'list' arg+=Expr ')'
+;
+
+ExprHd:
+	'(' 'hd' arg=Expr ')'
+;
+
+ExprTl:
+	'(' 'tl' arg=Expr')'
+;
+
+ExprSym:
+	'(' arg1=SYMBOLE arg2+=Expr ')'
+;
+
+ExprNot:
+	'not' arg1=ExprEq
+;
+
+ExprEq:
+	 arg1=ExprSimple '=?' arg2=ExprSimple
+;
+
+//ajout commentaire pour tester le git
+
+terminal NIL:
+	'Nil' | 'nil'
+;
 	
 /*TERMINAL */	
 terminal VARIABLE:
