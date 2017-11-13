@@ -55,6 +55,7 @@ Expr:
 	"1"
 ;
 
+//test commit depuis eclipse
 /*
 Command:
    cmd=(Nop | Affect | If | For | While)

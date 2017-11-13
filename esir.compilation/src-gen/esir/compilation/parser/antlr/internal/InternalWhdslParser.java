@@ -1060,11 +1060,11 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCommand"
-    // InternalWhdsl.g:448:1: ruleCommand returns [EObject current=null] : ( ( (lv_nop_0_0= RULE_NOP ) ) | ( ( (lv_vars_1_0= ruleVars ) ) otherlv_2= ':=' ( (lv_expression_3_0= ruleExprs ) ) ) ) ;
+    // InternalWhdsl.g:448:1: ruleCommand returns [EObject current=null] : ( ( (lv_command_0_0= RULE_NOP ) ) | ( ( (lv_vars_1_0= ruleVars ) ) otherlv_2= ':=' ( (lv_expression_3_0= ruleExprs ) ) ) ) ;
     public final EObject ruleCommand() throws RecognitionException {
         EObject current = null;
 
-        Token lv_nop_0_0=null;
+        Token lv_command_0_0=null;
         Token otherlv_2=null;
         EObject lv_vars_1_0 = null;
 
@@ -1075,10 +1075,10 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalWhdsl.g:454:2: ( ( ( (lv_nop_0_0= RULE_NOP ) ) | ( ( (lv_vars_1_0= ruleVars ) ) otherlv_2= ':=' ( (lv_expression_3_0= ruleExprs ) ) ) ) )
-            // InternalWhdsl.g:455:2: ( ( (lv_nop_0_0= RULE_NOP ) ) | ( ( (lv_vars_1_0= ruleVars ) ) otherlv_2= ':=' ( (lv_expression_3_0= ruleExprs ) ) ) )
+            // InternalWhdsl.g:454:2: ( ( ( (lv_command_0_0= RULE_NOP ) ) | ( ( (lv_vars_1_0= ruleVars ) ) otherlv_2= ':=' ( (lv_expression_3_0= ruleExprs ) ) ) ) )
+            // InternalWhdsl.g:455:2: ( ( (lv_command_0_0= RULE_NOP ) ) | ( ( (lv_vars_1_0= ruleVars ) ) otherlv_2= ':=' ( (lv_expression_3_0= ruleExprs ) ) ) )
             {
-            // InternalWhdsl.g:455:2: ( ( (lv_nop_0_0= RULE_NOP ) ) | ( ( (lv_vars_1_0= ruleVars ) ) otherlv_2= ':=' ( (lv_expression_3_0= ruleExprs ) ) ) )
+            // InternalWhdsl.g:455:2: ( ( (lv_command_0_0= RULE_NOP ) ) | ( ( (lv_vars_1_0= ruleVars ) ) otherlv_2= ':=' ( (lv_expression_3_0= ruleExprs ) ) ) )
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -1096,17 +1096,17 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
             }
             switch (alt5) {
                 case 1 :
-                    // InternalWhdsl.g:456:3: ( (lv_nop_0_0= RULE_NOP ) )
+                    // InternalWhdsl.g:456:3: ( (lv_command_0_0= RULE_NOP ) )
                     {
-                    // InternalWhdsl.g:456:3: ( (lv_nop_0_0= RULE_NOP ) )
-                    // InternalWhdsl.g:457:4: (lv_nop_0_0= RULE_NOP )
+                    // InternalWhdsl.g:456:3: ( (lv_command_0_0= RULE_NOP ) )
+                    // InternalWhdsl.g:457:4: (lv_command_0_0= RULE_NOP )
                     {
-                    // InternalWhdsl.g:457:4: (lv_nop_0_0= RULE_NOP )
-                    // InternalWhdsl.g:458:5: lv_nop_0_0= RULE_NOP
+                    // InternalWhdsl.g:457:4: (lv_command_0_0= RULE_NOP )
+                    // InternalWhdsl.g:458:5: lv_command_0_0= RULE_NOP
                     {
-                    lv_nop_0_0=(Token)match(input,RULE_NOP,FOLLOW_2); 
+                    lv_command_0_0=(Token)match(input,RULE_NOP,FOLLOW_2); 
 
-                    					newLeafNode(lv_nop_0_0, grammarAccess.getCommandAccess().getNopNOPTerminalRuleCall_0_0());
+                    					newLeafNode(lv_command_0_0, grammarAccess.getCommandAccess().getCommandNOPTerminalRuleCall_0_0());
                     				
 
                     					if (current==null) {
@@ -1114,8 +1114,8 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
                     					}
                     					setWithLastConsumed(
                     						current,
-                    						"nop",
-                    						lv_nop_0_0,
+                    						"command",
+                    						lv_command_0_0,
                     						"esir.compilation.Whdsl.NOP");
                     				
 
