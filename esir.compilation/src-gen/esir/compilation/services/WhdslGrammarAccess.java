@@ -197,6 +197,7 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 	private final InputElements pInput;
 	private final OutputElements pOutput;
 	private final InOutputElements pInOutput;
+	private final TerminalRule tNIL;
 	private final TerminalRule tVARIABLE;
 	private final TerminalRule tSYMBOLE;
 	
@@ -215,6 +216,7 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 		this.pInput = new InputElements();
 		this.pOutput = new OutputElements();
 		this.pInOutput = new InOutputElements();
+		this.tNIL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.NIL");
 		this.tVARIABLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.VARIABLE");
 		this.tSYMBOLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.SYMBOLE");
 	}
@@ -305,6 +307,12 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getInOutputRule() {
 		return getInOutputAccess().getRule();
+	}
+	
+	//terminal NIL:
+	//	'Nil' | 'nil';
+	public TerminalRule getNILRule() {
+		return tNIL;
 	}
 	
 	//terminal VARIABLE:

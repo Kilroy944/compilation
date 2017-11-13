@@ -745,6 +745,8 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+RULE_NIL : ('Nil'|'nil');
+
 RULE_VARIABLE : ('A'..'Z')*;
 
 RULE_SYMBOLE : ('a'..'z')*;

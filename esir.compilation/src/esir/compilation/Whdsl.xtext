@@ -31,7 +31,8 @@ InOutput:
 	(variable=VARIABLE)|(variable=VARIABLE','inoutput=InOutput)
 ;
 
-/*COMMAND */	
+/*COMMAND */
+/*	
 Commands:
 	commands+=Command (';' commands+=Command)*
 ;
@@ -61,8 +62,8 @@ While:
 	'while' expr=Expr 'do' cmds=Commands 'od'
 ;
 
-/*EXPRESSION */	
-Expr:
+/*EXPRESSION */
+/* Expr:
 	expr = ExprAnd | expr = ExprOr | expr =ExprSimple | expr=ExprCons | 
 	expr=ExprList | expr=ExprHd | expr=ExprTl | expr=ExprSym | expr=ExprNot | exprEq=ExprEq |'(' expr=Expr ')'
 ;
@@ -105,7 +106,8 @@ ExprNot:
 
 ExprEq:
 	 arg1=ExprSimple '=?' arg2=ExprSimple
-;
+;*/
+
 
 //ajout commentaire pour tester le git
 

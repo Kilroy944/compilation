@@ -368,6 +368,8 @@ ruleInOutput returns [EObject current=null]
 	)
 ;
 
+RULE_NIL : ('Nil'|'nil');
+
 RULE_VARIABLE : ('A'..'Z')*;
 
 RULE_SYMBOLE : ('a'..'z')*;

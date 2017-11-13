@@ -22,24 +22,25 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalWhdslParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_SYMBOLE", "RULE_VARIABLE", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'function'", "':'", "'%'", "'read'", "'write'", "','"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_SYMBOLE", "RULE_VARIABLE", "RULE_NIL", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'function'", "':'", "'%'", "'read'", "'write'", "','"
     };
-    public static final int RULE_ID=6;
-    public static final int RULE_WS=11;
-    public static final int RULE_STRING=8;
-    public static final int RULE_VARIABLE=5;
-    public static final int RULE_ANY_OTHER=12;
-    public static final int RULE_SYMBOLE=4;
-    public static final int RULE_SL_COMMENT=10;
+    public static final int RULE_STRING=9;
+    public static final int RULE_SL_COMMENT=11;
+    public static final int T__19=19;
     public static final int T__15=15;
     public static final int T__16=16;
+    public static final int RULE_NIL=6;
     public static final int T__17=17;
-    public static final int RULE_INT=7;
     public static final int T__18=18;
-    public static final int RULE_ML_COMMENT=9;
-    public static final int T__13=13;
     public static final int T__14=14;
     public static final int EOF=-1;
+    public static final int RULE_ID=7;
+    public static final int RULE_WS=12;
+    public static final int RULE_VARIABLE=5;
+    public static final int RULE_ANY_OTHER=13;
+    public static final int RULE_SYMBOLE=4;
+    public static final int RULE_INT=8;
+    public static final int RULE_ML_COMMENT=10;
 
     // delegates
     // delegators
@@ -126,7 +127,7 @@ public class InternalWhdslParser extends AbstractInternalContentAssistParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==13) ) {
+                if ( (LA1_0==14) ) {
                     alt1=1;
                 }
 
@@ -570,10 +571,10 @@ public class InternalWhdslParser extends AbstractInternalContentAssistParser {
             if ( (LA2_0==RULE_VARIABLE) ) {
                 int LA2_1 = input.LA(2);
 
-                if ( (LA2_1==18) ) {
+                if ( (LA2_1==19) ) {
                     alt2=2;
                 }
-                else if ( (LA2_1==EOF||LA2_1==13||LA2_1==15) ) {
+                else if ( (LA2_1==EOF||LA2_1==14||LA2_1==16) ) {
                     alt2=1;
                 }
                 else {
@@ -709,7 +710,7 @@ public class InternalWhdslParser extends AbstractInternalContentAssistParser {
             // InternalWhdsl.g:241:2: 'function'
             {
              before(grammarAccess.getFunctionAccess().getFunctionKeyword_0()); 
-            match(input,13,FOLLOW_2); 
+            match(input,14,FOLLOW_2); 
              after(grammarAccess.getFunctionAccess().getFunctionKeyword_0()); 
 
             }
@@ -869,7 +870,7 @@ public class InternalWhdslParser extends AbstractInternalContentAssistParser {
             // InternalWhdsl.g:295:2: ':'
             {
              before(grammarAccess.getFunctionAccess().getColonKeyword_2()); 
-            match(input,14,FOLLOW_2); 
+            match(input,15,FOLLOW_2); 
              after(grammarAccess.getFunctionAccess().getColonKeyword_2()); 
 
             }
@@ -1109,7 +1110,7 @@ public class InternalWhdslParser extends AbstractInternalContentAssistParser {
             // InternalWhdsl.g:376:2: '%'
             {
              before(grammarAccess.getDefinitionAccess().getPercentSignKeyword_1()); 
-            match(input,15,FOLLOW_2); 
+            match(input,16,FOLLOW_2); 
              after(grammarAccess.getDefinitionAccess().getPercentSignKeyword_1()); 
 
             }
@@ -1184,7 +1185,7 @@ public class InternalWhdslParser extends AbstractInternalContentAssistParser {
             // InternalWhdsl.g:403:2: '%'
             {
              before(grammarAccess.getDefinitionAccess().getPercentSignKeyword_2()); 
-            match(input,15,FOLLOW_2); 
+            match(input,16,FOLLOW_2); 
              after(grammarAccess.getDefinitionAccess().getPercentSignKeyword_2()); 
 
             }
@@ -1339,7 +1340,7 @@ public class InternalWhdslParser extends AbstractInternalContentAssistParser {
             // InternalWhdsl.g:457:2: 'read'
             {
              before(grammarAccess.getInputAccess().getReadKeyword_0()); 
-            match(input,16,FOLLOW_2); 
+            match(input,17,FOLLOW_2); 
              after(grammarAccess.getInputAccess().getReadKeyword_0()); 
 
             }
@@ -1488,7 +1489,7 @@ public class InternalWhdslParser extends AbstractInternalContentAssistParser {
             // InternalWhdsl.g:511:2: 'write'
             {
              before(grammarAccess.getOutputAccess().getWriteKeyword_0()); 
-            match(input,17,FOLLOW_2); 
+            match(input,18,FOLLOW_2); 
              after(grammarAccess.getOutputAccess().getWriteKeyword_0()); 
 
             }
@@ -1722,7 +1723,7 @@ public class InternalWhdslParser extends AbstractInternalContentAssistParser {
             // InternalWhdsl.g:592:2: ','
             {
              before(grammarAccess.getInOutputAccess().getCommaKeyword_1_1()); 
-            match(input,18,FOLLOW_2); 
+            match(input,19,FOLLOW_2); 
              after(grammarAccess.getInOutputAccess().getCommaKeyword_1_1()); 
 
             }
@@ -2147,13 +2148,13 @@ public class InternalWhdslParser extends AbstractInternalContentAssistParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000002002L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000004002L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000040000L});
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000080000L});
 
 }
