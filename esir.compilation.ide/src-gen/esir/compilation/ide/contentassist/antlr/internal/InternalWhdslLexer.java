@@ -231,15 +231,36 @@ public class InternalWhdslLexer extends Lexer {
     }
     // $ANTLR end "T__23"
 
+    // $ANTLR start "RULE_NOP"
+    public final void mRULE_NOP() throws RecognitionException {
+        try {
+            int _type = RULE_NOP;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalWhdsl.g:1526:10: ( 'nop' )
+            // InternalWhdsl.g:1526:12: 'nop'
+            {
+            match("nop"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "RULE_NOP"
+
     // $ANTLR start "RULE_NIL"
     public final void mRULE_NIL() throws RecognitionException {
         try {
             int _type = RULE_NIL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalWhdsl.g:1526:10: ( ( 'Nil' | 'nil' ) )
-            // InternalWhdsl.g:1526:12: ( 'Nil' | 'nil' )
+            // InternalWhdsl.g:1528:10: ( ( 'Nil' | 'nil' ) )
+            // InternalWhdsl.g:1528:12: ( 'Nil' | 'nil' )
             {
-            // InternalWhdsl.g:1526:12: ( 'Nil' | 'nil' )
+            // InternalWhdsl.g:1528:12: ( 'Nil' | 'nil' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -257,7 +278,7 @@ public class InternalWhdslLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // InternalWhdsl.g:1526:13: 'Nil'
+                    // InternalWhdsl.g:1528:13: 'Nil'
                     {
                     match("Nil"); 
 
@@ -265,7 +286,7 @@ public class InternalWhdslLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalWhdsl.g:1526:19: 'nil'
+                    // InternalWhdsl.g:1528:19: 'nil'
                     {
                     match("nil"); 
 
@@ -285,27 +306,6 @@ public class InternalWhdslLexer extends Lexer {
         }
     }
     // $ANTLR end "RULE_NIL"
-
-    // $ANTLR start "RULE_NOP"
-    public final void mRULE_NOP() throws RecognitionException {
-        try {
-            int _type = RULE_NOP;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalWhdsl.g:1528:10: ( 'nop' )
-            // InternalWhdsl.g:1528:12: 'nop'
-            {
-            match("nop"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "RULE_NOP"
 
     // $ANTLR start "RULE_VARIABLE"
     public final void mRULE_VARIABLE() throws RecognitionException {
@@ -894,7 +894,7 @@ public class InternalWhdslLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // InternalWhdsl.g:1:8: ( T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | RULE_NIL | RULE_NOP | RULE_VARIABLE | RULE_SYMBOLE | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        // InternalWhdsl.g:1:8: ( T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | RULE_NOP | RULE_NIL | RULE_VARIABLE | RULE_SYMBOLE | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
         int alt15=20;
         alt15 = dfa15.predict(input);
         switch (alt15) {
@@ -962,16 +962,16 @@ public class InternalWhdslLexer extends Lexer {
                 }
                 break;
             case 10 :
-                // InternalWhdsl.g:1:64: RULE_NIL
+                // InternalWhdsl.g:1:64: RULE_NOP
                 {
-                mRULE_NIL(); 
+                mRULE_NOP(); 
 
                 }
                 break;
             case 11 :
-                // InternalWhdsl.g:1:73: RULE_NOP
+                // InternalWhdsl.g:1:73: RULE_NIL
                 {
-                mRULE_NOP(); 
+                mRULE_NIL(); 
 
                 }
                 break;
@@ -1046,19 +1046,19 @@ public class InternalWhdslLexer extends Lexer {
 
     protected DFA15 dfa15 = new DFA15(this);
     static final String DFA15_eotS =
-        "\1\14\1\26\1\32\1\35\1\uffff\1\32\1\uffff\1\32\1\uffff\1\14\1\32\1\14\1\uffff\1\32\1\25\2\uffff\3\25\4\uffff\2\32\5\uffff\1\32\1\uffff\1\32\1\uffff\1\33\1\14\2\32\4\uffff\3\32\2\64\1\65\1\32\1\67\1\32\2\uffff\1\32\1\uffff\1\72\1\32\1\uffff\1\32\1\75\1\uffff";
+        "\1\14\1\26\1\32\1\35\1\uffff\1\32\1\uffff\1\32\1\uffff\1\32\2\14\1\uffff\1\32\1\25\2\uffff\3\25\4\uffff\2\32\5\uffff\1\32\1\uffff\1\32\1\uffff\2\32\1\33\1\14\4\uffff\3\32\1\64\2\65\1\32\1\67\1\32\2\uffff\1\32\1\uffff\1\72\1\32\1\uffff\1\32\1\75\1\uffff";
     static final String DFA15_eofS =
         "\76\uffff";
     static final String DFA15_minS =
-        "\1\0\2\60\1\75\1\uffff\1\60\1\uffff\1\60\1\uffff\3\60\1\uffff\1\60\1\101\2\uffff\2\0\1\52\4\uffff\2\60\5\uffff\1\60\1\uffff\1\60\1\uffff\1\154\3\60\4\uffff\11\60\2\uffff\1\60\1\uffff\2\60\1\uffff\2\60\1\uffff";
+        "\1\0\2\60\1\75\1\uffff\1\60\1\uffff\1\60\1\uffff\3\60\1\uffff\1\60\1\101\2\uffff\2\0\1\52\4\uffff\2\60\5\uffff\1\60\1\uffff\1\60\1\uffff\2\60\1\154\1\60\4\uffff\11\60\2\uffff\1\60\1\uffff\2\60\1\uffff\2\60\1\uffff";
     static final String DFA15_maxS =
-        "\1\uffff\1\71\1\172\1\75\1\uffff\1\172\1\uffff\1\172\1\uffff\3\172\1\uffff\2\172\2\uffff\2\uffff\1\57\4\uffff\2\172\5\uffff\1\172\1\uffff\1\172\1\uffff\1\154\3\172\4\uffff\11\172\2\uffff\1\172\1\uffff\2\172\1\uffff\2\172\1\uffff";
+        "\1\uffff\1\71\1\172\1\75\1\uffff\1\172\1\uffff\1\172\1\uffff\3\172\1\uffff\2\172\2\uffff\2\uffff\1\57\4\uffff\2\172\5\uffff\1\172\1\uffff\1\172\1\uffff\2\172\1\154\1\172\4\uffff\11\172\2\uffff\1\172\1\uffff\2\172\1\uffff\2\172\1\uffff";
     static final String DFA15_acceptS =
         "\4\uffff\1\4\1\uffff\1\6\1\uffff\1\10\3\uffff\1\14\2\uffff\1\16\1\17\3\uffff\1\23\1\24\1\1\1\17\2\uffff\1\15\1\16\1\11\1\3\1\4\1\uffff\1\6\1\uffff\1\10\4\uffff\1\20\1\21\1\22\1\23\11\uffff\1\12\1\13\1\uffff\1\5\2\uffff\1\7\2\uffff\1\2";
     static final String DFA15_specialS =
         "\1\1\20\uffff\1\0\1\2\53\uffff}>";
     static final String[] DFA15_transitionS = {
-            "\11\25\2\24\2\25\1\24\22\25\1\24\1\25\1\21\2\25\1\4\1\25\1\22\4\25\1\6\2\25\1\23\1\20\1\1\10\20\1\3\1\10\5\25\15\13\1\11\14\13\3\25\1\16\1\17\1\25\5\15\1\2\7\15\1\12\3\15\1\5\4\15\1\7\3\15\uff85\25",
+            "\11\25\2\24\2\25\1\24\22\25\1\24\1\25\1\21\2\25\1\4\1\25\1\22\4\25\1\6\2\25\1\23\1\20\1\1\10\20\1\3\1\10\5\25\15\13\1\12\14\13\3\25\1\16\1\17\1\25\5\15\1\2\7\15\1\11\3\15\1\5\4\15\1\7\3\15\uff85\25",
             "\12\27",
             "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\24\31\1\30\5\31",
             "\1\34",
@@ -1067,9 +1067,9 @@ public class InternalWhdslLexer extends Lexer {
             "",
             "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\21\31\1\41\10\31",
             "",
-            "\12\33\7\uffff\32\44\4\uffff\1\33\1\uffff\10\33\1\43\21\33",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\10\31\1\45\5\31\1\46\13\31",
-            "\12\33\7\uffff\32\44\4\uffff\1\33\1\uffff\32\33",
+            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\10\31\1\44\5\31\1\43\13\31",
+            "\12\33\7\uffff\32\46\4\uffff\1\33\1\uffff\10\33\1\45\21\33",
+            "\12\33\7\uffff\32\46\4\uffff\1\33\1\uffff\32\33",
             "",
             "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\31",
             "\32\33\4\uffff\1\33\1\uffff\32\33",
@@ -1093,10 +1093,10 @@ public class InternalWhdslLexer extends Lexer {
             "",
             "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\10\31\1\55\21\31",
             "",
-            "\1\56",
-            "\12\33\7\uffff\32\44\4\uffff\1\33\1\uffff\32\33",
+            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\17\31\1\56\12\31",
             "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\13\31\1\57\16\31",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\17\31\1\60\12\31",
+            "\1\60",
+            "\12\33\7\uffff\32\46\4\uffff\1\33\1\uffff\32\33",
             "",
             "",
             "",
@@ -1104,9 +1104,9 @@ public class InternalWhdslLexer extends Lexer {
             "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\2\31\1\61\27\31",
             "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\3\31\1\62\26\31",
             "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\23\31\1\63\6\31",
+            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\31",
+            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\31",
             "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\31",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\31",
             "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\23\31\1\66\6\31",
             "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\31",
             "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\4\31\1\70\25\31",
@@ -1152,7 +1152,7 @@ public class InternalWhdslLexer extends Lexer {
             this.transition = DFA15_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | RULE_NIL | RULE_NOP | RULE_VARIABLE | RULE_SYMBOLE | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | RULE_NOP | RULE_NIL | RULE_VARIABLE | RULE_SYMBOLE | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
@@ -1188,9 +1188,9 @@ public class InternalWhdslLexer extends Lexer {
 
                         else if ( (LA15_0==';') ) {s = 8;}
 
-                        else if ( (LA15_0=='N') ) {s = 9;}
+                        else if ( (LA15_0=='n') ) {s = 9;}
 
-                        else if ( (LA15_0=='n') ) {s = 10;}
+                        else if ( (LA15_0=='N') ) {s = 10;}
 
                         else if ( ((LA15_0>='A' && LA15_0<='M')||(LA15_0>='O' && LA15_0<='Z')) ) {s = 11;}
 

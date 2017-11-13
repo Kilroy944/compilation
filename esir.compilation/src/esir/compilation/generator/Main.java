@@ -25,12 +25,12 @@ public class Main {
 	private static final boolean isDebugMode =true;
 
 	public static void main(String[] args) throws ErrorPrettyPrinterException {
-		System.out.println("start");
+		System.out.println("Début du pretty printing ...");
 		Injector injector = new WhdslStandaloneSetupGenerated().createInjectorAndDoEMFRegistration();
 		Main main = injector.getInstance(Main.class);
 		main.runGenerator("test.whdsl","sortie.whdsl");
 		
-		System.out.println("fini");
+		System.out.println("Pretty printing terminé");
 	}
 
 	@Inject
@@ -65,6 +65,6 @@ public class Main {
 		context.setCancelIndicator(CancelIndicator.NullImpl);
 		generator.doGenerate(resource, fileAccess, context, sortie);
 
-		System.out.println("pretty fini");
+		System.out.println("Succès");
 	}
 }

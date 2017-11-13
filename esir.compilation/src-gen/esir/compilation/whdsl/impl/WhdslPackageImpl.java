@@ -401,6 +401,16 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getExprs_Exprs()
+  {
+    return (EAttribute)exprsEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public WhdslFactory getWhdslFactory()
   {
     return (WhdslFactory)getEFactoryInstance();
@@ -458,6 +468,7 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
 
     exprsEClass = createEClass(EXPRS);
     createEAttribute(exprsEClass, EXPRS__EXPR);
+    createEAttribute(exprsEClass, EXPRS__EXPRS);
   }
 
   /**
@@ -523,6 +534,7 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
 
     initEClass(exprsEClass, Exprs.class, "Exprs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getExprs_Expr(), ecorePackage.getEString(), "expr", null, 0, -1, Exprs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExprs_Exprs(), ecorePackage.getEString(), "exprs", null, 0, -1, Exprs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

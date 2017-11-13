@@ -315,14 +315,14 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExprExprParserRuleCall_0_0 = (RuleCall)cExprAssignment_0.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cCommaKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cExprAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cExprExprParserRuleCall_1_1_0 = (RuleCall)cExprAssignment_1_1.eContents().get(0);
+		private final Assignment cExprsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cExprsExprParserRuleCall_1_1_0 = (RuleCall)cExprsAssignment_1_1.eContents().get(0);
 		
 		//Exprs:
-		//	expr+=Expr (',' expr+=Expr)*;
+		//	expr+=Expr (',' exprs+=Expr)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//expr+=Expr (',' expr+=Expr)*
+		//expr+=Expr (',' exprs+=Expr)*
 		public Group getGroup() { return cGroup; }
 		
 		//expr+=Expr
@@ -331,17 +331,17 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 		//Expr
 		public RuleCall getExprExprParserRuleCall_0_0() { return cExprExprParserRuleCall_0_0; }
 		
-		//(',' expr+=Expr)*
+		//(',' exprs+=Expr)*
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//','
 		public Keyword getCommaKeyword_1_0() { return cCommaKeyword_1_0; }
 		
-		//expr+=Expr
-		public Assignment getExprAssignment_1_1() { return cExprAssignment_1_1; }
+		//exprs+=Expr
+		public Assignment getExprsAssignment_1_1() { return cExprsAssignment_1_1; }
 		
 		//Expr
-		public RuleCall getExprExprParserRuleCall_1_1_0() { return cExprExprParserRuleCall_1_1_0; }
+		public RuleCall getExprsExprParserRuleCall_1_1_0() { return cExprsExprParserRuleCall_1_1_0; }
 	}
 	public class ExprElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.Expr");
@@ -366,8 +366,8 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 	private final VarsElements pVars;
 	private final ExprsElements pExprs;
 	private final ExprElements pExpr;
-	private final TerminalRule tNIL;
 	private final TerminalRule tNOP;
+	private final TerminalRule tNIL;
 	private final TerminalRule tVARIABLE;
 	private final TerminalRule tSYMBOLE;
 	
@@ -390,8 +390,8 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 		this.pVars = new VarsElements();
 		this.pExprs = new ExprsElements();
 		this.pExpr = new ExprElements();
-		this.tNIL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.NIL");
 		this.tNOP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.NOP");
+		this.tNIL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.NIL");
 		this.tVARIABLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.VARIABLE");
 		this.tSYMBOLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.SYMBOLE");
 	}
@@ -506,7 +506,7 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Exprs:
-	//	expr+=Expr (',' expr+=Expr)*;
+	//	expr+=Expr (',' exprs+=Expr)*;
 	public ExprsElements getExprsAccess() {
 		return pExprs;
 	}
@@ -525,16 +525,16 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 		return getExprAccess().getRule();
 	}
 	
-	//terminal NIL:
-	//	'Nil' | 'nil';
-	public TerminalRule getNILRule() {
-		return tNIL;
-	}
-	
 	//terminal NOP:
 	//	'nop';
 	public TerminalRule getNOPRule() {
 		return tNOP;
+	}
+	
+	//terminal NIL:
+	//	'Nil' | 'nil';
+	public TerminalRule getNILRule() {
+		return tNIL;
 	}
 	
 	//terminal VARIABLE:

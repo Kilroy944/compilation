@@ -10,6 +10,12 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import esir.compilation.whdsl.Function
 import esir.compilation.whdsl.Program
+import esir.compilation.whdsl.Commands
+import esir.compilation.whdsl.impl.CommandsImpl
+import esir.compilation.whdsl.Exprs
+import esir.compilation.whdsl.Command
+import esir.compilation.whdsl.Vars
+import esir.compilation.whdsl.impl.CommandImpl
 
 /**
  * Generates code from your model files on save.
@@ -37,39 +43,37 @@ class WhdslGenerator extends AbstractGenerator {
 		'''
 	}
 	
-	def compile (Function c){
+	def compile (Function f){
 		'''
-		function «c.name»:
-		read «FOR param: c.definition.input.variables SEPARATOR ', '»«param»«ENDFOR»
-		%
-		%
-		write «FOR param: c.definition.output.variables SEPARATOR ', '»«param»«ENDFOR»
-		'''
+		function «f.name»:
+		read «FOR param: f.definition.input.variables SEPARATOR ', '»«param»«ENDFOR»%
+		«FOR param: f.definition.commands.commands»«param.compile()»;
+		«ENDFOR»
+		%write «FOR param: f.definition.output.variables SEPARATOR ', '»«param»«ENDFOR»'''
 	}
 	
-
-
+	def compile(Command c){
+				
+		if(c.getNop() != null){
+		'''nop'''
+		}
+		else{
+		'''«c.vars.compile()»=:«c.expression.compile()»'''
+		}
+		
 	
-
-	
-	def generatorBody(String name,String body)'''
-	/* body of «name» */
-	«body»
-		'''
-	
-	def generateMethod(String name, String body)'''
-	public void «name»(){
-		«generatorBody(name,body)»
 	}
-	'''
-	
-	
-	
-	
-	def static void main(String[] args){
-		val generator = new WhdslGenerator
-		println(generator.generateMethod("m",'''System.out.println("Hello"); return;'''));
 
+	def compile(Vars v){
+		'''«v.variable»«FOR param: v.vars »,«param.compile()»«ENDFOR»'''
 	}
+
+	
+
+	def compile(Exprs e){
+		'''«e.expr»«FOR param: e.exprs»,«param»«ENDFOR»'''
+	}
+	
+	
 	
 }

@@ -624,17 +624,17 @@ ruleExprs returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getExprsAccess().getExprExprParserRuleCall_1_1_0());
+						newCompositeNode(grammarAccess.getExprsAccess().getExprsExprParserRuleCall_1_1_0());
 					}
-					lv_expr_2_0=ruleExpr
+					lv_exprs_2_0=ruleExpr
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getExprsRule());
 						}
 						add(
 							$current,
-							"expr",
-							lv_expr_2_0,
+							"exprs",
+							lv_exprs_2_0,
 							"esir.compilation.Whdsl.Expr");
 						afterParserOrEnumRuleCall();
 					}
@@ -666,9 +666,9 @@ ruleExpr returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 	}
 ;
 
-RULE_NIL : ('Nil'|'nil');
-
 RULE_NOP : 'nop';
+
+RULE_NIL : ('Nil'|'nil');
 
 RULE_VARIABLE : ('A'..'Z')*;
 

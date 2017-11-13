@@ -63,7 +63,7 @@ public class WhdslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getVarsAccess().getVariableAssignment_0(), "rule__Vars__VariableAssignment_0");
 					put(grammarAccess.getVarsAccess().getVarsAssignment_1_1(), "rule__Vars__VarsAssignment_1_1");
 					put(grammarAccess.getExprsAccess().getExprAssignment_0(), "rule__Exprs__ExprAssignment_0");
-					put(grammarAccess.getExprsAccess().getExprAssignment_1_1(), "rule__Exprs__ExprAssignment_1_1");
+					put(grammarAccess.getExprsAccess().getExprsAssignment_1_1(), "rule__Exprs__ExprsAssignment_1_1");
 				}
 			};
 		}

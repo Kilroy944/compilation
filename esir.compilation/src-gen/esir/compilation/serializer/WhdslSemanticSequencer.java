@@ -125,7 +125,7 @@ public class WhdslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Exprs returns Exprs
 	 *
 	 * Constraint:
-	 *     (expr+=Expr expr+=Expr*)
+	 *     (expr+=Expr exprs+=Expr*)
 	 */
 	protected void sequence_Exprs(ISerializationContext context, Exprs semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

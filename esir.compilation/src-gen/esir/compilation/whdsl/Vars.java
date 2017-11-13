@@ -14,11 +14,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.Vars#getVariable <em>Variable</em>}</li>
  *   <li>{@link esir.compilation.whdsl.Vars#getVars <em>Vars</em>}</li>
  * </ul>
+ * </p>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getVars()
  * @model

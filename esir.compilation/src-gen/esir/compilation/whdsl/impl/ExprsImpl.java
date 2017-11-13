@@ -22,10 +22,11 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.impl.ExprsImpl#getExpr <em>Expr</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.ExprsImpl#getExprs <em>Exprs</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -40,6 +41,16 @@ public class ExprsImpl extends MinimalEObjectImpl.Container implements Exprs
    * @ordered
    */
   protected EList<String> expr;
+
+  /**
+   * The cached value of the '{@link #getExprs() <em>Exprs</em>}' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getExprs()
+   * @generated
+   * @ordered
+   */
+  protected EList<String> exprs;
 
   /**
    * <!-- begin-user-doc -->
@@ -81,6 +92,20 @@ public class ExprsImpl extends MinimalEObjectImpl.Container implements Exprs
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<String> getExprs()
+  {
+    if (exprs == null)
+    {
+      exprs = new EDataTypeEList<String>(String.class, this, WhdslPackage.EXPRS__EXPRS);
+    }
+    return exprs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -88,6 +113,8 @@ public class ExprsImpl extends MinimalEObjectImpl.Container implements Exprs
     {
       case WhdslPackage.EXPRS__EXPR:
         return getExpr();
+      case WhdslPackage.EXPRS__EXPRS:
+        return getExprs();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -107,6 +134,10 @@ public class ExprsImpl extends MinimalEObjectImpl.Container implements Exprs
         getExpr().clear();
         getExpr().addAll((Collection<? extends String>)newValue);
         return;
+      case WhdslPackage.EXPRS__EXPRS:
+        getExprs().clear();
+        getExprs().addAll((Collection<? extends String>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -124,6 +155,9 @@ public class ExprsImpl extends MinimalEObjectImpl.Container implements Exprs
       case WhdslPackage.EXPRS__EXPR:
         getExpr().clear();
         return;
+      case WhdslPackage.EXPRS__EXPRS:
+        getExprs().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -140,6 +174,8 @@ public class ExprsImpl extends MinimalEObjectImpl.Container implements Exprs
     {
       case WhdslPackage.EXPRS__EXPR:
         return expr != null && !expr.isEmpty();
+      case WhdslPackage.EXPRS__EXPRS:
+        return exprs != null && !exprs.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -157,6 +193,8 @@ public class ExprsImpl extends MinimalEObjectImpl.Container implements Exprs
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (expr: ");
     result.append(expr);
+    result.append(", exprs: ");
+    result.append(exprs);
     result.append(')');
     return result.toString();
   }

@@ -1427,25 +1427,25 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleExprs"
-    // InternalWhdsl.g:592:1: ruleExprs returns [EObject current=null] : ( ( (lv_expr_0_0= ruleExpr ) ) (otherlv_1= ',' ( (lv_expr_2_0= ruleExpr ) ) )* ) ;
+    // InternalWhdsl.g:592:1: ruleExprs returns [EObject current=null] : ( ( (lv_expr_0_0= ruleExpr ) ) (otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) ) )* ) ;
     public final EObject ruleExprs() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
         AntlrDatatypeRuleToken lv_expr_0_0 = null;
 
-        AntlrDatatypeRuleToken lv_expr_2_0 = null;
+        AntlrDatatypeRuleToken lv_exprs_2_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalWhdsl.g:598:2: ( ( ( (lv_expr_0_0= ruleExpr ) ) (otherlv_1= ',' ( (lv_expr_2_0= ruleExpr ) ) )* ) )
-            // InternalWhdsl.g:599:2: ( ( (lv_expr_0_0= ruleExpr ) ) (otherlv_1= ',' ( (lv_expr_2_0= ruleExpr ) ) )* )
+            // InternalWhdsl.g:598:2: ( ( ( (lv_expr_0_0= ruleExpr ) ) (otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) ) )* ) )
+            // InternalWhdsl.g:599:2: ( ( (lv_expr_0_0= ruleExpr ) ) (otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) ) )* )
             {
-            // InternalWhdsl.g:599:2: ( ( (lv_expr_0_0= ruleExpr ) ) (otherlv_1= ',' ( (lv_expr_2_0= ruleExpr ) ) )* )
-            // InternalWhdsl.g:600:3: ( (lv_expr_0_0= ruleExpr ) ) (otherlv_1= ',' ( (lv_expr_2_0= ruleExpr ) ) )*
+            // InternalWhdsl.g:599:2: ( ( (lv_expr_0_0= ruleExpr ) ) (otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) ) )* )
+            // InternalWhdsl.g:600:3: ( (lv_expr_0_0= ruleExpr ) ) (otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) ) )*
             {
             // InternalWhdsl.g:600:3: ( (lv_expr_0_0= ruleExpr ) )
             // InternalWhdsl.g:601:4: (lv_expr_0_0= ruleExpr )
@@ -1478,7 +1478,7 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalWhdsl.g:619:3: (otherlv_1= ',' ( (lv_expr_2_0= ruleExpr ) ) )*
+            // InternalWhdsl.g:619:3: (otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) ) )*
             loop7:
             do {
                 int alt7=2;
@@ -1491,23 +1491,23 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalWhdsl.g:620:4: otherlv_1= ',' ( (lv_expr_2_0= ruleExpr ) )
+            	    // InternalWhdsl.g:620:4: otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) )
             	    {
             	    otherlv_1=(Token)match(input,19,FOLLOW_14); 
 
             	    				newLeafNode(otherlv_1, grammarAccess.getExprsAccess().getCommaKeyword_1_0());
             	    			
-            	    // InternalWhdsl.g:624:4: ( (lv_expr_2_0= ruleExpr ) )
-            	    // InternalWhdsl.g:625:5: (lv_expr_2_0= ruleExpr )
+            	    // InternalWhdsl.g:624:4: ( (lv_exprs_2_0= ruleExpr ) )
+            	    // InternalWhdsl.g:625:5: (lv_exprs_2_0= ruleExpr )
             	    {
-            	    // InternalWhdsl.g:625:5: (lv_expr_2_0= ruleExpr )
-            	    // InternalWhdsl.g:626:6: lv_expr_2_0= ruleExpr
+            	    // InternalWhdsl.g:625:5: (lv_exprs_2_0= ruleExpr )
+            	    // InternalWhdsl.g:626:6: lv_exprs_2_0= ruleExpr
             	    {
 
-            	    						newCompositeNode(grammarAccess.getExprsAccess().getExprExprParserRuleCall_1_1_0());
+            	    						newCompositeNode(grammarAccess.getExprsAccess().getExprsExprParserRuleCall_1_1_0());
             	    					
             	    pushFollow(FOLLOW_11);
-            	    lv_expr_2_0=ruleExpr();
+            	    lv_exprs_2_0=ruleExpr();
 
             	    state._fsp--;
 
@@ -1517,8 +1517,8 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
             	    						}
             	    						add(
             	    							current,
-            	    							"expr",
-            	    							lv_expr_2_0,
+            	    							"exprs",
+            	    							lv_exprs_2_0,
             	    							"esir.compilation.Whdsl.Expr");
             	    						afterParserOrEnumRuleCall();
             	    					

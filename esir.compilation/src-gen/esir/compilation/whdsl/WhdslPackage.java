@@ -355,13 +355,22 @@ public interface WhdslPackage extends EPackage
   int EXPRS__EXPR = 0;
 
   /**
+   * The feature id for the '<em><b>Exprs</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRS__EXPRS = 1;
+
+  /**
    * The number of structural features of the '<em>Exprs</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPRS_FEATURE_COUNT = 1;
+  int EXPRS_FEATURE_COUNT = 2;
 
 
   /**
@@ -620,6 +629,17 @@ public interface WhdslPackage extends EPackage
   EAttribute getExprs_Expr();
 
   /**
+   * Returns the meta object for the attribute list '{@link esir.compilation.whdsl.Exprs#getExprs <em>Exprs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Exprs</em>'.
+   * @see esir.compilation.whdsl.Exprs#getExprs()
+   * @see #getExprs()
+   * @generated
+   */
+  EAttribute getExprs_Exprs();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -851,6 +871,14 @@ public interface WhdslPackage extends EPackage
      * @generated
      */
     EAttribute EXPRS__EXPR = eINSTANCE.getExprs_Expr();
+
+    /**
+     * The meta object literal for the '<em><b>Exprs</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPRS__EXPRS = eINSTANCE.getExprs_Exprs();
 
   }
 

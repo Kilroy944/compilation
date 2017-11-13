@@ -39,7 +39,7 @@ Commands:
 ;
 
 Command:
-	nop=NOP| (vars=Vars':='expression=Exprs)	
+	command=NOP| (vars=Vars':='expression=Exprs)	
 ;
 
 Vars:
@@ -47,7 +47,7 @@ Vars:
 ;	
 
 Exprs: 	
-  expr+=Expr(','expr+=Expr)*
+  expr+=Expr(','exprs+=Expr)*
 ;
 
 
@@ -130,14 +130,14 @@ ExprEq:
 
 //ajout commentaire pour tester le git
 
+terminal NOP:
+	'nop'
+;
+
 terminal NIL:
 	'Nil' | 'nil'
 ;
 
-terminal NOP:
-	'nop'
-;
-	
 /*TERMINAL */	
 terminal VARIABLE:
 	('A'..'Z')*

@@ -14,10 +14,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.Exprs#getExpr <em>Expr</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.Exprs#getExprs <em>Exprs</em>}</li>
  * </ul>
+ * </p>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getExprs()
  * @model
@@ -40,5 +41,21 @@ public interface Exprs extends EObject
    * @generated
    */
   EList<String> getExpr();
+
+  /**
+   * Returns the value of the '<em><b>Exprs</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Exprs</em>' attribute list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Exprs</em>' attribute list.
+   * @see esir.compilation.whdsl.WhdslPackage#getExprs_Exprs()
+   * @model unique="false"
+   * @generated
+   */
+  EList<String> getExprs();
 
 } // Exprs

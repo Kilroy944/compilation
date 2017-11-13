@@ -3,9 +3,13 @@
  */
 package esir.compilation.generator;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
+import esir.compilation.whdsl.Command;
+import esir.compilation.whdsl.Exprs;
 import esir.compilation.whdsl.Function;
 import esir.compilation.whdsl.Program;
+import esir.compilation.whdsl.Vars;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -13,7 +17,6 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 /**
@@ -51,16 +54,16 @@ public class WhdslGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  public CharSequence compile(final Function c) {
+  public CharSequence compile(final Function f) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("function ");
-    String _name = c.getName();
+    String _name = f.getName();
     _builder.append(_name);
     _builder.append(":");
     _builder.newLineIfNotEmpty();
     _builder.append("read ");
     {
-      EList<String> _variables = c.getDefinition().getInput().getVariables();
+      EList<String> _variables = f.getDefinition().getInput().getVariables();
       boolean _hasElements = false;
       for(final String param : _variables) {
         if (!_hasElements) {
@@ -71,58 +74,79 @@ public class WhdslGenerator extends AbstractGenerator {
         _builder.append(param);
       }
     }
+    _builder.append("%");
     _builder.newLineIfNotEmpty();
-    _builder.append("%");
-    _builder.newLine();
-    _builder.append("%");
-    _builder.newLine();
-    _builder.append("write ");
     {
-      EList<String> _variables_1 = c.getDefinition().getOutput().getVariables();
+      EList<Command> _commands = f.getDefinition().getCommands().getCommands();
+      for(final Command param_1 : _commands) {
+        CharSequence _compile = this.compile(param_1);
+        _builder.append(_compile);
+        _builder.append(";");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("%write ");
+    {
+      EList<String> _variables_1 = f.getDefinition().getOutput().getVariables();
       boolean _hasElements_1 = false;
-      for(final String param_1 : _variables_1) {
+      for(final String param_2 : _variables_1) {
         if (!_hasElements_1) {
           _hasElements_1 = true;
         } else {
           _builder.appendImmediate(", ", "");
         }
-        _builder.append(param_1);
+        _builder.append(param_2);
       }
     }
-    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
-  public CharSequence generatorBody(final String name, final String body) {
+  public CharSequence compile(final Command c) {
+    CharSequence _xifexpression = null;
+    String _nop = c.getNop();
+    boolean _notEquals = (!Objects.equal(_nop, null));
+    if (_notEquals) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("nop");
+      _xifexpression = _builder;
+    } else {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      CharSequence _compile = this.compile(c.getVars());
+      _builder_1.append(_compile);
+      _builder_1.append("=:");
+      CharSequence _compile_1 = this.compile(c.getExpression());
+      _builder_1.append(_compile_1);
+      _xifexpression = _builder_1;
+    }
+    return _xifexpression;
+  }
+  
+  public CharSequence compile(final Vars v) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("/* body of ");
-    _builder.append(name);
-    _builder.append(" */");
-    _builder.newLineIfNotEmpty();
-    _builder.append(body);
-    _builder.newLineIfNotEmpty();
+    EList<String> _variable = v.getVariable();
+    _builder.append(_variable);
+    {
+      EList<Vars> _vars = v.getVars();
+      for(final Vars param : _vars) {
+        _builder.append(",");
+        Object _compile = this.compile(param);
+        _builder.append(_compile);
+      }
+    }
     return _builder;
   }
   
-  public CharSequence generateMethod(final String name, final String body) {
+  public CharSequence compile(final Exprs e) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("public void ");
-    _builder.append(name);
-    _builder.append("(){");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t");
-    CharSequence _generatorBody = this.generatorBody(name, body);
-    _builder.append(_generatorBody, "\t");
-    _builder.newLineIfNotEmpty();
-    _builder.append("}");
-    _builder.newLine();
+    EList<String> _expr = e.getExpr();
+    _builder.append(_expr);
+    {
+      EList<String> _exprs = e.getExprs();
+      for(final String param : _exprs) {
+        _builder.append(",");
+        _builder.append(param);
+      }
+    }
     return _builder;
-  }
-  
-  public static void main(final String[] args) {
-    final WhdslGenerator generator = new WhdslGenerator();
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("System.out.println(\"Hello\"); return;");
-    InputOutput.<CharSequence>println(generator.generateMethod("m", _builder.toString()));
   }
 }
