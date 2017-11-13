@@ -31,20 +31,21 @@ public class WhdslParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getInOutputAccess().getAlternatives(), "rule__InOutput__Alternatives");
 					put(grammarAccess.getFunctionAccess().getGroup(), "rule__Function__Group__0");
 					put(grammarAccess.getDefinitionAccess().getGroup(), "rule__Definition__Group__0");
 					put(grammarAccess.getInputAccess().getGroup(), "rule__Input__Group__0");
+					put(grammarAccess.getInputAccess().getGroup_2(), "rule__Input__Group_2__0");
 					put(grammarAccess.getOutputAccess().getGroup(), "rule__Output__Group__0");
-					put(grammarAccess.getInOutputAccess().getGroup_1(), "rule__InOutput__Group_1__0");
+					put(grammarAccess.getOutputAccess().getGroup_2(), "rule__Output__Group_2__0");
 					put(grammarAccess.getProgramAccess().getFunctionAssignment(), "rule__Program__FunctionAssignment");
 					put(grammarAccess.getFunctionAccess().getNameAssignment_1(), "rule__Function__NameAssignment_1");
 					put(grammarAccess.getFunctionAccess().getDefinitionAssignment_3(), "rule__Function__DefinitionAssignment_3");
 					put(grammarAccess.getDefinitionAccess().getInputAssignment_0(), "rule__Definition__InputAssignment_0");
 					put(grammarAccess.getDefinitionAccess().getOutputAssignment_3(), "rule__Definition__OutputAssignment_3");
-					put(grammarAccess.getInOutputAccess().getVariableAssignment_0(), "rule__InOutput__VariableAssignment_0");
-					put(grammarAccess.getInOutputAccess().getVariableAssignment_1_0(), "rule__InOutput__VariableAssignment_1_0");
-					put(grammarAccess.getInOutputAccess().getInoutputAssignment_1_2(), "rule__InOutput__InoutputAssignment_1_2");
+					put(grammarAccess.getInputAccess().getVariablesAssignment_1(), "rule__Input__VariablesAssignment_1");
+					put(grammarAccess.getInputAccess().getVariablesAssignment_2_1(), "rule__Input__VariablesAssignment_2_1");
+					put(grammarAccess.getOutputAccess().getVariablesAssignment_1(), "rule__Output__VariablesAssignment_1");
+					put(grammarAccess.getOutputAccess().getVariablesAssignment_2_1(), "rule__Output__VariablesAssignment_2_1");
 				}
 			};
 		}

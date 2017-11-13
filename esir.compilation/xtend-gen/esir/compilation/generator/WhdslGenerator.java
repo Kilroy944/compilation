@@ -58,7 +58,38 @@ public class WhdslGenerator extends AbstractGenerator {
     _builder.append(_name);
     _builder.append(":");
     _builder.newLineIfNotEmpty();
+    _builder.append("read ");
+    {
+      EList<String> _variables = c.getDefinition().getInput().getVariables();
+      boolean _hasElements = false;
+      for(final String param : _variables) {
+        if (!_hasElements) {
+          _hasElements = true;
+        } else {
+          _builder.appendImmediate(", ", "");
+        }
+        _builder.append(param);
+      }
+    }
+    _builder.newLineIfNotEmpty();
+    _builder.append("%");
     _builder.newLine();
+    _builder.append("%");
+    _builder.newLine();
+    _builder.append("write ");
+    {
+      EList<String> _variables_1 = c.getDefinition().getOutput().getVariables();
+      boolean _hasElements_1 = false;
+      for(final String param_1 : _variables_1) {
+        if (!_hasElements_1) {
+          _hasElements_1 = true;
+        } else {
+          _builder.appendImmediate(", ", "");
+        }
+        _builder.append(param_1);
+      }
+    }
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   

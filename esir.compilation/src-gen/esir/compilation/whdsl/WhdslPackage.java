@@ -170,13 +170,22 @@ public interface WhdslPackage extends EPackage
   int INPUT = 3;
 
   /**
+   * The feature id for the '<em><b>Variables</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INPUT__VARIABLES = 0;
+
+  /**
    * The number of structural features of the '<em>Input</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INPUT_FEATURE_COUNT = 0;
+  int INPUT_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link esir.compilation.whdsl.impl.OutputImpl <em>Output</em>}' class.
@@ -189,50 +198,22 @@ public interface WhdslPackage extends EPackage
   int OUTPUT = 4;
 
   /**
+   * The feature id for the '<em><b>Variables</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OUTPUT__VARIABLES = 0;
+
+  /**
    * The number of structural features of the '<em>Output</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OUTPUT_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link esir.compilation.whdsl.impl.InOutputImpl <em>In Output</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see esir.compilation.whdsl.impl.InOutputImpl
-   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getInOutput()
-   * @generated
-   */
-  int IN_OUTPUT = 5;
-
-  /**
-   * The feature id for the '<em><b>Variable</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IN_OUTPUT__VARIABLE = INPUT_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Inoutput</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IN_OUTPUT__INOUTPUT = INPUT_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>In Output</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IN_OUTPUT_FEATURE_COUNT = INPUT_FEATURE_COUNT + 2;
+  int OUTPUT_FEATURE_COUNT = 1;
 
 
   /**
@@ -331,6 +312,17 @@ public interface WhdslPackage extends EPackage
   EClass getInput();
 
   /**
+   * Returns the meta object for the attribute list '{@link esir.compilation.whdsl.Input#getVariables <em>Variables</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Variables</em>'.
+   * @see esir.compilation.whdsl.Input#getVariables()
+   * @see #getInput()
+   * @generated
+   */
+  EAttribute getInput_Variables();
+
+  /**
    * Returns the meta object for class '{@link esir.compilation.whdsl.Output <em>Output</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -341,36 +333,15 @@ public interface WhdslPackage extends EPackage
   EClass getOutput();
 
   /**
-   * Returns the meta object for class '{@link esir.compilation.whdsl.InOutput <em>In Output</em>}'.
+   * Returns the meta object for the attribute list '{@link esir.compilation.whdsl.Output#getVariables <em>Variables</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>In Output</em>'.
-   * @see esir.compilation.whdsl.InOutput
+   * @return the meta object for the attribute list '<em>Variables</em>'.
+   * @see esir.compilation.whdsl.Output#getVariables()
+   * @see #getOutput()
    * @generated
    */
-  EClass getInOutput();
-
-  /**
-   * Returns the meta object for the attribute '{@link esir.compilation.whdsl.InOutput#getVariable <em>Variable</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Variable</em>'.
-   * @see esir.compilation.whdsl.InOutput#getVariable()
-   * @see #getInOutput()
-   * @generated
-   */
-  EAttribute getInOutput_Variable();
-
-  /**
-   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.InOutput#getInoutput <em>Inoutput</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Inoutput</em>'.
-   * @see esir.compilation.whdsl.InOutput#getInoutput()
-   * @see #getInOutput()
-   * @generated
-   */
-  EReference getInOutput_Inoutput();
+  EAttribute getOutput_Variables();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -476,6 +447,14 @@ public interface WhdslPackage extends EPackage
     EClass INPUT = eINSTANCE.getInput();
 
     /**
+     * The meta object literal for the '<em><b>Variables</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INPUT__VARIABLES = eINSTANCE.getInput_Variables();
+
+    /**
      * The meta object literal for the '{@link esir.compilation.whdsl.impl.OutputImpl <em>Output</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -486,30 +465,12 @@ public interface WhdslPackage extends EPackage
     EClass OUTPUT = eINSTANCE.getOutput();
 
     /**
-     * The meta object literal for the '{@link esir.compilation.whdsl.impl.InOutputImpl <em>In Output</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see esir.compilation.whdsl.impl.InOutputImpl
-     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getInOutput()
-     * @generated
-     */
-    EClass IN_OUTPUT = eINSTANCE.getInOutput();
-
-    /**
-     * The meta object literal for the '<em><b>Variable</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Variables</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute IN_OUTPUT__VARIABLE = eINSTANCE.getInOutput_Variable();
-
-    /**
-     * The meta object literal for the '<em><b>Inoutput</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference IN_OUTPUT__INOUTPUT = eINSTANCE.getInOutput_Inoutput();
+    EAttribute OUTPUT__VARIABLES = eINSTANCE.getOutput_Variables();
 
   }
 

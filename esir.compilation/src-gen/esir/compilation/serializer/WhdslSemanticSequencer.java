@@ -7,7 +7,8 @@ import com.google.inject.Inject;
 import esir.compilation.services.WhdslGrammarAccess;
 import esir.compilation.whdsl.Definition;
 import esir.compilation.whdsl.Function;
-import esir.compilation.whdsl.InOutput;
+import esir.compilation.whdsl.Input;
+import esir.compilation.whdsl.Output;
 import esir.compilation.whdsl.Program;
 import esir.compilation.whdsl.WhdslPackage;
 import java.util.Set;
@@ -41,8 +42,11 @@ public class WhdslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case WhdslPackage.FUNCTION:
 				sequence_Function(context, (Function) semanticObject); 
 				return; 
-			case WhdslPackage.IN_OUTPUT:
-				sequence_InOutput(context, (InOutput) semanticObject); 
+			case WhdslPackage.INPUT:
+				sequence_Input(context, (Input) semanticObject); 
+				return; 
+			case WhdslPackage.OUTPUT:
+				sequence_Output(context, (Output) semanticObject); 
 				return; 
 			case WhdslPackage.PROGRAM:
 				sequence_Program(context, (Program) semanticObject); 
@@ -96,14 +100,24 @@ public class WhdslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     Input returns InOutput
-	 *     Output returns InOutput
-	 *     InOutput returns InOutput
+	 *     Input returns Input
 	 *
 	 * Constraint:
-	 *     (variable=VARIABLE | (variable=VARIABLE inoutput=InOutput))
+	 *     (variables+=VARIABLE variables+=VARIABLE*)
 	 */
-	protected void sequence_InOutput(ISerializationContext context, InOutput semanticObject) {
+	protected void sequence_Input(ISerializationContext context, Input semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Output returns Output
+	 *
+	 * Constraint:
+	 *     (variables+=VARIABLE variables+=VARIABLE*)
+	 */
+	protected void sequence_Output(ISerializationContext context, Output semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

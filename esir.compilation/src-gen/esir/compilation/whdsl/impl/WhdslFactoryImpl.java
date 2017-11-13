@@ -70,7 +70,6 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
       case WhdslPackage.DEFINITION: return createDefinition();
       case WhdslPackage.INPUT: return createInput();
       case WhdslPackage.OUTPUT: return createOutput();
-      case WhdslPackage.IN_OUTPUT: return createInOutput();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -129,17 +128,6 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
   {
     OutputImpl output = new OutputImpl();
     return output;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public InOutput createInOutput()
-  {
-    InOutputImpl inOutput = new InOutputImpl();
-    return inOutput;
   }
 
   /**

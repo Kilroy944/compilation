@@ -1,4 +1,10 @@
 function fonctiona:
-
+read B
+%
+%
+write A, B, C
 function fonctionb:
-
+read A
+%
+%
+write A, B, C

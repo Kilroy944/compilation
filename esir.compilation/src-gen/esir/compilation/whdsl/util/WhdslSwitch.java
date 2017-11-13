@@ -51,7 +51,7 @@ public class WhdslSwitch<T> extends Switch<T>
    * Checks whether this is a switch for the given package.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param ePackage the package in question.
+   * @parameter ePackage the package in question.
    * @return whether this is a switch for the given package.
    * @generated
    */
@@ -105,15 +105,6 @@ public class WhdslSwitch<T> extends Switch<T>
       {
         Output output = (Output)theEObject;
         T result = caseOutput(output);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case WhdslPackage.IN_OUTPUT:
-      {
-        InOutput inOutput = (InOutput)theEObject;
-        T result = caseInOutput(inOutput);
-        if (result == null) result = caseInput(inOutput);
-        if (result == null) result = caseOutput(inOutput);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -197,22 +188,6 @@ public class WhdslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseOutput(Output object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>In Output</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>In Output</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseInOutput(InOutput object)
   {
     return null;
   }

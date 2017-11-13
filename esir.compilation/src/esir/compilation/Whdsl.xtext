@@ -20,16 +20,15 @@ Definition:
 /*Input Output */
 	
 Input:
-	'read'InOutput
+	'read' (variables+=VARIABLE)(','variables+=VARIABLE)*
 ;
 
 Output:
-	'write'InOutput
+	'write' (variables+=VARIABLE)(','variables+=VARIABLE)*
 ;
 
-InOutput:
-	(variable=VARIABLE)|(variable=VARIABLE','inoutput=InOutput)
-;
+
+
 
 /*COMMAND */
 /*	

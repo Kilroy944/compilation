@@ -24,7 +24,7 @@ public class Main {
 	
 	private static final boolean isDebugMode =true;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ErrorPrettyPrinterException {
 		System.out.println("start");
 		Injector injector = new WhdslStandaloneSetupGenerated().createInjectorAndDoEMFRegistration();
 		Main main = injector.getInstance(Main.class);
@@ -45,19 +45,17 @@ public class Main {
 	@Inject 
 	private JavaIoFileSystemAccess fileAccess;
 
-	protected void runGenerator(String string,String sortie){
+	protected void runGenerator(String string,String sortie) throws ErrorPrettyPrinterException{
 		// Load the resource
 		ResourceSet set = resourceSetProvider.get();
 		Resource resource = set.getResource(URI.createFileURI(string), true);
 		
-
 		// Validate the resource
 		List<Issue> list = validator.validate(resource, CheckMode.ALL, CancelIndicator.NullImpl);
 		if (!list.isEmpty()) {
 			for (Issue issue : list) {
-				//throw new ErrorException(issue.getMessage());
+				throw new ErrorPrettyPrinterException(issue.getMessage());
 			}
-			System.out.println("gg");
 			return;
 		}
 

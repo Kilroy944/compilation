@@ -69,15 +69,6 @@ public interface WhdslFactory extends EFactory
   Output createOutput();
 
   /**
-   * Returns a new object of class '<em>In Output</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>In Output</em>'.
-   * @generated
-   */
-  InOutput createInOutput();
-
-  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

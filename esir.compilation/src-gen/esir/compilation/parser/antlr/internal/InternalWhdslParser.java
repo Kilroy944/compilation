@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalWhdslParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_SYMBOLE", "RULE_VARIABLE", "RULE_NIL", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'function'", "':'", "'%'", "'read'", "'write'", "','"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_SYMBOLE", "RULE_VARIABLE", "RULE_NIL", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'function'", "':'", "'%'", "'read'", "','", "'write'"
     };
     public static final int RULE_STRING=9;
     public static final int RULE_SL_COMMENT=11;
@@ -530,40 +530,109 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInput"
-    // InternalWhdsl.g:236:1: ruleInput returns [EObject current=null] : (otherlv_0= 'read' this_InOutput_1= ruleInOutput ) ;
+    // InternalWhdsl.g:236:1: ruleInput returns [EObject current=null] : (otherlv_0= 'read' ( (lv_variables_1_0= RULE_VARIABLE ) ) (otherlv_2= ',' ( (lv_variables_3_0= RULE_VARIABLE ) ) )* ) ;
     public final EObject ruleInput() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
-        EObject this_InOutput_1 = null;
-
+        Token lv_variables_1_0=null;
+        Token otherlv_2=null;
+        Token lv_variables_3_0=null;
 
 
         	enterRule();
 
         try {
-            // InternalWhdsl.g:242:2: ( (otherlv_0= 'read' this_InOutput_1= ruleInOutput ) )
-            // InternalWhdsl.g:243:2: (otherlv_0= 'read' this_InOutput_1= ruleInOutput )
+            // InternalWhdsl.g:242:2: ( (otherlv_0= 'read' ( (lv_variables_1_0= RULE_VARIABLE ) ) (otherlv_2= ',' ( (lv_variables_3_0= RULE_VARIABLE ) ) )* ) )
+            // InternalWhdsl.g:243:2: (otherlv_0= 'read' ( (lv_variables_1_0= RULE_VARIABLE ) ) (otherlv_2= ',' ( (lv_variables_3_0= RULE_VARIABLE ) ) )* )
             {
-            // InternalWhdsl.g:243:2: (otherlv_0= 'read' this_InOutput_1= ruleInOutput )
-            // InternalWhdsl.g:244:3: otherlv_0= 'read' this_InOutput_1= ruleInOutput
+            // InternalWhdsl.g:243:2: (otherlv_0= 'read' ( (lv_variables_1_0= RULE_VARIABLE ) ) (otherlv_2= ',' ( (lv_variables_3_0= RULE_VARIABLE ) ) )* )
+            // InternalWhdsl.g:244:3: otherlv_0= 'read' ( (lv_variables_1_0= RULE_VARIABLE ) ) (otherlv_2= ',' ( (lv_variables_3_0= RULE_VARIABLE ) ) )*
             {
             otherlv_0=(Token)match(input,17,FOLLOW_9); 
 
             			newLeafNode(otherlv_0, grammarAccess.getInputAccess().getReadKeyword_0());
             		
+            // InternalWhdsl.g:248:3: ( (lv_variables_1_0= RULE_VARIABLE ) )
+            // InternalWhdsl.g:249:4: (lv_variables_1_0= RULE_VARIABLE )
+            {
+            // InternalWhdsl.g:249:4: (lv_variables_1_0= RULE_VARIABLE )
+            // InternalWhdsl.g:250:5: lv_variables_1_0= RULE_VARIABLE
+            {
+            lv_variables_1_0=(Token)match(input,RULE_VARIABLE,FOLLOW_10); 
 
-            			newCompositeNode(grammarAccess.getInputAccess().getInOutputParserRuleCall_1());
-            		
-            pushFollow(FOLLOW_2);
-            this_InOutput_1=ruleInOutput();
+            					newLeafNode(lv_variables_1_0, grammarAccess.getInputAccess().getVariablesVARIABLETerminalRuleCall_1_0());
+            				
 
-            state._fsp--;
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getInputRule());
+            					}
+            					addWithLastConsumed(
+            						current,
+            						"variables",
+            						lv_variables_1_0,
+            						"esir.compilation.Whdsl.VARIABLE");
+            				
+
+            }
 
 
-            			current = this_InOutput_1;
-            			afterParserOrEnumRuleCall();
-            		
+            }
+
+            // InternalWhdsl.g:266:3: (otherlv_2= ',' ( (lv_variables_3_0= RULE_VARIABLE ) ) )*
+            loop2:
+            do {
+                int alt2=2;
+                int LA2_0 = input.LA(1);
+
+                if ( (LA2_0==18) ) {
+                    alt2=1;
+                }
+
+
+                switch (alt2) {
+            	case 1 :
+            	    // InternalWhdsl.g:267:4: otherlv_2= ',' ( (lv_variables_3_0= RULE_VARIABLE ) )
+            	    {
+            	    otherlv_2=(Token)match(input,18,FOLLOW_9); 
+
+            	    				newLeafNode(otherlv_2, grammarAccess.getInputAccess().getCommaKeyword_2_0());
+            	    			
+            	    // InternalWhdsl.g:271:4: ( (lv_variables_3_0= RULE_VARIABLE ) )
+            	    // InternalWhdsl.g:272:5: (lv_variables_3_0= RULE_VARIABLE )
+            	    {
+            	    // InternalWhdsl.g:272:5: (lv_variables_3_0= RULE_VARIABLE )
+            	    // InternalWhdsl.g:273:6: lv_variables_3_0= RULE_VARIABLE
+            	    {
+            	    lv_variables_3_0=(Token)match(input,RULE_VARIABLE,FOLLOW_10); 
+
+            	    						newLeafNode(lv_variables_3_0, grammarAccess.getInputAccess().getVariablesVARIABLETerminalRuleCall_2_1_0());
+            	    					
+
+            	    						if (current==null) {
+            	    							current = createModelElement(grammarAccess.getInputRule());
+            	    						}
+            	    						addWithLastConsumed(
+            	    							current,
+            	    							"variables",
+            	    							lv_variables_3_0,
+            	    							"esir.compilation.Whdsl.VARIABLE");
+            	    					
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop2;
+                }
+            } while (true);
+
 
             }
 
@@ -587,7 +656,7 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleOutput"
-    // InternalWhdsl.g:260:1: entryRuleOutput returns [EObject current=null] : iv_ruleOutput= ruleOutput EOF ;
+    // InternalWhdsl.g:294:1: entryRuleOutput returns [EObject current=null] : iv_ruleOutput= ruleOutput EOF ;
     public final EObject entryRuleOutput() throws RecognitionException {
         EObject current = null;
 
@@ -595,8 +664,8 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalWhdsl.g:260:47: (iv_ruleOutput= ruleOutput EOF )
-            // InternalWhdsl.g:261:2: iv_ruleOutput= ruleOutput EOF
+            // InternalWhdsl.g:294:47: (iv_ruleOutput= ruleOutput EOF )
+            // InternalWhdsl.g:295:2: iv_ruleOutput= ruleOutput EOF
             {
              newCompositeNode(grammarAccess.getOutputRule()); 
             pushFollow(FOLLOW_1);
@@ -623,40 +692,109 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOutput"
-    // InternalWhdsl.g:267:1: ruleOutput returns [EObject current=null] : (otherlv_0= 'write' this_InOutput_1= ruleInOutput ) ;
+    // InternalWhdsl.g:301:1: ruleOutput returns [EObject current=null] : (otherlv_0= 'write' ( (lv_variables_1_0= RULE_VARIABLE ) ) (otherlv_2= ',' ( (lv_variables_3_0= RULE_VARIABLE ) ) )* ) ;
     public final EObject ruleOutput() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
-        EObject this_InOutput_1 = null;
-
+        Token lv_variables_1_0=null;
+        Token otherlv_2=null;
+        Token lv_variables_3_0=null;
 
 
         	enterRule();
 
         try {
-            // InternalWhdsl.g:273:2: ( (otherlv_0= 'write' this_InOutput_1= ruleInOutput ) )
-            // InternalWhdsl.g:274:2: (otherlv_0= 'write' this_InOutput_1= ruleInOutput )
+            // InternalWhdsl.g:307:2: ( (otherlv_0= 'write' ( (lv_variables_1_0= RULE_VARIABLE ) ) (otherlv_2= ',' ( (lv_variables_3_0= RULE_VARIABLE ) ) )* ) )
+            // InternalWhdsl.g:308:2: (otherlv_0= 'write' ( (lv_variables_1_0= RULE_VARIABLE ) ) (otherlv_2= ',' ( (lv_variables_3_0= RULE_VARIABLE ) ) )* )
             {
-            // InternalWhdsl.g:274:2: (otherlv_0= 'write' this_InOutput_1= ruleInOutput )
-            // InternalWhdsl.g:275:3: otherlv_0= 'write' this_InOutput_1= ruleInOutput
+            // InternalWhdsl.g:308:2: (otherlv_0= 'write' ( (lv_variables_1_0= RULE_VARIABLE ) ) (otherlv_2= ',' ( (lv_variables_3_0= RULE_VARIABLE ) ) )* )
+            // InternalWhdsl.g:309:3: otherlv_0= 'write' ( (lv_variables_1_0= RULE_VARIABLE ) ) (otherlv_2= ',' ( (lv_variables_3_0= RULE_VARIABLE ) ) )*
             {
-            otherlv_0=(Token)match(input,18,FOLLOW_9); 
+            otherlv_0=(Token)match(input,19,FOLLOW_9); 
 
             			newLeafNode(otherlv_0, grammarAccess.getOutputAccess().getWriteKeyword_0());
             		
+            // InternalWhdsl.g:313:3: ( (lv_variables_1_0= RULE_VARIABLE ) )
+            // InternalWhdsl.g:314:4: (lv_variables_1_0= RULE_VARIABLE )
+            {
+            // InternalWhdsl.g:314:4: (lv_variables_1_0= RULE_VARIABLE )
+            // InternalWhdsl.g:315:5: lv_variables_1_0= RULE_VARIABLE
+            {
+            lv_variables_1_0=(Token)match(input,RULE_VARIABLE,FOLLOW_10); 
 
-            			newCompositeNode(grammarAccess.getOutputAccess().getInOutputParserRuleCall_1());
-            		
-            pushFollow(FOLLOW_2);
-            this_InOutput_1=ruleInOutput();
+            					newLeafNode(lv_variables_1_0, grammarAccess.getOutputAccess().getVariablesVARIABLETerminalRuleCall_1_0());
+            				
 
-            state._fsp--;
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getOutputRule());
+            					}
+            					addWithLastConsumed(
+            						current,
+            						"variables",
+            						lv_variables_1_0,
+            						"esir.compilation.Whdsl.VARIABLE");
+            				
+
+            }
 
 
-            			current = this_InOutput_1;
-            			afterParserOrEnumRuleCall();
-            		
+            }
+
+            // InternalWhdsl.g:331:3: (otherlv_2= ',' ( (lv_variables_3_0= RULE_VARIABLE ) ) )*
+            loop3:
+            do {
+                int alt3=2;
+                int LA3_0 = input.LA(1);
+
+                if ( (LA3_0==18) ) {
+                    alt3=1;
+                }
+
+
+                switch (alt3) {
+            	case 1 :
+            	    // InternalWhdsl.g:332:4: otherlv_2= ',' ( (lv_variables_3_0= RULE_VARIABLE ) )
+            	    {
+            	    otherlv_2=(Token)match(input,18,FOLLOW_9); 
+
+            	    				newLeafNode(otherlv_2, grammarAccess.getOutputAccess().getCommaKeyword_2_0());
+            	    			
+            	    // InternalWhdsl.g:336:4: ( (lv_variables_3_0= RULE_VARIABLE ) )
+            	    // InternalWhdsl.g:337:5: (lv_variables_3_0= RULE_VARIABLE )
+            	    {
+            	    // InternalWhdsl.g:337:5: (lv_variables_3_0= RULE_VARIABLE )
+            	    // InternalWhdsl.g:338:6: lv_variables_3_0= RULE_VARIABLE
+            	    {
+            	    lv_variables_3_0=(Token)match(input,RULE_VARIABLE,FOLLOW_10); 
+
+            	    						newLeafNode(lv_variables_3_0, grammarAccess.getOutputAccess().getVariablesVARIABLETerminalRuleCall_2_1_0());
+            	    					
+
+            	    						if (current==null) {
+            	    							current = createModelElement(grammarAccess.getOutputRule());
+            	    						}
+            	    						addWithLastConsumed(
+            	    							current,
+            	    							"variables",
+            	    							lv_variables_3_0,
+            	    							"esir.compilation.Whdsl.VARIABLE");
+            	    					
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop3;
+                }
+            } while (true);
+
 
             }
 
@@ -678,214 +816,6 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
     }
     // $ANTLR end "ruleOutput"
 
-
-    // $ANTLR start "entryRuleInOutput"
-    // InternalWhdsl.g:291:1: entryRuleInOutput returns [EObject current=null] : iv_ruleInOutput= ruleInOutput EOF ;
-    public final EObject entryRuleInOutput() throws RecognitionException {
-        EObject current = null;
-
-        EObject iv_ruleInOutput = null;
-
-
-        try {
-            // InternalWhdsl.g:291:49: (iv_ruleInOutput= ruleInOutput EOF )
-            // InternalWhdsl.g:292:2: iv_ruleInOutput= ruleInOutput EOF
-            {
-             newCompositeNode(grammarAccess.getInOutputRule()); 
-            pushFollow(FOLLOW_1);
-            iv_ruleInOutput=ruleInOutput();
-
-            state._fsp--;
-
-             current =iv_ruleInOutput; 
-            match(input,EOF,FOLLOW_2); 
-
-            }
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleInOutput"
-
-
-    // $ANTLR start "ruleInOutput"
-    // InternalWhdsl.g:298:1: ruleInOutput returns [EObject current=null] : ( ( (lv_variable_0_0= RULE_VARIABLE ) ) | ( ( (lv_variable_1_0= RULE_VARIABLE ) ) otherlv_2= ',' ( (lv_inoutput_3_0= ruleInOutput ) ) ) ) ;
-    public final EObject ruleInOutput() throws RecognitionException {
-        EObject current = null;
-
-        Token lv_variable_0_0=null;
-        Token lv_variable_1_0=null;
-        Token otherlv_2=null;
-        EObject lv_inoutput_3_0 = null;
-
-
-
-        	enterRule();
-
-        try {
-            // InternalWhdsl.g:304:2: ( ( ( (lv_variable_0_0= RULE_VARIABLE ) ) | ( ( (lv_variable_1_0= RULE_VARIABLE ) ) otherlv_2= ',' ( (lv_inoutput_3_0= ruleInOutput ) ) ) ) )
-            // InternalWhdsl.g:305:2: ( ( (lv_variable_0_0= RULE_VARIABLE ) ) | ( ( (lv_variable_1_0= RULE_VARIABLE ) ) otherlv_2= ',' ( (lv_inoutput_3_0= ruleInOutput ) ) ) )
-            {
-            // InternalWhdsl.g:305:2: ( ( (lv_variable_0_0= RULE_VARIABLE ) ) | ( ( (lv_variable_1_0= RULE_VARIABLE ) ) otherlv_2= ',' ( (lv_inoutput_3_0= ruleInOutput ) ) ) )
-            int alt2=2;
-            int LA2_0 = input.LA(1);
-
-            if ( (LA2_0==RULE_VARIABLE) ) {
-                int LA2_1 = input.LA(2);
-
-                if ( (LA2_1==19) ) {
-                    alt2=2;
-                }
-                else if ( (LA2_1==EOF||LA2_1==14||LA2_1==16) ) {
-                    alt2=1;
-                }
-                else {
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 2, 1, input);
-
-                    throw nvae;
-                }
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 2, 0, input);
-
-                throw nvae;
-            }
-            switch (alt2) {
-                case 1 :
-                    // InternalWhdsl.g:306:3: ( (lv_variable_0_0= RULE_VARIABLE ) )
-                    {
-                    // InternalWhdsl.g:306:3: ( (lv_variable_0_0= RULE_VARIABLE ) )
-                    // InternalWhdsl.g:307:4: (lv_variable_0_0= RULE_VARIABLE )
-                    {
-                    // InternalWhdsl.g:307:4: (lv_variable_0_0= RULE_VARIABLE )
-                    // InternalWhdsl.g:308:5: lv_variable_0_0= RULE_VARIABLE
-                    {
-                    lv_variable_0_0=(Token)match(input,RULE_VARIABLE,FOLLOW_2); 
-
-                    					newLeafNode(lv_variable_0_0, grammarAccess.getInOutputAccess().getVariableVARIABLETerminalRuleCall_0_0());
-                    				
-
-                    					if (current==null) {
-                    						current = createModelElement(grammarAccess.getInOutputRule());
-                    					}
-                    					setWithLastConsumed(
-                    						current,
-                    						"variable",
-                    						lv_variable_0_0,
-                    						"esir.compilation.Whdsl.VARIABLE");
-                    				
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // InternalWhdsl.g:325:3: ( ( (lv_variable_1_0= RULE_VARIABLE ) ) otherlv_2= ',' ( (lv_inoutput_3_0= ruleInOutput ) ) )
-                    {
-                    // InternalWhdsl.g:325:3: ( ( (lv_variable_1_0= RULE_VARIABLE ) ) otherlv_2= ',' ( (lv_inoutput_3_0= ruleInOutput ) ) )
-                    // InternalWhdsl.g:326:4: ( (lv_variable_1_0= RULE_VARIABLE ) ) otherlv_2= ',' ( (lv_inoutput_3_0= ruleInOutput ) )
-                    {
-                    // InternalWhdsl.g:326:4: ( (lv_variable_1_0= RULE_VARIABLE ) )
-                    // InternalWhdsl.g:327:5: (lv_variable_1_0= RULE_VARIABLE )
-                    {
-                    // InternalWhdsl.g:327:5: (lv_variable_1_0= RULE_VARIABLE )
-                    // InternalWhdsl.g:328:6: lv_variable_1_0= RULE_VARIABLE
-                    {
-                    lv_variable_1_0=(Token)match(input,RULE_VARIABLE,FOLLOW_10); 
-
-                    						newLeafNode(lv_variable_1_0, grammarAccess.getInOutputAccess().getVariableVARIABLETerminalRuleCall_1_0_0());
-                    					
-
-                    						if (current==null) {
-                    							current = createModelElement(grammarAccess.getInOutputRule());
-                    						}
-                    						setWithLastConsumed(
-                    							current,
-                    							"variable",
-                    							lv_variable_1_0,
-                    							"esir.compilation.Whdsl.VARIABLE");
-                    					
-
-                    }
-
-
-                    }
-
-                    otherlv_2=(Token)match(input,19,FOLLOW_9); 
-
-                    				newLeafNode(otherlv_2, grammarAccess.getInOutputAccess().getCommaKeyword_1_1());
-                    			
-                    // InternalWhdsl.g:348:4: ( (lv_inoutput_3_0= ruleInOutput ) )
-                    // InternalWhdsl.g:349:5: (lv_inoutput_3_0= ruleInOutput )
-                    {
-                    // InternalWhdsl.g:349:5: (lv_inoutput_3_0= ruleInOutput )
-                    // InternalWhdsl.g:350:6: lv_inoutput_3_0= ruleInOutput
-                    {
-
-                    						newCompositeNode(grammarAccess.getInOutputAccess().getInoutputInOutputParserRuleCall_1_2_0());
-                    					
-                    pushFollow(FOLLOW_2);
-                    lv_inoutput_3_0=ruleInOutput();
-
-                    state._fsp--;
-
-
-                    						if (current==null) {
-                    							current = createModelElementForParent(grammarAccess.getInOutputRule());
-                    						}
-                    						set(
-                    							current,
-                    							"inoutput",
-                    							lv_inoutput_3_0,
-                    							"esir.compilation.Whdsl.InOutput");
-                    						afterParserOrEnumRuleCall();
-                    					
-
-                    }
-
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
-
-            }
-
-
-            }
-
-
-            	leaveRule();
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleInOutput"
-
     // Delegated rules
 
 
@@ -898,8 +828,8 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000008000L});
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000020000L});
     public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000080000L});
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000040002L});
 
 }

@@ -6,7 +6,6 @@ package esir.compilation.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
-import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
@@ -112,82 +111,79 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.Input");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cReadKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final RuleCall cInOutputParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Assignment cVariablesAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cVariablesVARIABLETerminalRuleCall_1_0 = (RuleCall)cVariablesAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cCommaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cVariablesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cVariablesVARIABLETerminalRuleCall_2_1_0 = (RuleCall)cVariablesAssignment_2_1.eContents().get(0);
 		
 		///*Input Output */ Input:
-		//	'read' InOutput;
+		//	'read' variables+=VARIABLE (',' variables+=VARIABLE)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'read' InOutput
+		//'read' variables+=VARIABLE (',' variables+=VARIABLE)*
 		public Group getGroup() { return cGroup; }
 		
 		//'read'
 		public Keyword getReadKeyword_0() { return cReadKeyword_0; }
 		
-		//InOutput
-		public RuleCall getInOutputParserRuleCall_1() { return cInOutputParserRuleCall_1; }
+		//variables+=VARIABLE
+		public Assignment getVariablesAssignment_1() { return cVariablesAssignment_1; }
+		
+		//VARIABLE
+		public RuleCall getVariablesVARIABLETerminalRuleCall_1_0() { return cVariablesVARIABLETerminalRuleCall_1_0; }
+		
+		//(',' variables+=VARIABLE)*
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//','
+		public Keyword getCommaKeyword_2_0() { return cCommaKeyword_2_0; }
+		
+		//variables+=VARIABLE
+		public Assignment getVariablesAssignment_2_1() { return cVariablesAssignment_2_1; }
+		
+		//VARIABLE
+		public RuleCall getVariablesVARIABLETerminalRuleCall_2_1_0() { return cVariablesVARIABLETerminalRuleCall_2_1_0; }
 	}
 	public class OutputElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.Output");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cWriteKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final RuleCall cInOutputParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Assignment cVariablesAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cVariablesVARIABLETerminalRuleCall_1_0 = (RuleCall)cVariablesAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cCommaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cVariablesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cVariablesVARIABLETerminalRuleCall_2_1_0 = (RuleCall)cVariablesAssignment_2_1.eContents().get(0);
 		
 		//Output:
-		//	'write' InOutput;
+		//	'write' variables+=VARIABLE (',' variables+=VARIABLE)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'write' InOutput
+		//'write' variables+=VARIABLE (',' variables+=VARIABLE)*
 		public Group getGroup() { return cGroup; }
 		
 		//'write'
 		public Keyword getWriteKeyword_0() { return cWriteKeyword_0; }
 		
-		//InOutput
-		public RuleCall getInOutputParserRuleCall_1() { return cInOutputParserRuleCall_1; }
-	}
-	public class InOutputElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.InOutput");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cVariableAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final RuleCall cVariableVARIABLETerminalRuleCall_0_0 = (RuleCall)cVariableAssignment_0.eContents().get(0);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Assignment cVariableAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
-		private final RuleCall cVariableVARIABLETerminalRuleCall_1_0_0 = (RuleCall)cVariableAssignment_1_0.eContents().get(0);
-		private final Keyword cCommaKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Assignment cInoutputAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cInoutputInOutputParserRuleCall_1_2_0 = (RuleCall)cInoutputAssignment_1_2.eContents().get(0);
-		
-		//InOutput:
-		//	variable=VARIABLE | variable=VARIABLE ',' inoutput=InOutput;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//variable=VARIABLE | variable=VARIABLE ',' inoutput=InOutput
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//variable=VARIABLE
-		public Assignment getVariableAssignment_0() { return cVariableAssignment_0; }
+		//variables+=VARIABLE
+		public Assignment getVariablesAssignment_1() { return cVariablesAssignment_1; }
 		
 		//VARIABLE
-		public RuleCall getVariableVARIABLETerminalRuleCall_0_0() { return cVariableVARIABLETerminalRuleCall_0_0; }
+		public RuleCall getVariablesVARIABLETerminalRuleCall_1_0() { return cVariablesVARIABLETerminalRuleCall_1_0; }
 		
-		//variable=VARIABLE ',' inoutput=InOutput
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//variable=VARIABLE
-		public Assignment getVariableAssignment_1_0() { return cVariableAssignment_1_0; }
-		
-		//VARIABLE
-		public RuleCall getVariableVARIABLETerminalRuleCall_1_0_0() { return cVariableVARIABLETerminalRuleCall_1_0_0; }
+		//(',' variables+=VARIABLE)*
+		public Group getGroup_2() { return cGroup_2; }
 		
 		//','
-		public Keyword getCommaKeyword_1_1() { return cCommaKeyword_1_1; }
+		public Keyword getCommaKeyword_2_0() { return cCommaKeyword_2_0; }
 		
-		//inoutput=InOutput
-		public Assignment getInoutputAssignment_1_2() { return cInoutputAssignment_1_2; }
+		//variables+=VARIABLE
+		public Assignment getVariablesAssignment_2_1() { return cVariablesAssignment_2_1; }
 		
-		//InOutput
-		public RuleCall getInoutputInOutputParserRuleCall_1_2_0() { return cInoutputInOutputParserRuleCall_1_2_0; }
+		//VARIABLE
+		public RuleCall getVariablesVARIABLETerminalRuleCall_2_1_0() { return cVariablesVARIABLETerminalRuleCall_2_1_0; }
 	}
 	
 	
@@ -196,7 +192,6 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 	private final DefinitionElements pDefinition;
 	private final InputElements pInput;
 	private final OutputElements pOutput;
-	private final InOutputElements pInOutput;
 	private final TerminalRule tNIL;
 	private final TerminalRule tVARIABLE;
 	private final TerminalRule tSYMBOLE;
@@ -215,7 +210,6 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 		this.pDefinition = new DefinitionElements();
 		this.pInput = new InputElements();
 		this.pOutput = new OutputElements();
-		this.pInOutput = new InOutputElements();
 		this.tNIL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.NIL");
 		this.tVARIABLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.VARIABLE");
 		this.tSYMBOLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.SYMBOLE");
@@ -280,7 +274,7 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	///*Input Output */ Input:
-	//	'read' InOutput;
+	//	'read' variables+=VARIABLE (',' variables+=VARIABLE)*;
 	public InputElements getInputAccess() {
 		return pInput;
 	}
@@ -290,23 +284,13 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Output:
-	//	'write' InOutput;
+	//	'write' variables+=VARIABLE (',' variables+=VARIABLE)*;
 	public OutputElements getOutputAccess() {
 		return pOutput;
 	}
 	
 	public ParserRule getOutputRule() {
 		return getOutputAccess().getRule();
-	}
-	
-	//InOutput:
-	//	variable=VARIABLE | variable=VARIABLE ',' inoutput=InOutput;
-	public InOutputElements getInOutputAccess() {
-		return pInOutput;
-	}
-	
-	public ParserRule getInOutputRule() {
-		return getInOutputAccess().getRule();
 	}
 	
 	//terminal NIL:

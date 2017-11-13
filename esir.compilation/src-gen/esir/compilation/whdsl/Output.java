@@ -3,6 +3,8 @@
  */
 package esir.compilation.whdsl;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -10,6 +12,12 @@ import org.eclipse.emf.ecore.EObject;
  * A representation of the model object '<em><b>Output</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * <ul>
+ *   <li>{@link esir.compilation.whdsl.Output#getVariables <em>Variables</em>}</li>
+ * </ul>
+ * </p>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getOutput()
  * @model
@@ -17,4 +25,20 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Output extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Variables</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Variables</em>' attribute list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Variables</em>' attribute list.
+   * @see esir.compilation.whdsl.WhdslPackage#getOutput_Variables()
+   * @model unique="false"
+   * @generated
+   */
+  EList<String> getVariables();
+
 } // Output
