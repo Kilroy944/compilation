@@ -70,6 +70,10 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
       case WhdslPackage.DEFINITION: return createDefinition();
       case WhdslPackage.INPUT: return createInput();
       case WhdslPackage.OUTPUT: return createOutput();
+      case WhdslPackage.COMMANDS: return createCommands();
+      case WhdslPackage.COMMAND: return createCommand();
+      case WhdslPackage.VARS: return createVars();
+      case WhdslPackage.EXPRS: return createExprs();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -128,6 +132,50 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
   {
     OutputImpl output = new OutputImpl();
     return output;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Commands createCommands()
+  {
+    CommandsImpl commands = new CommandsImpl();
+    return commands;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Command createCommand()
+  {
+    CommandImpl command = new CommandImpl();
+    return command;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Vars createVars()
+  {
+    VarsImpl vars = new VarsImpl();
+    return vars;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Exprs createExprs()
+  {
+    ExprsImpl exprs = new ExprsImpl();
+    return exprs;
   }
 
   /**

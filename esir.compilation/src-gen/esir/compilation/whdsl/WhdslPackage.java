@@ -142,13 +142,22 @@ public interface WhdslPackage extends EPackage
   int DEFINITION__INPUT = 0;
 
   /**
+   * The feature id for the '<em><b>Commands</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEFINITION__COMMANDS = 1;
+
+  /**
    * The feature id for the '<em><b>Output</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DEFINITION__OUTPUT = 1;
+  int DEFINITION__OUTPUT = 2;
 
   /**
    * The number of structural features of the '<em>Definition</em>' class.
@@ -157,7 +166,7 @@ public interface WhdslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEFINITION_FEATURE_COUNT = 2;
+  int DEFINITION_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link esir.compilation.whdsl.impl.InputImpl <em>Input</em>}' class.
@@ -214,6 +223,145 @@ public interface WhdslPackage extends EPackage
    * @ordered
    */
   int OUTPUT_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link esir.compilation.whdsl.impl.CommandsImpl <em>Commands</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see esir.compilation.whdsl.impl.CommandsImpl
+   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getCommands()
+   * @generated
+   */
+  int COMMANDS = 5;
+
+  /**
+   * The feature id for the '<em><b>Commands</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMANDS__COMMANDS = 0;
+
+  /**
+   * The number of structural features of the '<em>Commands</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMANDS_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link esir.compilation.whdsl.impl.CommandImpl <em>Command</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see esir.compilation.whdsl.impl.CommandImpl
+   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getCommand()
+   * @generated
+   */
+  int COMMAND = 6;
+
+  /**
+   * The feature id for the '<em><b>Nop</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMAND__NOP = 0;
+
+  /**
+   * The feature id for the '<em><b>Vars</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMAND__VARS = 1;
+
+  /**
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMAND__EXPRESSION = 2;
+
+  /**
+   * The number of structural features of the '<em>Command</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMAND_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link esir.compilation.whdsl.impl.VarsImpl <em>Vars</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see esir.compilation.whdsl.impl.VarsImpl
+   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getVars()
+   * @generated
+   */
+  int VARS = 7;
+
+  /**
+   * The feature id for the '<em><b>Variable</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARS__VARIABLE = 0;
+
+  /**
+   * The feature id for the '<em><b>Vars</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARS__VARS = 1;
+
+  /**
+   * The number of structural features of the '<em>Vars</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARS_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link esir.compilation.whdsl.impl.ExprsImpl <em>Exprs</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see esir.compilation.whdsl.impl.ExprsImpl
+   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getExprs()
+   * @generated
+   */
+  int EXPRS = 8;
+
+  /**
+   * The feature id for the '<em><b>Expr</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRS__EXPR = 0;
+
+  /**
+   * The number of structural features of the '<em>Exprs</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRS_FEATURE_COUNT = 1;
 
 
   /**
@@ -291,6 +439,17 @@ public interface WhdslPackage extends EPackage
   EReference getDefinition_Input();
 
   /**
+   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.Definition#getCommands <em>Commands</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Commands</em>'.
+   * @see esir.compilation.whdsl.Definition#getCommands()
+   * @see #getDefinition()
+   * @generated
+   */
+  EReference getDefinition_Commands();
+
+  /**
    * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.Definition#getOutput <em>Output</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -342,6 +501,123 @@ public interface WhdslPackage extends EPackage
    * @generated
    */
   EAttribute getOutput_Variables();
+
+  /**
+   * Returns the meta object for class '{@link esir.compilation.whdsl.Commands <em>Commands</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Commands</em>'.
+   * @see esir.compilation.whdsl.Commands
+   * @generated
+   */
+  EClass getCommands();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link esir.compilation.whdsl.Commands#getCommands <em>Commands</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Commands</em>'.
+   * @see esir.compilation.whdsl.Commands#getCommands()
+   * @see #getCommands()
+   * @generated
+   */
+  EReference getCommands_Commands();
+
+  /**
+   * Returns the meta object for class '{@link esir.compilation.whdsl.Command <em>Command</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Command</em>'.
+   * @see esir.compilation.whdsl.Command
+   * @generated
+   */
+  EClass getCommand();
+
+  /**
+   * Returns the meta object for the attribute '{@link esir.compilation.whdsl.Command#getNop <em>Nop</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Nop</em>'.
+   * @see esir.compilation.whdsl.Command#getNop()
+   * @see #getCommand()
+   * @generated
+   */
+  EAttribute getCommand_Nop();
+
+  /**
+   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.Command#getVars <em>Vars</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Vars</em>'.
+   * @see esir.compilation.whdsl.Command#getVars()
+   * @see #getCommand()
+   * @generated
+   */
+  EReference getCommand_Vars();
+
+  /**
+   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.Command#getExpression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see esir.compilation.whdsl.Command#getExpression()
+   * @see #getCommand()
+   * @generated
+   */
+  EReference getCommand_Expression();
+
+  /**
+   * Returns the meta object for class '{@link esir.compilation.whdsl.Vars <em>Vars</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Vars</em>'.
+   * @see esir.compilation.whdsl.Vars
+   * @generated
+   */
+  EClass getVars();
+
+  /**
+   * Returns the meta object for the attribute list '{@link esir.compilation.whdsl.Vars#getVariable <em>Variable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Variable</em>'.
+   * @see esir.compilation.whdsl.Vars#getVariable()
+   * @see #getVars()
+   * @generated
+   */
+  EAttribute getVars_Variable();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link esir.compilation.whdsl.Vars#getVars <em>Vars</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Vars</em>'.
+   * @see esir.compilation.whdsl.Vars#getVars()
+   * @see #getVars()
+   * @generated
+   */
+  EReference getVars_Vars();
+
+  /**
+   * Returns the meta object for class '{@link esir.compilation.whdsl.Exprs <em>Exprs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Exprs</em>'.
+   * @see esir.compilation.whdsl.Exprs
+   * @generated
+   */
+  EClass getExprs();
+
+  /**
+   * Returns the meta object for the attribute list '{@link esir.compilation.whdsl.Exprs#getExpr <em>Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Expr</em>'.
+   * @see esir.compilation.whdsl.Exprs#getExpr()
+   * @see #getExprs()
+   * @generated
+   */
+  EAttribute getExprs_Expr();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -429,6 +705,14 @@ public interface WhdslPackage extends EPackage
     EReference DEFINITION__INPUT = eINSTANCE.getDefinition_Input();
 
     /**
+     * The meta object literal for the '<em><b>Commands</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DEFINITION__COMMANDS = eINSTANCE.getDefinition_Commands();
+
+    /**
      * The meta object literal for the '<em><b>Output</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -471,6 +755,102 @@ public interface WhdslPackage extends EPackage
      * @generated
      */
     EAttribute OUTPUT__VARIABLES = eINSTANCE.getOutput_Variables();
+
+    /**
+     * The meta object literal for the '{@link esir.compilation.whdsl.impl.CommandsImpl <em>Commands</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see esir.compilation.whdsl.impl.CommandsImpl
+     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getCommands()
+     * @generated
+     */
+    EClass COMMANDS = eINSTANCE.getCommands();
+
+    /**
+     * The meta object literal for the '<em><b>Commands</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMMANDS__COMMANDS = eINSTANCE.getCommands_Commands();
+
+    /**
+     * The meta object literal for the '{@link esir.compilation.whdsl.impl.CommandImpl <em>Command</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see esir.compilation.whdsl.impl.CommandImpl
+     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getCommand()
+     * @generated
+     */
+    EClass COMMAND = eINSTANCE.getCommand();
+
+    /**
+     * The meta object literal for the '<em><b>Nop</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMMAND__NOP = eINSTANCE.getCommand_Nop();
+
+    /**
+     * The meta object literal for the '<em><b>Vars</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMMAND__VARS = eINSTANCE.getCommand_Vars();
+
+    /**
+     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMMAND__EXPRESSION = eINSTANCE.getCommand_Expression();
+
+    /**
+     * The meta object literal for the '{@link esir.compilation.whdsl.impl.VarsImpl <em>Vars</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see esir.compilation.whdsl.impl.VarsImpl
+     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getVars()
+     * @generated
+     */
+    EClass VARS = eINSTANCE.getVars();
+
+    /**
+     * The meta object literal for the '<em><b>Variable</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VARS__VARIABLE = eINSTANCE.getVars_Variable();
+
+    /**
+     * The meta object literal for the '<em><b>Vars</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VARS__VARS = eINSTANCE.getVars_Vars();
+
+    /**
+     * The meta object literal for the '{@link esir.compilation.whdsl.impl.ExprsImpl <em>Exprs</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see esir.compilation.whdsl.impl.ExprsImpl
+     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getExprs()
+     * @generated
+     */
+    EClass EXPRS = eINSTANCE.getExprs();
+
+    /**
+     * The meta object literal for the '<em><b>Expr</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPRS__EXPR = eINSTANCE.getExprs_Expr();
 
   }
 

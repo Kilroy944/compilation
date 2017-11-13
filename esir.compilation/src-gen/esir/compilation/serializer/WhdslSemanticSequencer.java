@@ -5,11 +5,15 @@ package esir.compilation.serializer;
 
 import com.google.inject.Inject;
 import esir.compilation.services.WhdslGrammarAccess;
+import esir.compilation.whdsl.Command;
+import esir.compilation.whdsl.Commands;
 import esir.compilation.whdsl.Definition;
+import esir.compilation.whdsl.Exprs;
 import esir.compilation.whdsl.Function;
 import esir.compilation.whdsl.Input;
 import esir.compilation.whdsl.Output;
 import esir.compilation.whdsl.Program;
+import esir.compilation.whdsl.Vars;
 import esir.compilation.whdsl.WhdslPackage;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -36,8 +40,17 @@ public class WhdslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == WhdslPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case WhdslPackage.COMMAND:
+				sequence_Command(context, (Command) semanticObject); 
+				return; 
+			case WhdslPackage.COMMANDS:
+				sequence_Commands(context, (Commands) semanticObject); 
+				return; 
 			case WhdslPackage.DEFINITION:
 				sequence_Definition(context, (Definition) semanticObject); 
+				return; 
+			case WhdslPackage.EXPRS:
+				sequence_Exprs(context, (Exprs) semanticObject); 
 				return; 
 			case WhdslPackage.FUNCTION:
 				sequence_Function(context, (Function) semanticObject); 
@@ -51,6 +64,9 @@ public class WhdslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case WhdslPackage.PROGRAM:
 				sequence_Program(context, (Program) semanticObject); 
 				return; 
+			case WhdslPackage.VARS:
+				sequence_Vars(context, (Vars) semanticObject); 
+				return; 
 			}
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
@@ -58,22 +74,61 @@ public class WhdslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
+	 *     Command returns Command
+	 *
+	 * Constraint:
+	 *     (nop=NOP | (vars=Vars expression=Exprs))
+	 */
+	protected void sequence_Command(ISerializationContext context, Command semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Commands returns Commands
+	 *
+	 * Constraint:
+	 *     (commands+=Command commands+=Command*)
+	 */
+	protected void sequence_Commands(ISerializationContext context, Commands semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Definition returns Definition
 	 *
 	 * Constraint:
-	 *     (input=Input output=Output)
+	 *     (input=Input commands=Commands output=Output)
 	 */
 	protected void sequence_Definition(ISerializationContext context, Definition semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.DEFINITION__INPUT) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.DEFINITION__INPUT));
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.DEFINITION__COMMANDS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.DEFINITION__COMMANDS));
 			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.DEFINITION__OUTPUT) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.DEFINITION__OUTPUT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getDefinitionAccess().getInputInputParserRuleCall_0_0(), semanticObject.getInput());
-		feeder.accept(grammarAccess.getDefinitionAccess().getOutputOutputParserRuleCall_3_0(), semanticObject.getOutput());
+		feeder.accept(grammarAccess.getDefinitionAccess().getCommandsCommandsParserRuleCall_2_0(), semanticObject.getCommands());
+		feeder.accept(grammarAccess.getDefinitionAccess().getOutputOutputParserRuleCall_4_0(), semanticObject.getOutput());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Exprs returns Exprs
+	 *
+	 * Constraint:
+	 *     (expr+=Expr expr+=Expr*)
+	 */
+	protected void sequence_Exprs(ISerializationContext context, Exprs semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -130,6 +185,18 @@ public class WhdslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     function+=Function+
 	 */
 	protected void sequence_Program(ISerializationContext context, Program semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Vars returns Vars
+	 *
+	 * Constraint:
+	 *     (variable+=VARIABLE vars+=Vars*)
+	 */
+	protected void sequence_Vars(ISerializationContext context, Vars semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

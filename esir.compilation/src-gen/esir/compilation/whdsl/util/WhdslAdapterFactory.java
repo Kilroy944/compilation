@@ -101,6 +101,26 @@ public class WhdslAdapterFactory extends AdapterFactoryImpl
         return createOutputAdapter();
       }
       @Override
+      public Adapter caseCommands(Commands object)
+      {
+        return createCommandsAdapter();
+      }
+      @Override
+      public Adapter caseCommand(Command object)
+      {
+        return createCommandAdapter();
+      }
+      @Override
+      public Adapter caseVars(Vars object)
+      {
+        return createVarsAdapter();
+      }
+      @Override
+      public Adapter caseExprs(Exprs object)
+      {
+        return createExprsAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -193,6 +213,66 @@ public class WhdslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createOutputAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.Commands <em>Commands</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see esir.compilation.whdsl.Commands
+   * @generated
+   */
+  public Adapter createCommandsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.Command <em>Command</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see esir.compilation.whdsl.Command
+   * @generated
+   */
+  public Adapter createCommandAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.Vars <em>Vars</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see esir.compilation.whdsl.Vars
+   * @generated
+   */
+  public Adapter createVarsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.Exprs <em>Exprs</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see esir.compilation.whdsl.Exprs
+   * @generated
+   */
+  public Adapter createExprsAdapter()
   {
     return null;
   }

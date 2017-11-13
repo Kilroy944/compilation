@@ -12,11 +12,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.Definition#getInput <em>Input</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.Definition#getCommands <em>Commands</em>}</li>
  *   <li>{@link esir.compilation.whdsl.Definition#getOutput <em>Output</em>}</li>
  * </ul>
- * </p>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getDefinition()
  * @model
@@ -49,6 +50,32 @@ public interface Definition extends EObject
    * @generated
    */
   void setInput(Input value);
+
+  /**
+   * Returns the value of the '<em><b>Commands</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Commands</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Commands</em>' containment reference.
+   * @see #setCommands(Commands)
+   * @see esir.compilation.whdsl.WhdslPackage#getDefinition_Commands()
+   * @model containment="true"
+   * @generated
+   */
+  Commands getCommands();
+
+  /**
+   * Sets the value of the '{@link esir.compilation.whdsl.Definition#getCommands <em>Commands</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Commands</em>' containment reference.
+   * @see #getCommands()
+   * @generated
+   */
+  void setCommands(Commands value);
 
   /**
    * Returns the value of the '<em><b>Output</b></em>' containment reference.

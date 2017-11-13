@@ -3,8 +3,8 @@
  */
 package esir.compilation.whdsl.impl;
 
-import esir.compilation.whdsl.Function;
-import esir.compilation.whdsl.Program;
+import esir.compilation.whdsl.Command;
+import esir.compilation.whdsl.Commands;
 import esir.compilation.whdsl.WhdslPackage;
 
 import java.util.Collection;
@@ -23,35 +23,35 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Program</b></em>'.
+ * An implementation of the model object '<em><b>Commands</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.ProgramImpl#getFunction <em>Function</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.CommandsImpl#getCommands <em>Commands</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
+public class CommandsImpl extends MinimalEObjectImpl.Container implements Commands
 {
   /**
-   * The cached value of the '{@link #getFunction() <em>Function</em>}' containment reference list.
+   * The cached value of the '{@link #getCommands() <em>Commands</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFunction()
+   * @see #getCommands()
    * @generated
    * @ordered
    */
-  protected EList<Function> function;
+  protected EList<Command> commands;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ProgramImpl()
+  protected CommandsImpl()
   {
     super();
   }
@@ -64,7 +64,7 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   @Override
   protected EClass eStaticClass()
   {
-    return WhdslPackage.Literals.PROGRAM;
+    return WhdslPackage.Literals.COMMANDS;
   }
 
   /**
@@ -72,13 +72,13 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Function> getFunction()
+  public EList<Command> getCommands()
   {
-    if (function == null)
+    if (commands == null)
     {
-      function = new EObjectContainmentEList<Function>(Function.class, this, WhdslPackage.PROGRAM__FUNCTION);
+      commands = new EObjectContainmentEList<Command>(Command.class, this, WhdslPackage.COMMANDS__COMMANDS);
     }
-    return function;
+    return commands;
   }
 
   /**
@@ -91,8 +91,8 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case WhdslPackage.PROGRAM__FUNCTION:
-        return ((InternalEList<?>)getFunction()).basicRemove(otherEnd, msgs);
+      case WhdslPackage.COMMANDS__COMMANDS:
+        return ((InternalEList<?>)getCommands()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -107,8 +107,8 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case WhdslPackage.PROGRAM__FUNCTION:
-        return getFunction();
+      case WhdslPackage.COMMANDS__COMMANDS:
+        return getCommands();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -124,9 +124,9 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case WhdslPackage.PROGRAM__FUNCTION:
-        getFunction().clear();
-        getFunction().addAll((Collection<? extends Function>)newValue);
+      case WhdslPackage.COMMANDS__COMMANDS:
+        getCommands().clear();
+        getCommands().addAll((Collection<? extends Command>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -142,8 +142,8 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case WhdslPackage.PROGRAM__FUNCTION:
-        getFunction().clear();
+      case WhdslPackage.COMMANDS__COMMANDS:
+        getCommands().clear();
         return;
     }
     super.eUnset(featureID);
@@ -159,10 +159,10 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case WhdslPackage.PROGRAM__FUNCTION:
-        return function != null && !function.isEmpty();
+      case WhdslPackage.COMMANDS__COMMANDS:
+        return commands != null && !commands.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //ProgramImpl
+} //CommandsImpl

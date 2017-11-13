@@ -12,6 +12,7 @@ Function:
 
 Definition:
 	input=Input'%'
+	commands = Commands
 	'%'output=Output
 ;
 
@@ -31,11 +32,30 @@ Output:
 
 
 /*COMMAND */
-/*	
+
+
 Commands:
 	commands+=Command (';' commands+=Command)*
 ;
 
+Command:
+	nop=NOP| (vars=Vars':='expression=Exprs)	
+;
+
+Vars:
+	variable+=VARIABLE(','vars+=Vars)*
+;	
+
+Exprs: 	
+  expr+=Expr(','expr+=Expr)*
+;
+
+
+Expr:
+	"1"
+;
+
+/*
 Command:
    cmd=(Nop | Affect | If | For | While)
 ;
@@ -112,6 +132,10 @@ ExprEq:
 
 terminal NIL:
 	'Nil' | 'nil'
+;
+
+terminal NOP:
+	'nop'
 ;
 	
 /*TERMINAL */	

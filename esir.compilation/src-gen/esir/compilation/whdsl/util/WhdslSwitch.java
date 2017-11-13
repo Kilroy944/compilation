@@ -51,7 +51,7 @@ public class WhdslSwitch<T> extends Switch<T>
    * Checks whether this is a switch for the given package.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @parameter ePackage the package in question.
+   * @param ePackage the package in question.
    * @return whether this is a switch for the given package.
    * @generated
    */
@@ -105,6 +105,34 @@ public class WhdslSwitch<T> extends Switch<T>
       {
         Output output = (Output)theEObject;
         T result = caseOutput(output);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WhdslPackage.COMMANDS:
+      {
+        Commands commands = (Commands)theEObject;
+        T result = caseCommands(commands);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WhdslPackage.COMMAND:
+      {
+        Command command = (Command)theEObject;
+        T result = caseCommand(command);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WhdslPackage.VARS:
+      {
+        Vars vars = (Vars)theEObject;
+        T result = caseVars(vars);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WhdslPackage.EXPRS:
+      {
+        Exprs exprs = (Exprs)theEObject;
+        T result = caseExprs(exprs);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -188,6 +216,70 @@ public class WhdslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseOutput(Output object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Commands</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Commands</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCommands(Commands object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Command</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Command</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCommand(Command object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Vars</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Vars</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVars(Vars object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Exprs</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Exprs</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExprs(Exprs object)
   {
     return null;
   }

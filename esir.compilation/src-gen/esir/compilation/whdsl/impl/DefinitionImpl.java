@@ -3,6 +3,7 @@
  */
 package esir.compilation.whdsl.impl;
 
+import esir.compilation.whdsl.Commands;
 import esir.compilation.whdsl.Definition;
 import esir.compilation.whdsl.Input;
 import esir.compilation.whdsl.Output;
@@ -23,11 +24,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.impl.DefinitionImpl#getInput <em>Input</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.DefinitionImpl#getCommands <em>Commands</em>}</li>
  *   <li>{@link esir.compilation.whdsl.impl.DefinitionImpl#getOutput <em>Output</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -42,6 +44,16 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
    * @ordered
    */
   protected Input input;
+
+  /**
+   * The cached value of the '{@link #getCommands() <em>Commands</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCommands()
+   * @generated
+   * @ordered
+   */
+  protected Commands commands;
 
   /**
    * The cached value of the '{@link #getOutput() <em>Output</em>}' containment reference.
@@ -127,6 +139,54 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
    * <!-- end-user-doc -->
    * @generated
    */
+  public Commands getCommands()
+  {
+    return commands;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetCommands(Commands newCommands, NotificationChain msgs)
+  {
+    Commands oldCommands = commands;
+    commands = newCommands;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.DEFINITION__COMMANDS, oldCommands, newCommands);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCommands(Commands newCommands)
+  {
+    if (newCommands != commands)
+    {
+      NotificationChain msgs = null;
+      if (commands != null)
+        msgs = ((InternalEObject)commands).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.DEFINITION__COMMANDS, null, msgs);
+      if (newCommands != null)
+        msgs = ((InternalEObject)newCommands).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.DEFINITION__COMMANDS, null, msgs);
+      msgs = basicSetCommands(newCommands, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.DEFINITION__COMMANDS, newCommands, newCommands));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Output getOutput()
   {
     return output;
@@ -182,6 +242,8 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
     {
       case WhdslPackage.DEFINITION__INPUT:
         return basicSetInput(null, msgs);
+      case WhdslPackage.DEFINITION__COMMANDS:
+        return basicSetCommands(null, msgs);
       case WhdslPackage.DEFINITION__OUTPUT:
         return basicSetOutput(null, msgs);
     }
@@ -200,6 +262,8 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
     {
       case WhdslPackage.DEFINITION__INPUT:
         return getInput();
+      case WhdslPackage.DEFINITION__COMMANDS:
+        return getCommands();
       case WhdslPackage.DEFINITION__OUTPUT:
         return getOutput();
     }
@@ -218,6 +282,9 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
     {
       case WhdslPackage.DEFINITION__INPUT:
         setInput((Input)newValue);
+        return;
+      case WhdslPackage.DEFINITION__COMMANDS:
+        setCommands((Commands)newValue);
         return;
       case WhdslPackage.DEFINITION__OUTPUT:
         setOutput((Output)newValue);
@@ -239,6 +306,9 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
       case WhdslPackage.DEFINITION__INPUT:
         setInput((Input)null);
         return;
+      case WhdslPackage.DEFINITION__COMMANDS:
+        setCommands((Commands)null);
+        return;
       case WhdslPackage.DEFINITION__OUTPUT:
         setOutput((Output)null);
         return;
@@ -258,6 +328,8 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
     {
       case WhdslPackage.DEFINITION__INPUT:
         return input != null;
+      case WhdslPackage.DEFINITION__COMMANDS:
+        return commands != null;
       case WhdslPackage.DEFINITION__OUTPUT:
         return output != null;
     }

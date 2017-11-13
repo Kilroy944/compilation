@@ -31,21 +31,39 @@ public class WhdslParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
+					put(grammarAccess.getCommandAccess().getAlternatives(), "rule__Command__Alternatives");
 					put(grammarAccess.getFunctionAccess().getGroup(), "rule__Function__Group__0");
 					put(grammarAccess.getDefinitionAccess().getGroup(), "rule__Definition__Group__0");
 					put(grammarAccess.getInputAccess().getGroup(), "rule__Input__Group__0");
 					put(grammarAccess.getInputAccess().getGroup_2(), "rule__Input__Group_2__0");
 					put(grammarAccess.getOutputAccess().getGroup(), "rule__Output__Group__0");
 					put(grammarAccess.getOutputAccess().getGroup_2(), "rule__Output__Group_2__0");
+					put(grammarAccess.getCommandsAccess().getGroup(), "rule__Commands__Group__0");
+					put(grammarAccess.getCommandsAccess().getGroup_1(), "rule__Commands__Group_1__0");
+					put(grammarAccess.getCommandAccess().getGroup_1(), "rule__Command__Group_1__0");
+					put(grammarAccess.getVarsAccess().getGroup(), "rule__Vars__Group__0");
+					put(grammarAccess.getVarsAccess().getGroup_1(), "rule__Vars__Group_1__0");
+					put(grammarAccess.getExprsAccess().getGroup(), "rule__Exprs__Group__0");
+					put(grammarAccess.getExprsAccess().getGroup_1(), "rule__Exprs__Group_1__0");
 					put(grammarAccess.getProgramAccess().getFunctionAssignment(), "rule__Program__FunctionAssignment");
 					put(grammarAccess.getFunctionAccess().getNameAssignment_1(), "rule__Function__NameAssignment_1");
 					put(grammarAccess.getFunctionAccess().getDefinitionAssignment_3(), "rule__Function__DefinitionAssignment_3");
 					put(grammarAccess.getDefinitionAccess().getInputAssignment_0(), "rule__Definition__InputAssignment_0");
-					put(grammarAccess.getDefinitionAccess().getOutputAssignment_3(), "rule__Definition__OutputAssignment_3");
+					put(grammarAccess.getDefinitionAccess().getCommandsAssignment_2(), "rule__Definition__CommandsAssignment_2");
+					put(grammarAccess.getDefinitionAccess().getOutputAssignment_4(), "rule__Definition__OutputAssignment_4");
 					put(grammarAccess.getInputAccess().getVariablesAssignment_1(), "rule__Input__VariablesAssignment_1");
 					put(grammarAccess.getInputAccess().getVariablesAssignment_2_1(), "rule__Input__VariablesAssignment_2_1");
 					put(grammarAccess.getOutputAccess().getVariablesAssignment_1(), "rule__Output__VariablesAssignment_1");
 					put(grammarAccess.getOutputAccess().getVariablesAssignment_2_1(), "rule__Output__VariablesAssignment_2_1");
+					put(grammarAccess.getCommandsAccess().getCommandsAssignment_0(), "rule__Commands__CommandsAssignment_0");
+					put(grammarAccess.getCommandsAccess().getCommandsAssignment_1_1(), "rule__Commands__CommandsAssignment_1_1");
+					put(grammarAccess.getCommandAccess().getNopAssignment_0(), "rule__Command__NopAssignment_0");
+					put(grammarAccess.getCommandAccess().getVarsAssignment_1_0(), "rule__Command__VarsAssignment_1_0");
+					put(grammarAccess.getCommandAccess().getExpressionAssignment_1_2(), "rule__Command__ExpressionAssignment_1_2");
+					put(grammarAccess.getVarsAccess().getVariableAssignment_0(), "rule__Vars__VariableAssignment_0");
+					put(grammarAccess.getVarsAccess().getVarsAssignment_1_1(), "rule__Vars__VarsAssignment_1_1");
+					put(grammarAccess.getExprsAccess().getExprAssignment_0(), "rule__Exprs__ExprAssignment_0");
+					put(grammarAccess.getExprsAccess().getExprAssignment_1_1(), "rule__Exprs__ExprAssignment_1_1");
 				}
 			};
 		}

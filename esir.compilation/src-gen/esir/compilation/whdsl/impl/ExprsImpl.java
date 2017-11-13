@@ -3,55 +3,50 @@
  */
 package esir.compilation.whdsl.impl;
 
-import esir.compilation.whdsl.Function;
-import esir.compilation.whdsl.Program;
+import esir.compilation.whdsl.Exprs;
 import esir.compilation.whdsl.WhdslPackage;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Program</b></em>'.
+ * An implementation of the model object '<em><b>Exprs</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.ProgramImpl#getFunction <em>Function</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.ExprsImpl#getExpr <em>Expr</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
+public class ExprsImpl extends MinimalEObjectImpl.Container implements Exprs
 {
   /**
-   * The cached value of the '{@link #getFunction() <em>Function</em>}' containment reference list.
+   * The cached value of the '{@link #getExpr() <em>Expr</em>}' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFunction()
+   * @see #getExpr()
    * @generated
    * @ordered
    */
-  protected EList<Function> function;
+  protected EList<String> expr;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ProgramImpl()
+  protected ExprsImpl()
   {
     super();
   }
@@ -64,7 +59,7 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   @Override
   protected EClass eStaticClass()
   {
-    return WhdslPackage.Literals.PROGRAM;
+    return WhdslPackage.Literals.EXPRS;
   }
 
   /**
@@ -72,29 +67,13 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Function> getFunction()
+  public EList<String> getExpr()
   {
-    if (function == null)
+    if (expr == null)
     {
-      function = new EObjectContainmentEList<Function>(Function.class, this, WhdslPackage.PROGRAM__FUNCTION);
+      expr = new EDataTypeEList<String>(String.class, this, WhdslPackage.EXPRS__EXPR);
     }
-    return function;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case WhdslPackage.PROGRAM__FUNCTION:
-        return ((InternalEList<?>)getFunction()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+    return expr;
   }
 
   /**
@@ -107,8 +86,8 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case WhdslPackage.PROGRAM__FUNCTION:
-        return getFunction();
+      case WhdslPackage.EXPRS__EXPR:
+        return getExpr();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -124,9 +103,9 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case WhdslPackage.PROGRAM__FUNCTION:
-        getFunction().clear();
-        getFunction().addAll((Collection<? extends Function>)newValue);
+      case WhdslPackage.EXPRS__EXPR:
+        getExpr().clear();
+        getExpr().addAll((Collection<? extends String>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -142,8 +121,8 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case WhdslPackage.PROGRAM__FUNCTION:
-        getFunction().clear();
+      case WhdslPackage.EXPRS__EXPR:
+        getExpr().clear();
         return;
     }
     super.eUnset(featureID);
@@ -159,10 +138,27 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case WhdslPackage.PROGRAM__FUNCTION:
-        return function != null && !function.isEmpty();
+      case WhdslPackage.EXPRS__EXPR:
+        return expr != null && !expr.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //ProgramImpl
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (expr: ");
+    result.append(expr);
+    result.append(')');
+    return result.toString();
+  }
+
+} //ExprsImpl

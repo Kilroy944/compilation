@@ -69,6 +69,42 @@ public interface WhdslFactory extends EFactory
   Output createOutput();
 
   /**
+   * Returns a new object of class '<em>Commands</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Commands</em>'.
+   * @generated
+   */
+  Commands createCommands();
+
+  /**
+   * Returns a new object of class '<em>Command</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Command</em>'.
+   * @generated
+   */
+  Command createCommand();
+
+  /**
+   * Returns a new object of class '<em>Vars</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Vars</em>'.
+   * @generated
+   */
+  Vars createVars();
+
+  /**
+   * Returns a new object of class '<em>Exprs</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Exprs</em>'.
+   * @generated
+   */
+  Exprs createExprs();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
