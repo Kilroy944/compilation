@@ -560,20 +560,19 @@ ruleVars returns [EObject current=null]
 			}
 			(
 				(
+					lv_vars_2_0=RULE_VARIABLE
 					{
-						newCompositeNode(grammarAccess.getVarsAccess().getVarsVarsParserRuleCall_1_1_0());
+						newLeafNode(lv_vars_2_0, grammarAccess.getVarsAccess().getVarsVARIABLETerminalRuleCall_1_1_0());
 					}
-					lv_vars_2_0=ruleVars
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getVarsRule());
+							$current = createModelElement(grammarAccess.getVarsRule());
 						}
-						add(
+						addWithLastConsumed(
 							$current,
 							"vars",
 							lv_vars_2_0,
-							"esir.compilation.Whdsl.Vars");
-						afterParserOrEnumRuleCall();
+							"esir.compilation.Whdsl.VARIABLE");
 					}
 				)
 			)

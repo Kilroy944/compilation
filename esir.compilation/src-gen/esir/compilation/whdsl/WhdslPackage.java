@@ -318,7 +318,7 @@ public interface WhdslPackage extends EPackage
   int VARS__VARIABLE = 0;
 
   /**
-   * The feature id for the '<em><b>Vars</b></em>' containment reference list.
+   * The feature id for the '<em><b>Vars</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -597,15 +597,15 @@ public interface WhdslPackage extends EPackage
   EAttribute getVars_Variable();
 
   /**
-   * Returns the meta object for the containment reference list '{@link esir.compilation.whdsl.Vars#getVars <em>Vars</em>}'.
+   * Returns the meta object for the attribute list '{@link esir.compilation.whdsl.Vars#getVars <em>Vars</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Vars</em>'.
+   * @return the meta object for the attribute list '<em>Vars</em>'.
    * @see esir.compilation.whdsl.Vars#getVars()
    * @see #getVars()
    * @generated
    */
-  EReference getVars_Vars();
+  EAttribute getVars_Vars();
 
   /**
    * Returns the meta object for class '{@link esir.compilation.whdsl.Exprs <em>Exprs</em>}'.
@@ -847,12 +847,12 @@ public interface WhdslPackage extends EPackage
     EAttribute VARS__VARIABLE = eINSTANCE.getVars_Variable();
 
     /**
-     * The meta object literal for the '<em><b>Vars</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Vars</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference VARS__VARS = eINSTANCE.getVars_Vars();
+    EAttribute VARS__VARS = eINSTANCE.getVars_Vars();
 
     /**
      * The meta object literal for the '{@link esir.compilation.whdsl.impl.ExprsImpl <em>Exprs</em>}' class.

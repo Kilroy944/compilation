@@ -8,18 +8,13 @@ import esir.compilation.whdsl.WhdslPackage;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -48,14 +43,14 @@ public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
   protected EList<String> variable;
 
   /**
-   * The cached value of the '{@link #getVars() <em>Vars</em>}' containment reference list.
+   * The cached value of the '{@link #getVars() <em>Vars</em>}' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getVars()
    * @generated
    * @ordered
    */
-  protected EList<Vars> vars;
+  protected EList<String> vars;
 
   /**
    * <!-- begin-user-doc -->
@@ -97,29 +92,13 @@ public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Vars> getVars()
+  public EList<String> getVars()
   {
     if (vars == null)
     {
-      vars = new EObjectContainmentEList<Vars>(Vars.class, this, WhdslPackage.VARS__VARS);
+      vars = new EDataTypeEList<String>(String.class, this, WhdslPackage.VARS__VARS);
     }
     return vars;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case WhdslPackage.VARS__VARS:
-        return ((InternalEList<?>)getVars()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -157,7 +136,7 @@ public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
         return;
       case WhdslPackage.VARS__VARS:
         getVars().clear();
-        getVars().addAll((Collection<? extends Vars>)newValue);
+        getVars().addAll((Collection<? extends String>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -214,6 +193,8 @@ public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (variable: ");
     result.append(variable);
+    result.append(", vars: ");
+    result.append(vars);
     result.append(')');
     return result.toString();
   }

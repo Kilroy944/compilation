@@ -1484,9 +1484,9 @@ rule__Vars__VarsAssignment_1_1
 	}
 :
 	(
-		{ before(grammarAccess.getVarsAccess().getVarsVarsParserRuleCall_1_1_0()); }
-		ruleVars
-		{ after(grammarAccess.getVarsAccess().getVarsVarsParserRuleCall_1_1_0()); }
+		{ before(grammarAccess.getVarsAccess().getVarsVARIABLETerminalRuleCall_1_1_0()); }
+		RULE_VARIABLE
+		{ after(grammarAccess.getVarsAccess().getVarsVARIABLETerminalRuleCall_1_1_0()); }
 	)
 ;
 finally {

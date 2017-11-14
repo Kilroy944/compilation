@@ -1264,24 +1264,23 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVars"
-    // InternalWhdsl.g:530:1: ruleVars returns [EObject current=null] : ( ( (lv_variable_0_0= RULE_VARIABLE ) ) (otherlv_1= ',' ( (lv_vars_2_0= ruleVars ) ) )* ) ;
+    // InternalWhdsl.g:530:1: ruleVars returns [EObject current=null] : ( ( (lv_variable_0_0= RULE_VARIABLE ) ) (otherlv_1= ',' ( (lv_vars_2_0= RULE_VARIABLE ) ) )* ) ;
     public final EObject ruleVars() throws RecognitionException {
         EObject current = null;
 
         Token lv_variable_0_0=null;
         Token otherlv_1=null;
-        EObject lv_vars_2_0 = null;
-
+        Token lv_vars_2_0=null;
 
 
         	enterRule();
 
         try {
-            // InternalWhdsl.g:536:2: ( ( ( (lv_variable_0_0= RULE_VARIABLE ) ) (otherlv_1= ',' ( (lv_vars_2_0= ruleVars ) ) )* ) )
-            // InternalWhdsl.g:537:2: ( ( (lv_variable_0_0= RULE_VARIABLE ) ) (otherlv_1= ',' ( (lv_vars_2_0= ruleVars ) ) )* )
+            // InternalWhdsl.g:536:2: ( ( ( (lv_variable_0_0= RULE_VARIABLE ) ) (otherlv_1= ',' ( (lv_vars_2_0= RULE_VARIABLE ) ) )* ) )
+            // InternalWhdsl.g:537:2: ( ( (lv_variable_0_0= RULE_VARIABLE ) ) (otherlv_1= ',' ( (lv_vars_2_0= RULE_VARIABLE ) ) )* )
             {
-            // InternalWhdsl.g:537:2: ( ( (lv_variable_0_0= RULE_VARIABLE ) ) (otherlv_1= ',' ( (lv_vars_2_0= ruleVars ) ) )* )
-            // InternalWhdsl.g:538:3: ( (lv_variable_0_0= RULE_VARIABLE ) ) (otherlv_1= ',' ( (lv_vars_2_0= ruleVars ) ) )*
+            // InternalWhdsl.g:537:2: ( ( (lv_variable_0_0= RULE_VARIABLE ) ) (otherlv_1= ',' ( (lv_vars_2_0= RULE_VARIABLE ) ) )* )
+            // InternalWhdsl.g:538:3: ( (lv_variable_0_0= RULE_VARIABLE ) ) (otherlv_1= ',' ( (lv_vars_2_0= RULE_VARIABLE ) ) )*
             {
             // InternalWhdsl.g:538:3: ( (lv_variable_0_0= RULE_VARIABLE ) )
             // InternalWhdsl.g:539:4: (lv_variable_0_0= RULE_VARIABLE )
@@ -1309,7 +1308,7 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalWhdsl.g:556:3: (otherlv_1= ',' ( (lv_vars_2_0= ruleVars ) ) )*
+            // InternalWhdsl.g:556:3: (otherlv_1= ',' ( (lv_vars_2_0= RULE_VARIABLE ) ) )*
             loop6:
             do {
                 int alt6=2;
@@ -1322,36 +1321,31 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
 
                 switch (alt6) {
             	case 1 :
-            	    // InternalWhdsl.g:557:4: otherlv_1= ',' ( (lv_vars_2_0= ruleVars ) )
+            	    // InternalWhdsl.g:557:4: otherlv_1= ',' ( (lv_vars_2_0= RULE_VARIABLE ) )
             	    {
-            	    otherlv_1=(Token)match(input,19,FOLLOW_8); 
+            	    otherlv_1=(Token)match(input,19,FOLLOW_10); 
 
             	    				newLeafNode(otherlv_1, grammarAccess.getVarsAccess().getCommaKeyword_1_0());
             	    			
-            	    // InternalWhdsl.g:561:4: ( (lv_vars_2_0= ruleVars ) )
-            	    // InternalWhdsl.g:562:5: (lv_vars_2_0= ruleVars )
+            	    // InternalWhdsl.g:561:4: ( (lv_vars_2_0= RULE_VARIABLE ) )
+            	    // InternalWhdsl.g:562:5: (lv_vars_2_0= RULE_VARIABLE )
             	    {
-            	    // InternalWhdsl.g:562:5: (lv_vars_2_0= ruleVars )
-            	    // InternalWhdsl.g:563:6: lv_vars_2_0= ruleVars
+            	    // InternalWhdsl.g:562:5: (lv_vars_2_0= RULE_VARIABLE )
+            	    // InternalWhdsl.g:563:6: lv_vars_2_0= RULE_VARIABLE
             	    {
+            	    lv_vars_2_0=(Token)match(input,RULE_VARIABLE,FOLLOW_11); 
 
-            	    						newCompositeNode(grammarAccess.getVarsAccess().getVarsVarsParserRuleCall_1_1_0());
+            	    						newLeafNode(lv_vars_2_0, grammarAccess.getVarsAccess().getVarsVARIABLETerminalRuleCall_1_1_0());
             	    					
-            	    pushFollow(FOLLOW_11);
-            	    lv_vars_2_0=ruleVars();
-
-            	    state._fsp--;
-
 
             	    						if (current==null) {
-            	    							current = createModelElementForParent(grammarAccess.getVarsRule());
+            	    							current = createModelElement(grammarAccess.getVarsRule());
             	    						}
-            	    						add(
+            	    						addWithLastConsumed(
             	    							current,
             	    							"vars",
             	    							lv_vars_2_0,
-            	    							"esir.compilation.Whdsl.Vars");
-            	    						afterParserOrEnumRuleCall();
+            	    							"esir.compilation.Whdsl.VARIABLE");
             	    					
 
             	    }
@@ -1391,7 +1385,7 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleExprs"
-    // InternalWhdsl.g:585:1: entryRuleExprs returns [EObject current=null] : iv_ruleExprs= ruleExprs EOF ;
+    // InternalWhdsl.g:584:1: entryRuleExprs returns [EObject current=null] : iv_ruleExprs= ruleExprs EOF ;
     public final EObject entryRuleExprs() throws RecognitionException {
         EObject current = null;
 
@@ -1399,8 +1393,8 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalWhdsl.g:585:46: (iv_ruleExprs= ruleExprs EOF )
-            // InternalWhdsl.g:586:2: iv_ruleExprs= ruleExprs EOF
+            // InternalWhdsl.g:584:46: (iv_ruleExprs= ruleExprs EOF )
+            // InternalWhdsl.g:585:2: iv_ruleExprs= ruleExprs EOF
             {
              newCompositeNode(grammarAccess.getExprsRule()); 
             pushFollow(FOLLOW_1);
@@ -1427,7 +1421,7 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleExprs"
-    // InternalWhdsl.g:592:1: ruleExprs returns [EObject current=null] : ( ( (lv_expr_0_0= ruleExpr ) ) (otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) ) )* ) ;
+    // InternalWhdsl.g:591:1: ruleExprs returns [EObject current=null] : ( ( (lv_expr_0_0= ruleExpr ) ) (otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) ) )* ) ;
     public final EObject ruleExprs() throws RecognitionException {
         EObject current = null;
 
@@ -1441,17 +1435,17 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalWhdsl.g:598:2: ( ( ( (lv_expr_0_0= ruleExpr ) ) (otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) ) )* ) )
-            // InternalWhdsl.g:599:2: ( ( (lv_expr_0_0= ruleExpr ) ) (otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) ) )* )
+            // InternalWhdsl.g:597:2: ( ( ( (lv_expr_0_0= ruleExpr ) ) (otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) ) )* ) )
+            // InternalWhdsl.g:598:2: ( ( (lv_expr_0_0= ruleExpr ) ) (otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) ) )* )
             {
-            // InternalWhdsl.g:599:2: ( ( (lv_expr_0_0= ruleExpr ) ) (otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) ) )* )
-            // InternalWhdsl.g:600:3: ( (lv_expr_0_0= ruleExpr ) ) (otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) ) )*
+            // InternalWhdsl.g:598:2: ( ( (lv_expr_0_0= ruleExpr ) ) (otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) ) )* )
+            // InternalWhdsl.g:599:3: ( (lv_expr_0_0= ruleExpr ) ) (otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) ) )*
             {
-            // InternalWhdsl.g:600:3: ( (lv_expr_0_0= ruleExpr ) )
-            // InternalWhdsl.g:601:4: (lv_expr_0_0= ruleExpr )
+            // InternalWhdsl.g:599:3: ( (lv_expr_0_0= ruleExpr ) )
+            // InternalWhdsl.g:600:4: (lv_expr_0_0= ruleExpr )
             {
-            // InternalWhdsl.g:601:4: (lv_expr_0_0= ruleExpr )
-            // InternalWhdsl.g:602:5: lv_expr_0_0= ruleExpr
+            // InternalWhdsl.g:600:4: (lv_expr_0_0= ruleExpr )
+            // InternalWhdsl.g:601:5: lv_expr_0_0= ruleExpr
             {
 
             					newCompositeNode(grammarAccess.getExprsAccess().getExprExprParserRuleCall_0_0());
@@ -1478,7 +1472,7 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalWhdsl.g:619:3: (otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) ) )*
+            // InternalWhdsl.g:618:3: (otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) ) )*
             loop7:
             do {
                 int alt7=2;
@@ -1491,17 +1485,17 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalWhdsl.g:620:4: otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) )
+            	    // InternalWhdsl.g:619:4: otherlv_1= ',' ( (lv_exprs_2_0= ruleExpr ) )
             	    {
             	    otherlv_1=(Token)match(input,19,FOLLOW_14); 
 
             	    				newLeafNode(otherlv_1, grammarAccess.getExprsAccess().getCommaKeyword_1_0());
             	    			
-            	    // InternalWhdsl.g:624:4: ( (lv_exprs_2_0= ruleExpr ) )
-            	    // InternalWhdsl.g:625:5: (lv_exprs_2_0= ruleExpr )
+            	    // InternalWhdsl.g:623:4: ( (lv_exprs_2_0= ruleExpr ) )
+            	    // InternalWhdsl.g:624:5: (lv_exprs_2_0= ruleExpr )
             	    {
-            	    // InternalWhdsl.g:625:5: (lv_exprs_2_0= ruleExpr )
-            	    // InternalWhdsl.g:626:6: lv_exprs_2_0= ruleExpr
+            	    // InternalWhdsl.g:624:5: (lv_exprs_2_0= ruleExpr )
+            	    // InternalWhdsl.g:625:6: lv_exprs_2_0= ruleExpr
             	    {
 
             	    						newCompositeNode(grammarAccess.getExprsAccess().getExprsExprParserRuleCall_1_1_0());
@@ -1560,7 +1554,7 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleExpr"
-    // InternalWhdsl.g:648:1: entryRuleExpr returns [String current=null] : iv_ruleExpr= ruleExpr EOF ;
+    // InternalWhdsl.g:647:1: entryRuleExpr returns [String current=null] : iv_ruleExpr= ruleExpr EOF ;
     public final String entryRuleExpr() throws RecognitionException {
         String current = null;
 
@@ -1568,8 +1562,8 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalWhdsl.g:648:44: (iv_ruleExpr= ruleExpr EOF )
-            // InternalWhdsl.g:649:2: iv_ruleExpr= ruleExpr EOF
+            // InternalWhdsl.g:647:44: (iv_ruleExpr= ruleExpr EOF )
+            // InternalWhdsl.g:648:2: iv_ruleExpr= ruleExpr EOF
             {
              newCompositeNode(grammarAccess.getExprRule()); 
             pushFollow(FOLLOW_1);
@@ -1596,7 +1590,7 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleExpr"
-    // InternalWhdsl.g:655:1: ruleExpr returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= '1' ;
+    // InternalWhdsl.g:654:1: ruleExpr returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= '1' ;
     public final AntlrDatatypeRuleToken ruleExpr() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -1606,8 +1600,8 @@ public class InternalWhdslParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalWhdsl.g:661:2: (kw= '1' )
-            // InternalWhdsl.g:662:2: kw= '1'
+            // InternalWhdsl.g:660:2: (kw= '1' )
+            // InternalWhdsl.g:661:2: kw= '1'
             {
             kw=(Token)match(input,23,FOLLOW_2); 
 

@@ -371,9 +371,9 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getVars_Vars()
+  public EAttribute getVars_Vars()
   {
-    return (EReference)varsEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)varsEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -464,7 +464,7 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
 
     varsEClass = createEClass(VARS);
     createEAttribute(varsEClass, VARS__VARIABLE);
-    createEReference(varsEClass, VARS__VARS);
+    createEAttribute(varsEClass, VARS__VARS);
 
     exprsEClass = createEClass(EXPRS);
     createEAttribute(exprsEClass, EXPRS__EXPR);
@@ -530,7 +530,7 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
 
     initEClass(varsEClass, Vars.class, "Vars", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVars_Variable(), ecorePackage.getEString(), "variable", null, 0, -1, Vars.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getVars_Vars(), this.getVars(), null, "vars", null, 0, -1, Vars.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVars_Vars(), ecorePackage.getEString(), "vars", null, 0, -1, Vars.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(exprsEClass, Exprs.class, "Exprs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getExprs_Expr(), ecorePackage.getEString(), "expr", null, 0, -1, Exprs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

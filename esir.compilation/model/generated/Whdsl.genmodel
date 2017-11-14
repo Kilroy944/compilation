@@ -34,7 +34,7 @@
     </genClasses>
     <genClasses ecoreClass="Whdsl.ecore#//Vars">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//Vars/variable"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Vars/vars"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//Vars/vars"/>
     </genClasses>
     <genClasses ecoreClass="Whdsl.ecore#//Exprs">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//Exprs/expr"/>

@@ -281,13 +281,13 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cCommaKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Assignment cVarsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cVarsVarsParserRuleCall_1_1_0 = (RuleCall)cVarsAssignment_1_1.eContents().get(0);
+		private final RuleCall cVarsVARIABLETerminalRuleCall_1_1_0 = (RuleCall)cVarsAssignment_1_1.eContents().get(0);
 		
 		//Vars:
-		//	variable+=VARIABLE (',' vars+=Vars)*;
+		//	variable+=VARIABLE (',' vars+=VARIABLE)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//variable+=VARIABLE (',' vars+=Vars)*
+		//variable+=VARIABLE (',' vars+=VARIABLE)*
 		public Group getGroup() { return cGroup; }
 		
 		//variable+=VARIABLE
@@ -296,17 +296,17 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 		//VARIABLE
 		public RuleCall getVariableVARIABLETerminalRuleCall_0_0() { return cVariableVARIABLETerminalRuleCall_0_0; }
 		
-		//(',' vars+=Vars)*
+		//(',' vars+=VARIABLE)*
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//','
 		public Keyword getCommaKeyword_1_0() { return cCommaKeyword_1_0; }
 		
-		//vars+=Vars
+		//vars+=VARIABLE
 		public Assignment getVarsAssignment_1_1() { return cVarsAssignment_1_1; }
 		
-		//Vars
-		public RuleCall getVarsVarsParserRuleCall_1_1_0() { return cVarsVarsParserRuleCall_1_1_0; }
+		//VARIABLE
+		public RuleCall getVarsVARIABLETerminalRuleCall_1_1_0() { return cVarsVARIABLETerminalRuleCall_1_1_0; }
 	}
 	public class ExprsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.Exprs");
@@ -496,7 +496,7 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Vars:
-	//	variable+=VARIABLE (',' vars+=Vars)*;
+	//	variable+=VARIABLE (',' vars+=VARIABLE)*;
 	public VarsElements getVarsAccess() {
 		return pVars;
 	}

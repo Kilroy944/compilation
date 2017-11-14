@@ -27,7 +27,7 @@ class WhdslGenerator extends AbstractGenerator {
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		for (e : resource.allContents.toIterable.filter(typeof(Program))){
-			fsa.generateFile("sortie.whdsl",	e.compile())
+			fsa.generateFile("sortie.whdsl", e.compile())
 		}
 	}
 	

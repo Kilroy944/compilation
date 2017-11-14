@@ -194,7 +194,7 @@ public class WhdslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Vars returns Vars
 	 *
 	 * Constraint:
-	 *     (variable+=VARIABLE vars+=Vars*)
+	 *     (variable+=VARIABLE vars+=VARIABLE*)
 	 */
 	protected void sequence_Vars(ISerializationContext context, Vars semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

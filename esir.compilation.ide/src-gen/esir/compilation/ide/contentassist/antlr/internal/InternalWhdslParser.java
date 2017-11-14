@@ -3262,7 +3262,7 @@ public class InternalWhdslParser extends AbstractInternalContentAssistParser {
             // InternalWhdsl.g:1083:1: ( rule__Vars__Group_1__0__Impl rule__Vars__Group_1__1 )
             // InternalWhdsl.g:1084:2: rule__Vars__Group_1__0__Impl rule__Vars__Group_1__1
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_10);
             rule__Vars__Group_1__0__Impl();
 
             state._fsp--;
@@ -4374,25 +4374,21 @@ public class InternalWhdslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Vars__VarsAssignment_1_1"
-    // InternalWhdsl.g:1481:1: rule__Vars__VarsAssignment_1_1 : ( ruleVars ) ;
+    // InternalWhdsl.g:1481:1: rule__Vars__VarsAssignment_1_1 : ( RULE_VARIABLE ) ;
     public final void rule__Vars__VarsAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalWhdsl.g:1485:1: ( ( ruleVars ) )
-            // InternalWhdsl.g:1486:2: ( ruleVars )
+            // InternalWhdsl.g:1485:1: ( ( RULE_VARIABLE ) )
+            // InternalWhdsl.g:1486:2: ( RULE_VARIABLE )
             {
-            // InternalWhdsl.g:1486:2: ( ruleVars )
-            // InternalWhdsl.g:1487:3: ruleVars
+            // InternalWhdsl.g:1486:2: ( RULE_VARIABLE )
+            // InternalWhdsl.g:1487:3: RULE_VARIABLE
             {
-             before(grammarAccess.getVarsAccess().getVarsVarsParserRuleCall_1_1_0()); 
-            pushFollow(FOLLOW_2);
-            ruleVars();
-
-            state._fsp--;
-
-             after(grammarAccess.getVarsAccess().getVarsVarsParserRuleCall_1_1_0()); 
+             before(grammarAccess.getVarsAccess().getVarsVARIABLETerminalRuleCall_1_1_0()); 
+            match(input,RULE_VARIABLE,FOLLOW_2); 
+             after(grammarAccess.getVarsAccess().getVarsVARIABLETerminalRuleCall_1_1_0()); 
 
             }
 
