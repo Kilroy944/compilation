@@ -27,9 +27,10 @@ class WhdslGenerator extends AbstractGenerator {
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		for (e : resource.allContents.toIterable.filter(typeof(Program))){
-			fsa.generateFile("result_output.whpp",	e.compile())
+			fsa.generateFile("sortie.whdsl",	e.compile())
 		}
 	}
+	
 	def doGenerate (Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context, String sortie) {
 		for (e : resource.allContents.toIterable.filter(typeof(Program))){
 			fsa.generateFile(sortie, e.compile())
@@ -54,7 +55,7 @@ class WhdslGenerator extends AbstractGenerator {
 	
 	def compile(Command c){
 				
-		if(c.getNop() != null){
+		if(c.nop != null){
 		'''nop'''
 		}
 		else{

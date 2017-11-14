@@ -1,11 +1,13 @@
 function fonctiona : 
-	read B,B %
-	nop
-	 % write A,B,C
+	read B,B % nop	 % write A,B,C
 
-function fonctionb : 
-	read A %
-	A:=1;
-	A,B,C:=1,1,1
-	 % write A,B,C
+function fonctionb : read A %
+	A:=1;A,B,C:=1,1,1
+	  % write A,B,C
+	 
+	 
+	 
+	 
+	 
+	 
 	 

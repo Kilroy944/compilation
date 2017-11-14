@@ -22,49 +22,56 @@ import esir.compilation.WhdslStandaloneSetupGenerated;
 
 public class Main {
 	
-	private static final boolean isDebugMode =true;
+	
+	//Injection class Google Guice
 
+	@Inject
+	private IResourceValidator validator;
+	@Inject
+	private WhdslGenerator generator;
+	@Inject
+	private Provider<ResourceSet> resourceSetProvider;
+	@Inject 
+	private JavaIoFileSystemAccess file;
+	
+	
 	public static void main(String[] args) throws ErrorPrettyPrinterException {
-		System.out.println("Début du pretty printing ...");
+		
+		System.out.println("START Pretty printing");
+		
 		Injector injector = new WhdslStandaloneSetupGenerated().createInjectorAndDoEMFRegistration();
 		Main main = injector.getInstance(Main.class);
 		main.runGenerator("test.whdsl","sortie.whdsl");
 		
-		System.out.println("Pretty printing terminé");
+		System.out.println("END Pretty printing");
 	}
+	
+	private int runGenerator(String string,String sortie) throws ErrorPrettyPrinterException{
 
-	@Inject
-	private Provider<ResourceSet> resourceSetProvider;
-
-	@Inject
-	private IResourceValidator validator;
-
-	@Inject
-	private WhdslGenerator generator;
-
-	@Inject 
-	private JavaIoFileSystemAccess fileAccess;
-
-	protected void runGenerator(String string,String sortie) throws ErrorPrettyPrinterException{
-		// Load the resource
-		ResourceSet set = resourceSetProvider.get();
-		Resource resource = set.getResource(URI.createFileURI(string), true);
+		ResourceSet resourceSet = resourceSetProvider.get();
+		Resource resource = resourceSet.getResource(URI.createFileURI(string), true);
 		
-		// Validate the resource
-		List<Issue> list = validator.validate(resource, CheckMode.ALL, CancelIndicator.NullImpl);
-		if (!list.isEmpty()) {
-			for (Issue issue : list) {
+		//Analyse du fichier
+		List<Issue> listIssue = validator.validate(resource,CheckMode.ALL, CancelIndicator.NullImpl);
+	
+		
+		//Affichage des erreurs rencontrées dans le fichier
+		if (!listIssue.isEmpty()) {
+			for (Issue issue : listIssue) {
 				throw new ErrorPrettyPrinterException(issue.getMessage());
 			}
-			return;
+			return -1;
 		}
 
-		// Configure and start the generator
-		fileAccess.setOutputPath("./");
+		
+		file.setOutputPath("./");
 		GeneratorContext context = new GeneratorContext();
 		context.setCancelIndicator(CancelIndicator.NullImpl);
-		generator.doGenerate(resource, fileAccess, context, sortie);
+		
+		generator.doGenerate(resource, file, context, sortie);
 
-		System.out.println("Succès");
+		System.out.println("Success");
+		
+		return 0;
 	}
 }

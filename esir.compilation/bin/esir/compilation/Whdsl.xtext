@@ -39,7 +39,7 @@ Commands:
 ;
 
 Command:
-	command=NOP| (vars=Vars':='expression=Exprs)	
+	nop=NOP| (vars=Vars':='expression=Exprs)	
 ;
 
 Vars:

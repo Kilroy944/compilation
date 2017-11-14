@@ -3,18 +3,14 @@
  */
 package esir.compilation.generator;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import esir.compilation.whdsl.Command;
-import esir.compilation.whdsl.Commands;
-import esir.compilation.whdsl.Definition;
 import esir.compilation.whdsl.Exprs;
 import esir.compilation.whdsl.Function;
-import esir.compilation.whdsl.Input;
-import esir.compilation.whdsl.Output;
 import esir.compilation.whdsl.Program;
 import esir.compilation.whdsl.Vars;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -32,22 +28,16 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 public class WhdslGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    TreeIterator<EObject> _allContents = resource.getAllContents();
-    Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
-    Iterable<Program> _filter = Iterables.<Program>filter(_iterable, Program.class);
+    Iterable<Program> _filter = Iterables.<Program>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Program.class);
     for (final Program e : _filter) {
-      CharSequence _compile = this.compile(e);
-      fsa.generateFile("result_output.whpp", _compile);
+      fsa.generateFile("sortie.whdsl", this.compile(e));
     }
   }
   
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context, final String sortie) {
-    TreeIterator<EObject> _allContents = resource.getAllContents();
-    Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
-    Iterable<Program> _filter = Iterables.<Program>filter(_iterable, Program.class);
+    Iterable<Program> _filter = Iterables.<Program>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Program.class);
     for (final Program e : _filter) {
-      CharSequence _compile = this.compile(e);
-      fsa.generateFile(sortie, _compile);
+      fsa.generateFile(sortie, this.compile(e));
     }
   }
   
@@ -57,7 +47,7 @@ public class WhdslGenerator extends AbstractGenerator {
       EList<Function> _function = p.getFunction();
       for(final Function f : _function) {
         CharSequence _compile = this.compile(f);
-        _builder.append(_compile, "");
+        _builder.append(_compile);
         _builder.newLineIfNotEmpty();
       }
     }
@@ -68,14 +58,12 @@ public class WhdslGenerator extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("function ");
     String _name = f.getName();
-    _builder.append(_name, "");
+    _builder.append(_name);
     _builder.append(":");
     _builder.newLineIfNotEmpty();
     _builder.append("read ");
     {
-      Definition _definition = f.getDefinition();
-      Input _input = _definition.getInput();
-      EList<String> _variables = _input.getVariables();
+      EList<String> _variables = f.getDefinition().getInput().getVariables();
       boolean _hasElements = false;
       for(final String param : _variables) {
         if (!_hasElements) {
@@ -83,27 +71,23 @@ public class WhdslGenerator extends AbstractGenerator {
         } else {
           _builder.appendImmediate(", ", "");
         }
-        _builder.append(param, "");
+        _builder.append(param);
       }
     }
     _builder.append("%");
     _builder.newLineIfNotEmpty();
     {
-      Definition _definition_1 = f.getDefinition();
-      Commands _commands = _definition_1.getCommands();
-      EList<Command> _commands_1 = _commands.getCommands();
-      for(final Command param_1 : _commands_1) {
+      EList<Command> _commands = f.getDefinition().getCommands().getCommands();
+      for(final Command param_1 : _commands) {
         CharSequence _compile = this.compile(param_1);
-        _builder.append(_compile, "");
+        _builder.append(_compile);
         _builder.append(";");
         _builder.newLineIfNotEmpty();
       }
     }
     _builder.append("%write ");
     {
-      Definition _definition_2 = f.getDefinition();
-      Output _output = _definition_2.getOutput();
-      EList<String> _variables_1 = _output.getVariables();
+      EList<String> _variables_1 = f.getDefinition().getOutput().getVariables();
       boolean _hasElements_1 = false;
       for(final String param_2 : _variables_1) {
         if (!_hasElements_1) {
@@ -111,28 +95,42 @@ public class WhdslGenerator extends AbstractGenerator {
         } else {
           _builder.appendImmediate(", ", "");
         }
-        _builder.append(param_2, "");
+        _builder.append(param_2);
       }
     }
     return _builder;
   }
   
   public CharSequence compile(final Command c) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method getNop() is undefined for the type Command"
-      + "\n!= cannot be resolved");
+    CharSequence _xifexpression = null;
+    String _nop = c.getNop();
+    boolean _notEquals = (!Objects.equal(_nop, null));
+    if (_notEquals) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("nop");
+      _xifexpression = _builder;
+    } else {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      CharSequence _compile = this.compile(c.getVars());
+      _builder_1.append(_compile);
+      _builder_1.append("=:");
+      CharSequence _compile_1 = this.compile(c.getExpression());
+      _builder_1.append(_compile_1);
+      _xifexpression = _builder_1;
+    }
+    return _xifexpression;
   }
   
   public CharSequence compile(final Vars v) {
     StringConcatenation _builder = new StringConcatenation();
     EList<String> _variable = v.getVariable();
-    _builder.append(_variable, "");
+    _builder.append(_variable);
     {
       EList<Vars> _vars = v.getVars();
       for(final Vars param : _vars) {
         _builder.append(",");
         Object _compile = this.compile(param);
-        _builder.append(_compile, "");
+        _builder.append(_compile);
       }
     }
     return _builder;
@@ -141,12 +139,12 @@ public class WhdslGenerator extends AbstractGenerator {
   public CharSequence compile(final Exprs e) {
     StringConcatenation _builder = new StringConcatenation();
     EList<String> _expr = e.getExpr();
-    _builder.append(_expr, "");
+    _builder.append(_expr);
     {
       EList<String> _exprs = e.getExprs();
       for(final String param : _exprs) {
         _builder.append(",");
-        _builder.append(param, "");
+        _builder.append(param);
       }
     }
     return _builder;
