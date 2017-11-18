@@ -3,74 +3,57 @@
  */
 package esir.compilation.whdsl.impl;
 
-import esir.compilation.whdsl.Vars;
+import esir.compilation.whdsl.Nop;
 import esir.compilation.whdsl.WhdslPackage;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EDataTypeEList;
-
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Vars</b></em>'.
+ * An implementation of the model object '<em><b>Nop</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.VarsImpl#getVar <em>Var</em>}</li>
- *   <li>{@link esir.compilation.whdsl.impl.VarsImpl#getVars <em>Vars</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.NopImpl#getNop <em>Nop</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
+public class NopImpl extends MinimalEObjectImpl.Container implements Nop
 {
   /**
-   * The default value of the '{@link #getVar() <em>Var</em>}' attribute.
+   * The default value of the '{@link #getNop() <em>Nop</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVar()
+   * @see #getNop()
    * @generated
    * @ordered
    */
-  protected static final String VAR_EDEFAULT = null;
+  protected static final String NOP_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getVar() <em>Var</em>}' attribute.
+   * The cached value of the '{@link #getNop() <em>Nop</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVar()
+   * @see #getNop()
    * @generated
    * @ordered
    */
-  protected String var = VAR_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getVars() <em>Vars</em>}' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getVars()
-   * @generated
-   * @ordered
-   */
-  protected EList<String> vars;
+  protected String nop = NOP_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected VarsImpl()
+  protected NopImpl()
   {
     super();
   }
@@ -83,7 +66,7 @@ public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
   @Override
   protected EClass eStaticClass()
   {
-    return WhdslPackage.Literals.VARS;
+    return WhdslPackage.Literals.NOP;
   }
 
   /**
@@ -91,9 +74,9 @@ public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getVar()
+  public String getNop()
   {
-    return var;
+    return nop;
   }
 
   /**
@@ -101,26 +84,12 @@ public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVar(String newVar)
+  public void setNop(String newNop)
   {
-    String oldVar = var;
-    var = newVar;
+    String oldNop = nop;
+    nop = newNop;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.VARS__VAR, oldVar, var));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<String> getVars()
-  {
-    if (vars == null)
-    {
-      vars = new EDataTypeEList<String>(String.class, this, WhdslPackage.VARS__VARS);
-    }
-    return vars;
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.NOP__NOP, oldNop, nop));
   }
 
   /**
@@ -133,10 +102,8 @@ public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
   {
     switch (featureID)
     {
-      case WhdslPackage.VARS__VAR:
-        return getVar();
-      case WhdslPackage.VARS__VARS:
-        return getVars();
+      case WhdslPackage.NOP__NOP:
+        return getNop();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -146,18 +113,13 @@ public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case WhdslPackage.VARS__VAR:
-        setVar((String)newValue);
-        return;
-      case WhdslPackage.VARS__VARS:
-        getVars().clear();
-        getVars().addAll((Collection<? extends String>)newValue);
+      case WhdslPackage.NOP__NOP:
+        setNop((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -173,11 +135,8 @@ public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
   {
     switch (featureID)
     {
-      case WhdslPackage.VARS__VAR:
-        setVar(VAR_EDEFAULT);
-        return;
-      case WhdslPackage.VARS__VARS:
-        getVars().clear();
+      case WhdslPackage.NOP__NOP:
+        setNop(NOP_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -193,10 +152,8 @@ public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
   {
     switch (featureID)
     {
-      case WhdslPackage.VARS__VAR:
-        return VAR_EDEFAULT == null ? var != null : !VAR_EDEFAULT.equals(var);
-      case WhdslPackage.VARS__VARS:
-        return vars != null && !vars.isEmpty();
+      case WhdslPackage.NOP__NOP:
+        return NOP_EDEFAULT == null ? nop != null : !NOP_EDEFAULT.equals(nop);
     }
     return super.eIsSet(featureID);
   }
@@ -212,12 +169,10 @@ public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (var: ");
-    result.append(var);
-    result.append(", vars: ");
-    result.append(vars);
+    result.append(" (nop: ");
+    result.append(nop);
     result.append(')');
     return result.toString();
   }
 
-} //VarsImpl
+} //NopImpl

@@ -16,6 +16,11 @@ import esir.compilation.whdsl.Exprs
 import esir.compilation.whdsl.Command
 import esir.compilation.whdsl.Vars
 import esir.compilation.whdsl.impl.CommandImpl
+import esir.compilation.whdsl.Nop
+import esir.compilation.whdsl.Affect
+import esir.compilation.whdsl.While
+import esir.compilation.whdsl.For
+import esir.compilation.whdsl.If
 
 /**
  * Generates code from your model files on save.
@@ -47,26 +52,70 @@ class WhdslGenerator extends AbstractGenerator {
 	def compile (Function f){
 		'''
 		function «f.name»:
-		read «FOR param: f.definition.input.variables SEPARATOR ', '»«param»«ENDFOR»%
-		«FOR param: f.definition.commands.commands»«param.compile()»;
+		read «FOR param: f.definition.input.variables SEPARATOR ', '»«param»«ENDFOR»
+		%
+		«f.definition.commands.command.compile()»«FOR param: f.definition.commands.commands»;
+		«param.compile()»
 		«ENDFOR»
-		%write «FOR param: f.definition.output.variables SEPARATOR ', '»«param»«ENDFOR»'''
+		%
+		write «FOR param: f.definition.output.variables SEPARATOR ', '»«param»«ENDFOR»'''
 	}
 	
-	def compile(Command c){
-				
-		if(c.nop != null){
-		'''nop'''
+	
+	def compile (Command c){
+		if(c.cmd instanceof Nop){
+			(c.cmd as Nop).compile();
 		}
-		else{
-		'''«c.vars.compile()»=:«c.expression.compile()»'''
+		else if(c.cmd instanceof Affect){
+			(c.cmd as Affect).compile();
+		}
+		else if(c.cmd instanceof If){
+			(c.cmd as If).compile();	
+		}
+		else if(c.cmd instanceof For){
+			(c.cmd as For).compile();
+		}
+		else if(c.cmd instanceof While){
+			(c.cmd as While).compile();
 		}
 		
+	}
 	
+	def compile(Nop n){
+		'''nop'''
+	}
+	
+	def compile(Affect a){
+		'''«a.vars.compile()»:=«a.exprs.compile()»'''	
+	}
+	def compile(If i){
+		'''if «i.exprs.compile()» then 
+«i.cmds1.command.compile()»«FOR param: i.cmds1.commands»;
+«param.compile()»«ENDFOR»
+else
+«i.cmds2.command.compile()»«FOR param: i.cmds2.commands»;
+«param.compile()»«ENDFOR»
+fi'''			
+	}
+	
+	def compile(For f){
+		'''for «f.exprs.compile()» do
+«f.cmds.command.compile()»«FOR param: f.cmds.commands»;
+«param.compile()»
+		«ENDFOR»
+od'''		
+	}
+	
+	def compile(While w){
+		'''while «w.exprs.compile()» do
+«w.cmds.command.compile()»«FOR param: w.cmds.commands»;
+«param.compile()»
+		«ENDFOR»
+od'''	
 	}
 
 	def compile(Vars v){
-		'''«v.variable»«FOR param: v.vars »,«param.compile()»«ENDFOR»'''
+		'''«v.^var»«FOR param: v.vars »,«param»«ENDFOR»'''
 	}
 
 	

@@ -14,9 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.Command#getNop <em>Nop</em>}</li>
- *   <li>{@link esir.compilation.whdsl.Command#getVars <em>Vars</em>}</li>
- *   <li>{@link esir.compilation.whdsl.Command#getExpression <em>Expression</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.Command#getCmd <em>Cmd</em>}</li>
  * </ul>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getCommand()
@@ -26,81 +24,29 @@ import org.eclipse.emf.ecore.EObject;
 public interface Command extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Nop</b></em>' attribute.
+   * Returns the value of the '<em><b>Cmd</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Nop</em>' attribute isn't clear,
+   * If the meaning of the '<em>Cmd</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Nop</em>' attribute.
-   * @see #setNop(String)
-   * @see esir.compilation.whdsl.WhdslPackage#getCommand_Nop()
-   * @model
-   * @generated
-   */
-  String getNop();
-
-  /**
-   * Sets the value of the '{@link esir.compilation.whdsl.Command#getNop <em>Nop</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Nop</em>' attribute.
-   * @see #getNop()
-   * @generated
-   */
-  void setNop(String value);
-
-  /**
-   * Returns the value of the '<em><b>Vars</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Vars</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Vars</em>' containment reference.
-   * @see #setVars(Vars)
-   * @see esir.compilation.whdsl.WhdslPackage#getCommand_Vars()
+   * @return the value of the '<em>Cmd</em>' containment reference.
+   * @see #setCmd(EObject)
+   * @see esir.compilation.whdsl.WhdslPackage#getCommand_Cmd()
    * @model containment="true"
    * @generated
    */
-  Vars getVars();
+  EObject getCmd();
 
   /**
-   * Sets the value of the '{@link esir.compilation.whdsl.Command#getVars <em>Vars</em>}' containment reference.
+   * Sets the value of the '{@link esir.compilation.whdsl.Command#getCmd <em>Cmd</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Vars</em>' containment reference.
-   * @see #getVars()
+   * @param value the new value of the '<em>Cmd</em>' containment reference.
+   * @see #getCmd()
    * @generated
    */
-  void setVars(Vars value);
-
-  /**
-   * Returns the value of the '<em><b>Expression</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Expression</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Expression</em>' containment reference.
-   * @see #setExpression(Exprs)
-   * @see esir.compilation.whdsl.WhdslPackage#getCommand_Expression()
-   * @model containment="true"
-   * @generated
-   */
-  Exprs getExpression();
-
-  /**
-   * Sets the value of the '{@link esir.compilation.whdsl.Command#getExpression <em>Expression</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Expression</em>' containment reference.
-   * @see #getExpression()
-   * @generated
-   */
-  void setExpression(Exprs value);
+  void setCmd(EObject value);
 
 } // Command

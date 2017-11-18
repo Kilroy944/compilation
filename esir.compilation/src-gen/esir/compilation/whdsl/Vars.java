@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.Vars#getVariable <em>Variable</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.Vars#getVar <em>Var</em>}</li>
  *   <li>{@link esir.compilation.whdsl.Vars#getVars <em>Vars</em>}</li>
  * </ul>
  *
@@ -27,20 +27,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface Vars extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Variable</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Var</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Variable</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Var</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Variable</em>' attribute list.
-   * @see esir.compilation.whdsl.WhdslPackage#getVars_Variable()
-   * @model unique="false"
+   * @return the value of the '<em>Var</em>' attribute.
+   * @see #setVar(String)
+   * @see esir.compilation.whdsl.WhdslPackage#getVars_Var()
+   * @model
    * @generated
    */
-  EList<String> getVariable();
+  String getVar();
+
+  /**
+   * Sets the value of the '{@link esir.compilation.whdsl.Vars#getVar <em>Var</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Var</em>' attribute.
+   * @see #getVar()
+   * @generated
+   */
+  void setVar(String value);
 
   /**
    * Returns the value of the '<em><b>Vars</b></em>' attribute list.

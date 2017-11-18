@@ -4,14 +4,13 @@
 package esir.compilation.whdsl.impl;
 
 import esir.compilation.whdsl.Command;
-import esir.compilation.whdsl.Exprs;
-import esir.compilation.whdsl.Vars;
 import esir.compilation.whdsl.WhdslPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -25,9 +24,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.CommandImpl#getNop <em>Nop</em>}</li>
- *   <li>{@link esir.compilation.whdsl.impl.CommandImpl#getVars <em>Vars</em>}</li>
- *   <li>{@link esir.compilation.whdsl.impl.CommandImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.CommandImpl#getCmd <em>Cmd</em>}</li>
  * </ul>
  *
  * @generated
@@ -35,44 +32,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class CommandImpl extends MinimalEObjectImpl.Container implements Command
 {
   /**
-   * The default value of the '{@link #getNop() <em>Nop</em>}' attribute.
+   * The cached value of the '{@link #getCmd() <em>Cmd</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getNop()
+   * @see #getCmd()
    * @generated
    * @ordered
    */
-  protected static final String NOP_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getNop() <em>Nop</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getNop()
-   * @generated
-   * @ordered
-   */
-  protected String nop = NOP_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getVars() <em>Vars</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getVars()
-   * @generated
-   * @ordered
-   */
-  protected Vars vars;
-
-  /**
-   * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getExpression()
-   * @generated
-   * @ordered
-   */
-  protected Exprs expression;
+  protected EObject cmd;
 
   /**
    * <!-- begin-user-doc -->
@@ -100,9 +67,9 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getNop()
+  public EObject getCmd()
   {
-    return nop;
+    return cmd;
   }
 
   /**
@@ -110,36 +77,13 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setNop(String newNop)
+  public NotificationChain basicSetCmd(EObject newCmd, NotificationChain msgs)
   {
-    String oldNop = nop;
-    nop = newNop;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.COMMAND__NOP, oldNop, nop));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Vars getVars()
-  {
-    return vars;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetVars(Vars newVars, NotificationChain msgs)
-  {
-    Vars oldVars = vars;
-    vars = newVars;
+    EObject oldCmd = cmd;
+    cmd = newCmd;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.COMMAND__VARS, oldVars, newVars);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.COMMAND__CMD, oldCmd, newCmd);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -150,68 +94,20 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVars(Vars newVars)
+  public void setCmd(EObject newCmd)
   {
-    if (newVars != vars)
+    if (newCmd != cmd)
     {
       NotificationChain msgs = null;
-      if (vars != null)
-        msgs = ((InternalEObject)vars).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.COMMAND__VARS, null, msgs);
-      if (newVars != null)
-        msgs = ((InternalEObject)newVars).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.COMMAND__VARS, null, msgs);
-      msgs = basicSetVars(newVars, msgs);
+      if (cmd != null)
+        msgs = ((InternalEObject)cmd).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.COMMAND__CMD, null, msgs);
+      if (newCmd != null)
+        msgs = ((InternalEObject)newCmd).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.COMMAND__CMD, null, msgs);
+      msgs = basicSetCmd(newCmd, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.COMMAND__VARS, newVars, newVars));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Exprs getExpression()
-  {
-    return expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetExpression(Exprs newExpression, NotificationChain msgs)
-  {
-    Exprs oldExpression = expression;
-    expression = newExpression;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.COMMAND__EXPRESSION, oldExpression, newExpression);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setExpression(Exprs newExpression)
-  {
-    if (newExpression != expression)
-    {
-      NotificationChain msgs = null;
-      if (expression != null)
-        msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.COMMAND__EXPRESSION, null, msgs);
-      if (newExpression != null)
-        msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.COMMAND__EXPRESSION, null, msgs);
-      msgs = basicSetExpression(newExpression, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.COMMAND__EXPRESSION, newExpression, newExpression));
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.COMMAND__CMD, newCmd, newCmd));
   }
 
   /**
@@ -224,10 +120,8 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   {
     switch (featureID)
     {
-      case WhdslPackage.COMMAND__VARS:
-        return basicSetVars(null, msgs);
-      case WhdslPackage.COMMAND__EXPRESSION:
-        return basicSetExpression(null, msgs);
+      case WhdslPackage.COMMAND__CMD:
+        return basicSetCmd(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -242,12 +136,8 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   {
     switch (featureID)
     {
-      case WhdslPackage.COMMAND__NOP:
-        return getNop();
-      case WhdslPackage.COMMAND__VARS:
-        return getVars();
-      case WhdslPackage.COMMAND__EXPRESSION:
-        return getExpression();
+      case WhdslPackage.COMMAND__CMD:
+        return getCmd();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -262,14 +152,8 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   {
     switch (featureID)
     {
-      case WhdslPackage.COMMAND__NOP:
-        setNop((String)newValue);
-        return;
-      case WhdslPackage.COMMAND__VARS:
-        setVars((Vars)newValue);
-        return;
-      case WhdslPackage.COMMAND__EXPRESSION:
-        setExpression((Exprs)newValue);
+      case WhdslPackage.COMMAND__CMD:
+        setCmd((EObject)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -285,14 +169,8 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   {
     switch (featureID)
     {
-      case WhdslPackage.COMMAND__NOP:
-        setNop(NOP_EDEFAULT);
-        return;
-      case WhdslPackage.COMMAND__VARS:
-        setVars((Vars)null);
-        return;
-      case WhdslPackage.COMMAND__EXPRESSION:
-        setExpression((Exprs)null);
+      case WhdslPackage.COMMAND__CMD:
+        setCmd((EObject)null);
         return;
     }
     super.eUnset(featureID);
@@ -308,31 +186,10 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   {
     switch (featureID)
     {
-      case WhdslPackage.COMMAND__NOP:
-        return NOP_EDEFAULT == null ? nop != null : !NOP_EDEFAULT.equals(nop);
-      case WhdslPackage.COMMAND__VARS:
-        return vars != null;
-      case WhdslPackage.COMMAND__EXPRESSION:
-        return expression != null;
+      case WhdslPackage.COMMAND__CMD:
+        return cmd != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (nop: ");
-    result.append(nop);
-    result.append(')');
-    return result.toString();
   }
 
 } //CommandImpl

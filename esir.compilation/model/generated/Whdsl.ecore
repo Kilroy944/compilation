@@ -27,25 +27,51 @@
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Commands">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="command" eType="#//Command"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="commands" upperBound="-1"
         eType="#//Command" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Command">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nop" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="vars" eType="#//Vars" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Exprs"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cmd" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Vars">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" unique="false"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vars" unique="false" upperBound="-1"
+  <eClassifiers xsi:type="ecore:EClass" name="Exprs">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expr" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exprs" unique="false" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Exprs">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expr" unique="false" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exprs" unique="false" upperBound="-1"
+  <eClassifiers xsi:type="ecore:EClass" name="If">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exprs" eType="#//Exprs"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cmds1" eType="#//Commands"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cmds2" eType="#//Commands"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Affect">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vars" eType="#//Vars" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exprs" eType="#//Exprs"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="For">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exprs" eType="#//Exprs"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cmds" eType="#//Commands"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="While">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exprs" eType="#//Exprs"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cmds" eType="#//Commands"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Nop">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nop" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Vars">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="var" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vars" unique="false" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

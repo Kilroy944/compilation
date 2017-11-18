@@ -3,17 +3,22 @@
  */
 package esir.compilation.whdsl.impl;
 
+import esir.compilation.whdsl.Affect;
 import esir.compilation.whdsl.Command;
 import esir.compilation.whdsl.Commands;
 import esir.compilation.whdsl.Definition;
 import esir.compilation.whdsl.Exprs;
+import esir.compilation.whdsl.For;
 import esir.compilation.whdsl.Function;
+import esir.compilation.whdsl.If;
 import esir.compilation.whdsl.Input;
+import esir.compilation.whdsl.Nop;
 import esir.compilation.whdsl.Output;
 import esir.compilation.whdsl.Program;
 import esir.compilation.whdsl.Vars;
 import esir.compilation.whdsl.WhdslFactory;
 import esir.compilation.whdsl.WhdslPackage;
+import esir.compilation.whdsl.While;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -84,14 +89,49 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass varsEClass = null;
+  private EClass exprsEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass exprsEClass = null;
+  private EClass ifEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass affectEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass forEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass whileEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass nopEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass varsEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -301,9 +341,19 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCommands_Commands()
+  public EReference getCommands_Command()
   {
     return (EReference)commandsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCommands_Commands()
+  {
+    return (EReference)commandsEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -321,59 +371,9 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getCommand_Nop()
+  public EReference getCommand_Cmd()
   {
-    return (EAttribute)commandEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCommand_Vars()
-  {
-    return (EReference)commandEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCommand_Expression()
-  {
-    return (EReference)commandEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getVars()
-  {
-    return varsEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVars_Variable()
-  {
-    return (EAttribute)varsEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVars_Vars()
-  {
-    return (EAttribute)varsEClass.getEStructuralFeatures().get(1);
+    return (EReference)commandEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -404,6 +404,186 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
   public EAttribute getExprs_Exprs()
   {
     return (EAttribute)exprsEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getIf()
+  {
+    return ifEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getIf_Exprs()
+  {
+    return (EReference)ifEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getIf_Cmds1()
+  {
+    return (EReference)ifEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getIf_Cmds2()
+  {
+    return (EReference)ifEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAffect()
+  {
+    return affectEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAffect_Vars()
+  {
+    return (EReference)affectEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAffect_Exprs()
+  {
+    return (EReference)affectEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFor()
+  {
+    return forEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFor_Exprs()
+  {
+    return (EReference)forEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFor_Cmds()
+  {
+    return (EReference)forEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getWhile()
+  {
+    return whileEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getWhile_Exprs()
+  {
+    return (EReference)whileEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getWhile_Cmds()
+  {
+    return (EReference)whileEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getNop()
+  {
+    return nopEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getNop_Nop()
+  {
+    return (EAttribute)nopEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getVars()
+  {
+    return varsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVars_Var()
+  {
+    return (EAttribute)varsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVars_Vars()
+  {
+    return (EAttribute)varsEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -455,20 +635,39 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
     createEAttribute(outputEClass, OUTPUT__VARIABLES);
 
     commandsEClass = createEClass(COMMANDS);
+    createEReference(commandsEClass, COMMANDS__COMMAND);
     createEReference(commandsEClass, COMMANDS__COMMANDS);
 
     commandEClass = createEClass(COMMAND);
-    createEAttribute(commandEClass, COMMAND__NOP);
-    createEReference(commandEClass, COMMAND__VARS);
-    createEReference(commandEClass, COMMAND__EXPRESSION);
-
-    varsEClass = createEClass(VARS);
-    createEAttribute(varsEClass, VARS__VARIABLE);
-    createEAttribute(varsEClass, VARS__VARS);
+    createEReference(commandEClass, COMMAND__CMD);
 
     exprsEClass = createEClass(EXPRS);
     createEAttribute(exprsEClass, EXPRS__EXPR);
     createEAttribute(exprsEClass, EXPRS__EXPRS);
+
+    ifEClass = createEClass(IF);
+    createEReference(ifEClass, IF__EXPRS);
+    createEReference(ifEClass, IF__CMDS1);
+    createEReference(ifEClass, IF__CMDS2);
+
+    affectEClass = createEClass(AFFECT);
+    createEReference(affectEClass, AFFECT__VARS);
+    createEReference(affectEClass, AFFECT__EXPRS);
+
+    forEClass = createEClass(FOR);
+    createEReference(forEClass, FOR__EXPRS);
+    createEReference(forEClass, FOR__CMDS);
+
+    whileEClass = createEClass(WHILE);
+    createEReference(whileEClass, WHILE__EXPRS);
+    createEReference(whileEClass, WHILE__CMDS);
+
+    nopEClass = createEClass(NOP);
+    createEAttribute(nopEClass, NOP__NOP);
+
+    varsEClass = createEClass(VARS);
+    createEAttribute(varsEClass, VARS__VAR);
+    createEAttribute(varsEClass, VARS__VARS);
   }
 
   /**
@@ -521,20 +720,39 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
     initEAttribute(getOutput_Variables(), ecorePackage.getEString(), "variables", null, 0, -1, Output.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(commandsEClass, Commands.class, "Commands", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCommands_Command(), this.getCommand(), null, "command", null, 0, 1, Commands.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCommands_Commands(), this.getCommand(), null, "commands", null, 0, -1, Commands.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getCommand_Nop(), ecorePackage.getEString(), "nop", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCommand_Vars(), this.getVars(), null, "vars", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCommand_Expression(), this.getExprs(), null, "expression", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(varsEClass, Vars.class, "Vars", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getVars_Variable(), ecorePackage.getEString(), "variable", null, 0, -1, Vars.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getVars_Vars(), ecorePackage.getEString(), "vars", null, 0, -1, Vars.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCommand_Cmd(), ecorePackage.getEObject(), null, "cmd", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(exprsEClass, Exprs.class, "Exprs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getExprs_Expr(), ecorePackage.getEString(), "expr", null, 0, -1, Exprs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExprs_Expr(), ecorePackage.getEString(), "expr", null, 0, 1, Exprs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getExprs_Exprs(), ecorePackage.getEString(), "exprs", null, 0, -1, Exprs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(ifEClass, If.class, "If", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getIf_Exprs(), this.getExprs(), null, "exprs", null, 0, 1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIf_Cmds1(), this.getCommands(), null, "cmds1", null, 0, 1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIf_Cmds2(), this.getCommands(), null, "cmds2", null, 0, 1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(affectEClass, Affect.class, "Affect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAffect_Vars(), this.getVars(), null, "vars", null, 0, 1, Affect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAffect_Exprs(), this.getExprs(), null, "exprs", null, 0, 1, Affect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(forEClass, For.class, "For", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFor_Exprs(), this.getExprs(), null, "exprs", null, 0, 1, For.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFor_Cmds(), this.getCommands(), null, "cmds", null, 0, 1, For.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(whileEClass, While.class, "While", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getWhile_Exprs(), this.getExprs(), null, "exprs", null, 0, 1, While.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWhile_Cmds(), this.getCommands(), null, "cmds", null, 0, 1, While.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(nopEClass, Nop.class, "Nop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNop_Nop(), ecorePackage.getEString(), "nop", null, 0, 1, Nop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(varsEClass, Vars.class, "Vars", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getVars_Var(), ecorePackage.getEString(), "var", null, 0, 1, Vars.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVars_Vars(), ecorePackage.getEString(), "vars", null, 0, -1, Vars.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

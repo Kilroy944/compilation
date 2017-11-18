@@ -72,8 +72,13 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
       case WhdslPackage.OUTPUT: return createOutput();
       case WhdslPackage.COMMANDS: return createCommands();
       case WhdslPackage.COMMAND: return createCommand();
-      case WhdslPackage.VARS: return createVars();
       case WhdslPackage.EXPRS: return createExprs();
+      case WhdslPackage.IF: return createIf();
+      case WhdslPackage.AFFECT: return createAffect();
+      case WhdslPackage.FOR: return createFor();
+      case WhdslPackage.WHILE: return createWhile();
+      case WhdslPackage.NOP: return createNop();
+      case WhdslPackage.VARS: return createVars();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -161,10 +166,10 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Vars createVars()
+  public Exprs createExprs()
   {
-    VarsImpl vars = new VarsImpl();
-    return vars;
+    ExprsImpl exprs = new ExprsImpl();
+    return exprs;
   }
 
   /**
@@ -172,10 +177,65 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Exprs createExprs()
+  public If createIf()
   {
-    ExprsImpl exprs = new ExprsImpl();
-    return exprs;
+    IfImpl if_ = new IfImpl();
+    return if_;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Affect createAffect()
+  {
+    AffectImpl affect = new AffectImpl();
+    return affect;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public For createFor()
+  {
+    ForImpl for_ = new ForImpl();
+    return for_;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public While createWhile()
+  {
+    WhileImpl while_ = new WhileImpl();
+    return while_;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Nop createNop()
+  {
+    NopImpl nop = new NopImpl();
+    return nop;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Vars createVars()
+  {
+    VarsImpl vars = new VarsImpl();
+    return vars;
   }
 
   /**

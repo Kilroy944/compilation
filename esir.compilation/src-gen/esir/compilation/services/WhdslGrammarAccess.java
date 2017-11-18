@@ -198,25 +198,25 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 	public class CommandsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.Commands");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cCommandsAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cCommandsCommandParserRuleCall_0_0 = (RuleCall)cCommandsAssignment_0.eContents().get(0);
+		private final Assignment cCommandAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cCommandCommandParserRuleCall_0_0 = (RuleCall)cCommandAssignment_0.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cSemicolonKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Assignment cCommandsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cCommandsCommandParserRuleCall_1_1_0 = (RuleCall)cCommandsAssignment_1_1.eContents().get(0);
 		
 		///*COMMAND */ Commands:
-		//	commands+=Command (';' commands+=Command)*;
+		//	command=Command (';' commands+=Command)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//commands+=Command (';' commands+=Command)*
+		//command=Command (';' commands+=Command)*
 		public Group getGroup() { return cGroup; }
 		
-		//commands+=Command
-		public Assignment getCommandsAssignment_0() { return cCommandsAssignment_0; }
+		//command=Command
+		public Assignment getCommandAssignment_0() { return cCommandAssignment_0; }
 		
 		//Command
-		public RuleCall getCommandsCommandParserRuleCall_0_0() { return cCommandsCommandParserRuleCall_0_0; }
+		public RuleCall getCommandCommandParserRuleCall_0_0() { return cCommandCommandParserRuleCall_0_0; }
 		
 		//(';' commands+=Command)*
 		public Group getGroup_1() { return cGroup_1; }
@@ -233,80 +233,53 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 	public class CommandElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.Command");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cNopAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final RuleCall cNopNOPTerminalRuleCall_0_0 = (RuleCall)cNopAssignment_0.eContents().get(0);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Assignment cVarsAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
-		private final RuleCall cVarsVarsParserRuleCall_1_0_0 = (RuleCall)cVarsAssignment_1_0.eContents().get(0);
-		private final Keyword cColonEqualsSignKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Assignment cExpressionAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cExpressionExprsParserRuleCall_1_2_0 = (RuleCall)cExpressionAssignment_1_2.eContents().get(0);
+		private final Assignment cCmdAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final RuleCall cCmdNopParserRuleCall_0_0 = (RuleCall)cCmdAssignment_0.eContents().get(0);
+		private final Assignment cCmdAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cCmdAffectParserRuleCall_1_0 = (RuleCall)cCmdAssignment_1.eContents().get(0);
+		private final Assignment cCmdAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
+		private final RuleCall cCmdIfParserRuleCall_2_0 = (RuleCall)cCmdAssignment_2.eContents().get(0);
+		private final Assignment cCmdAssignment_3 = (Assignment)cAlternatives.eContents().get(3);
+		private final RuleCall cCmdForParserRuleCall_3_0 = (RuleCall)cCmdAssignment_3.eContents().get(0);
+		private final Assignment cCmdAssignment_4 = (Assignment)cAlternatives.eContents().get(4);
+		private final RuleCall cCmdWhileParserRuleCall_4_0 = (RuleCall)cCmdAssignment_4.eContents().get(0);
 		
 		//Command:
-		//	nop=NOP | vars=Vars ':=' expression=Exprs;
+		//	cmd=Nop | cmd=Affect | cmd=If | cmd=For | cmd=While;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//nop=NOP | vars=Vars ':=' expression=Exprs
+		//cmd=Nop | cmd=Affect | cmd=If | cmd=For | cmd=While
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//nop=NOP
-		public Assignment getNopAssignment_0() { return cNopAssignment_0; }
+		//cmd=Nop
+		public Assignment getCmdAssignment_0() { return cCmdAssignment_0; }
 		
-		//NOP
-		public RuleCall getNopNOPTerminalRuleCall_0_0() { return cNopNOPTerminalRuleCall_0_0; }
+		//Nop
+		public RuleCall getCmdNopParserRuleCall_0_0() { return cCmdNopParserRuleCall_0_0; }
 		
-		//vars=Vars ':=' expression=Exprs
-		public Group getGroup_1() { return cGroup_1; }
+		//cmd=Affect
+		public Assignment getCmdAssignment_1() { return cCmdAssignment_1; }
 		
-		//vars=Vars
-		public Assignment getVarsAssignment_1_0() { return cVarsAssignment_1_0; }
+		//Affect
+		public RuleCall getCmdAffectParserRuleCall_1_0() { return cCmdAffectParserRuleCall_1_0; }
 		
-		//Vars
-		public RuleCall getVarsVarsParserRuleCall_1_0_0() { return cVarsVarsParserRuleCall_1_0_0; }
+		//cmd=If
+		public Assignment getCmdAssignment_2() { return cCmdAssignment_2; }
 		
-		//':='
-		public Keyword getColonEqualsSignKeyword_1_1() { return cColonEqualsSignKeyword_1_1; }
+		//If
+		public RuleCall getCmdIfParserRuleCall_2_0() { return cCmdIfParserRuleCall_2_0; }
 		
-		//expression=Exprs
-		public Assignment getExpressionAssignment_1_2() { return cExpressionAssignment_1_2; }
+		//cmd=For
+		public Assignment getCmdAssignment_3() { return cCmdAssignment_3; }
 		
-		//Exprs
-		public RuleCall getExpressionExprsParserRuleCall_1_2_0() { return cExpressionExprsParserRuleCall_1_2_0; }
-	}
-	public class VarsElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.Vars");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cVariableAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cVariableVARIABLETerminalRuleCall_0_0 = (RuleCall)cVariableAssignment_0.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cCommaKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cVarsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cVarsVARIABLETerminalRuleCall_1_1_0 = (RuleCall)cVarsAssignment_1_1.eContents().get(0);
+		//For
+		public RuleCall getCmdForParserRuleCall_3_0() { return cCmdForParserRuleCall_3_0; }
 		
-		//Vars:
-		//	variable+=VARIABLE (',' vars+=VARIABLE)*;
-		@Override public ParserRule getRule() { return rule; }
+		//cmd=While
+		public Assignment getCmdAssignment_4() { return cCmdAssignment_4; }
 		
-		//variable+=VARIABLE (',' vars+=VARIABLE)*
-		public Group getGroup() { return cGroup; }
-		
-		//variable+=VARIABLE
-		public Assignment getVariableAssignment_0() { return cVariableAssignment_0; }
-		
-		//VARIABLE
-		public RuleCall getVariableVARIABLETerminalRuleCall_0_0() { return cVariableVARIABLETerminalRuleCall_0_0; }
-		
-		//(',' vars+=VARIABLE)*
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//','
-		public Keyword getCommaKeyword_1_0() { return cCommaKeyword_1_0; }
-		
-		//vars+=VARIABLE
-		public Assignment getVarsAssignment_1_1() { return cVarsAssignment_1_1; }
-		
-		//VARIABLE
-		public RuleCall getVarsVARIABLETerminalRuleCall_1_1_0() { return cVarsVARIABLETerminalRuleCall_1_1_0; }
+		//While
+		public RuleCall getCmdWhileParserRuleCall_4_0() { return cCmdWhileParserRuleCall_4_0; }
 	}
 	public class ExprsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.Exprs");
@@ -319,13 +292,13 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExprsExprParserRuleCall_1_1_0 = (RuleCall)cExprsAssignment_1_1.eContents().get(0);
 		
 		//Exprs:
-		//	expr+=Expr (',' exprs+=Expr)*;
+		//	expr=Expr (',' exprs+=Expr)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//expr+=Expr (',' exprs+=Expr)*
+		//expr=Expr (',' exprs+=Expr)*
 		public Group getGroup() { return cGroup; }
 		
-		//expr+=Expr
+		//expr=Expr
 		public Assignment getExprAssignment_0() { return cExprAssignment_0; }
 		
 		//Expr
@@ -342,6 +315,220 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Expr
 		public RuleCall getExprsExprParserRuleCall_1_1_0() { return cExprsExprParserRuleCall_1_1_0; }
+	}
+	public class IfElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.If");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cIfKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cExprsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cExprsExprsParserRuleCall_1_0 = (RuleCall)cExprsAssignment_1.eContents().get(0);
+		private final Keyword cThenKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cCmds1Assignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCmds1CommandsParserRuleCall_3_0 = (RuleCall)cCmds1Assignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cElseKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cCmds2Assignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cCmds2CommandsParserRuleCall_4_1_0 = (RuleCall)cCmds2Assignment_4_1.eContents().get(0);
+		private final Keyword cFiKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//If:
+		//	'if' exprs=Exprs 'then' cmds1=Commands ('else' cmds2=Commands)? 'fi';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'if' exprs=Exprs 'then' cmds1=Commands ('else' cmds2=Commands)? 'fi'
+		public Group getGroup() { return cGroup; }
+		
+		//'if'
+		public Keyword getIfKeyword_0() { return cIfKeyword_0; }
+		
+		//exprs=Exprs
+		public Assignment getExprsAssignment_1() { return cExprsAssignment_1; }
+		
+		//Exprs
+		public RuleCall getExprsExprsParserRuleCall_1_0() { return cExprsExprsParserRuleCall_1_0; }
+		
+		//'then'
+		public Keyword getThenKeyword_2() { return cThenKeyword_2; }
+		
+		//cmds1=Commands
+		public Assignment getCmds1Assignment_3() { return cCmds1Assignment_3; }
+		
+		//Commands
+		public RuleCall getCmds1CommandsParserRuleCall_3_0() { return cCmds1CommandsParserRuleCall_3_0; }
+		
+		//('else' cmds2=Commands)?
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//'else'
+		public Keyword getElseKeyword_4_0() { return cElseKeyword_4_0; }
+		
+		//cmds2=Commands
+		public Assignment getCmds2Assignment_4_1() { return cCmds2Assignment_4_1; }
+		
+		//Commands
+		public RuleCall getCmds2CommandsParserRuleCall_4_1_0() { return cCmds2CommandsParserRuleCall_4_1_0; }
+		
+		//'fi'
+		public Keyword getFiKeyword_5() { return cFiKeyword_5; }
+	}
+	public class AffectElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.Affect");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cVarsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cVarsVarsParserRuleCall_0_0 = (RuleCall)cVarsAssignment_0.eContents().get(0);
+		private final Keyword cColonEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cExprsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cExprsExprsParserRuleCall_2_0 = (RuleCall)cExprsAssignment_2.eContents().get(0);
+		
+		//Affect:
+		//	vars=Vars ':=' exprs=Exprs;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//vars=Vars ':=' exprs=Exprs
+		public Group getGroup() { return cGroup; }
+		
+		//vars=Vars
+		public Assignment getVarsAssignment_0() { return cVarsAssignment_0; }
+		
+		//Vars
+		public RuleCall getVarsVarsParserRuleCall_0_0() { return cVarsVarsParserRuleCall_0_0; }
+		
+		//':='
+		public Keyword getColonEqualsSignKeyword_1() { return cColonEqualsSignKeyword_1; }
+		
+		//exprs=Exprs
+		public Assignment getExprsAssignment_2() { return cExprsAssignment_2; }
+		
+		//Exprs
+		public RuleCall getExprsExprsParserRuleCall_2_0() { return cExprsExprsParserRuleCall_2_0; }
+	}
+	public class ForElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.For");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cForKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cExprsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cExprsExprsParserRuleCall_1_0 = (RuleCall)cExprsAssignment_1.eContents().get(0);
+		private final Keyword cDoKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cCmdsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCmdsCommandsParserRuleCall_3_0 = (RuleCall)cCmdsAssignment_3.eContents().get(0);
+		private final Keyword cOdKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//For:
+		//	'for' exprs=Exprs 'do' cmds=Commands 'od';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'for' exprs=Exprs 'do' cmds=Commands 'od'
+		public Group getGroup() { return cGroup; }
+		
+		//'for'
+		public Keyword getForKeyword_0() { return cForKeyword_0; }
+		
+		//exprs=Exprs
+		public Assignment getExprsAssignment_1() { return cExprsAssignment_1; }
+		
+		//Exprs
+		public RuleCall getExprsExprsParserRuleCall_1_0() { return cExprsExprsParserRuleCall_1_0; }
+		
+		//'do'
+		public Keyword getDoKeyword_2() { return cDoKeyword_2; }
+		
+		//cmds=Commands
+		public Assignment getCmdsAssignment_3() { return cCmdsAssignment_3; }
+		
+		//Commands
+		public RuleCall getCmdsCommandsParserRuleCall_3_0() { return cCmdsCommandsParserRuleCall_3_0; }
+		
+		//'od'
+		public Keyword getOdKeyword_4() { return cOdKeyword_4; }
+	}
+	public class WhileElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.While");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cWhileKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cExprsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cExprsExprsParserRuleCall_1_0 = (RuleCall)cExprsAssignment_1.eContents().get(0);
+		private final Keyword cDoKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cCmdsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCmdsCommandsParserRuleCall_3_0 = (RuleCall)cCmdsAssignment_3.eContents().get(0);
+		private final Keyword cOdKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//While:
+		//	'while' exprs=Exprs 'do' cmds=Commands 'od';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'while' exprs=Exprs 'do' cmds=Commands 'od'
+		public Group getGroup() { return cGroup; }
+		
+		//'while'
+		public Keyword getWhileKeyword_0() { return cWhileKeyword_0; }
+		
+		//exprs=Exprs
+		public Assignment getExprsAssignment_1() { return cExprsAssignment_1; }
+		
+		//Exprs
+		public RuleCall getExprsExprsParserRuleCall_1_0() { return cExprsExprsParserRuleCall_1_0; }
+		
+		//'do'
+		public Keyword getDoKeyword_2() { return cDoKeyword_2; }
+		
+		//cmds=Commands
+		public Assignment getCmdsAssignment_3() { return cCmdsAssignment_3; }
+		
+		//Commands
+		public RuleCall getCmdsCommandsParserRuleCall_3_0() { return cCmdsCommandsParserRuleCall_3_0; }
+		
+		//'od'
+		public Keyword getOdKeyword_4() { return cOdKeyword_4; }
+	}
+	public class NopElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.Nop");
+		private final Assignment cNopAssignment = (Assignment)rule.eContents().get(1);
+		private final Keyword cNopNopKeyword_0 = (Keyword)cNopAssignment.eContents().get(0);
+		
+		//Nop:
+		//	nop='nop';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//nop='nop'
+		public Assignment getNopAssignment() { return cNopAssignment; }
+		
+		//'nop'
+		public Keyword getNopNopKeyword_0() { return cNopNopKeyword_0; }
+	}
+	public class VarsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.Vars");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cVarAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cVarVARIABLETerminalRuleCall_0_0 = (RuleCall)cVarAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cCommaKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cVarsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cVarsVARIABLETerminalRuleCall_1_1_0 = (RuleCall)cVarsAssignment_1_1.eContents().get(0);
+		
+		//Vars:
+		//	var=VARIABLE (',' vars+=VARIABLE)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//var=VARIABLE (',' vars+=VARIABLE)*
+		public Group getGroup() { return cGroup; }
+		
+		//var=VARIABLE
+		public Assignment getVarAssignment_0() { return cVarAssignment_0; }
+		
+		//VARIABLE
+		public RuleCall getVarVARIABLETerminalRuleCall_0_0() { return cVarVARIABLETerminalRuleCall_0_0; }
+		
+		//(',' vars+=VARIABLE)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//','
+		public Keyword getCommaKeyword_1_0() { return cCommaKeyword_1_0; }
+		
+		//vars+=VARIABLE
+		public Assignment getVarsAssignment_1_1() { return cVarsAssignment_1_1; }
+		
+		//VARIABLE
+		public RuleCall getVarsVARIABLETerminalRuleCall_1_1_0() { return cVarsVARIABLETerminalRuleCall_1_1_0; }
 	}
 	public class ExprElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.Expr");
@@ -363,10 +550,14 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 	private final OutputElements pOutput;
 	private final CommandsElements pCommands;
 	private final CommandElements pCommand;
-	private final VarsElements pVars;
 	private final ExprsElements pExprs;
+	private final IfElements pIf;
+	private final AffectElements pAffect;
+	private final ForElements pFor;
+	private final WhileElements pWhile;
+	private final NopElements pNop;
+	private final VarsElements pVars;
 	private final ExprElements pExpr;
-	private final TerminalRule tNOP;
 	private final TerminalRule tNIL;
 	private final TerminalRule tVARIABLE;
 	private final TerminalRule tSYMBOLE;
@@ -387,10 +578,14 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 		this.pOutput = new OutputElements();
 		this.pCommands = new CommandsElements();
 		this.pCommand = new CommandElements();
-		this.pVars = new VarsElements();
 		this.pExprs = new ExprsElements();
+		this.pIf = new IfElements();
+		this.pAffect = new AffectElements();
+		this.pFor = new ForElements();
+		this.pWhile = new WhileElements();
+		this.pNop = new NopElements();
+		this.pVars = new VarsElements();
 		this.pExpr = new ExprElements();
-		this.tNOP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.NOP");
 		this.tNIL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.NIL");
 		this.tVARIABLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.VARIABLE");
 		this.tSYMBOLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "esir.compilation.Whdsl.SYMBOLE");
@@ -476,7 +671,7 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	///*COMMAND */ Commands:
-	//	commands+=Command (';' commands+=Command)*;
+	//	command=Command (';' commands+=Command)*;
 	public CommandsElements getCommandsAccess() {
 		return pCommands;
 	}
@@ -486,7 +681,7 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Command:
-	//	nop=NOP | vars=Vars ':=' expression=Exprs;
+	//	cmd=Nop | cmd=Affect | cmd=If | cmd=For | cmd=While;
 	public CommandElements getCommandAccess() {
 		return pCommand;
 	}
@@ -495,24 +690,74 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 		return getCommandAccess().getRule();
 	}
 	
-	//Vars:
-	//	variable+=VARIABLE (',' vars+=VARIABLE)*;
-	public VarsElements getVarsAccess() {
-		return pVars;
-	}
-	
-	public ParserRule getVarsRule() {
-		return getVarsAccess().getRule();
-	}
-	
 	//Exprs:
-	//	expr+=Expr (',' exprs+=Expr)*;
+	//	expr=Expr (',' exprs+=Expr)*;
 	public ExprsElements getExprsAccess() {
 		return pExprs;
 	}
 	
 	public ParserRule getExprsRule() {
 		return getExprsAccess().getRule();
+	}
+	
+	//If:
+	//	'if' exprs=Exprs 'then' cmds1=Commands ('else' cmds2=Commands)? 'fi';
+	public IfElements getIfAccess() {
+		return pIf;
+	}
+	
+	public ParserRule getIfRule() {
+		return getIfAccess().getRule();
+	}
+	
+	//Affect:
+	//	vars=Vars ':=' exprs=Exprs;
+	public AffectElements getAffectAccess() {
+		return pAffect;
+	}
+	
+	public ParserRule getAffectRule() {
+		return getAffectAccess().getRule();
+	}
+	
+	//For:
+	//	'for' exprs=Exprs 'do' cmds=Commands 'od';
+	public ForElements getForAccess() {
+		return pFor;
+	}
+	
+	public ParserRule getForRule() {
+		return getForAccess().getRule();
+	}
+	
+	//While:
+	//	'while' exprs=Exprs 'do' cmds=Commands 'od';
+	public WhileElements getWhileAccess() {
+		return pWhile;
+	}
+	
+	public ParserRule getWhileRule() {
+		return getWhileAccess().getRule();
+	}
+	
+	//Nop:
+	//	nop='nop';
+	public NopElements getNopAccess() {
+		return pNop;
+	}
+	
+	public ParserRule getNopRule() {
+		return getNopAccess().getRule();
+	}
+	
+	//Vars:
+	//	var=VARIABLE (',' vars+=VARIABLE)*;
+	public VarsElements getVarsAccess() {
+		return pVars;
+	}
+	
+	public ParserRule getVarsRule() {
+		return getVarsAccess().getRule();
 	}
 	
 	//Expr:
@@ -523,12 +768,6 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getExprRule() {
 		return getExprAccess().getRule();
-	}
-	
-	//terminal NOP:
-	//	'nop';
-	public TerminalRule getNOPRule() {
-		return tNOP;
 	}
 	
 	//terminal NIL:

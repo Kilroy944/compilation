@@ -87,15 +87,6 @@ public interface WhdslFactory extends EFactory
   Command createCommand();
 
   /**
-   * Returns a new object of class '<em>Vars</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Vars</em>'.
-   * @generated
-   */
-  Vars createVars();
-
-  /**
    * Returns a new object of class '<em>Exprs</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -103,6 +94,60 @@ public interface WhdslFactory extends EFactory
    * @generated
    */
   Exprs createExprs();
+
+  /**
+   * Returns a new object of class '<em>If</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>If</em>'.
+   * @generated
+   */
+  If createIf();
+
+  /**
+   * Returns a new object of class '<em>Affect</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Affect</em>'.
+   * @generated
+   */
+  Affect createAffect();
+
+  /**
+   * Returns a new object of class '<em>For</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>For</em>'.
+   * @generated
+   */
+  For createFor();
+
+  /**
+   * Returns a new object of class '<em>While</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>While</em>'.
+   * @generated
+   */
+  While createWhile();
+
+  /**
+   * Returns a new object of class '<em>Nop</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Nop</em>'.
+   * @generated
+   */
+  Nop createNop();
+
+  /**
+   * Returns a new object of class '<em>Vars</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Vars</em>'.
+   * @generated
+   */
+  Vars createVars();
 
   /**
    * Returns the package supported by this factory.

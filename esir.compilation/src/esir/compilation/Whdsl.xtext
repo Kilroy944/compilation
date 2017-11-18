@@ -29,27 +29,45 @@ Output:
 ;
 
 
-
-
 /*COMMAND */
 
 
 Commands:
-	commands+=Command (';' commands+=Command)*
+	command=Command (';' commands+=Command)*
 ;
 
 Command:
-	nop=NOP| (vars=Vars':='expression=Exprs)	
+	(cmd=Nop) | (cmd=Affect) | (cmd=If) | (cmd=For) | (cmd=While)	
+;
+
+Exprs: 	
+  expr=Expr(','exprs+=Expr)*
+;
+
+
+If:
+	'if' exprs=Exprs 'then' cmds1=Commands ('else' cmds2=Commands)? 'fi'
+;
+
+Affect:
+	vars=Vars ':=' exprs=Exprs
+;
+
+For:
+	'for' exprs=Exprs 'do' cmds=Commands 'od'
+;
+
+While:
+	'while' exprs=Exprs 'do' cmds=Commands 'od'
+;
+
+Nop:
+	nop='nop'
 ;
 
 Vars:
-	variable+=VARIABLE(','vars+=VARIABLE)*
+	var=VARIABLE(','vars+=VARIABLE)*
 ;	
-
-Exprs: 	
-  expr+=Expr(','exprs+=Expr)*
-;
-
 
 Expr:
 	"1"
@@ -128,12 +146,6 @@ ExprEq:
 	 arg1=ExprSimple '=?' arg2=ExprSimple
 ;*/
 
-
-//ajout commentaire pour tester le git
-
-terminal NOP:
-	'nop'
-;
 
 terminal NIL:
 	'Nil' | 'nil'

@@ -49,7 +49,7 @@ public class Main {
 			return;
 		}
 		input = cmd.getArgs()[0];
-		output = cmd.hasOption("o") ? cmd.getOptionValue("o") : "sortie.whpp";
+		output = cmd.hasOption("o") ? cmd.getOptionValue("o") : "sortie.whdsl";
 
 		// pretty printing
 		System.out.println("START Pretty printing");
@@ -58,7 +58,7 @@ public class Main {
 		Injector injector = new WhdslStandaloneSetupGenerated().createInjectorAndDoEMFRegistration();
 		Main main = injector.getInstance(Main.class);
 
-		main.prettyprint(injector,"test.whdsl","sortie.whdsl");
+		main.prettyprint(injector,input,output);
 
 		
 		System.out.println("END Pretty printing");
