@@ -1,36 +1,39 @@
 function fonctiona:
 read B, B
 %
-nop;
-if 1 then 
-nop
-else
-nop
-fi
-;
-for 1 do
-nop;
-nop
-od
-;
-while 1 do
-nop;
-nop
-od
-;
-if 1 then 
-nop;
-nop
-else
-nop;
-nop
-fi
+     nop;
+     if 1 then 
+          nop
+     else
+          nop
+     fi;
+     for 1 do
+          nop;
+          nop
+     od;
+     while 1 do
+          nop;
+          nop
+     od;
+     if 1 then 
+          if 1 then 
+               nop;
+               nop
+          else
+               nop
+          fi
+     else
+          nop;
+          nop
+     fi
 %
 write A, B, C
+
 function fonctionb:
 read A
 %
-A:=1;
-A,B,C:=1,1,1
+     A:=1;
+     A:=1;
+     A,B,C:=1,1,1
 %
 write A, B, C

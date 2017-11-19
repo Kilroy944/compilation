@@ -29,10 +29,17 @@ public class Main {
 	
 	
 	public static void main(String[] args) throws ErrorPrettyPrinterException {
-		// gestion des arguments
+		
+		//Récupération arguments
 		Options options = new Options();
 		options.addOption("o", true, "nom du fichier de sortie");
+		options.addOption("indent", true, "valeur indent");
+		options.addOption("if", true, "indent if");
+		options.addOption("for", true, "indent for");
+		options.addOption("while", true, "indent while");
 
+		
+		
 		CommandLineParser parser = new BasicParser();
 		CommandLine cmd;
 		try {
@@ -50,21 +57,26 @@ public class Main {
 		}
 		input = cmd.getArgs()[0];
 		output = cmd.hasOption("o") ? cmd.getOptionValue("o") : "sortie.whdsl";
-
-		// pretty printing
-		System.out.println("START Pretty printing");
+		
 		
 		//Injection class Google Guice
 		Injector injector = new WhdslStandaloneSetupGenerated().createInjectorAndDoEMFRegistration();
 		Main main = injector.getInstance(Main.class);
-
-		main.prettyprint(injector,input,output);
+		
+		String indent_value = main.create_indent(" ",cmd.hasOption("indent") ? Integer.parseInt(cmd.getOptionValue("indent")) : 3);
+		String indent_if = main.create_indent(indent_value,cmd.hasOption("if") ? Integer.parseInt(cmd.getOptionValue("if")) : 1);
+		String indent_for = main.create_indent(indent_value,cmd.hasOption("for") ? Integer.parseInt(cmd.getOptionValue("for")) : 1);
+		String indent_while = main.create_indent(indent_value,cmd.hasOption("while") ? Integer.parseInt(cmd.getOptionValue("while")) : 1);
 
 		
+		//Pretty printing
+		System.out.println("START Pretty printing");
+		main.prettyprint(injector,input,output, indent_value, indent_if, indent_for, indent_while);
 		System.out.println("END Pretty printing");
 	}
 	
-	private int prettyprint(Injector injector, String string,String sortie) throws ErrorPrettyPrinterException{
+	
+	private int prettyprint(Injector injector, String string,String sortie, String indent_value, String indent_if, String indent_for, String indent_while) throws ErrorPrettyPrinterException{
 
 		ResourceSet resourceSet = injector.getInstance(ResourceSet.class);
 		Resource resource = resourceSet.getResource(URI.createFileURI(string), true);
@@ -89,10 +101,20 @@ public class Main {
 		context.setCancelIndicator(CancelIndicator.NullImpl);
 		
 		WhdslGenerator generator = injector.getInstance(WhdslGenerator.class);
-		generator.doGenerate(resource, file, context, sortie);
+		generator.doGenerate(resource, file, context, sortie, indent_value, indent_if, indent_for, indent_while);
 
 		System.out.println("Success");
 		
 		return 0;
+	}
+	
+	
+	private String create_indent(String value, int nb_repeat){
+		String value_return = "";
+		
+		for(int i=0; i<nb_repeat; i++){
+			value_return= value_return+value;
+		}
+		return value_return;
 	}
 }
