@@ -1,6 +1,7 @@
 package esir.compilation.generator;
 
 
+import java.io.File;
 import java.util.List;
 
 import org.apache.commons.cli.BasicParser;
@@ -101,7 +102,7 @@ public class Main {
 		context.setCancelIndicator(CancelIndicator.NullImpl);
 		
 		WhdslGenerator generator = injector.getInstance(WhdslGenerator.class);
-		generator.doGenerate(resource, file, context, sortie, indent_value, indent_if, indent_for, indent_while);
+		generator.doGenerate(resource, file, context, file.toString(), sortie, indent_value, indent_if, indent_for, indent_while);
 
 		System.out.println("Success");
 		
@@ -116,5 +117,10 @@ public class Main {
 			value_return= value_return+value;
 		}
 		return value_return;
+	}
+	
+	private boolean checkTest(List<File> les_test, List<File> bons_fichiers){
+		
+		return false;
 	}
 }

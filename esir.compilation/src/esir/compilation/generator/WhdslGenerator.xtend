@@ -4,136 +4,117 @@
  */
 package esir.compilation.generator
 
+import esir.compilation.WhdslStandaloneSetup
+import esir.compilation.whdsl.Command
+import esir.compilation.whdsl.CommandForEach
+import esir.compilation.whdsl.CommandIf
+import esir.compilation.whdsl.CommandWhile
+import esir.compilation.whdsl.Commands
+import esir.compilation.whdsl.Definition
+import esir.compilation.whdsl.Expr
+import esir.compilation.whdsl.ExprAnd
+import esir.compilation.whdsl.ExprEq
+import esir.compilation.whdsl.ExprNot
+import esir.compilation.whdsl.ExprOr
+import esir.compilation.whdsl.ExprSimple
+import esir.compilation.whdsl.Exprs
+import esir.compilation.whdsl.Function
+import esir.compilation.whdsl.Input
+import esir.compilation.whdsl.Output
+import esir.compilation.whdsl.Program
+import esir.compilation.whdsl.Vars
+import java.io.BufferedWriter
+import java.io.FileWriter
+import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.xtext.generator.AbstractGenerator
+import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import esir.compilation.whdsl.Function
-import esir.compilation.whdsl.Program
-import esir.compilation.whdsl.Commands
-import esir.compilation.whdsl.impl.CommandsImpl
-import esir.compilation.whdsl.Exprs
-import esir.compilation.whdsl.Command
-import esir.compilation.whdsl.Vars
-import esir.compilation.whdsl.impl.CommandImpl
-import esir.compilation.whdsl.Nop
-import esir.compilation.whdsl.Affect
-import esir.compilation.whdsl.While
-import esir.compilation.whdsl.For
-import esir.compilation.whdsl.If
+import org.eclipse.xtext.resource.XtextResourceSet
 
-/**
- * Generates code from your model files on save.
- * 
- * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
- */
 class WhdslGenerator extends AbstractGenerator {
 	
-	
-	String indent_value = '   ';
-	String indent_if = '  ';
-	String indent_for = '  ';
-	String indent_while = '  ';
-
-	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		for (e : resource.allContents.toIterable.filter(typeof(Program))){
-			fsa.generateFile("sortie.whdsl", e.compile())
-		}
+		//useless
 	}
 	
-	def doGenerate (Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context, String sortie, String indent_value, String indent_if, String indent_for, String indent_while) {
-		
-		this.indent_value = indent_value;
-		this.indent_if=indent_if;
-		this.indent_for=indent_for;
-		this.indent_while=indent_while;
-		
-		for (e : resource.allContents.toIterable.filter(typeof(Program))){
-			fsa.generateFile(sortie, e.compile())
-		}
-	}
-	
-	def compile (Program p){'''
-		«FOR f : p.function SEPARATOR '\n'»
-		«f.compile(indent_value)»
-		«ENDFOR»'''
-	}
-	
-	def compile (Function f, String indent){
-		'''
-		function «f.name»:
-		read «FOR param: f.definition.input.variables SEPARATOR ', '»«param»«ENDFOR»
-		%
-		«indent»«f.definition.commands.command.compile(indent)»«FOR param: f.definition.commands.commands»;
-		«indent»«param.compile(indent)»«ENDFOR»
-		%
-		write «FOR param: f.definition.output.variables SEPARATOR ', '»«param»«ENDFOR»'''
-	}
-	
-	
-	def compile (Command c, String indent){
-		if(c.cmd instanceof Nop){
-			(c.cmd as Nop).compile();
-		}
-		else if(c.cmd instanceof Affect){
-			(c.cmd as Affect).compile();
-		}
-		else if(c.cmd instanceof If){
-			(c.cmd as If).compile(indent);	
-		}
-		else if(c.cmd instanceof For){
-			(c.cmd as For).compile(indent);
-		}
-		else if(c.cmd instanceof While){
-			(c.cmd as While).compile(indent);
-		}
-		
-	}
-	
-	def compile(Nop n){
-		'''nop'''
-	}
-	
-	def compile(Affect a){
-		'''«a.vars.compile()»:=«a.exprs.compile()»'''	
-	}
-	def compile(If i, String indent){
-		'''if «i.exprs.compile()» then 
-«indent+indent_if»«i.cmds1.command.compile(indent+indent_if)»«FOR param: i.cmds1.commands»;
-«indent+indent_if»«param.compile(indent+indent_if)»«ENDFOR»
-«indent»else
-«indent+indent_if»«i.cmds2.command.compile(indent+indent_if)»«FOR param: i.cmds2.commands»;
-«indent+indent_if»«param.compile(indent+indent_if)»«ENDFOR»
-«indent»fi'''			
-	}
-	
-	def compile(For f, String indent){
-		'''for «f.exprs.compile()» do
-«indent+indent_for»«f.cmds.command.compile(indent+indent_for)»«FOR param: f.cmds.commands»;
-«indent+indent_for»«param.compile(indent+indent_for)»
-		«ENDFOR»
-«indent»od'''		
-	}
-	
-	def compile(While w, String indent){
-		'''while «w.exprs.compile()» do
-«indent+indent_while»«w.cmds.command.compile(indent+indent_while)»«FOR param: w.cmds.commands»;
-«indent+indent_while»«param.compile(indent+indent_while)»
-		«ENDFOR»
-«indent»od'''	
+	def doGenerate (Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context,String entree, String sortie, String indent_value, String indent_if, String indent_for, String indent_while) {
+		val injector = new WhdslStandaloneSetup().createInjectorAndDoEMFRegistration();
+		val resourceSet = injector.getInstance(XtextResourceSet);
+		val uri = URI.createURI(entree);
+		val xtextResource = resourceSet.getResource(uri, true);
+		EcoreUtil.resolveAll(xtextResource);
+				
+		var out = sortie
+		if(out.equals(""))
+			out = "sth.wh"
+			
+		try{
+  			val fstream = new FileWriter(out)
+  			val buff = new BufferedWriter(fstream)
+  			for(p: xtextResource.allContents.toIterable.filter(Program))
+				buff.write(p.compile.toString)
+  			buff.close()
+  		}catch (Exception e){
+  			e.printStackTrace();
+  		}
+
 	}
 
-	def compile(Vars v){
-		'''«v.^var»«FOR param: v.vars »,«param»«ENDFOR»'''
-	}
-
-	
-
-	def compile(Exprs e){
-		'''«e.expr»«FOR param: e.exprs»,«param»«ENDFOR»'''
+	def void doGenerate(Resource resource, IFileSystemAccess fsa) {
+		for(p: resource.allContents.toIterable.filter(Program)) {
+			fsa.generateFile("UP.wh", p.compile)
+		}
 	}
 	
+	def compile (Program p)'''«FOR f: p.fonctions»«f.compile»«ENDFOR»'''
 	
+	def compile (Function f)'''function «f.nom»:«f.definition.compile» '''
+	
+	def compile (Definition d)'''read «d.inputs.compile»%«d.commandes.compile»%write «d.outputs.compile»'''
+	
+	def compile (Input i)'''«FOR in : i.varIn»«in»«IF i.varIn.indexOf(in)!=i.varIn.size-1», «ENDIF»«ENDFOR»'''
+	
+	def compile (Commands c)'''«FOR cm: c.commande»«cm.compile»«IF c.commande.indexOf(cm)!=c.commande.size-1»«ENDIF»«ENDFOR»'''
+		
+	def compile (Output o)'''«FOR in : o.varOut»«in»«IF o.varOut.indexOf(in)!=o.varOut.size-1», «ENDIF»«ENDFOR»'''
+	
+	def compile(Command c)'''«switch (c){
+	case c.nop!=null : "nop ;"
+	case c.cmdIf!=null : c.cmdIf.compile
+	case c.cmdForEach!=null : c.cmdForEach.compile
+	case c.vars!=null && c.exprs!=null : c.vars.compile + " := " + c.exprs.compile + " ;" 
+	case c.cmdWhile!=null : c.cmdWhile.compile
+	default : c.class.name}»'''
+	
+	def compile(CommandWhile c)'''«IF c.w!=null»while «ELSE»for «ENDIF»«c.expr.compile» do «c.cmds.compile» od'''
+	
+	def compile(CommandIf c)'''if «c.cond.compile» then «c.cmdsThen.compile»«IF c.cmdsElse!=null» else «c.cmdsElse.compile»«ENDIF» fi'''
+	
+	def compile(CommandForEach c)'''foreach «c.elem.compile» in «c.ensemb.compile» do «c.cmds.compile» od'''
+	
+	def compile(Vars v)'''«FOR in : v.varGen»«in»«IF v.varGen.indexOf(in)!=v.varGen.size-1», «ENDIF»«ENDFOR»'''
+	
+	def compile(Exprs e)'''«FOR in : e.expGen»«in.compile»«IF e.expGen.indexOf(in)!=e.expGen.size-1», «ELSE»«ENDIF»«ENDFOR»'''
+	
+	def compile (Expr ex)'''«switch(ex){
+			case ex.exprSimp!=null : ex.exprSimp.compile
+			case ex.exprAnd!=null : ex.exprAnd.compile}»'''
+	
+	def compile (ExprSimple ex)'''«switch(ex){
+	 	case ex.nil!=null : "nil"
+	 	case ex.vari!=null : ex.vari
+	 	case ex.symb!=null : ex.symb
+	}»'''
+	
+	def compile (ExprAnd ex)'''«ex.exprOr.compile»«IF ex.exprAnd!=null»«ex.exprAndAtt.compile»«ENDIF»'''
+	
+	def compile (ExprOr ex)'''«ex.exprNot.compile»«IF ex.exprOr!=null»«ex.exprOrAtt.compile»«ENDIF»'''
+	
+	def compile (ExprNot ex)'''«IF ex.not!=null»not «ENDIF»«ex.exprEq.compile»'''
+	
+	def compile (ExprEq ex)'''«IF ex.expr!=null»(«ex.expr.compile»)«ELSE»«ex.exprSim1.compile» =? «ex.exprSim2.compile»«ENDIF»'''
 	
 }

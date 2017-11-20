@@ -2,117 +2,55 @@ grammar esir.compilation.Whdsl with org.eclipse.xtext.common.Terminals
 
 generate whdsl "http://www.compilation.esir/Whdsl"
 
-Wh :
-    elements+=Program;
-  
- 
-Program: 
-	 (functions+=Function)+
-;
+//Programme
+Program: (fonctions+=Function )*;
 
-Function:
-	'function' name=SYMBOLE ':' definition=Definition
-;
+//Fonction
+Function: 'function' nom=SYMBOL ':' definition=Definition;
+//Définition de fonction
 Definition:
-	'read' input=Input '%' commands=Commands '%' 'write' output=Output
-;
+'read' inputs=Input '%' commandes=Commands '%' 'write' outputs=Output;
 
-Input:
-	vars+=VARIABLE (',' vars+=VARIABLE)*
-;
+//Input de la fonction
+Input: (varIn+=VARIABLE ',')*(varIn+=VARIABLE);
+//Output de la fonction
+Output: (varOut+=VARIABLE ',')*(varOut+=VARIABLE); //varOut = variables Sorties
 
-Output:
-	vars+=VARIABLE (',' vars+=VARIABLE)*
-;
+//Variables
+Vars: (varGen += VARIABLE',')* (varGen += VARIABLE); //varGen = variables générales
+//Terminal représentant une seule variable
+terminal VARIABLE: ('A'..'Z') (('A'..'Z')|('a'..'z')|('0'..'9'))*;
 
-Commands:
-	commands+=Command (';' commands+=Command)*
-;
+//Commandes
+Commands: =>(commande += Command ';')*(commande += Command);
+//Les commandes dans cet ordre: nop; Affectation; While; If; ForEach
+Command: ( nop ='nop' | vars = Vars ':=' (exprs=Exprs) | cmdWhile = CommandWhile | cmdIf = CommandIf | cmdForEach = CommandForEach);
+CommandWhile: (w='while'|'for') expr = Expr 'do' cmds = Commands 'od';
+CommandIf: 'if' cond = Expr 'then' cmdsThen = Commands ('else' (cmdsElse = Commands) )? 'fi';
+CommandForEach: 'foreach' elem = Expr 'in' ensemb = Expr 'do' cmds = Commands 'od';
 
-Command:
-   cmd=(Nop | Affect | If | For | While | Foreach)
-;
+//Expression =>
+Exprs: =>(expGen += Expr',')* (expGen += Expr);
 
-If:
-	'if' expr=Expr 'then' commands1=Commands ('else' commands2=Commands)? 'fi'
-;
+//Utilisation de => pour eviter le message d'erreur langage non LL(*)
+Expr: => (exprSimp = ExprSimple) | (exprAnd = ExprAnd);
 
+//Expression simple dans cet ordre: nil; variable; symbole;
+ExprSimple: (nil = 'nil' | vari = VARIABLE | symb = SYMBOL ) |
+'(' (exprHead = 'hd') (exprHeadAtt = Expr) ')' | '(' (exprTail = 'tl') (exprTailAtt = Expr) ')' |
+'(' (nomSymb = SYMBOL) (symbAtt += Expr+) ')';
 
-Nop:
-	nop='nop'
-;
+//Expression ET
+ExprAnd: (exprOr = ExprOr) ((exprAnd = 'and') (exprAndAtt = ExprAnd))?;
+//Expression OU
+ExprOr: (exprNot = ExprNot) ((exprOr = 'or') (exprOrAtt = ExprOr))?;
+//Expression NOT
+ExprNot: (not = 'not')? (exprEq = ExprEq);
+//Expression d'égalité conditionnelle
+ExprEq: '('(expr = Expr)')' | (exprSim1 = ExprSimple)'=?'(exprSim2 = ExprSimple);
 
-Affect:
-	vars+=VARIABLE (',' vars+=VARIABLE)* ':=' exprs+=Expr (',' exprs+=Expr)*
-;
+//Terminal représentant un symbole
+terminal SYMBOL: ('a'..'z') (('A'..'Z')|('a'..'z')|('0'..'9'))*;
 
-For:
-	'for' expr=Expr 'do' cmds=Commands 'od'
-;
-
-Foreach:
-	'foreach' expr=Expr 'in' expr=Expr 'do' cmds=Commands 'od'
-;
-
-While:
-	'while' expr=Expr 'do' cmds=Commands 'od'
-;
-
-Expr:
-	expr = ExprAnd | expr = ExprOr | expr =ExprSimple | expr=ExprCons | 
-	expr=ExprList | expr=ExprHd | expr=ExprTl | expr=ExprSym | expr=ExprNot | exprEq=ExprEq |'(' expr=Expr ')'
-;
-
-ExprSimple:
-	=>str=NIL | varSimple=VARIABLE | sym=SYMBOLE  | '(' nameFunction=SYMBOLE vars=Input ')'//pas de fonction dans les param
-;
-
-ExprAnd:
-	arg1=ExprSimple 'and' arg2=Expr 
-;
-
-ExprOr:
-	arg1=ExprSimple 'or' arg2=Expr
-;
-
-ExprCons:
-	'(''cons' arg1=Expr arg2=Expr ')'
-;
-
-ExprList:
-	'(' 'list' arg+=Expr ')'
-;
-
-ExprHd:
-	'(' 'hd' arg=Expr ')'
-;
-
-ExprTl:
-	'(' 'tl' arg=Expr')'
-;
-
-ExprSym:
-	'(' arg1=SYMBOLE arg2+=Expr ')'
-;
-
-ExprNot:
-	'not' arg1=ExprEq
-;
-
-ExprEq:
-	 arg1=ExprSimple '=?' arg2=ExprSimple
-;
-
-
-terminal NIL:
-	'Nil' | 'nil'
-;
-
-
-terminal VARIABLE:
-	'A'..'Z' ID?
-;
-
-terminal SYMBOLE:
-	'a'..'z' ID?
-;
+//Layout character
+terminal LC: (' ')*;
