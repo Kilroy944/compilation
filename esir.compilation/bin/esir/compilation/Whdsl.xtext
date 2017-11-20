@@ -2,81 +2,35 @@ grammar esir.compilation.Whdsl with org.eclipse.xtext.common.Terminals
 
 generate whdsl "http://www.compilation.esir/Whdsl"
 
-Program:
-	(function+=Function)*
+Wh :
+    elements+=Program;
+  
+ 
+Program: 
+	 (functions+=Function)+
 ;
 
 Function:
-	'function'name=SYMBOLE':'definition=Definition
+	'function' name=SYMBOLE ':' definition=Definition
 ;
-
 Definition:
-	input=Input'%'
-	commands = Commands
-	'%'output=Output
+	'read' input=Input '%' commands=Commands '%' 'write' output=Output
 ;
 
-
-
-/*Input Output */
-	
 Input:
-	'read' (variables+=VARIABLE)(','variables+=VARIABLE)*
+	vars+=VARIABLE (',' vars+=VARIABLE)*
 ;
 
 Output:
-	'write' (variables+=VARIABLE)(','variables+=VARIABLE)*
+	vars+=VARIABLE (',' vars+=VARIABLE)*
 ;
-
-
-/*COMMAND */
-
 
 Commands:
-	command=Command (';' commands+=Command)*
+	commands+=Command (';' commands+=Command)*
 ;
 
 Command:
-	(cmd=Nop) | (cmd=Affect) | (cmd=If) | (cmd=For) | (cmd=While)	
-;
-
-Exprs: 	
-  expr=Expr(','exprs+=Expr)*
-;
-
-
-If:
-	'if' exprs=Exprs 'then' cmds1=Commands ('else' cmds2=Commands)? 'fi'
-;
-
-Affect:
-	vars=Vars ':=' exprs=Exprs
-;
-
-For:
-	'for' exprs=Exprs 'do' cmds=Commands 'od'
-;
-
-While:
-	'while' exprs=Exprs 'do' cmds=Commands 'od'
-;
-
-Nop:
-	nop='nop'
-;
-
-Vars:
-	var=VARIABLE(','vars+=VARIABLE)*
-;	
-
-Expr:
-	"1"
-;
-
-//test commit depuis eclipse
-/*
-Command:
-   cmd=(Nop | Affect | If | For | While)
+   cmd=(Nop | Affect | If | For | While | Foreach)
 ;
 
 If:
@@ -96,12 +50,15 @@ For:
 	'for' expr=Expr 'do' cmds=Commands 'od'
 ;
 
+Foreach:
+	'foreach' expr=Expr 'in' expr=Expr 'do' cmds=Commands 'od'
+;
+
 While:
 	'while' expr=Expr 'do' cmds=Commands 'od'
 ;
 
-/*EXPRESSION */
-/* Expr:
+Expr:
 	expr = ExprAnd | expr = ExprOr | expr =ExprSimple | expr=ExprCons | 
 	expr=ExprList | expr=ExprHd | expr=ExprTl | expr=ExprSym | expr=ExprNot | exprEq=ExprEq |'(' expr=Expr ')'
 ;
@@ -144,18 +101,18 @@ ExprNot:
 
 ExprEq:
 	 arg1=ExprSimple '=?' arg2=ExprSimple
-;*/
+;
 
 
 terminal NIL:
 	'Nil' | 'nil'
 ;
 
-/*TERMINAL */	
+
 terminal VARIABLE:
-	('A'..'Z')*
+	'A'..'Z' ID?
 ;
 
 terminal SYMBOLE:
-	('a'..'z')*
+	'a'..'z' ID?
 ;
