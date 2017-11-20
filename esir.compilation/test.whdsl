@@ -1,18 +1,18 @@
 function fonctiona : 
 	read B,B % 
 	nop;
-	if 1 then nop else nop fi;
-	for 1 do nop;nop od;
-	while 1 do nop;nop od;
-	if 1 then if 1 then nop;nop else nop fi else nop; nop fi
+	if nil then nop else nop fi;
+	for nil do nop;nop od;
+	while nil do nop;nop od;
+	if nil then if nil then nop;nop else nop fi else nop; nop fi
 	% write A,B,C
 
 function fonctionb : read A %
-	A:=1;A:=1;A,B,C:=1,1,1
+	A:=nil;A:=nil;A,B,C:=nil,nil,nil
 	  % write A,B,C
 
 function fonctionb : read A %
-	A:=1;A:=1;A,B,C:=1,1,1
+	A:=nil;A:=nil;A,B,C:=nil,nil,nil
 	  % write A,B,C
 
 function fonctionc    : read X%Y:=    nil;while X do Y:=    (cons (hd X) Y);X:=(tl X) od%write Y

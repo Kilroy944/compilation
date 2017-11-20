@@ -4,7 +4,7 @@
 package esir.compilation.whdsl.impl;
 
 import esir.compilation.whdsl.Commands;
-import esir.compilation.whdsl.Exprs;
+import esir.compilation.whdsl.Expr;
 import esir.compilation.whdsl.For;
 import esir.compilation.whdsl.WhdslPackage;
 
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.ForImpl#getExprs <em>Exprs</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.ForImpl#getExpr <em>Expr</em>}</li>
  *   <li>{@link esir.compilation.whdsl.impl.ForImpl#getCmds <em>Cmds</em>}</li>
  * </ul>
  *
@@ -34,14 +34,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class ForImpl extends MinimalEObjectImpl.Container implements For
 {
   /**
-   * The cached value of the '{@link #getExprs() <em>Exprs</em>}' containment reference.
+   * The cached value of the '{@link #getExpr() <em>Expr</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getExprs()
+   * @see #getExpr()
    * @generated
    * @ordered
    */
-  protected Exprs exprs;
+  protected Expr expr;
 
   /**
    * The cached value of the '{@link #getCmds() <em>Cmds</em>}' containment reference.
@@ -79,9 +79,9 @@ public class ForImpl extends MinimalEObjectImpl.Container implements For
    * <!-- end-user-doc -->
    * @generated
    */
-  public Exprs getExprs()
+  public Expr getExpr()
   {
-    return exprs;
+    return expr;
   }
 
   /**
@@ -89,13 +89,13 @@ public class ForImpl extends MinimalEObjectImpl.Container implements For
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExprs(Exprs newExprs, NotificationChain msgs)
+  public NotificationChain basicSetExpr(Expr newExpr, NotificationChain msgs)
   {
-    Exprs oldExprs = exprs;
-    exprs = newExprs;
+    Expr oldExpr = expr;
+    expr = newExpr;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR__EXPRS, oldExprs, newExprs);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR__EXPR, oldExpr, newExpr);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -106,20 +106,20 @@ public class ForImpl extends MinimalEObjectImpl.Container implements For
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExprs(Exprs newExprs)
+  public void setExpr(Expr newExpr)
   {
-    if (newExprs != exprs)
+    if (newExpr != expr)
     {
       NotificationChain msgs = null;
-      if (exprs != null)
-        msgs = ((InternalEObject)exprs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.FOR__EXPRS, null, msgs);
-      if (newExprs != null)
-        msgs = ((InternalEObject)newExprs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.FOR__EXPRS, null, msgs);
-      msgs = basicSetExprs(newExprs, msgs);
+      if (expr != null)
+        msgs = ((InternalEObject)expr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.FOR__EXPR, null, msgs);
+      if (newExpr != null)
+        msgs = ((InternalEObject)newExpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.FOR__EXPR, null, msgs);
+      msgs = basicSetExpr(newExpr, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR__EXPRS, newExprs, newExprs));
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR__EXPR, newExpr, newExpr));
   }
 
   /**
@@ -180,8 +180,8 @@ public class ForImpl extends MinimalEObjectImpl.Container implements For
   {
     switch (featureID)
     {
-      case WhdslPackage.FOR__EXPRS:
-        return basicSetExprs(null, msgs);
+      case WhdslPackage.FOR__EXPR:
+        return basicSetExpr(null, msgs);
       case WhdslPackage.FOR__CMDS:
         return basicSetCmds(null, msgs);
     }
@@ -198,8 +198,8 @@ public class ForImpl extends MinimalEObjectImpl.Container implements For
   {
     switch (featureID)
     {
-      case WhdslPackage.FOR__EXPRS:
-        return getExprs();
+      case WhdslPackage.FOR__EXPR:
+        return getExpr();
       case WhdslPackage.FOR__CMDS:
         return getCmds();
     }
@@ -216,8 +216,8 @@ public class ForImpl extends MinimalEObjectImpl.Container implements For
   {
     switch (featureID)
     {
-      case WhdslPackage.FOR__EXPRS:
-        setExprs((Exprs)newValue);
+      case WhdslPackage.FOR__EXPR:
+        setExpr((Expr)newValue);
         return;
       case WhdslPackage.FOR__CMDS:
         setCmds((Commands)newValue);
@@ -236,8 +236,8 @@ public class ForImpl extends MinimalEObjectImpl.Container implements For
   {
     switch (featureID)
     {
-      case WhdslPackage.FOR__EXPRS:
-        setExprs((Exprs)null);
+      case WhdslPackage.FOR__EXPR:
+        setExpr((Expr)null);
         return;
       case WhdslPackage.FOR__CMDS:
         setCmds((Commands)null);
@@ -256,8 +256,8 @@ public class ForImpl extends MinimalEObjectImpl.Container implements For
   {
     switch (featureID)
     {
-      case WhdslPackage.FOR__EXPRS:
-        return exprs != null;
+      case WhdslPackage.FOR__EXPR:
+        return expr != null;
       case WhdslPackage.FOR__CMDS:
         return cmds != null;
     }

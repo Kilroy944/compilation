@@ -4,7 +4,7 @@
 package esir.compilation.whdsl.impl;
 
 import esir.compilation.whdsl.Commands;
-import esir.compilation.whdsl.Exprs;
+import esir.compilation.whdsl.Expr;
 import esir.compilation.whdsl.If;
 import esir.compilation.whdsl.WhdslPackage;
 
@@ -25,9 +25,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.IfImpl#getExprs <em>Exprs</em>}</li>
- *   <li>{@link esir.compilation.whdsl.impl.IfImpl#getCmds1 <em>Cmds1</em>}</li>
- *   <li>{@link esir.compilation.whdsl.impl.IfImpl#getCmds2 <em>Cmds2</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.IfImpl#getExpr <em>Expr</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.IfImpl#getCommands1 <em>Commands1</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.IfImpl#getCommands2 <em>Commands2</em>}</li>
  * </ul>
  *
  * @generated
@@ -35,34 +35,34 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class IfImpl extends MinimalEObjectImpl.Container implements If
 {
   /**
-   * The cached value of the '{@link #getExprs() <em>Exprs</em>}' containment reference.
+   * The cached value of the '{@link #getExpr() <em>Expr</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getExprs()
+   * @see #getExpr()
    * @generated
    * @ordered
    */
-  protected Exprs exprs;
+  protected Expr expr;
 
   /**
-   * The cached value of the '{@link #getCmds1() <em>Cmds1</em>}' containment reference.
+   * The cached value of the '{@link #getCommands1() <em>Commands1</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCmds1()
+   * @see #getCommands1()
    * @generated
    * @ordered
    */
-  protected Commands cmds1;
+  protected Commands commands1;
 
   /**
-   * The cached value of the '{@link #getCmds2() <em>Cmds2</em>}' containment reference.
+   * The cached value of the '{@link #getCommands2() <em>Commands2</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCmds2()
+   * @see #getCommands2()
    * @generated
    * @ordered
    */
-  protected Commands cmds2;
+  protected Commands commands2;
 
   /**
    * <!-- begin-user-doc -->
@@ -90,9 +90,9 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
    * <!-- end-user-doc -->
    * @generated
    */
-  public Exprs getExprs()
+  public Expr getExpr()
   {
-    return exprs;
+    return expr;
   }
 
   /**
@@ -100,13 +100,13 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExprs(Exprs newExprs, NotificationChain msgs)
+  public NotificationChain basicSetExpr(Expr newExpr, NotificationChain msgs)
   {
-    Exprs oldExprs = exprs;
-    exprs = newExprs;
+    Expr oldExpr = expr;
+    expr = newExpr;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.IF__EXPRS, oldExprs, newExprs);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.IF__EXPR, oldExpr, newExpr);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -117,20 +117,20 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExprs(Exprs newExprs)
+  public void setExpr(Expr newExpr)
   {
-    if (newExprs != exprs)
+    if (newExpr != expr)
     {
       NotificationChain msgs = null;
-      if (exprs != null)
-        msgs = ((InternalEObject)exprs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.IF__EXPRS, null, msgs);
-      if (newExprs != null)
-        msgs = ((InternalEObject)newExprs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.IF__EXPRS, null, msgs);
-      msgs = basicSetExprs(newExprs, msgs);
+      if (expr != null)
+        msgs = ((InternalEObject)expr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.IF__EXPR, null, msgs);
+      if (newExpr != null)
+        msgs = ((InternalEObject)newExpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.IF__EXPR, null, msgs);
+      msgs = basicSetExpr(newExpr, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.IF__EXPRS, newExprs, newExprs));
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.IF__EXPR, newExpr, newExpr));
   }
 
   /**
@@ -138,9 +138,9 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
    * <!-- end-user-doc -->
    * @generated
    */
-  public Commands getCmds1()
+  public Commands getCommands1()
   {
-    return cmds1;
+    return commands1;
   }
 
   /**
@@ -148,13 +148,13 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetCmds1(Commands newCmds1, NotificationChain msgs)
+  public NotificationChain basicSetCommands1(Commands newCommands1, NotificationChain msgs)
   {
-    Commands oldCmds1 = cmds1;
-    cmds1 = newCmds1;
+    Commands oldCommands1 = commands1;
+    commands1 = newCommands1;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.IF__CMDS1, oldCmds1, newCmds1);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.IF__COMMANDS1, oldCommands1, newCommands1);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -165,20 +165,20 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCmds1(Commands newCmds1)
+  public void setCommands1(Commands newCommands1)
   {
-    if (newCmds1 != cmds1)
+    if (newCommands1 != commands1)
     {
       NotificationChain msgs = null;
-      if (cmds1 != null)
-        msgs = ((InternalEObject)cmds1).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.IF__CMDS1, null, msgs);
-      if (newCmds1 != null)
-        msgs = ((InternalEObject)newCmds1).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.IF__CMDS1, null, msgs);
-      msgs = basicSetCmds1(newCmds1, msgs);
+      if (commands1 != null)
+        msgs = ((InternalEObject)commands1).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.IF__COMMANDS1, null, msgs);
+      if (newCommands1 != null)
+        msgs = ((InternalEObject)newCommands1).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.IF__COMMANDS1, null, msgs);
+      msgs = basicSetCommands1(newCommands1, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.IF__CMDS1, newCmds1, newCmds1));
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.IF__COMMANDS1, newCommands1, newCommands1));
   }
 
   /**
@@ -186,9 +186,9 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
    * <!-- end-user-doc -->
    * @generated
    */
-  public Commands getCmds2()
+  public Commands getCommands2()
   {
-    return cmds2;
+    return commands2;
   }
 
   /**
@@ -196,13 +196,13 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetCmds2(Commands newCmds2, NotificationChain msgs)
+  public NotificationChain basicSetCommands2(Commands newCommands2, NotificationChain msgs)
   {
-    Commands oldCmds2 = cmds2;
-    cmds2 = newCmds2;
+    Commands oldCommands2 = commands2;
+    commands2 = newCommands2;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.IF__CMDS2, oldCmds2, newCmds2);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.IF__COMMANDS2, oldCommands2, newCommands2);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -213,20 +213,20 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCmds2(Commands newCmds2)
+  public void setCommands2(Commands newCommands2)
   {
-    if (newCmds2 != cmds2)
+    if (newCommands2 != commands2)
     {
       NotificationChain msgs = null;
-      if (cmds2 != null)
-        msgs = ((InternalEObject)cmds2).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.IF__CMDS2, null, msgs);
-      if (newCmds2 != null)
-        msgs = ((InternalEObject)newCmds2).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.IF__CMDS2, null, msgs);
-      msgs = basicSetCmds2(newCmds2, msgs);
+      if (commands2 != null)
+        msgs = ((InternalEObject)commands2).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.IF__COMMANDS2, null, msgs);
+      if (newCommands2 != null)
+        msgs = ((InternalEObject)newCommands2).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.IF__COMMANDS2, null, msgs);
+      msgs = basicSetCommands2(newCommands2, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.IF__CMDS2, newCmds2, newCmds2));
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.IF__COMMANDS2, newCommands2, newCommands2));
   }
 
   /**
@@ -239,12 +239,12 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
   {
     switch (featureID)
     {
-      case WhdslPackage.IF__EXPRS:
-        return basicSetExprs(null, msgs);
-      case WhdslPackage.IF__CMDS1:
-        return basicSetCmds1(null, msgs);
-      case WhdslPackage.IF__CMDS2:
-        return basicSetCmds2(null, msgs);
+      case WhdslPackage.IF__EXPR:
+        return basicSetExpr(null, msgs);
+      case WhdslPackage.IF__COMMANDS1:
+        return basicSetCommands1(null, msgs);
+      case WhdslPackage.IF__COMMANDS2:
+        return basicSetCommands2(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -259,12 +259,12 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
   {
     switch (featureID)
     {
-      case WhdslPackage.IF__EXPRS:
-        return getExprs();
-      case WhdslPackage.IF__CMDS1:
-        return getCmds1();
-      case WhdslPackage.IF__CMDS2:
-        return getCmds2();
+      case WhdslPackage.IF__EXPR:
+        return getExpr();
+      case WhdslPackage.IF__COMMANDS1:
+        return getCommands1();
+      case WhdslPackage.IF__COMMANDS2:
+        return getCommands2();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -279,14 +279,14 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
   {
     switch (featureID)
     {
-      case WhdslPackage.IF__EXPRS:
-        setExprs((Exprs)newValue);
+      case WhdslPackage.IF__EXPR:
+        setExpr((Expr)newValue);
         return;
-      case WhdslPackage.IF__CMDS1:
-        setCmds1((Commands)newValue);
+      case WhdslPackage.IF__COMMANDS1:
+        setCommands1((Commands)newValue);
         return;
-      case WhdslPackage.IF__CMDS2:
-        setCmds2((Commands)newValue);
+      case WhdslPackage.IF__COMMANDS2:
+        setCommands2((Commands)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -302,14 +302,14 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
   {
     switch (featureID)
     {
-      case WhdslPackage.IF__EXPRS:
-        setExprs((Exprs)null);
+      case WhdslPackage.IF__EXPR:
+        setExpr((Expr)null);
         return;
-      case WhdslPackage.IF__CMDS1:
-        setCmds1((Commands)null);
+      case WhdslPackage.IF__COMMANDS1:
+        setCommands1((Commands)null);
         return;
-      case WhdslPackage.IF__CMDS2:
-        setCmds2((Commands)null);
+      case WhdslPackage.IF__COMMANDS2:
+        setCommands2((Commands)null);
         return;
     }
     super.eUnset(featureID);
@@ -325,12 +325,12 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
   {
     switch (featureID)
     {
-      case WhdslPackage.IF__EXPRS:
-        return exprs != null;
-      case WhdslPackage.IF__CMDS1:
-        return cmds1 != null;
-      case WhdslPackage.IF__CMDS2:
-        return cmds2 != null;
+      case WhdslPackage.IF__EXPR:
+        return expr != null;
+      case WhdslPackage.IF__COMMANDS1:
+        return commands1 != null;
+      case WhdslPackage.IF__COMMANDS2:
+        return commands2 != null;
     }
     return super.eIsSet(featureID);
   }

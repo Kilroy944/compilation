@@ -4,18 +4,23 @@
 package esir.compilation.whdsl.impl;
 
 import esir.compilation.whdsl.Affect;
-import esir.compilation.whdsl.Exprs;
-import esir.compilation.whdsl.Vars;
+import esir.compilation.whdsl.Expr;
 import esir.compilation.whdsl.WhdslPackage;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EDataTypeEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,24 +39,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class AffectImpl extends MinimalEObjectImpl.Container implements Affect
 {
   /**
-   * The cached value of the '{@link #getVars() <em>Vars</em>}' containment reference.
+   * The cached value of the '{@link #getVars() <em>Vars</em>}' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getVars()
    * @generated
    * @ordered
    */
-  protected Vars vars;
+  protected EList<String> vars;
 
   /**
-   * The cached value of the '{@link #getExprs() <em>Exprs</em>}' containment reference.
+   * The cached value of the '{@link #getExprs() <em>Exprs</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getExprs()
    * @generated
    * @ordered
    */
-  protected Exprs exprs;
+  protected EList<Expr> exprs;
 
   /**
    * <!-- begin-user-doc -->
@@ -79,8 +84,12 @@ public class AffectImpl extends MinimalEObjectImpl.Container implements Affect
    * <!-- end-user-doc -->
    * @generated
    */
-  public Vars getVars()
+  public EList<String> getVars()
   {
+    if (vars == null)
+    {
+      vars = new EDataTypeEList<String>(String.class, this, WhdslPackage.AFFECT__VARS);
+    }
     return vars;
   }
 
@@ -89,85 +98,13 @@ public class AffectImpl extends MinimalEObjectImpl.Container implements Affect
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetVars(Vars newVars, NotificationChain msgs)
+  public EList<Expr> getExprs()
   {
-    Vars oldVars = vars;
-    vars = newVars;
-    if (eNotificationRequired())
+    if (exprs == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.AFFECT__VARS, oldVars, newVars);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      exprs = new EObjectContainmentEList<Expr>(Expr.class, this, WhdslPackage.AFFECT__EXPRS);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setVars(Vars newVars)
-  {
-    if (newVars != vars)
-    {
-      NotificationChain msgs = null;
-      if (vars != null)
-        msgs = ((InternalEObject)vars).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.AFFECT__VARS, null, msgs);
-      if (newVars != null)
-        msgs = ((InternalEObject)newVars).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.AFFECT__VARS, null, msgs);
-      msgs = basicSetVars(newVars, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.AFFECT__VARS, newVars, newVars));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Exprs getExprs()
-  {
     return exprs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetExprs(Exprs newExprs, NotificationChain msgs)
-  {
-    Exprs oldExprs = exprs;
-    exprs = newExprs;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.AFFECT__EXPRS, oldExprs, newExprs);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setExprs(Exprs newExprs)
-  {
-    if (newExprs != exprs)
-    {
-      NotificationChain msgs = null;
-      if (exprs != null)
-        msgs = ((InternalEObject)exprs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.AFFECT__EXPRS, null, msgs);
-      if (newExprs != null)
-        msgs = ((InternalEObject)newExprs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.AFFECT__EXPRS, null, msgs);
-      msgs = basicSetExprs(newExprs, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.AFFECT__EXPRS, newExprs, newExprs));
   }
 
   /**
@@ -180,10 +117,8 @@ public class AffectImpl extends MinimalEObjectImpl.Container implements Affect
   {
     switch (featureID)
     {
-      case WhdslPackage.AFFECT__VARS:
-        return basicSetVars(null, msgs);
       case WhdslPackage.AFFECT__EXPRS:
-        return basicSetExprs(null, msgs);
+        return ((InternalEList<?>)getExprs()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -211,16 +146,19 @@ public class AffectImpl extends MinimalEObjectImpl.Container implements Affect
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
       case WhdslPackage.AFFECT__VARS:
-        setVars((Vars)newValue);
+        getVars().clear();
+        getVars().addAll((Collection<? extends String>)newValue);
         return;
       case WhdslPackage.AFFECT__EXPRS:
-        setExprs((Exprs)newValue);
+        getExprs().clear();
+        getExprs().addAll((Collection<? extends Expr>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -237,10 +175,10 @@ public class AffectImpl extends MinimalEObjectImpl.Container implements Affect
     switch (featureID)
     {
       case WhdslPackage.AFFECT__VARS:
-        setVars((Vars)null);
+        getVars().clear();
         return;
       case WhdslPackage.AFFECT__EXPRS:
-        setExprs((Exprs)null);
+        getExprs().clear();
         return;
     }
     super.eUnset(featureID);
@@ -257,11 +195,28 @@ public class AffectImpl extends MinimalEObjectImpl.Container implements Affect
     switch (featureID)
     {
       case WhdslPackage.AFFECT__VARS:
-        return vars != null;
+        return vars != null && !vars.isEmpty();
       case WhdslPackage.AFFECT__EXPRS:
-        return exprs != null;
+        return exprs != null && !exprs.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (vars: ");
+    result.append(vars);
+    result.append(')');
+    return result.toString();
   }
 
 } //AffectImpl

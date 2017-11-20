@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.OutputImpl#getVariables <em>Variables</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.OutputImpl#getVars <em>Vars</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,14 +32,14 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
 public class OutputImpl extends MinimalEObjectImpl.Container implements Output
 {
   /**
-   * The cached value of the '{@link #getVariables() <em>Variables</em>}' attribute list.
+   * The cached value of the '{@link #getVars() <em>Vars</em>}' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVariables()
+   * @see #getVars()
    * @generated
    * @ordered
    */
-  protected EList<String> variables;
+  protected EList<String> vars;
 
   /**
    * <!-- begin-user-doc -->
@@ -67,13 +67,13 @@ public class OutputImpl extends MinimalEObjectImpl.Container implements Output
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getVariables()
+  public EList<String> getVars()
   {
-    if (variables == null)
+    if (vars == null)
     {
-      variables = new EDataTypeEList<String>(String.class, this, WhdslPackage.OUTPUT__VARIABLES);
+      vars = new EDataTypeEList<String>(String.class, this, WhdslPackage.OUTPUT__VARS);
     }
-    return variables;
+    return vars;
   }
 
   /**
@@ -86,8 +86,8 @@ public class OutputImpl extends MinimalEObjectImpl.Container implements Output
   {
     switch (featureID)
     {
-      case WhdslPackage.OUTPUT__VARIABLES:
-        return getVariables();
+      case WhdslPackage.OUTPUT__VARS:
+        return getVars();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -103,9 +103,9 @@ public class OutputImpl extends MinimalEObjectImpl.Container implements Output
   {
     switch (featureID)
     {
-      case WhdslPackage.OUTPUT__VARIABLES:
-        getVariables().clear();
-        getVariables().addAll((Collection<? extends String>)newValue);
+      case WhdslPackage.OUTPUT__VARS:
+        getVars().clear();
+        getVars().addAll((Collection<? extends String>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -121,8 +121,8 @@ public class OutputImpl extends MinimalEObjectImpl.Container implements Output
   {
     switch (featureID)
     {
-      case WhdslPackage.OUTPUT__VARIABLES:
-        getVariables().clear();
+      case WhdslPackage.OUTPUT__VARS:
+        getVars().clear();
         return;
     }
     super.eUnset(featureID);
@@ -138,8 +138,8 @@ public class OutputImpl extends MinimalEObjectImpl.Container implements Output
   {
     switch (featureID)
     {
-      case WhdslPackage.OUTPUT__VARIABLES:
-        return variables != null && !variables.isEmpty();
+      case WhdslPackage.OUTPUT__VARS:
+        return vars != null && !vars.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -155,8 +155,8 @@ public class OutputImpl extends MinimalEObjectImpl.Container implements Output
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (variables: ");
-    result.append(variables);
+    result.append(" (vars: ");
+    result.append(vars);
     result.append(')');
     return result.toString();
   }

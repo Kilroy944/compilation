@@ -51,7 +51,7 @@ For:
 ;
 
 Foreach:
-	'foreach' expr=Expr 'in' expr=Expr 'do' cmds=Commands 'od'
+	'foreach' expr=Expr 'in' expr2=Expr 'do' cmds=Commands 'od'
 ;
 
 While:

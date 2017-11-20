@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.For#getExprs <em>Exprs</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.For#getExpr <em>Expr</em>}</li>
  *   <li>{@link esir.compilation.whdsl.For#getCmds <em>Cmds</em>}</li>
  * </ul>
  *
@@ -25,30 +25,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface For extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Exprs</b></em>' containment reference.
+   * Returns the value of the '<em><b>Expr</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Exprs</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Expr</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Exprs</em>' containment reference.
-   * @see #setExprs(Exprs)
-   * @see esir.compilation.whdsl.WhdslPackage#getFor_Exprs()
+   * @return the value of the '<em>Expr</em>' containment reference.
+   * @see #setExpr(Expr)
+   * @see esir.compilation.whdsl.WhdslPackage#getFor_Expr()
    * @model containment="true"
    * @generated
    */
-  Exprs getExprs();
+  Expr getExpr();
 
   /**
-   * Sets the value of the '{@link esir.compilation.whdsl.For#getExprs <em>Exprs</em>}' containment reference.
+   * Sets the value of the '{@link esir.compilation.whdsl.For#getExpr <em>Expr</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Exprs</em>' containment reference.
-   * @see #getExprs()
+   * @param value the new value of the '<em>Expr</em>' containment reference.
+   * @see #getExpr()
    * @generated
    */
-  void setExprs(Exprs value);
+  void setExpr(Expr value);
 
   /**
    * Returns the value of the '<em><b>Cmds</b></em>' containment reference.

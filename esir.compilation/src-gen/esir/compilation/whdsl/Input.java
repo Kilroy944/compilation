@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.Input#getVariables <em>Variables</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.Input#getVars <em>Vars</em>}</li>
  * </ul>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getInput()
@@ -26,19 +26,19 @@ import org.eclipse.emf.ecore.EObject;
 public interface Input extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Variables</b></em>' attribute list.
+   * Returns the value of the '<em><b>Vars</b></em>' attribute list.
    * The list contents are of type {@link java.lang.String}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Variables</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Vars</em>' attribute list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Variables</em>' attribute list.
-   * @see esir.compilation.whdsl.WhdslPackage#getInput_Variables()
+   * @return the value of the '<em>Vars</em>' attribute list.
+   * @see esir.compilation.whdsl.WhdslPackage#getInput_Vars()
    * @model unique="false"
    * @generated
    */
-  EList<String> getVariables();
+  EList<String> getVars();
 
 } // Input

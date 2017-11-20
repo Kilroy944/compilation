@@ -27,7 +27,7 @@ public class WhdslParser extends AbstractAntlrParser {
 
 	@Override 
 	protected String getDefaultRuleName() {
-		return "Program";
+		return "Wh";
 	}
 
 	public WhdslGrammarAccess getGrammarAccess() {

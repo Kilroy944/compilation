@@ -65,6 +65,7 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
   {
     switch (eClass.getClassifierID())
     {
+      case WhdslPackage.WH: return createWh();
       case WhdslPackage.PROGRAM: return createProgram();
       case WhdslPackage.FUNCTION: return createFunction();
       case WhdslPackage.DEFINITION: return createDefinition();
@@ -72,16 +73,37 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
       case WhdslPackage.OUTPUT: return createOutput();
       case WhdslPackage.COMMANDS: return createCommands();
       case WhdslPackage.COMMAND: return createCommand();
-      case WhdslPackage.EXPRS: return createExprs();
       case WhdslPackage.IF: return createIf();
+      case WhdslPackage.NOP: return createNop();
       case WhdslPackage.AFFECT: return createAffect();
       case WhdslPackage.FOR: return createFor();
+      case WhdslPackage.FOREACH: return createForeach();
       case WhdslPackage.WHILE: return createWhile();
-      case WhdslPackage.NOP: return createNop();
-      case WhdslPackage.VARS: return createVars();
+      case WhdslPackage.EXPR: return createExpr();
+      case WhdslPackage.EXPR_SIMPLE: return createExprSimple();
+      case WhdslPackage.EXPR_AND: return createExprAnd();
+      case WhdslPackage.EXPR_OR: return createExprOr();
+      case WhdslPackage.EXPR_CONS: return createExprCons();
+      case WhdslPackage.EXPR_LIST: return createExprList();
+      case WhdslPackage.EXPR_HD: return createExprHd();
+      case WhdslPackage.EXPR_TL: return createExprTl();
+      case WhdslPackage.EXPR_SYM: return createExprSym();
+      case WhdslPackage.EXPR_NOT: return createExprNot();
+      case WhdslPackage.EXPR_EQ: return createExprEq();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Wh createWh()
+  {
+    WhImpl wh = new WhImpl();
+    return wh;
   }
 
   /**
@@ -166,10 +188,10 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Exprs createExprs()
+  public If createIf()
   {
-    ExprsImpl exprs = new ExprsImpl();
-    return exprs;
+    IfImpl if_ = new IfImpl();
+    return if_;
   }
 
   /**
@@ -177,10 +199,10 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public If createIf()
+  public Nop createNop()
   {
-    IfImpl if_ = new IfImpl();
-    return if_;
+    NopImpl nop = new NopImpl();
+    return nop;
   }
 
   /**
@@ -210,6 +232,17 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public Foreach createForeach()
+  {
+    ForeachImpl foreach = new ForeachImpl();
+    return foreach;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public While createWhile()
   {
     WhileImpl while_ = new WhileImpl();
@@ -221,10 +254,10 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Nop createNop()
+  public Expr createExpr()
   {
-    NopImpl nop = new NopImpl();
-    return nop;
+    ExprImpl expr = new ExprImpl();
+    return expr;
   }
 
   /**
@@ -232,10 +265,109 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Vars createVars()
+  public ExprSimple createExprSimple()
   {
-    VarsImpl vars = new VarsImpl();
-    return vars;
+    ExprSimpleImpl exprSimple = new ExprSimpleImpl();
+    return exprSimple;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExprAnd createExprAnd()
+  {
+    ExprAndImpl exprAnd = new ExprAndImpl();
+    return exprAnd;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExprOr createExprOr()
+  {
+    ExprOrImpl exprOr = new ExprOrImpl();
+    return exprOr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExprCons createExprCons()
+  {
+    ExprConsImpl exprCons = new ExprConsImpl();
+    return exprCons;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExprList createExprList()
+  {
+    ExprListImpl exprList = new ExprListImpl();
+    return exprList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExprHd createExprHd()
+  {
+    ExprHdImpl exprHd = new ExprHdImpl();
+    return exprHd;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExprTl createExprTl()
+  {
+    ExprTlImpl exprTl = new ExprTlImpl();
+    return exprTl;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExprSym createExprSym()
+  {
+    ExprSymImpl exprSym = new ExprSymImpl();
+    return exprSym;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExprNot createExprNot()
+  {
+    ExprNotImpl exprNot = new ExprNotImpl();
+    return exprNot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExprEq createExprEq()
+  {
+    ExprEqImpl exprEq = new ExprEqImpl();
+    return exprEq;
   }
 
   /**

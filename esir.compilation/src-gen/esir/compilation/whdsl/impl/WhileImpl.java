@@ -4,7 +4,7 @@
 package esir.compilation.whdsl.impl;
 
 import esir.compilation.whdsl.Commands;
-import esir.compilation.whdsl.Exprs;
+import esir.compilation.whdsl.Expr;
 import esir.compilation.whdsl.WhdslPackage;
 import esir.compilation.whdsl.While;
 
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.WhileImpl#getExprs <em>Exprs</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.WhileImpl#getExpr <em>Expr</em>}</li>
  *   <li>{@link esir.compilation.whdsl.impl.WhileImpl#getCmds <em>Cmds</em>}</li>
  * </ul>
  *
@@ -34,14 +34,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class WhileImpl extends MinimalEObjectImpl.Container implements While
 {
   /**
-   * The cached value of the '{@link #getExprs() <em>Exprs</em>}' containment reference.
+   * The cached value of the '{@link #getExpr() <em>Expr</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getExprs()
+   * @see #getExpr()
    * @generated
    * @ordered
    */
-  protected Exprs exprs;
+  protected Expr expr;
 
   /**
    * The cached value of the '{@link #getCmds() <em>Cmds</em>}' containment reference.
@@ -79,9 +79,9 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
    * <!-- end-user-doc -->
    * @generated
    */
-  public Exprs getExprs()
+  public Expr getExpr()
   {
-    return exprs;
+    return expr;
   }
 
   /**
@@ -89,13 +89,13 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExprs(Exprs newExprs, NotificationChain msgs)
+  public NotificationChain basicSetExpr(Expr newExpr, NotificationChain msgs)
   {
-    Exprs oldExprs = exprs;
-    exprs = newExprs;
+    Expr oldExpr = expr;
+    expr = newExpr;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.WHILE__EXPRS, oldExprs, newExprs);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.WHILE__EXPR, oldExpr, newExpr);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -106,20 +106,20 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExprs(Exprs newExprs)
+  public void setExpr(Expr newExpr)
   {
-    if (newExprs != exprs)
+    if (newExpr != expr)
     {
       NotificationChain msgs = null;
-      if (exprs != null)
-        msgs = ((InternalEObject)exprs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.WHILE__EXPRS, null, msgs);
-      if (newExprs != null)
-        msgs = ((InternalEObject)newExprs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.WHILE__EXPRS, null, msgs);
-      msgs = basicSetExprs(newExprs, msgs);
+      if (expr != null)
+        msgs = ((InternalEObject)expr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.WHILE__EXPR, null, msgs);
+      if (newExpr != null)
+        msgs = ((InternalEObject)newExpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.WHILE__EXPR, null, msgs);
+      msgs = basicSetExpr(newExpr, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.WHILE__EXPRS, newExprs, newExprs));
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.WHILE__EXPR, newExpr, newExpr));
   }
 
   /**
@@ -180,8 +180,8 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
   {
     switch (featureID)
     {
-      case WhdslPackage.WHILE__EXPRS:
-        return basicSetExprs(null, msgs);
+      case WhdslPackage.WHILE__EXPR:
+        return basicSetExpr(null, msgs);
       case WhdslPackage.WHILE__CMDS:
         return basicSetCmds(null, msgs);
     }
@@ -198,8 +198,8 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
   {
     switch (featureID)
     {
-      case WhdslPackage.WHILE__EXPRS:
-        return getExprs();
+      case WhdslPackage.WHILE__EXPR:
+        return getExpr();
       case WhdslPackage.WHILE__CMDS:
         return getCmds();
     }
@@ -216,8 +216,8 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
   {
     switch (featureID)
     {
-      case WhdslPackage.WHILE__EXPRS:
-        setExprs((Exprs)newValue);
+      case WhdslPackage.WHILE__EXPR:
+        setExpr((Expr)newValue);
         return;
       case WhdslPackage.WHILE__CMDS:
         setCmds((Commands)newValue);
@@ -236,8 +236,8 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
   {
     switch (featureID)
     {
-      case WhdslPackage.WHILE__EXPRS:
-        setExprs((Exprs)null);
+      case WhdslPackage.WHILE__EXPR:
+        setExpr((Expr)null);
         return;
       case WhdslPackage.WHILE__CMDS:
         setCmds((Commands)null);
@@ -256,8 +256,8 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
   {
     switch (featureID)
     {
-      case WhdslPackage.WHILE__EXPRS:
-        return exprs != null;
+      case WhdslPackage.WHILE__EXPR:
+        return expr != null;
       case WhdslPackage.WHILE__CMDS:
         return cmds != null;
     }

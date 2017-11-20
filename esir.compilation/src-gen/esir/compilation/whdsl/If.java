@@ -14,9 +14,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.If#getExprs <em>Exprs</em>}</li>
- *   <li>{@link esir.compilation.whdsl.If#getCmds1 <em>Cmds1</em>}</li>
- *   <li>{@link esir.compilation.whdsl.If#getCmds2 <em>Cmds2</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.If#getExpr <em>Expr</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.If#getCommands1 <em>Commands1</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.If#getCommands2 <em>Commands2</em>}</li>
  * </ul>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getIf()
@@ -26,81 +26,81 @@ import org.eclipse.emf.ecore.EObject;
 public interface If extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Exprs</b></em>' containment reference.
+   * Returns the value of the '<em><b>Expr</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Exprs</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Expr</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Exprs</em>' containment reference.
-   * @see #setExprs(Exprs)
-   * @see esir.compilation.whdsl.WhdslPackage#getIf_Exprs()
+   * @return the value of the '<em>Expr</em>' containment reference.
+   * @see #setExpr(Expr)
+   * @see esir.compilation.whdsl.WhdslPackage#getIf_Expr()
    * @model containment="true"
    * @generated
    */
-  Exprs getExprs();
+  Expr getExpr();
 
   /**
-   * Sets the value of the '{@link esir.compilation.whdsl.If#getExprs <em>Exprs</em>}' containment reference.
+   * Sets the value of the '{@link esir.compilation.whdsl.If#getExpr <em>Expr</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Exprs</em>' containment reference.
-   * @see #getExprs()
+   * @param value the new value of the '<em>Expr</em>' containment reference.
+   * @see #getExpr()
    * @generated
    */
-  void setExprs(Exprs value);
+  void setExpr(Expr value);
 
   /**
-   * Returns the value of the '<em><b>Cmds1</b></em>' containment reference.
+   * Returns the value of the '<em><b>Commands1</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Cmds1</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Commands1</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Cmds1</em>' containment reference.
-   * @see #setCmds1(Commands)
-   * @see esir.compilation.whdsl.WhdslPackage#getIf_Cmds1()
+   * @return the value of the '<em>Commands1</em>' containment reference.
+   * @see #setCommands1(Commands)
+   * @see esir.compilation.whdsl.WhdslPackage#getIf_Commands1()
    * @model containment="true"
    * @generated
    */
-  Commands getCmds1();
+  Commands getCommands1();
 
   /**
-   * Sets the value of the '{@link esir.compilation.whdsl.If#getCmds1 <em>Cmds1</em>}' containment reference.
+   * Sets the value of the '{@link esir.compilation.whdsl.If#getCommands1 <em>Commands1</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Cmds1</em>' containment reference.
-   * @see #getCmds1()
+   * @param value the new value of the '<em>Commands1</em>' containment reference.
+   * @see #getCommands1()
    * @generated
    */
-  void setCmds1(Commands value);
+  void setCommands1(Commands value);
 
   /**
-   * Returns the value of the '<em><b>Cmds2</b></em>' containment reference.
+   * Returns the value of the '<em><b>Commands2</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Cmds2</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Commands2</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Cmds2</em>' containment reference.
-   * @see #setCmds2(Commands)
-   * @see esir.compilation.whdsl.WhdslPackage#getIf_Cmds2()
+   * @return the value of the '<em>Commands2</em>' containment reference.
+   * @see #setCommands2(Commands)
+   * @see esir.compilation.whdsl.WhdslPackage#getIf_Commands2()
    * @model containment="true"
    * @generated
    */
-  Commands getCmds2();
+  Commands getCommands2();
 
   /**
-   * Sets the value of the '{@link esir.compilation.whdsl.If#getCmds2 <em>Cmds2</em>}' containment reference.
+   * Sets the value of the '{@link esir.compilation.whdsl.If#getCommands2 <em>Commands2</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Cmds2</em>' containment reference.
-   * @see #getCmds2()
+   * @param value the new value of the '<em>Commands2</em>' containment reference.
+   * @see #getCommands2()
    * @generated
    */
-  void setCmds2(Commands value);
+  void setCommands2(Commands value);
 
 } // If
