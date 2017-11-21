@@ -16,8 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.Commands#getCommand <em>Command</em>}</li>
- *   <li>{@link esir.compilation.whdsl.Commands#getCommands <em>Commands</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.Commands#getList <em>List</em>}</li>
  * </ul>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getCommands()
@@ -27,45 +26,19 @@ import org.eclipse.emf.ecore.EObject;
 public interface Commands extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Command</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Command</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Command</em>' containment reference.
-   * @see #setCommand(Command)
-   * @see esir.compilation.whdsl.WhdslPackage#getCommands_Command()
-   * @model containment="true"
-   * @generated
-   */
-  Command getCommand();
-
-  /**
-   * Sets the value of the '{@link esir.compilation.whdsl.Commands#getCommand <em>Command</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Command</em>' containment reference.
-   * @see #getCommand()
-   * @generated
-   */
-  void setCommand(Command value);
-
-  /**
-   * Returns the value of the '<em><b>Commands</b></em>' containment reference list.
+   * Returns the value of the '<em><b>List</b></em>' containment reference list.
    * The list contents are of type {@link esir.compilation.whdsl.Command}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Commands</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>List</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Commands</em>' containment reference list.
-   * @see esir.compilation.whdsl.WhdslPackage#getCommands_Commands()
+   * @return the value of the '<em>List</em>' containment reference list.
+   * @see esir.compilation.whdsl.WhdslPackage#getCommands_List()
    * @model containment="true"
    * @generated
    */
-  EList<Command> getCommands();
+  EList<Command> getList();
 
 } // Commands

@@ -4,14 +4,13 @@
 package esir.compilation.whdsl.impl;
 
 import esir.compilation.whdsl.Expr;
-import esir.compilation.whdsl.ExprEq;
+import esir.compilation.whdsl.ExprSimple;
 import esir.compilation.whdsl.WhdslPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -25,8 +24,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.ExprImpl#getExpr <em>Expr</em>}</li>
- *   <li>{@link esir.compilation.whdsl.impl.ExprImpl#getExprEq <em>Expr Eq</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.ExprImpl#getSimple <em>Simple</em>}</li>
  * </ul>
  *
  * @generated
@@ -34,24 +32,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
 {
   /**
-   * The cached value of the '{@link #getExpr() <em>Expr</em>}' containment reference.
+   * The cached value of the '{@link #getSimple() <em>Simple</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getExpr()
+   * @see #getSimple()
    * @generated
    * @ordered
    */
-  protected EObject expr;
-
-  /**
-   * The cached value of the '{@link #getExprEq() <em>Expr Eq</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getExprEq()
-   * @generated
-   * @ordered
-   */
-  protected ExprEq exprEq;
+  protected ExprSimple simple;
 
   /**
    * <!-- begin-user-doc -->
@@ -79,9 +67,9 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public EObject getExpr()
+  public ExprSimple getSimple()
   {
-    return expr;
+    return simple;
   }
 
   /**
@@ -89,13 +77,13 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExpr(EObject newExpr, NotificationChain msgs)
+  public NotificationChain basicSetSimple(ExprSimple newSimple, NotificationChain msgs)
   {
-    EObject oldExpr = expr;
-    expr = newExpr;
+    ExprSimple oldSimple = simple;
+    simple = newSimple;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR__EXPR, oldExpr, newExpr);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR__SIMPLE, oldSimple, newSimple);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -106,68 +94,20 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExpr(EObject newExpr)
+  public void setSimple(ExprSimple newSimple)
   {
-    if (newExpr != expr)
+    if (newSimple != simple)
     {
       NotificationChain msgs = null;
-      if (expr != null)
-        msgs = ((InternalEObject)expr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.EXPR__EXPR, null, msgs);
-      if (newExpr != null)
-        msgs = ((InternalEObject)newExpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.EXPR__EXPR, null, msgs);
-      msgs = basicSetExpr(newExpr, msgs);
+      if (simple != null)
+        msgs = ((InternalEObject)simple).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.EXPR__SIMPLE, null, msgs);
+      if (newSimple != null)
+        msgs = ((InternalEObject)newSimple).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.EXPR__SIMPLE, null, msgs);
+      msgs = basicSetSimple(newSimple, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR__EXPR, newExpr, newExpr));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ExprEq getExprEq()
-  {
-    return exprEq;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetExprEq(ExprEq newExprEq, NotificationChain msgs)
-  {
-    ExprEq oldExprEq = exprEq;
-    exprEq = newExprEq;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR__EXPR_EQ, oldExprEq, newExprEq);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setExprEq(ExprEq newExprEq)
-  {
-    if (newExprEq != exprEq)
-    {
-      NotificationChain msgs = null;
-      if (exprEq != null)
-        msgs = ((InternalEObject)exprEq).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.EXPR__EXPR_EQ, null, msgs);
-      if (newExprEq != null)
-        msgs = ((InternalEObject)newExprEq).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.EXPR__EXPR_EQ, null, msgs);
-      msgs = basicSetExprEq(newExprEq, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR__EXPR_EQ, newExprEq, newExprEq));
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR__SIMPLE, newSimple, newSimple));
   }
 
   /**
@@ -180,10 +120,8 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
   {
     switch (featureID)
     {
-      case WhdslPackage.EXPR__EXPR:
-        return basicSetExpr(null, msgs);
-      case WhdslPackage.EXPR__EXPR_EQ:
-        return basicSetExprEq(null, msgs);
+      case WhdslPackage.EXPR__SIMPLE:
+        return basicSetSimple(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -198,10 +136,8 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
   {
     switch (featureID)
     {
-      case WhdslPackage.EXPR__EXPR:
-        return getExpr();
-      case WhdslPackage.EXPR__EXPR_EQ:
-        return getExprEq();
+      case WhdslPackage.EXPR__SIMPLE:
+        return getSimple();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -216,11 +152,8 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
   {
     switch (featureID)
     {
-      case WhdslPackage.EXPR__EXPR:
-        setExpr((EObject)newValue);
-        return;
-      case WhdslPackage.EXPR__EXPR_EQ:
-        setExprEq((ExprEq)newValue);
+      case WhdslPackage.EXPR__SIMPLE:
+        setSimple((ExprSimple)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -236,11 +169,8 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
   {
     switch (featureID)
     {
-      case WhdslPackage.EXPR__EXPR:
-        setExpr((EObject)null);
-        return;
-      case WhdslPackage.EXPR__EXPR_EQ:
-        setExprEq((ExprEq)null);
+      case WhdslPackage.EXPR__SIMPLE:
+        setSimple((ExprSimple)null);
         return;
     }
     super.eUnset(featureID);
@@ -256,10 +186,8 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
   {
     switch (featureID)
     {
-      case WhdslPackage.EXPR__EXPR:
-        return expr != null;
-      case WhdslPackage.EXPR__EXPR_EQ:
-        return exprEq != null;
+      case WhdslPackage.EXPR__SIMPLE:
+        return simple != null;
     }
     return super.eIsSet(featureID);
   }

@@ -12,33 +12,29 @@ Function:
 
 Definition:
 	input=Input'%'
-	commands = Commands
+	commands=Commands
 	'%'output=Output
 ;
-
-
 
 /*Input Output */
 	
 Input:
-	'read' (variables+=VARIABLE)(','variables+=VARIABLE)*
+	'read' vars=Vars
 ;
 
 Output:
-	'write' (variables+=VARIABLE)(','variables+=VARIABLE)*
+	'write' vars=Vars
 ;
 
-
 Vars:
-	var = VARIABLE(','vars+=VARIABLE)*
-;	
-
+	list+=VARIABLE (',' list+=VARIABLE)*
+;		
 
 /*COMMAND */
 
 
 Commands:
-	command = Command (';' commands += Command)*
+	list+=Command (';' list+=Command)*
 ;
 
 Command:
@@ -47,7 +43,7 @@ Command:
 
 
 If:
-	'if' cond=Expr 'then' cmdsThen=Commands ('else' cmdsElse=Commands)? 'fi'
+	'if' condition=Expr 'then' thenCommands=Commands ('else' elseCommands=Commands)? 'fi'
 ;
 
 Affect:
@@ -55,11 +51,11 @@ Affect:
 ;
 
 For:
-	'for' cond=Expr 'do' cmds=Commands 'od'
+	'for' condition=Expr 'do' commands=Commands 'od'
 ;
 
 While:
-	'while' cond=Expr 'do' cmds=Commands 'od'
+	'while' condition=Expr 'do' commands=Commands 'od'
 ;
 
 Nop:
@@ -67,23 +63,40 @@ Nop:
 ;
 
 ForEach:
-	'foreach' elem = Expr 'in' ensemb = Expr 'do' cmds = Commands 'od'
+	'foreach' elem = Expr 'in' ensemb = Expr 'do' commands = Commands 'od'
 ;
 
 
-/* Expression */
-Exprs: 	
-  expr =Expr(',' exprs += Expr)*
+/* EXPRESSIONS */
+Exprs:
+	list+=Expr (',' list+=Expr)*
 ;
 
-
-Expr: 
-	"1"
-	//(expr = ExprSimple) | (expr = ExprAnd)
+// expressions séparées par des blancs, ex: (cons nil (cons nil Y))
+LExpr:
+	list+=Expr (list+=Expr)*
 ;
 
+Expr:
+	simple=ExprSimple
+;
 
-/*TERMINAL */	
+ExprSimple:
+	nil=NIL | var=VARIABLE | sym=SYMBOLE |
+	'(' (
+		'cons' cons=LExpr |
+		'list' list=LExpr |
+		'hd' hd=Expr |
+		'tl' tl=Expr |
+		funcName=SYMBOLE funcParams=LExpr
+	) ')'
+;
+
+/* TERMINAUX */
+terminal NIL:
+	'Nil' | 'nil'
+;
+
 terminal VARIABLE:
 	('A'..'Z')*
 ;

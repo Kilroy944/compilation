@@ -3,8 +3,8 @@
  */
 package esir.compilation.whdsl.impl;
 
-import esir.compilation.whdsl.Program;
-import esir.compilation.whdsl.Wh;
+import esir.compilation.whdsl.Expr;
+import esir.compilation.whdsl.LExpr;
 import esir.compilation.whdsl.WhdslPackage;
 
 import java.util.Collection;
@@ -23,35 +23,35 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Wh</b></em>'.
+ * An implementation of the model object '<em><b>LExpr</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.WhImpl#getElements <em>Elements</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.LExprImpl#getList <em>List</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class WhImpl extends MinimalEObjectImpl.Container implements Wh
+public class LExprImpl extends MinimalEObjectImpl.Container implements LExpr
 {
   /**
-   * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
+   * The cached value of the '{@link #getList() <em>List</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getElements()
+   * @see #getList()
    * @generated
    * @ordered
    */
-  protected EList<Program> elements;
+  protected EList<Expr> list;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected WhImpl()
+  protected LExprImpl()
   {
     super();
   }
@@ -64,7 +64,7 @@ public class WhImpl extends MinimalEObjectImpl.Container implements Wh
   @Override
   protected EClass eStaticClass()
   {
-    return WhdslPackage.Literals.WH;
+    return WhdslPackage.Literals.LEXPR;
   }
 
   /**
@@ -72,13 +72,13 @@ public class WhImpl extends MinimalEObjectImpl.Container implements Wh
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Program> getElements()
+  public EList<Expr> getList()
   {
-    if (elements == null)
+    if (list == null)
     {
-      elements = new EObjectContainmentEList<Program>(Program.class, this, WhdslPackage.WH__ELEMENTS);
+      list = new EObjectContainmentEList<Expr>(Expr.class, this, WhdslPackage.LEXPR__LIST);
     }
-    return elements;
+    return list;
   }
 
   /**
@@ -91,8 +91,8 @@ public class WhImpl extends MinimalEObjectImpl.Container implements Wh
   {
     switch (featureID)
     {
-      case WhdslPackage.WH__ELEMENTS:
-        return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
+      case WhdslPackage.LEXPR__LIST:
+        return ((InternalEList<?>)getList()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -107,8 +107,8 @@ public class WhImpl extends MinimalEObjectImpl.Container implements Wh
   {
     switch (featureID)
     {
-      case WhdslPackage.WH__ELEMENTS:
-        return getElements();
+      case WhdslPackage.LEXPR__LIST:
+        return getList();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -124,9 +124,9 @@ public class WhImpl extends MinimalEObjectImpl.Container implements Wh
   {
     switch (featureID)
     {
-      case WhdslPackage.WH__ELEMENTS:
-        getElements().clear();
-        getElements().addAll((Collection<? extends Program>)newValue);
+      case WhdslPackage.LEXPR__LIST:
+        getList().clear();
+        getList().addAll((Collection<? extends Expr>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -142,8 +142,8 @@ public class WhImpl extends MinimalEObjectImpl.Container implements Wh
   {
     switch (featureID)
     {
-      case WhdslPackage.WH__ELEMENTS:
-        getElements().clear();
+      case WhdslPackage.LEXPR__LIST:
+        getList().clear();
         return;
     }
     super.eUnset(featureID);
@@ -159,10 +159,10 @@ public class WhImpl extends MinimalEObjectImpl.Container implements Wh
   {
     switch (featureID)
     {
-      case WhdslPackage.WH__ELEMENTS:
-        return elements != null && !elements.isEmpty();
+      case WhdslPackage.LEXPR__LIST:
+        return list != null && !list.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //WhImpl
+} //LExprImpl

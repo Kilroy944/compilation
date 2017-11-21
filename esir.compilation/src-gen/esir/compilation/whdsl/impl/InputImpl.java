@@ -4,17 +4,17 @@
 package esir.compilation.whdsl.impl;
 
 import esir.compilation.whdsl.Input;
+import esir.compilation.whdsl.Vars;
 import esir.compilation.whdsl.WhdslPackage;
 
-import java.util.Collection;
-
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EDataTypeEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.InputImpl#getVariables <em>Variables</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.InputImpl#getVars <em>Vars</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,14 +32,14 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
 public class InputImpl extends MinimalEObjectImpl.Container implements Input
 {
   /**
-   * The cached value of the '{@link #getVariables() <em>Variables</em>}' attribute list.
+   * The cached value of the '{@link #getVars() <em>Vars</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVariables()
+   * @see #getVars()
    * @generated
    * @ordered
    */
-  protected EList<String> variables;
+  protected Vars vars;
 
   /**
    * <!-- begin-user-doc -->
@@ -67,13 +67,63 @@ public class InputImpl extends MinimalEObjectImpl.Container implements Input
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getVariables()
+  public Vars getVars()
   {
-    if (variables == null)
+    return vars;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetVars(Vars newVars, NotificationChain msgs)
+  {
+    Vars oldVars = vars;
+    vars = newVars;
+    if (eNotificationRequired())
     {
-      variables = new EDataTypeEList<String>(String.class, this, WhdslPackage.INPUT__VARIABLES);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.INPUT__VARS, oldVars, newVars);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return variables;
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setVars(Vars newVars)
+  {
+    if (newVars != vars)
+    {
+      NotificationChain msgs = null;
+      if (vars != null)
+        msgs = ((InternalEObject)vars).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.INPUT__VARS, null, msgs);
+      if (newVars != null)
+        msgs = ((InternalEObject)newVars).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.INPUT__VARS, null, msgs);
+      msgs = basicSetVars(newVars, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.INPUT__VARS, newVars, newVars));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case WhdslPackage.INPUT__VARS:
+        return basicSetVars(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -86,8 +136,8 @@ public class InputImpl extends MinimalEObjectImpl.Container implements Input
   {
     switch (featureID)
     {
-      case WhdslPackage.INPUT__VARIABLES:
-        return getVariables();
+      case WhdslPackage.INPUT__VARS:
+        return getVars();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -97,15 +147,13 @@ public class InputImpl extends MinimalEObjectImpl.Container implements Input
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case WhdslPackage.INPUT__VARIABLES:
-        getVariables().clear();
-        getVariables().addAll((Collection<? extends String>)newValue);
+      case WhdslPackage.INPUT__VARS:
+        setVars((Vars)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -121,8 +169,8 @@ public class InputImpl extends MinimalEObjectImpl.Container implements Input
   {
     switch (featureID)
     {
-      case WhdslPackage.INPUT__VARIABLES:
-        getVariables().clear();
+      case WhdslPackage.INPUT__VARS:
+        setVars((Vars)null);
         return;
     }
     super.eUnset(featureID);
@@ -138,27 +186,10 @@ public class InputImpl extends MinimalEObjectImpl.Container implements Input
   {
     switch (featureID)
     {
-      case WhdslPackage.INPUT__VARIABLES:
-        return variables != null && !variables.isEmpty();
+      case WhdslPackage.INPUT__VARS:
+        return vars != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (variables: ");
-    result.append(variables);
-    result.append(')');
-    return result.toString();
   }
 
 } //InputImpl

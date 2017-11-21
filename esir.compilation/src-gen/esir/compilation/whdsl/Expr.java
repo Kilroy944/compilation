@@ -14,8 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.Expr#getExpr <em>Expr</em>}</li>
- *   <li>{@link esir.compilation.whdsl.Expr#getExprEq <em>Expr Eq</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.Expr#getSimple <em>Simple</em>}</li>
  * </ul>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getExpr()
@@ -25,55 +24,29 @@ import org.eclipse.emf.ecore.EObject;
 public interface Expr extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Expr</b></em>' containment reference.
+   * Returns the value of the '<em><b>Simple</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Expr</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Simple</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Expr</em>' containment reference.
-   * @see #setExpr(EObject)
-   * @see esir.compilation.whdsl.WhdslPackage#getExpr_Expr()
+   * @return the value of the '<em>Simple</em>' containment reference.
+   * @see #setSimple(ExprSimple)
+   * @see esir.compilation.whdsl.WhdslPackage#getExpr_Simple()
    * @model containment="true"
    * @generated
    */
-  EObject getExpr();
+  ExprSimple getSimple();
 
   /**
-   * Sets the value of the '{@link esir.compilation.whdsl.Expr#getExpr <em>Expr</em>}' containment reference.
+   * Sets the value of the '{@link esir.compilation.whdsl.Expr#getSimple <em>Simple</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Expr</em>' containment reference.
-   * @see #getExpr()
+   * @param value the new value of the '<em>Simple</em>' containment reference.
+   * @see #getSimple()
    * @generated
    */
-  void setExpr(EObject value);
-
-  /**
-   * Returns the value of the '<em><b>Expr Eq</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Expr Eq</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Expr Eq</em>' containment reference.
-   * @see #setExprEq(ExprEq)
-   * @see esir.compilation.whdsl.WhdslPackage#getExpr_ExprEq()
-   * @model containment="true"
-   * @generated
-   */
-  ExprEq getExprEq();
-
-  /**
-   * Sets the value of the '{@link esir.compilation.whdsl.Expr#getExprEq <em>Expr Eq</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Expr Eq</em>' containment reference.
-   * @see #getExprEq()
-   * @generated
-   */
-  void setExprEq(ExprEq value);
+  void setSimple(ExprSimple value);
 
 } // Expr

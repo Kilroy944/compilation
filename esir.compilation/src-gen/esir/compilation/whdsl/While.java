@@ -14,8 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.While#getCond <em>Cond</em>}</li>
- *   <li>{@link esir.compilation.whdsl.While#getCmds <em>Cmds</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.While#getCondition <em>Condition</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.While#getCommands <em>Commands</em>}</li>
  * </ul>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getWhile()
@@ -25,55 +25,55 @@ import org.eclipse.emf.ecore.EObject;
 public interface While extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Cond</b></em>' attribute.
+   * Returns the value of the '<em><b>Condition</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Cond</em>' attribute isn't clear,
+   * If the meaning of the '<em>Condition</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Cond</em>' attribute.
-   * @see #setCond(String)
-   * @see esir.compilation.whdsl.WhdslPackage#getWhile_Cond()
-   * @model
-   * @generated
-   */
-  String getCond();
-
-  /**
-   * Sets the value of the '{@link esir.compilation.whdsl.While#getCond <em>Cond</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Cond</em>' attribute.
-   * @see #getCond()
-   * @generated
-   */
-  void setCond(String value);
-
-  /**
-   * Returns the value of the '<em><b>Cmds</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Cmds</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Cmds</em>' containment reference.
-   * @see #setCmds(Commands)
-   * @see esir.compilation.whdsl.WhdslPackage#getWhile_Cmds()
+   * @return the value of the '<em>Condition</em>' containment reference.
+   * @see #setCondition(Expr)
+   * @see esir.compilation.whdsl.WhdslPackage#getWhile_Condition()
    * @model containment="true"
    * @generated
    */
-  Commands getCmds();
+  Expr getCondition();
 
   /**
-   * Sets the value of the '{@link esir.compilation.whdsl.While#getCmds <em>Cmds</em>}' containment reference.
+   * Sets the value of the '{@link esir.compilation.whdsl.While#getCondition <em>Condition</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Cmds</em>' containment reference.
-   * @see #getCmds()
+   * @param value the new value of the '<em>Condition</em>' containment reference.
+   * @see #getCondition()
    * @generated
    */
-  void setCmds(Commands value);
+  void setCondition(Expr value);
+
+  /**
+   * Returns the value of the '<em><b>Commands</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Commands</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Commands</em>' containment reference.
+   * @see #setCommands(Commands)
+   * @see esir.compilation.whdsl.WhdslPackage#getWhile_Commands()
+   * @model containment="true"
+   * @generated
+   */
+  Commands getCommands();
+
+  /**
+   * Sets the value of the '{@link esir.compilation.whdsl.While#getCommands <em>Commands</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Commands</em>' containment reference.
+   * @see #getCommands()
+   * @generated
+   */
+  void setCommands(Commands value);
 
 } // While

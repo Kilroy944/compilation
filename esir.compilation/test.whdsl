@@ -1,15 +1,20 @@
 function fonctiona : 
 	read B,B % 
 	nop;
-	if 1 then nop else nop fi;
-	for 1 do nop;nop od;
-	while 1 do nop;nop od;
-	if 1 then if 1 then nop;nop else nop fi else nop; nop fi
+	if (cond A B) then nop else nop fi;
+	for nil do nop;nop od;
+	while nil do nop;nop od;
+	if nil then if nil then nop;nop else nop fi else nop; nop fi
 	% write A,B,C
 
 function fonctionb : read A %
-	A:=1;A:=1;A,B,C:=1,1,1,1;
+	foreach nil in nil do nop od
+	 % write A,B,C
+
+function fonctionb : read A %
+	A:=B;A:=nil;A,B,C:=nil,nil,nil
+	  % write A,B,C
+	 
+	 
+	 
 	
-	foreach 1 in 1 do A:=1 od
-	
-% write A,B,C,D

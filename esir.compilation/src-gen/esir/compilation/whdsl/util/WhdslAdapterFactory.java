@@ -151,6 +151,21 @@ public class WhdslAdapterFactory extends AdapterFactoryImpl
         return createExprsAdapter();
       }
       @Override
+      public Adapter caseLExpr(LExpr object)
+      {
+        return createLExprAdapter();
+      }
+      @Override
+      public Adapter caseExpr(Expr object)
+      {
+        return createExprAdapter();
+      }
+      @Override
+      public Adapter caseExprSimple(ExprSimple object)
+      {
+        return createExprSimpleAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -393,6 +408,51 @@ public class WhdslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createExprsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.LExpr <em>LExpr</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see esir.compilation.whdsl.LExpr
+   * @generated
+   */
+  public Adapter createLExprAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.Expr <em>Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see esir.compilation.whdsl.Expr
+   * @generated
+   */
+  public Adapter createExprAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.ExprSimple <em>Expr Simple</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see esir.compilation.whdsl.ExprSimple
+   * @generated
+   */
+  public Adapter createExprSimpleAdapter()
   {
     return null;
   }

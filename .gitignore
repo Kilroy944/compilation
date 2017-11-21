@@ -1,2 +1,7 @@
 /bin
 .xtendbin
+/esir.compilation/
+/esir.compilation.ide/
+/esir.compilation.tests/
+/esir.compilation.ui/
+/esir.compilation.ui.tests/

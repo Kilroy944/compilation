@@ -9,36 +9,36 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Expr List</b></em>'.
+ * A representation of the model object '<em><b>LExpr</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.ExprList#getArg <em>Arg</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.LExpr#getList <em>List</em>}</li>
  * </ul>
  *
- * @see esir.compilation.whdsl.WhdslPackage#getExprList()
+ * @see esir.compilation.whdsl.WhdslPackage#getLExpr()
  * @model
  * @generated
  */
-public interface ExprList extends EObject
+public interface LExpr extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Arg</b></em>' containment reference list.
+   * Returns the value of the '<em><b>List</b></em>' containment reference list.
    * The list contents are of type {@link esir.compilation.whdsl.Expr}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Arg</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>List</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Arg</em>' containment reference list.
-   * @see esir.compilation.whdsl.WhdslPackage#getExprList_Arg()
+   * @return the value of the '<em>List</em>' containment reference list.
+   * @see esir.compilation.whdsl.WhdslPackage#getLExpr_List()
    * @model containment="true"
    * @generated
    */
-  EList<Expr> getArg();
+  EList<Expr> getList();
 
-} // ExprList
+} // LExpr

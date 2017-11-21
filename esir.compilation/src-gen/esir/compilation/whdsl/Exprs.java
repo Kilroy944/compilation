@@ -16,8 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.Exprs#getExpr <em>Expr</em>}</li>
- *   <li>{@link esir.compilation.whdsl.Exprs#getExprs <em>Exprs</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.Exprs#getList <em>List</em>}</li>
  * </ul>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getExprs()
@@ -27,45 +26,19 @@ import org.eclipse.emf.ecore.EObject;
 public interface Exprs extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Expr</b></em>' attribute.
+   * Returns the value of the '<em><b>List</b></em>' containment reference list.
+   * The list contents are of type {@link esir.compilation.whdsl.Expr}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Expr</em>' attribute isn't clear,
+   * If the meaning of the '<em>List</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Expr</em>' attribute.
-   * @see #setExpr(String)
-   * @see esir.compilation.whdsl.WhdslPackage#getExprs_Expr()
-   * @model
+   * @return the value of the '<em>List</em>' containment reference list.
+   * @see esir.compilation.whdsl.WhdslPackage#getExprs_List()
+   * @model containment="true"
    * @generated
    */
-  String getExpr();
-
-  /**
-   * Sets the value of the '{@link esir.compilation.whdsl.Exprs#getExpr <em>Expr</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Expr</em>' attribute.
-   * @see #getExpr()
-   * @generated
-   */
-  void setExpr(String value);
-
-  /**
-   * Returns the value of the '<em><b>Exprs</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Exprs</em>' attribute list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Exprs</em>' attribute list.
-   * @see esir.compilation.whdsl.WhdslPackage#getExprs_Exprs()
-   * @model unique="false"
-   * @generated
-   */
-  EList<String> getExprs();
+  EList<Expr> getList();
 
 } // Exprs

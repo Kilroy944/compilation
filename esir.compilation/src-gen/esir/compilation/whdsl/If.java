@@ -14,9 +14,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.If#getCond <em>Cond</em>}</li>
- *   <li>{@link esir.compilation.whdsl.If#getCmdsThen <em>Cmds Then</em>}</li>
- *   <li>{@link esir.compilation.whdsl.If#getCmdsElse <em>Cmds Else</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.If#getCondition <em>Condition</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.If#getThenCommands <em>Then Commands</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.If#getElseCommands <em>Else Commands</em>}</li>
  * </ul>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getIf()
@@ -26,81 +26,81 @@ import org.eclipse.emf.ecore.EObject;
 public interface If extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Cond</b></em>' attribute.
+   * Returns the value of the '<em><b>Condition</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Cond</em>' attribute isn't clear,
+   * If the meaning of the '<em>Condition</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Cond</em>' attribute.
-   * @see #setCond(String)
-   * @see esir.compilation.whdsl.WhdslPackage#getIf_Cond()
-   * @model
-   * @generated
-   */
-  String getCond();
-
-  /**
-   * Sets the value of the '{@link esir.compilation.whdsl.If#getCond <em>Cond</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Cond</em>' attribute.
-   * @see #getCond()
-   * @generated
-   */
-  void setCond(String value);
-
-  /**
-   * Returns the value of the '<em><b>Cmds Then</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Cmds Then</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Cmds Then</em>' containment reference.
-   * @see #setCmdsThen(Commands)
-   * @see esir.compilation.whdsl.WhdslPackage#getIf_CmdsThen()
+   * @return the value of the '<em>Condition</em>' containment reference.
+   * @see #setCondition(Expr)
+   * @see esir.compilation.whdsl.WhdslPackage#getIf_Condition()
    * @model containment="true"
    * @generated
    */
-  Commands getCmdsThen();
+  Expr getCondition();
 
   /**
-   * Sets the value of the '{@link esir.compilation.whdsl.If#getCmdsThen <em>Cmds Then</em>}' containment reference.
+   * Sets the value of the '{@link esir.compilation.whdsl.If#getCondition <em>Condition</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Cmds Then</em>' containment reference.
-   * @see #getCmdsThen()
+   * @param value the new value of the '<em>Condition</em>' containment reference.
+   * @see #getCondition()
    * @generated
    */
-  void setCmdsThen(Commands value);
+  void setCondition(Expr value);
 
   /**
-   * Returns the value of the '<em><b>Cmds Else</b></em>' containment reference.
+   * Returns the value of the '<em><b>Then Commands</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Cmds Else</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Then Commands</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Cmds Else</em>' containment reference.
-   * @see #setCmdsElse(Commands)
-   * @see esir.compilation.whdsl.WhdslPackage#getIf_CmdsElse()
+   * @return the value of the '<em>Then Commands</em>' containment reference.
+   * @see #setThenCommands(Commands)
+   * @see esir.compilation.whdsl.WhdslPackage#getIf_ThenCommands()
    * @model containment="true"
    * @generated
    */
-  Commands getCmdsElse();
+  Commands getThenCommands();
 
   /**
-   * Sets the value of the '{@link esir.compilation.whdsl.If#getCmdsElse <em>Cmds Else</em>}' containment reference.
+   * Sets the value of the '{@link esir.compilation.whdsl.If#getThenCommands <em>Then Commands</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Cmds Else</em>' containment reference.
-   * @see #getCmdsElse()
+   * @param value the new value of the '<em>Then Commands</em>' containment reference.
+   * @see #getThenCommands()
    * @generated
    */
-  void setCmdsElse(Commands value);
+  void setThenCommands(Commands value);
+
+  /**
+   * Returns the value of the '<em><b>Else Commands</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Else Commands</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Else Commands</em>' containment reference.
+   * @see #setElseCommands(Commands)
+   * @see esir.compilation.whdsl.WhdslPackage#getIf_ElseCommands()
+   * @model containment="true"
+   * @generated
+   */
+  Commands getElseCommands();
+
+  /**
+   * Sets the value of the '{@link esir.compilation.whdsl.If#getElseCommands <em>Else Commands</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Else Commands</em>' containment reference.
+   * @see #getElseCommands()
+   * @generated
+   */
+  void setElseCommands(Commands value);
 
 } // If

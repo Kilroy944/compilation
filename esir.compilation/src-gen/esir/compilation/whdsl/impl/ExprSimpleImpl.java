@@ -3,8 +3,9 @@
  */
 package esir.compilation.whdsl.impl;
 
+import esir.compilation.whdsl.Expr;
 import esir.compilation.whdsl.ExprSimple;
-import esir.compilation.whdsl.Input;
+import esir.compilation.whdsl.LExpr;
 import esir.compilation.whdsl.WhdslPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -24,11 +25,15 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.ExprSimpleImpl#getStr <em>Str</em>}</li>
- *   <li>{@link esir.compilation.whdsl.impl.ExprSimpleImpl#getVarSimple <em>Var Simple</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.ExprSimpleImpl#getNil <em>Nil</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.ExprSimpleImpl#getVar <em>Var</em>}</li>
  *   <li>{@link esir.compilation.whdsl.impl.ExprSimpleImpl#getSym <em>Sym</em>}</li>
- *   <li>{@link esir.compilation.whdsl.impl.ExprSimpleImpl#getNameFunction <em>Name Function</em>}</li>
- *   <li>{@link esir.compilation.whdsl.impl.ExprSimpleImpl#getVars <em>Vars</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.ExprSimpleImpl#getCons <em>Cons</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.ExprSimpleImpl#getList <em>List</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.ExprSimpleImpl#getHd <em>Hd</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.ExprSimpleImpl#getTl <em>Tl</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.ExprSimpleImpl#getFuncName <em>Func Name</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.ExprSimpleImpl#getFuncParams <em>Func Params</em>}</li>
  * </ul>
  *
  * @generated
@@ -36,44 +41,44 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class ExprSimpleImpl extends MinimalEObjectImpl.Container implements ExprSimple
 {
   /**
-   * The default value of the '{@link #getStr() <em>Str</em>}' attribute.
+   * The default value of the '{@link #getNil() <em>Nil</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getStr()
+   * @see #getNil()
    * @generated
    * @ordered
    */
-  protected static final String STR_EDEFAULT = null;
+  protected static final String NIL_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getStr() <em>Str</em>}' attribute.
+   * The cached value of the '{@link #getNil() <em>Nil</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getStr()
+   * @see #getNil()
    * @generated
    * @ordered
    */
-  protected String str = STR_EDEFAULT;
+  protected String nil = NIL_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getVarSimple() <em>Var Simple</em>}' attribute.
+   * The default value of the '{@link #getVar() <em>Var</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVarSimple()
+   * @see #getVar()
    * @generated
    * @ordered
    */
-  protected static final String VAR_SIMPLE_EDEFAULT = null;
+  protected static final String VAR_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getVarSimple() <em>Var Simple</em>}' attribute.
+   * The cached value of the '{@link #getVar() <em>Var</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVarSimple()
+   * @see #getVar()
    * @generated
    * @ordered
    */
-  protected String varSimple = VAR_SIMPLE_EDEFAULT;
+  protected String var = VAR_EDEFAULT;
 
   /**
    * The default value of the '{@link #getSym() <em>Sym</em>}' attribute.
@@ -96,34 +101,74 @@ public class ExprSimpleImpl extends MinimalEObjectImpl.Container implements Expr
   protected String sym = SYM_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getNameFunction() <em>Name Function</em>}' attribute.
+   * The cached value of the '{@link #getCons() <em>Cons</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getNameFunction()
+   * @see #getCons()
    * @generated
    * @ordered
    */
-  protected static final String NAME_FUNCTION_EDEFAULT = null;
+  protected LExpr cons;
 
   /**
-   * The cached value of the '{@link #getNameFunction() <em>Name Function</em>}' attribute.
+   * The cached value of the '{@link #getList() <em>List</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getNameFunction()
+   * @see #getList()
    * @generated
    * @ordered
    */
-  protected String nameFunction = NAME_FUNCTION_EDEFAULT;
+  protected LExpr list;
 
   /**
-   * The cached value of the '{@link #getVars() <em>Vars</em>}' containment reference.
+   * The cached value of the '{@link #getHd() <em>Hd</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVars()
+   * @see #getHd()
    * @generated
    * @ordered
    */
-  protected Input vars;
+  protected Expr hd;
+
+  /**
+   * The cached value of the '{@link #getTl() <em>Tl</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTl()
+   * @generated
+   * @ordered
+   */
+  protected Expr tl;
+
+  /**
+   * The default value of the '{@link #getFuncName() <em>Func Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFuncName()
+   * @generated
+   * @ordered
+   */
+  protected static final String FUNC_NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getFuncName() <em>Func Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFuncName()
+   * @generated
+   * @ordered
+   */
+  protected String funcName = FUNC_NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getFuncParams() <em>Func Params</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFuncParams()
+   * @generated
+   * @ordered
+   */
+  protected LExpr funcParams;
 
   /**
    * <!-- begin-user-doc -->
@@ -151,9 +196,9 @@ public class ExprSimpleImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getStr()
+  public String getNil()
   {
-    return str;
+    return nil;
   }
 
   /**
@@ -161,12 +206,12 @@ public class ExprSimpleImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setStr(String newStr)
+  public void setNil(String newNil)
   {
-    String oldStr = str;
-    str = newStr;
+    String oldNil = nil;
+    nil = newNil;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR_SIMPLE__STR, oldStr, str));
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR_SIMPLE__NIL, oldNil, nil));
   }
 
   /**
@@ -174,9 +219,9 @@ public class ExprSimpleImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getVarSimple()
+  public String getVar()
   {
-    return varSimple;
+    return var;
   }
 
   /**
@@ -184,12 +229,12 @@ public class ExprSimpleImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVarSimple(String newVarSimple)
+  public void setVar(String newVar)
   {
-    String oldVarSimple = varSimple;
-    varSimple = newVarSimple;
+    String oldVar = var;
+    var = newVar;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR_SIMPLE__VAR_SIMPLE, oldVarSimple, varSimple));
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR_SIMPLE__VAR, oldVar, var));
   }
 
   /**
@@ -220,9 +265,9 @@ public class ExprSimpleImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getNameFunction()
+  public LExpr getCons()
   {
-    return nameFunction;
+    return cons;
   }
 
   /**
@@ -230,36 +275,13 @@ public class ExprSimpleImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setNameFunction(String newNameFunction)
+  public NotificationChain basicSetCons(LExpr newCons, NotificationChain msgs)
   {
-    String oldNameFunction = nameFunction;
-    nameFunction = newNameFunction;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR_SIMPLE__NAME_FUNCTION, oldNameFunction, nameFunction));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Input getVars()
-  {
-    return vars;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetVars(Input newVars, NotificationChain msgs)
-  {
-    Input oldVars = vars;
-    vars = newVars;
+    LExpr oldCons = cons;
+    cons = newCons;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR_SIMPLE__VARS, oldVars, newVars);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR_SIMPLE__CONS, oldCons, newCons);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -270,20 +292,235 @@ public class ExprSimpleImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVars(Input newVars)
+  public void setCons(LExpr newCons)
   {
-    if (newVars != vars)
+    if (newCons != cons)
     {
       NotificationChain msgs = null;
-      if (vars != null)
-        msgs = ((InternalEObject)vars).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.EXPR_SIMPLE__VARS, null, msgs);
-      if (newVars != null)
-        msgs = ((InternalEObject)newVars).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.EXPR_SIMPLE__VARS, null, msgs);
-      msgs = basicSetVars(newVars, msgs);
+      if (cons != null)
+        msgs = ((InternalEObject)cons).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.EXPR_SIMPLE__CONS, null, msgs);
+      if (newCons != null)
+        msgs = ((InternalEObject)newCons).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.EXPR_SIMPLE__CONS, null, msgs);
+      msgs = basicSetCons(newCons, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR_SIMPLE__VARS, newVars, newVars));
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR_SIMPLE__CONS, newCons, newCons));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LExpr getList()
+  {
+    return list;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetList(LExpr newList, NotificationChain msgs)
+  {
+    LExpr oldList = list;
+    list = newList;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR_SIMPLE__LIST, oldList, newList);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setList(LExpr newList)
+  {
+    if (newList != list)
+    {
+      NotificationChain msgs = null;
+      if (list != null)
+        msgs = ((InternalEObject)list).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.EXPR_SIMPLE__LIST, null, msgs);
+      if (newList != null)
+        msgs = ((InternalEObject)newList).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.EXPR_SIMPLE__LIST, null, msgs);
+      msgs = basicSetList(newList, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR_SIMPLE__LIST, newList, newList));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Expr getHd()
+  {
+    return hd;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetHd(Expr newHd, NotificationChain msgs)
+  {
+    Expr oldHd = hd;
+    hd = newHd;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR_SIMPLE__HD, oldHd, newHd);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setHd(Expr newHd)
+  {
+    if (newHd != hd)
+    {
+      NotificationChain msgs = null;
+      if (hd != null)
+        msgs = ((InternalEObject)hd).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.EXPR_SIMPLE__HD, null, msgs);
+      if (newHd != null)
+        msgs = ((InternalEObject)newHd).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.EXPR_SIMPLE__HD, null, msgs);
+      msgs = basicSetHd(newHd, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR_SIMPLE__HD, newHd, newHd));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Expr getTl()
+  {
+    return tl;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTl(Expr newTl, NotificationChain msgs)
+  {
+    Expr oldTl = tl;
+    tl = newTl;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR_SIMPLE__TL, oldTl, newTl);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTl(Expr newTl)
+  {
+    if (newTl != tl)
+    {
+      NotificationChain msgs = null;
+      if (tl != null)
+        msgs = ((InternalEObject)tl).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.EXPR_SIMPLE__TL, null, msgs);
+      if (newTl != null)
+        msgs = ((InternalEObject)newTl).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.EXPR_SIMPLE__TL, null, msgs);
+      msgs = basicSetTl(newTl, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR_SIMPLE__TL, newTl, newTl));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getFuncName()
+  {
+    return funcName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setFuncName(String newFuncName)
+  {
+    String oldFuncName = funcName;
+    funcName = newFuncName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR_SIMPLE__FUNC_NAME, oldFuncName, funcName));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LExpr getFuncParams()
+  {
+    return funcParams;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetFuncParams(LExpr newFuncParams, NotificationChain msgs)
+  {
+    LExpr oldFuncParams = funcParams;
+    funcParams = newFuncParams;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR_SIMPLE__FUNC_PARAMS, oldFuncParams, newFuncParams);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setFuncParams(LExpr newFuncParams)
+  {
+    if (newFuncParams != funcParams)
+    {
+      NotificationChain msgs = null;
+      if (funcParams != null)
+        msgs = ((InternalEObject)funcParams).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.EXPR_SIMPLE__FUNC_PARAMS, null, msgs);
+      if (newFuncParams != null)
+        msgs = ((InternalEObject)newFuncParams).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.EXPR_SIMPLE__FUNC_PARAMS, null, msgs);
+      msgs = basicSetFuncParams(newFuncParams, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR_SIMPLE__FUNC_PARAMS, newFuncParams, newFuncParams));
   }
 
   /**
@@ -296,8 +533,16 @@ public class ExprSimpleImpl extends MinimalEObjectImpl.Container implements Expr
   {
     switch (featureID)
     {
-      case WhdslPackage.EXPR_SIMPLE__VARS:
-        return basicSetVars(null, msgs);
+      case WhdslPackage.EXPR_SIMPLE__CONS:
+        return basicSetCons(null, msgs);
+      case WhdslPackage.EXPR_SIMPLE__LIST:
+        return basicSetList(null, msgs);
+      case WhdslPackage.EXPR_SIMPLE__HD:
+        return basicSetHd(null, msgs);
+      case WhdslPackage.EXPR_SIMPLE__TL:
+        return basicSetTl(null, msgs);
+      case WhdslPackage.EXPR_SIMPLE__FUNC_PARAMS:
+        return basicSetFuncParams(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -312,16 +557,24 @@ public class ExprSimpleImpl extends MinimalEObjectImpl.Container implements Expr
   {
     switch (featureID)
     {
-      case WhdslPackage.EXPR_SIMPLE__STR:
-        return getStr();
-      case WhdslPackage.EXPR_SIMPLE__VAR_SIMPLE:
-        return getVarSimple();
+      case WhdslPackage.EXPR_SIMPLE__NIL:
+        return getNil();
+      case WhdslPackage.EXPR_SIMPLE__VAR:
+        return getVar();
       case WhdslPackage.EXPR_SIMPLE__SYM:
         return getSym();
-      case WhdslPackage.EXPR_SIMPLE__NAME_FUNCTION:
-        return getNameFunction();
-      case WhdslPackage.EXPR_SIMPLE__VARS:
-        return getVars();
+      case WhdslPackage.EXPR_SIMPLE__CONS:
+        return getCons();
+      case WhdslPackage.EXPR_SIMPLE__LIST:
+        return getList();
+      case WhdslPackage.EXPR_SIMPLE__HD:
+        return getHd();
+      case WhdslPackage.EXPR_SIMPLE__TL:
+        return getTl();
+      case WhdslPackage.EXPR_SIMPLE__FUNC_NAME:
+        return getFuncName();
+      case WhdslPackage.EXPR_SIMPLE__FUNC_PARAMS:
+        return getFuncParams();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -336,20 +589,32 @@ public class ExprSimpleImpl extends MinimalEObjectImpl.Container implements Expr
   {
     switch (featureID)
     {
-      case WhdslPackage.EXPR_SIMPLE__STR:
-        setStr((String)newValue);
+      case WhdslPackage.EXPR_SIMPLE__NIL:
+        setNil((String)newValue);
         return;
-      case WhdslPackage.EXPR_SIMPLE__VAR_SIMPLE:
-        setVarSimple((String)newValue);
+      case WhdslPackage.EXPR_SIMPLE__VAR:
+        setVar((String)newValue);
         return;
       case WhdslPackage.EXPR_SIMPLE__SYM:
         setSym((String)newValue);
         return;
-      case WhdslPackage.EXPR_SIMPLE__NAME_FUNCTION:
-        setNameFunction((String)newValue);
+      case WhdslPackage.EXPR_SIMPLE__CONS:
+        setCons((LExpr)newValue);
         return;
-      case WhdslPackage.EXPR_SIMPLE__VARS:
-        setVars((Input)newValue);
+      case WhdslPackage.EXPR_SIMPLE__LIST:
+        setList((LExpr)newValue);
+        return;
+      case WhdslPackage.EXPR_SIMPLE__HD:
+        setHd((Expr)newValue);
+        return;
+      case WhdslPackage.EXPR_SIMPLE__TL:
+        setTl((Expr)newValue);
+        return;
+      case WhdslPackage.EXPR_SIMPLE__FUNC_NAME:
+        setFuncName((String)newValue);
+        return;
+      case WhdslPackage.EXPR_SIMPLE__FUNC_PARAMS:
+        setFuncParams((LExpr)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -365,20 +630,32 @@ public class ExprSimpleImpl extends MinimalEObjectImpl.Container implements Expr
   {
     switch (featureID)
     {
-      case WhdslPackage.EXPR_SIMPLE__STR:
-        setStr(STR_EDEFAULT);
+      case WhdslPackage.EXPR_SIMPLE__NIL:
+        setNil(NIL_EDEFAULT);
         return;
-      case WhdslPackage.EXPR_SIMPLE__VAR_SIMPLE:
-        setVarSimple(VAR_SIMPLE_EDEFAULT);
+      case WhdslPackage.EXPR_SIMPLE__VAR:
+        setVar(VAR_EDEFAULT);
         return;
       case WhdslPackage.EXPR_SIMPLE__SYM:
         setSym(SYM_EDEFAULT);
         return;
-      case WhdslPackage.EXPR_SIMPLE__NAME_FUNCTION:
-        setNameFunction(NAME_FUNCTION_EDEFAULT);
+      case WhdslPackage.EXPR_SIMPLE__CONS:
+        setCons((LExpr)null);
         return;
-      case WhdslPackage.EXPR_SIMPLE__VARS:
-        setVars((Input)null);
+      case WhdslPackage.EXPR_SIMPLE__LIST:
+        setList((LExpr)null);
+        return;
+      case WhdslPackage.EXPR_SIMPLE__HD:
+        setHd((Expr)null);
+        return;
+      case WhdslPackage.EXPR_SIMPLE__TL:
+        setTl((Expr)null);
+        return;
+      case WhdslPackage.EXPR_SIMPLE__FUNC_NAME:
+        setFuncName(FUNC_NAME_EDEFAULT);
+        return;
+      case WhdslPackage.EXPR_SIMPLE__FUNC_PARAMS:
+        setFuncParams((LExpr)null);
         return;
     }
     super.eUnset(featureID);
@@ -394,16 +671,24 @@ public class ExprSimpleImpl extends MinimalEObjectImpl.Container implements Expr
   {
     switch (featureID)
     {
-      case WhdslPackage.EXPR_SIMPLE__STR:
-        return STR_EDEFAULT == null ? str != null : !STR_EDEFAULT.equals(str);
-      case WhdslPackage.EXPR_SIMPLE__VAR_SIMPLE:
-        return VAR_SIMPLE_EDEFAULT == null ? varSimple != null : !VAR_SIMPLE_EDEFAULT.equals(varSimple);
+      case WhdslPackage.EXPR_SIMPLE__NIL:
+        return NIL_EDEFAULT == null ? nil != null : !NIL_EDEFAULT.equals(nil);
+      case WhdslPackage.EXPR_SIMPLE__VAR:
+        return VAR_EDEFAULT == null ? var != null : !VAR_EDEFAULT.equals(var);
       case WhdslPackage.EXPR_SIMPLE__SYM:
         return SYM_EDEFAULT == null ? sym != null : !SYM_EDEFAULT.equals(sym);
-      case WhdslPackage.EXPR_SIMPLE__NAME_FUNCTION:
-        return NAME_FUNCTION_EDEFAULT == null ? nameFunction != null : !NAME_FUNCTION_EDEFAULT.equals(nameFunction);
-      case WhdslPackage.EXPR_SIMPLE__VARS:
-        return vars != null;
+      case WhdslPackage.EXPR_SIMPLE__CONS:
+        return cons != null;
+      case WhdslPackage.EXPR_SIMPLE__LIST:
+        return list != null;
+      case WhdslPackage.EXPR_SIMPLE__HD:
+        return hd != null;
+      case WhdslPackage.EXPR_SIMPLE__TL:
+        return tl != null;
+      case WhdslPackage.EXPR_SIMPLE__FUNC_NAME:
+        return FUNC_NAME_EDEFAULT == null ? funcName != null : !FUNC_NAME_EDEFAULT.equals(funcName);
+      case WhdslPackage.EXPR_SIMPLE__FUNC_PARAMS:
+        return funcParams != null;
     }
     return super.eIsSet(featureID);
   }
@@ -419,14 +704,14 @@ public class ExprSimpleImpl extends MinimalEObjectImpl.Container implements Expr
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (str: ");
-    result.append(str);
-    result.append(", varSimple: ");
-    result.append(varSimple);
+    result.append(" (nil: ");
+    result.append(nil);
+    result.append(", var: ");
+    result.append(var);
     result.append(", sym: ");
     result.append(sym);
-    result.append(", nameFunction: ");
-    result.append(nameFunction);
+    result.append(", funcName: ");
+    result.append(funcName);
     result.append(')');
     return result.toString();
   }

@@ -14,11 +14,15 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.ExprSimple#getStr <em>Str</em>}</li>
- *   <li>{@link esir.compilation.whdsl.ExprSimple#getVarSimple <em>Var Simple</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.ExprSimple#getNil <em>Nil</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.ExprSimple#getVar <em>Var</em>}</li>
  *   <li>{@link esir.compilation.whdsl.ExprSimple#getSym <em>Sym</em>}</li>
- *   <li>{@link esir.compilation.whdsl.ExprSimple#getNameFunction <em>Name Function</em>}</li>
- *   <li>{@link esir.compilation.whdsl.ExprSimple#getVars <em>Vars</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.ExprSimple#getCons <em>Cons</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.ExprSimple#getList <em>List</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.ExprSimple#getHd <em>Hd</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.ExprSimple#getTl <em>Tl</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.ExprSimple#getFuncName <em>Func Name</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.ExprSimple#getFuncParams <em>Func Params</em>}</li>
  * </ul>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getExprSimple()
@@ -28,56 +32,56 @@ import org.eclipse.emf.ecore.EObject;
 public interface ExprSimple extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Str</b></em>' attribute.
+   * Returns the value of the '<em><b>Nil</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Str</em>' attribute isn't clear,
+   * If the meaning of the '<em>Nil</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Str</em>' attribute.
-   * @see #setStr(String)
-   * @see esir.compilation.whdsl.WhdslPackage#getExprSimple_Str()
+   * @return the value of the '<em>Nil</em>' attribute.
+   * @see #setNil(String)
+   * @see esir.compilation.whdsl.WhdslPackage#getExprSimple_Nil()
    * @model
    * @generated
    */
-  String getStr();
+  String getNil();
 
   /**
-   * Sets the value of the '{@link esir.compilation.whdsl.ExprSimple#getStr <em>Str</em>}' attribute.
+   * Sets the value of the '{@link esir.compilation.whdsl.ExprSimple#getNil <em>Nil</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Str</em>' attribute.
-   * @see #getStr()
+   * @param value the new value of the '<em>Nil</em>' attribute.
+   * @see #getNil()
    * @generated
    */
-  void setStr(String value);
+  void setNil(String value);
 
   /**
-   * Returns the value of the '<em><b>Var Simple</b></em>' attribute.
+   * Returns the value of the '<em><b>Var</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Var Simple</em>' attribute isn't clear,
+   * If the meaning of the '<em>Var</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Var Simple</em>' attribute.
-   * @see #setVarSimple(String)
-   * @see esir.compilation.whdsl.WhdslPackage#getExprSimple_VarSimple()
+   * @return the value of the '<em>Var</em>' attribute.
+   * @see #setVar(String)
+   * @see esir.compilation.whdsl.WhdslPackage#getExprSimple_Var()
    * @model
    * @generated
    */
-  String getVarSimple();
+  String getVar();
 
   /**
-   * Sets the value of the '{@link esir.compilation.whdsl.ExprSimple#getVarSimple <em>Var Simple</em>}' attribute.
+   * Sets the value of the '{@link esir.compilation.whdsl.ExprSimple#getVar <em>Var</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Var Simple</em>' attribute.
-   * @see #getVarSimple()
+   * @param value the new value of the '<em>Var</em>' attribute.
+   * @see #getVar()
    * @generated
    */
-  void setVarSimple(String value);
+  void setVar(String value);
 
   /**
    * Returns the value of the '<em><b>Sym</b></em>' attribute.
@@ -106,55 +110,159 @@ public interface ExprSimple extends EObject
   void setSym(String value);
 
   /**
-   * Returns the value of the '<em><b>Name Function</b></em>' attribute.
+   * Returns the value of the '<em><b>Cons</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Name Function</em>' attribute isn't clear,
+   * If the meaning of the '<em>Cons</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name Function</em>' attribute.
-   * @see #setNameFunction(String)
-   * @see esir.compilation.whdsl.WhdslPackage#getExprSimple_NameFunction()
-   * @model
-   * @generated
-   */
-  String getNameFunction();
-
-  /**
-   * Sets the value of the '{@link esir.compilation.whdsl.ExprSimple#getNameFunction <em>Name Function</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name Function</em>' attribute.
-   * @see #getNameFunction()
-   * @generated
-   */
-  void setNameFunction(String value);
-
-  /**
-   * Returns the value of the '<em><b>Vars</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Vars</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Vars</em>' containment reference.
-   * @see #setVars(Input)
-   * @see esir.compilation.whdsl.WhdslPackage#getExprSimple_Vars()
+   * @return the value of the '<em>Cons</em>' containment reference.
+   * @see #setCons(LExpr)
+   * @see esir.compilation.whdsl.WhdslPackage#getExprSimple_Cons()
    * @model containment="true"
    * @generated
    */
-  Input getVars();
+  LExpr getCons();
 
   /**
-   * Sets the value of the '{@link esir.compilation.whdsl.ExprSimple#getVars <em>Vars</em>}' containment reference.
+   * Sets the value of the '{@link esir.compilation.whdsl.ExprSimple#getCons <em>Cons</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Vars</em>' containment reference.
-   * @see #getVars()
+   * @param value the new value of the '<em>Cons</em>' containment reference.
+   * @see #getCons()
    * @generated
    */
-  void setVars(Input value);
+  void setCons(LExpr value);
+
+  /**
+   * Returns the value of the '<em><b>List</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>List</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>List</em>' containment reference.
+   * @see #setList(LExpr)
+   * @see esir.compilation.whdsl.WhdslPackage#getExprSimple_List()
+   * @model containment="true"
+   * @generated
+   */
+  LExpr getList();
+
+  /**
+   * Sets the value of the '{@link esir.compilation.whdsl.ExprSimple#getList <em>List</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>List</em>' containment reference.
+   * @see #getList()
+   * @generated
+   */
+  void setList(LExpr value);
+
+  /**
+   * Returns the value of the '<em><b>Hd</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Hd</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Hd</em>' containment reference.
+   * @see #setHd(Expr)
+   * @see esir.compilation.whdsl.WhdslPackage#getExprSimple_Hd()
+   * @model containment="true"
+   * @generated
+   */
+  Expr getHd();
+
+  /**
+   * Sets the value of the '{@link esir.compilation.whdsl.ExprSimple#getHd <em>Hd</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Hd</em>' containment reference.
+   * @see #getHd()
+   * @generated
+   */
+  void setHd(Expr value);
+
+  /**
+   * Returns the value of the '<em><b>Tl</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Tl</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Tl</em>' containment reference.
+   * @see #setTl(Expr)
+   * @see esir.compilation.whdsl.WhdslPackage#getExprSimple_Tl()
+   * @model containment="true"
+   * @generated
+   */
+  Expr getTl();
+
+  /**
+   * Sets the value of the '{@link esir.compilation.whdsl.ExprSimple#getTl <em>Tl</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Tl</em>' containment reference.
+   * @see #getTl()
+   * @generated
+   */
+  void setTl(Expr value);
+
+  /**
+   * Returns the value of the '<em><b>Func Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Func Name</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Func Name</em>' attribute.
+   * @see #setFuncName(String)
+   * @see esir.compilation.whdsl.WhdslPackage#getExprSimple_FuncName()
+   * @model
+   * @generated
+   */
+  String getFuncName();
+
+  /**
+   * Sets the value of the '{@link esir.compilation.whdsl.ExprSimple#getFuncName <em>Func Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Func Name</em>' attribute.
+   * @see #getFuncName()
+   * @generated
+   */
+  void setFuncName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Func Params</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Func Params</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Func Params</em>' containment reference.
+   * @see #setFuncParams(LExpr)
+   * @see esir.compilation.whdsl.WhdslPackage#getExprSimple_FuncParams()
+   * @model containment="true"
+   * @generated
+   */
+  LExpr getFuncParams();
+
+  /**
+   * Sets the value of the '{@link esir.compilation.whdsl.ExprSimple#getFuncParams <em>Func Params</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Func Params</em>' containment reference.
+   * @see #getFuncParams()
+   * @generated
+   */
+  void setFuncParams(LExpr value);
 
 } // ExprSimple

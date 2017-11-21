@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link esir.compilation.whdsl.ForEach#getElem <em>Elem</em>}</li>
  *   <li>{@link esir.compilation.whdsl.ForEach#getEnsemb <em>Ensemb</em>}</li>
- *   <li>{@link esir.compilation.whdsl.ForEach#getCmds <em>Cmds</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.ForEach#getCommands <em>Commands</em>}</li>
  * </ul>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getForEach()
@@ -26,81 +26,81 @@ import org.eclipse.emf.ecore.EObject;
 public interface ForEach extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Elem</b></em>' attribute.
+   * Returns the value of the '<em><b>Elem</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Elem</em>' attribute isn't clear,
+   * If the meaning of the '<em>Elem</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Elem</em>' attribute.
-   * @see #setElem(String)
+   * @return the value of the '<em>Elem</em>' containment reference.
+   * @see #setElem(Expr)
    * @see esir.compilation.whdsl.WhdslPackage#getForEach_Elem()
-   * @model
-   * @generated
-   */
-  String getElem();
-
-  /**
-   * Sets the value of the '{@link esir.compilation.whdsl.ForEach#getElem <em>Elem</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Elem</em>' attribute.
-   * @see #getElem()
-   * @generated
-   */
-  void setElem(String value);
-
-  /**
-   * Returns the value of the '<em><b>Ensemb</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Ensemb</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Ensemb</em>' attribute.
-   * @see #setEnsemb(String)
-   * @see esir.compilation.whdsl.WhdslPackage#getForEach_Ensemb()
-   * @model
-   * @generated
-   */
-  String getEnsemb();
-
-  /**
-   * Sets the value of the '{@link esir.compilation.whdsl.ForEach#getEnsemb <em>Ensemb</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ensemb</em>' attribute.
-   * @see #getEnsemb()
-   * @generated
-   */
-  void setEnsemb(String value);
-
-  /**
-   * Returns the value of the '<em><b>Cmds</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Cmds</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Cmds</em>' containment reference.
-   * @see #setCmds(Commands)
-   * @see esir.compilation.whdsl.WhdslPackage#getForEach_Cmds()
    * @model containment="true"
    * @generated
    */
-  Commands getCmds();
+  Expr getElem();
 
   /**
-   * Sets the value of the '{@link esir.compilation.whdsl.ForEach#getCmds <em>Cmds</em>}' containment reference.
+   * Sets the value of the '{@link esir.compilation.whdsl.ForEach#getElem <em>Elem</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Cmds</em>' containment reference.
-   * @see #getCmds()
+   * @param value the new value of the '<em>Elem</em>' containment reference.
+   * @see #getElem()
    * @generated
    */
-  void setCmds(Commands value);
+  void setElem(Expr value);
+
+  /**
+   * Returns the value of the '<em><b>Ensemb</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Ensemb</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Ensemb</em>' containment reference.
+   * @see #setEnsemb(Expr)
+   * @see esir.compilation.whdsl.WhdslPackage#getForEach_Ensemb()
+   * @model containment="true"
+   * @generated
+   */
+  Expr getEnsemb();
+
+  /**
+   * Sets the value of the '{@link esir.compilation.whdsl.ForEach#getEnsemb <em>Ensemb</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Ensemb</em>' containment reference.
+   * @see #getEnsemb()
+   * @generated
+   */
+  void setEnsemb(Expr value);
+
+  /**
+   * Returns the value of the '<em><b>Commands</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Commands</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Commands</em>' containment reference.
+   * @see #setCommands(Commands)
+   * @see esir.compilation.whdsl.WhdslPackage#getForEach_Commands()
+   * @model containment="true"
+   * @generated
+   */
+  Commands getCommands();
+
+  /**
+   * Sets the value of the '{@link esir.compilation.whdsl.ForEach#getCommands <em>Commands</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Commands</em>' containment reference.
+   * @see #getCommands()
+   * @generated
+   */
+  void setCommands(Commands value);
 
 } // ForEach

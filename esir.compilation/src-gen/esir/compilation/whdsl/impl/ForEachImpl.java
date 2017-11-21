@@ -4,6 +4,7 @@
 package esir.compilation.whdsl.impl;
 
 import esir.compilation.whdsl.Commands;
+import esir.compilation.whdsl.Expr;
 import esir.compilation.whdsl.ForEach;
 import esir.compilation.whdsl.WhdslPackage;
 
@@ -26,7 +27,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link esir.compilation.whdsl.impl.ForEachImpl#getElem <em>Elem</em>}</li>
  *   <li>{@link esir.compilation.whdsl.impl.ForEachImpl#getEnsemb <em>Ensemb</em>}</li>
- *   <li>{@link esir.compilation.whdsl.impl.ForEachImpl#getCmds <em>Cmds</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.ForEachImpl#getCommands <em>Commands</em>}</li>
  * </ul>
  *
  * @generated
@@ -34,54 +35,34 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class ForEachImpl extends MinimalEObjectImpl.Container implements ForEach
 {
   /**
-   * The default value of the '{@link #getElem() <em>Elem</em>}' attribute.
+   * The cached value of the '{@link #getElem() <em>Elem</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getElem()
    * @generated
    * @ordered
    */
-  protected static final String ELEM_EDEFAULT = null;
+  protected Expr elem;
 
   /**
-   * The cached value of the '{@link #getElem() <em>Elem</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getElem()
-   * @generated
-   * @ordered
-   */
-  protected String elem = ELEM_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getEnsemb() <em>Ensemb</em>}' attribute.
+   * The cached value of the '{@link #getEnsemb() <em>Ensemb</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getEnsemb()
    * @generated
    * @ordered
    */
-  protected static final String ENSEMB_EDEFAULT = null;
+  protected Expr ensemb;
 
   /**
-   * The cached value of the '{@link #getEnsemb() <em>Ensemb</em>}' attribute.
+   * The cached value of the '{@link #getCommands() <em>Commands</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getEnsemb()
+   * @see #getCommands()
    * @generated
    * @ordered
    */
-  protected String ensemb = ENSEMB_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getCmds() <em>Cmds</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getCmds()
-   * @generated
-   * @ordered
-   */
-  protected Commands cmds;
+  protected Commands commands;
 
   /**
    * <!-- begin-user-doc -->
@@ -109,7 +90,7 @@ public class ForEachImpl extends MinimalEObjectImpl.Container implements ForEach
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getElem()
+  public Expr getElem()
   {
     return elem;
   }
@@ -119,59 +100,13 @@ public class ForEachImpl extends MinimalEObjectImpl.Container implements ForEach
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setElem(String newElem)
+  public NotificationChain basicSetElem(Expr newElem, NotificationChain msgs)
   {
-    String oldElem = elem;
+    Expr oldElem = elem;
     elem = newElem;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR_EACH__ELEM, oldElem, elem));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getEnsemb()
-  {
-    return ensemb;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setEnsemb(String newEnsemb)
-  {
-    String oldEnsemb = ensemb;
-    ensemb = newEnsemb;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR_EACH__ENSEMB, oldEnsemb, ensemb));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Commands getCmds()
-  {
-    return cmds;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetCmds(Commands newCmds, NotificationChain msgs)
-  {
-    Commands oldCmds = cmds;
-    cmds = newCmds;
-    if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR_EACH__CMDS, oldCmds, newCmds);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR_EACH__ELEM, oldElem, newElem);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -182,20 +117,116 @@ public class ForEachImpl extends MinimalEObjectImpl.Container implements ForEach
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCmds(Commands newCmds)
+  public void setElem(Expr newElem)
   {
-    if (newCmds != cmds)
+    if (newElem != elem)
     {
       NotificationChain msgs = null;
-      if (cmds != null)
-        msgs = ((InternalEObject)cmds).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.FOR_EACH__CMDS, null, msgs);
-      if (newCmds != null)
-        msgs = ((InternalEObject)newCmds).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.FOR_EACH__CMDS, null, msgs);
-      msgs = basicSetCmds(newCmds, msgs);
+      if (elem != null)
+        msgs = ((InternalEObject)elem).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.FOR_EACH__ELEM, null, msgs);
+      if (newElem != null)
+        msgs = ((InternalEObject)newElem).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.FOR_EACH__ELEM, null, msgs);
+      msgs = basicSetElem(newElem, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR_EACH__CMDS, newCmds, newCmds));
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR_EACH__ELEM, newElem, newElem));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Expr getEnsemb()
+  {
+    return ensemb;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetEnsemb(Expr newEnsemb, NotificationChain msgs)
+  {
+    Expr oldEnsemb = ensemb;
+    ensemb = newEnsemb;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR_EACH__ENSEMB, oldEnsemb, newEnsemb);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setEnsemb(Expr newEnsemb)
+  {
+    if (newEnsemb != ensemb)
+    {
+      NotificationChain msgs = null;
+      if (ensemb != null)
+        msgs = ((InternalEObject)ensemb).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.FOR_EACH__ENSEMB, null, msgs);
+      if (newEnsemb != null)
+        msgs = ((InternalEObject)newEnsemb).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.FOR_EACH__ENSEMB, null, msgs);
+      msgs = basicSetEnsemb(newEnsemb, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR_EACH__ENSEMB, newEnsemb, newEnsemb));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Commands getCommands()
+  {
+    return commands;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetCommands(Commands newCommands, NotificationChain msgs)
+  {
+    Commands oldCommands = commands;
+    commands = newCommands;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR_EACH__COMMANDS, oldCommands, newCommands);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCommands(Commands newCommands)
+  {
+    if (newCommands != commands)
+    {
+      NotificationChain msgs = null;
+      if (commands != null)
+        msgs = ((InternalEObject)commands).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.FOR_EACH__COMMANDS, null, msgs);
+      if (newCommands != null)
+        msgs = ((InternalEObject)newCommands).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.FOR_EACH__COMMANDS, null, msgs);
+      msgs = basicSetCommands(newCommands, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR_EACH__COMMANDS, newCommands, newCommands));
   }
 
   /**
@@ -208,8 +239,12 @@ public class ForEachImpl extends MinimalEObjectImpl.Container implements ForEach
   {
     switch (featureID)
     {
-      case WhdslPackage.FOR_EACH__CMDS:
-        return basicSetCmds(null, msgs);
+      case WhdslPackage.FOR_EACH__ELEM:
+        return basicSetElem(null, msgs);
+      case WhdslPackage.FOR_EACH__ENSEMB:
+        return basicSetEnsemb(null, msgs);
+      case WhdslPackage.FOR_EACH__COMMANDS:
+        return basicSetCommands(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -228,8 +263,8 @@ public class ForEachImpl extends MinimalEObjectImpl.Container implements ForEach
         return getElem();
       case WhdslPackage.FOR_EACH__ENSEMB:
         return getEnsemb();
-      case WhdslPackage.FOR_EACH__CMDS:
-        return getCmds();
+      case WhdslPackage.FOR_EACH__COMMANDS:
+        return getCommands();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -245,13 +280,13 @@ public class ForEachImpl extends MinimalEObjectImpl.Container implements ForEach
     switch (featureID)
     {
       case WhdslPackage.FOR_EACH__ELEM:
-        setElem((String)newValue);
+        setElem((Expr)newValue);
         return;
       case WhdslPackage.FOR_EACH__ENSEMB:
-        setEnsemb((String)newValue);
+        setEnsemb((Expr)newValue);
         return;
-      case WhdslPackage.FOR_EACH__CMDS:
-        setCmds((Commands)newValue);
+      case WhdslPackage.FOR_EACH__COMMANDS:
+        setCommands((Commands)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -268,13 +303,13 @@ public class ForEachImpl extends MinimalEObjectImpl.Container implements ForEach
     switch (featureID)
     {
       case WhdslPackage.FOR_EACH__ELEM:
-        setElem(ELEM_EDEFAULT);
+        setElem((Expr)null);
         return;
       case WhdslPackage.FOR_EACH__ENSEMB:
-        setEnsemb(ENSEMB_EDEFAULT);
+        setEnsemb((Expr)null);
         return;
-      case WhdslPackage.FOR_EACH__CMDS:
-        setCmds((Commands)null);
+      case WhdslPackage.FOR_EACH__COMMANDS:
+        setCommands((Commands)null);
         return;
     }
     super.eUnset(featureID);
@@ -291,32 +326,13 @@ public class ForEachImpl extends MinimalEObjectImpl.Container implements ForEach
     switch (featureID)
     {
       case WhdslPackage.FOR_EACH__ELEM:
-        return ELEM_EDEFAULT == null ? elem != null : !ELEM_EDEFAULT.equals(elem);
+        return elem != null;
       case WhdslPackage.FOR_EACH__ENSEMB:
-        return ENSEMB_EDEFAULT == null ? ensemb != null : !ENSEMB_EDEFAULT.equals(ensemb);
-      case WhdslPackage.FOR_EACH__CMDS:
-        return cmds != null;
+        return ensemb != null;
+      case WhdslPackage.FOR_EACH__COMMANDS:
+        return commands != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (elem: ");
-    result.append(elem);
-    result.append(", ensemb: ");
-    result.append(ensemb);
-    result.append(')');
-    return result.toString();
   }
 
 } //ForEachImpl

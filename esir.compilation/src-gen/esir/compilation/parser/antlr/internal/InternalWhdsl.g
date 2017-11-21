@@ -266,46 +266,23 @@ ruleInput returns [EObject current=null]
 		}
 		(
 			(
-				lv_variables_1_0=RULE_VARIABLE
 				{
-					newLeafNode(lv_variables_1_0, grammarAccess.getInputAccess().getVariablesVARIABLETerminalRuleCall_1_0());
+					newCompositeNode(grammarAccess.getInputAccess().getVarsVarsParserRuleCall_1_0());
 				}
+				lv_vars_1_0=ruleVars
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getInputRule());
+						$current = createModelElementForParent(grammarAccess.getInputRule());
 					}
-					addWithLastConsumed(
+					set(
 						$current,
-						"variables",
-						lv_variables_1_0,
-						"esir.compilation.Whdsl.VARIABLE");
+						"vars",
+						lv_vars_1_0,
+						"esir.compilation.Whdsl.Vars");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		(
-			otherlv_2=','
-			{
-				newLeafNode(otherlv_2, grammarAccess.getInputAccess().getCommaKeyword_2_0());
-			}
-			(
-				(
-					lv_variables_3_0=RULE_VARIABLE
-					{
-						newLeafNode(lv_variables_3_0, grammarAccess.getInputAccess().getVariablesVARIABLETerminalRuleCall_2_1_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getInputRule());
-						}
-						addWithLastConsumed(
-							$current,
-							"variables",
-							lv_variables_3_0,
-							"esir.compilation.Whdsl.VARIABLE");
-					}
-				)
-			)
-		)*
 	)
 ;
 
@@ -331,46 +308,23 @@ ruleOutput returns [EObject current=null]
 		}
 		(
 			(
-				lv_variables_1_0=RULE_VARIABLE
 				{
-					newLeafNode(lv_variables_1_0, grammarAccess.getOutputAccess().getVariablesVARIABLETerminalRuleCall_1_0());
+					newCompositeNode(grammarAccess.getOutputAccess().getVarsVarsParserRuleCall_1_0());
 				}
+				lv_vars_1_0=ruleVars
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getOutputRule());
+						$current = createModelElementForParent(grammarAccess.getOutputRule());
 					}
-					addWithLastConsumed(
+					set(
 						$current,
-						"variables",
-						lv_variables_1_0,
-						"esir.compilation.Whdsl.VARIABLE");
+						"vars",
+						lv_vars_1_0,
+						"esir.compilation.Whdsl.Vars");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		(
-			otherlv_2=','
-			{
-				newLeafNode(otherlv_2, grammarAccess.getOutputAccess().getCommaKeyword_2_0());
-			}
-			(
-				(
-					lv_variables_3_0=RULE_VARIABLE
-					{
-						newLeafNode(lv_variables_3_0, grammarAccess.getOutputAccess().getVariablesVARIABLETerminalRuleCall_2_1_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getOutputRule());
-						}
-						addWithLastConsumed(
-							$current,
-							"variables",
-							lv_variables_3_0,
-							"esir.compilation.Whdsl.VARIABLE");
-					}
-				)
-			)
-		)*
 	)
 ;
 
@@ -392,18 +346,18 @@ ruleVars returns [EObject current=null]
 	(
 		(
 			(
-				lv_var_0_0=RULE_VARIABLE
+				lv_list_0_0=RULE_VARIABLE
 				{
-					newLeafNode(lv_var_0_0, grammarAccess.getVarsAccess().getVarVARIABLETerminalRuleCall_0_0());
+					newLeafNode(lv_list_0_0, grammarAccess.getVarsAccess().getListVARIABLETerminalRuleCall_0_0());
 				}
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getVarsRule());
 					}
-					setWithLastConsumed(
+					addWithLastConsumed(
 						$current,
-						"var",
-						lv_var_0_0,
+						"list",
+						lv_list_0_0,
 						"esir.compilation.Whdsl.VARIABLE");
 				}
 			)
@@ -415,9 +369,9 @@ ruleVars returns [EObject current=null]
 			}
 			(
 				(
-					lv_vars_2_0=RULE_VARIABLE
+					lv_list_2_0=RULE_VARIABLE
 					{
-						newLeafNode(lv_vars_2_0, grammarAccess.getVarsAccess().getVarsVARIABLETerminalRuleCall_1_1_0());
+						newLeafNode(lv_list_2_0, grammarAccess.getVarsAccess().getListVARIABLETerminalRuleCall_1_1_0());
 					}
 					{
 						if ($current==null) {
@@ -425,8 +379,8 @@ ruleVars returns [EObject current=null]
 						}
 						addWithLastConsumed(
 							$current,
-							"vars",
-							lv_vars_2_0,
+							"list",
+							lv_list_2_0,
 							"esir.compilation.Whdsl.VARIABLE");
 					}
 				)
@@ -454,17 +408,17 @@ ruleCommands returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getCommandsAccess().getCommandCommandParserRuleCall_0_0());
+					newCompositeNode(grammarAccess.getCommandsAccess().getListCommandParserRuleCall_0_0());
 				}
-				lv_command_0_0=ruleCommand
+				lv_list_0_0=ruleCommand
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getCommandsRule());
 					}
-					set(
+					add(
 						$current,
-						"command",
-						lv_command_0_0,
+						"list",
+						lv_list_0_0,
 						"esir.compilation.Whdsl.Command");
 					afterParserOrEnumRuleCall();
 				}
@@ -478,17 +432,17 @@ ruleCommands returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getCommandsAccess().getCommandsCommandParserRuleCall_1_1_0());
+						newCompositeNode(grammarAccess.getCommandsAccess().getListCommandParserRuleCall_1_1_0());
 					}
-					lv_commands_2_0=ruleCommand
+					lv_list_2_0=ruleCommand
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getCommandsRule());
 						}
 						add(
 							$current,
-							"commands",
-							lv_commands_2_0,
+							"list",
+							lv_list_2_0,
 							"esir.compilation.Whdsl.Command");
 						afterParserOrEnumRuleCall();
 					}
@@ -659,17 +613,17 @@ ruleIf returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getIfAccess().getCondExprParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getIfAccess().getConditionExprParserRuleCall_1_0());
 				}
-				lv_cond_1_0=ruleExpr
+				lv_condition_1_0=ruleExpr
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getIfRule());
 					}
 					set(
 						$current,
-						"cond",
-						lv_cond_1_0,
+						"condition",
+						lv_condition_1_0,
 						"esir.compilation.Whdsl.Expr");
 					afterParserOrEnumRuleCall();
 				}
@@ -682,17 +636,17 @@ ruleIf returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getIfAccess().getCmdsThenCommandsParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getIfAccess().getThenCommandsCommandsParserRuleCall_3_0());
 				}
-				lv_cmdsThen_3_0=ruleCommands
+				lv_thenCommands_3_0=ruleCommands
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getIfRule());
 					}
 					set(
 						$current,
-						"cmdsThen",
-						lv_cmdsThen_3_0,
+						"thenCommands",
+						lv_thenCommands_3_0,
 						"esir.compilation.Whdsl.Commands");
 					afterParserOrEnumRuleCall();
 				}
@@ -706,17 +660,17 @@ ruleIf returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getIfAccess().getCmdsElseCommandsParserRuleCall_4_1_0());
+						newCompositeNode(grammarAccess.getIfAccess().getElseCommandsCommandsParserRuleCall_4_1_0());
 					}
-					lv_cmdsElse_5_0=ruleCommands
+					lv_elseCommands_5_0=ruleCommands
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getIfRule());
 						}
 						set(
 							$current,
-							"cmdsElse",
-							lv_cmdsElse_5_0,
+							"elseCommands",
+							lv_elseCommands_5_0,
 							"esir.compilation.Whdsl.Commands");
 						afterParserOrEnumRuleCall();
 					}
@@ -814,17 +768,17 @@ ruleFor returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getForAccess().getCondExprParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getForAccess().getConditionExprParserRuleCall_1_0());
 				}
-				lv_cond_1_0=ruleExpr
+				lv_condition_1_0=ruleExpr
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getForRule());
 					}
 					set(
 						$current,
-						"cond",
-						lv_cond_1_0,
+						"condition",
+						lv_condition_1_0,
 						"esir.compilation.Whdsl.Expr");
 					afterParserOrEnumRuleCall();
 				}
@@ -837,17 +791,17 @@ ruleFor returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getForAccess().getCmdsCommandsParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getForAccess().getCommandsCommandsParserRuleCall_3_0());
 				}
-				lv_cmds_3_0=ruleCommands
+				lv_commands_3_0=ruleCommands
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getForRule());
 					}
 					set(
 						$current,
-						"cmds",
-						lv_cmds_3_0,
+						"commands",
+						lv_commands_3_0,
 						"esir.compilation.Whdsl.Commands");
 					afterParserOrEnumRuleCall();
 				}
@@ -883,17 +837,17 @@ ruleWhile returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getWhileAccess().getCondExprParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getWhileAccess().getConditionExprParserRuleCall_1_0());
 				}
-				lv_cond_1_0=ruleExpr
+				lv_condition_1_0=ruleExpr
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getWhileRule());
 					}
 					set(
 						$current,
-						"cond",
-						lv_cond_1_0,
+						"condition",
+						lv_condition_1_0,
 						"esir.compilation.Whdsl.Expr");
 					afterParserOrEnumRuleCall();
 				}
@@ -906,17 +860,17 @@ ruleWhile returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getWhileAccess().getCmdsCommandsParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getWhileAccess().getCommandsCommandsParserRuleCall_3_0());
 				}
-				lv_cmds_3_0=ruleCommands
+				lv_commands_3_0=ruleCommands
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getWhileRule());
 					}
 					set(
 						$current,
-						"cmds",
-						lv_cmds_3_0,
+						"commands",
+						lv_commands_3_0,
 						"esir.compilation.Whdsl.Commands");
 					afterParserOrEnumRuleCall();
 				}
@@ -1029,17 +983,17 @@ ruleForEach returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getForEachAccess().getCmdsCommandsParserRuleCall_5_0());
+					newCompositeNode(grammarAccess.getForEachAccess().getCommandsCommandsParserRuleCall_5_0());
 				}
-				lv_cmds_5_0=ruleCommands
+				lv_commands_5_0=ruleCommands
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getForEachRule());
 					}
 					set(
 						$current,
-						"cmds",
-						lv_cmds_5_0,
+						"commands",
+						lv_commands_5_0,
 						"esir.compilation.Whdsl.Commands");
 					afterParserOrEnumRuleCall();
 				}
@@ -1071,17 +1025,17 @@ ruleExprs returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getExprsAccess().getExprExprParserRuleCall_0_0());
+					newCompositeNode(grammarAccess.getExprsAccess().getListExprParserRuleCall_0_0());
 				}
-				lv_expr_0_0=ruleExpr
+				lv_list_0_0=ruleExpr
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getExprsRule());
 					}
-					set(
+					add(
 						$current,
-						"expr",
-						lv_expr_0_0,
+						"list",
+						lv_list_0_0,
 						"esir.compilation.Whdsl.Expr");
 					afterParserOrEnumRuleCall();
 				}
@@ -1095,17 +1049,17 @@ ruleExprs returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getExprsAccess().getExprsExprParserRuleCall_1_1_0());
+						newCompositeNode(grammarAccess.getExprsAccess().getListExprParserRuleCall_1_1_0());
 					}
-					lv_exprs_2_0=ruleExpr
+					lv_list_2_0=ruleExpr
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getExprsRule());
 						}
 						add(
 							$current,
-							"exprs",
-							lv_exprs_2_0,
+							"list",
+							lv_list_2_0,
 							"esir.compilation.Whdsl.Expr");
 						afterParserOrEnumRuleCall();
 					}
@@ -1115,27 +1069,331 @@ ruleExprs returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleExpr
-entryRuleExpr returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getExprRule()); }
-	iv_ruleExpr=ruleExpr
-	{ $current=$iv_ruleExpr.current.getText(); }
+// Entry rule entryRuleLExpr
+entryRuleLExpr returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getLExprRule()); }
+	iv_ruleLExpr=ruleLExpr
+	{ $current=$iv_ruleLExpr.current; }
 	EOF;
 
-// Rule Expr
-ruleExpr returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+// Rule LExpr
+ruleLExpr returns [EObject current=null]
 @init {
 	enterRule();
 }
 @after {
 	leaveRule();
 }:
-	kw='1'
-	{
-		$current.merge(kw);
-		newLeafNode(kw, grammarAccess.getExprAccess().getDigitOneKeyword());
-	}
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getLExprAccess().getListExprParserRuleCall_0_0());
+				}
+				lv_list_0_0=ruleExpr
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getLExprRule());
+					}
+					add(
+						$current,
+						"list",
+						lv_list_0_0,
+						"esir.compilation.Whdsl.Expr");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getLExprAccess().getListExprParserRuleCall_1_0());
+				}
+				lv_list_1_0=ruleExpr
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getLExprRule());
+					}
+					add(
+						$current,
+						"list",
+						lv_list_1_0,
+						"esir.compilation.Whdsl.Expr");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+	)
 ;
+
+// Entry rule entryRuleExpr
+entryRuleExpr returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getExprRule()); }
+	iv_ruleExpr=ruleExpr
+	{ $current=$iv_ruleExpr.current; }
+	EOF;
+
+// Rule Expr
+ruleExpr returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				newCompositeNode(grammarAccess.getExprAccess().getSimpleExprSimpleParserRuleCall_0());
+			}
+			lv_simple_0_0=ruleExprSimple
+			{
+				if ($current==null) {
+					$current = createModelElementForParent(grammarAccess.getExprRule());
+				}
+				set(
+					$current,
+					"simple",
+					lv_simple_0_0,
+					"esir.compilation.Whdsl.ExprSimple");
+				afterParserOrEnumRuleCall();
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleExprSimple
+entryRuleExprSimple returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getExprSimpleRule()); }
+	iv_ruleExprSimple=ruleExprSimple
+	{ $current=$iv_ruleExprSimple.current; }
+	EOF;
+
+// Rule ExprSimple
+ruleExprSimple returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				lv_nil_0_0=RULE_NIL
+				{
+					newLeafNode(lv_nil_0_0, grammarAccess.getExprSimpleAccess().getNilNILTerminalRuleCall_0_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getExprSimpleRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"nil",
+						lv_nil_0_0,
+						"esir.compilation.Whdsl.NIL");
+				}
+			)
+		)
+		    |
+		(
+			(
+				lv_var_1_0=RULE_VARIABLE
+				{
+					newLeafNode(lv_var_1_0, grammarAccess.getExprSimpleAccess().getVarVARIABLETerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getExprSimpleRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"var",
+						lv_var_1_0,
+						"esir.compilation.Whdsl.VARIABLE");
+				}
+			)
+		)
+		    |
+		(
+			(
+				lv_sym_2_0=RULE_SYMBOLE
+				{
+					newLeafNode(lv_sym_2_0, grammarAccess.getExprSimpleAccess().getSymSYMBOLETerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getExprSimpleRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"sym",
+						lv_sym_2_0,
+						"esir.compilation.Whdsl.SYMBOLE");
+				}
+			)
+		)
+		    |
+		(
+			otherlv_3='('
+			{
+				newLeafNode(otherlv_3, grammarAccess.getExprSimpleAccess().getLeftParenthesisKeyword_3_0());
+			}
+			(
+				(
+					otherlv_4='cons'
+					{
+						newLeafNode(otherlv_4, grammarAccess.getExprSimpleAccess().getConsKeyword_3_1_0_0());
+					}
+					(
+						(
+							{
+								newCompositeNode(grammarAccess.getExprSimpleAccess().getConsLExprParserRuleCall_3_1_0_1_0());
+							}
+							lv_cons_5_0=ruleLExpr
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getExprSimpleRule());
+								}
+								set(
+									$current,
+									"cons",
+									lv_cons_5_0,
+									"esir.compilation.Whdsl.LExpr");
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)
+				)
+				    |
+				(
+					otherlv_6='list'
+					{
+						newLeafNode(otherlv_6, grammarAccess.getExprSimpleAccess().getListKeyword_3_1_1_0());
+					}
+					(
+						(
+							{
+								newCompositeNode(grammarAccess.getExprSimpleAccess().getListLExprParserRuleCall_3_1_1_1_0());
+							}
+							lv_list_7_0=ruleLExpr
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getExprSimpleRule());
+								}
+								set(
+									$current,
+									"list",
+									lv_list_7_0,
+									"esir.compilation.Whdsl.LExpr");
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)
+				)
+				    |
+				(
+					otherlv_8='hd'
+					{
+						newLeafNode(otherlv_8, grammarAccess.getExprSimpleAccess().getHdKeyword_3_1_2_0());
+					}
+					(
+						(
+							{
+								newCompositeNode(grammarAccess.getExprSimpleAccess().getHdExprParserRuleCall_3_1_2_1_0());
+							}
+							lv_hd_9_0=ruleExpr
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getExprSimpleRule());
+								}
+								set(
+									$current,
+									"hd",
+									lv_hd_9_0,
+									"esir.compilation.Whdsl.Expr");
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)
+				)
+				    |
+				(
+					otherlv_10='tl'
+					{
+						newLeafNode(otherlv_10, grammarAccess.getExprSimpleAccess().getTlKeyword_3_1_3_0());
+					}
+					(
+						(
+							{
+								newCompositeNode(grammarAccess.getExprSimpleAccess().getTlExprParserRuleCall_3_1_3_1_0());
+							}
+							lv_tl_11_0=ruleExpr
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getExprSimpleRule());
+								}
+								set(
+									$current,
+									"tl",
+									lv_tl_11_0,
+									"esir.compilation.Whdsl.Expr");
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)
+				)
+				    |
+				(
+					(
+						(
+							lv_funcName_12_0=RULE_SYMBOLE
+							{
+								newLeafNode(lv_funcName_12_0, grammarAccess.getExprSimpleAccess().getFuncNameSYMBOLETerminalRuleCall_3_1_4_0_0());
+							}
+							{
+								if ($current==null) {
+									$current = createModelElement(grammarAccess.getExprSimpleRule());
+								}
+								setWithLastConsumed(
+									$current,
+									"funcName",
+									lv_funcName_12_0,
+									"esir.compilation.Whdsl.SYMBOLE");
+							}
+						)
+					)
+					(
+						(
+							{
+								newCompositeNode(grammarAccess.getExprSimpleAccess().getFuncParamsLExprParserRuleCall_3_1_4_1_0());
+							}
+							lv_funcParams_13_0=ruleLExpr
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getExprSimpleRule());
+								}
+								set(
+									$current,
+									"funcParams",
+									lv_funcParams_13_0,
+									"esir.compilation.Whdsl.LExpr");
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)
+				)
+			)
+			otherlv_14=')'
+			{
+				newLeafNode(otherlv_14, grammarAccess.getExprSimpleAccess().getRightParenthesisKeyword_3_2());
+			}
+		)
+	)
+;
+
+RULE_NIL : ('Nil'|'nil');
 
 RULE_VARIABLE : ('A'..'Z')*;
 
