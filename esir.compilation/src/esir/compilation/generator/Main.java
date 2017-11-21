@@ -1,6 +1,8 @@
 package esir.compilation.generator;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.apache.commons.cli.BasicParser;
@@ -8,6 +10,7 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.apache.commons.io.FileUtils;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -37,7 +40,7 @@ public class Main {
 		options.addOption("if", true, "indent if");
 		options.addOption("for", true, "indent for");
 		options.addOption("while", true, "indent while");
-
+		options.addOption("test", true, "effectuer les tests");
 		
 		
 		CommandLineParser parser = new BasicParser();
@@ -73,6 +76,15 @@ public class Main {
 		System.out.println("START Pretty printing");
 		main.prettyprint(injector,input,output, indent_value, indent_if, indent_for, indent_while);
 		System.out.println("END Pretty printing");
+		
+		if(cmd.hasOption("test")){
+			try {
+				test(null,null);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	
@@ -117,4 +129,16 @@ public class Main {
 		}
 		return value_return;
 	}
+	
+	// Méthode qui vérifie l'égalité entre 2 listes de fichiers
+    public static boolean test(List<String> good, List<String> a_test) throws IOException {
+        for (int i = 0; i < good.size() && i < a_test.size(); i++) {
+        	System.out.println(good.get(i)+" "+a_test.get(i));
+            if (FileUtils.contentEquals(new File("les_tests/"+good.get(i)), new File("les_tests/"+a_test.get(i))) == false) {
+            	System.out.println("oui");
+                return false;
+            }
+        }
+        return true;
+    }
 }
