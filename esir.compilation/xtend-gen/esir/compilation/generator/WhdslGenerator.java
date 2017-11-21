@@ -6,13 +6,13 @@ package esir.compilation.generator;
 import com.google.common.collect.Iterables;
 import esir.compilation.whdsl.Affect;
 import esir.compilation.whdsl.Command;
-import esir.compilation.whdsl.Commands;
-import esir.compilation.whdsl.Expr;
+import esir.compilation.whdsl.Exprs;
 import esir.compilation.whdsl.For;
 import esir.compilation.whdsl.Function;
 import esir.compilation.whdsl.If;
 import esir.compilation.whdsl.Nop;
 import esir.compilation.whdsl.Program;
+import esir.compilation.whdsl.Vars;
 import esir.compilation.whdsl.While;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -21,6 +21,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 /**
@@ -61,16 +62,11 @@ public class WhdslGenerator extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     {
       EList<Function> _functions = p.getFunctions();
-      boolean _hasElements = false;
       for(final Function f : _functions) {
-        if (!_hasElements) {
-          _hasElements = true;
-        } else {
-          _builder.appendImmediate("\n", "");
-        }
         CharSequence _compile = this.compile(f, this.indent_value);
         _builder.append(_compile);
         _builder.newLineIfNotEmpty();
+        _builder.newLine();
       }
     }
     return _builder;
@@ -84,50 +80,32 @@ public class WhdslGenerator extends AbstractGenerator {
     _builder.append(":");
     _builder.newLineIfNotEmpty();
     _builder.append("read ");
+    CharSequence _compile = this.compile(f.getDefinition().getInput().getVars());
+    _builder.append(_compile);
+    _builder.newLineIfNotEmpty();
+    _builder.append("%");
+    _builder.newLine();
     {
-      EList<String> _vars = f.getDefinition().getInput().getVars();
+      EList<Command> _list = f.getDefinition().getCommands().getList();
       boolean _hasElements = false;
-      for(final String param : _vars) {
+      for(final Command cmd : _list) {
         if (!_hasElements) {
           _hasElements = true;
         } else {
-          _builder.appendImmediate(", ", "");
+          _builder.appendImmediate(";", "");
         }
-        _builder.append(param);
-      }
-    }
-    _builder.newLineIfNotEmpty();
-    _builder.append("%");
-    _builder.newLine();
-    _builder.append(indent);
-    Commands _commands = f.getDefinition().getCommands();
-    _builder.append(_commands);
-    {
-      EList<Command> _commands_1 = f.getDefinition().getCommands().getCommands();
-      for(final Command param_1 : _commands_1) {
-        _builder.append(";");
-        _builder.newLineIfNotEmpty();
         _builder.append(indent);
-        CharSequence _compile = this.compile(param_1, indent);
-        _builder.append(_compile);
+        CharSequence _compile_1 = this.compile(cmd, indent);
+        _builder.append(_compile_1);
+        _builder.newLineIfNotEmpty();
       }
     }
-    _builder.newLineIfNotEmpty();
     _builder.append("%");
     _builder.newLine();
     _builder.append("write ");
-    {
-      EList<String> _vars_1 = f.getDefinition().getOutput().getVars();
-      boolean _hasElements_1 = false;
-      for(final String param_2 : _vars_1) {
-        if (!_hasElements_1) {
-          _hasElements_1 = true;
-        } else {
-          _builder.appendImmediate(", ", "");
-        }
-        _builder.append(param_2);
-      }
-    }
+    CharSequence _compile_2 = this.compile(f.getDefinition().getOutput().getVars());
+    _builder.append(_compile_2);
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
@@ -179,104 +157,129 @@ public class WhdslGenerator extends AbstractGenerator {
     return _builder;
   }
   
+  public CharSequence compile(final Vars vars) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _join = IterableExtensions.join(vars.getList(), ", ");
+    _builder.append(_join);
+    return _builder;
+  }
+  
+  public CharSequence compile(final Exprs exprs) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _join = IterableExtensions.join(exprs.getList(), ", ");
+    _builder.append(_join);
+    return _builder;
+  }
+  
   public CharSequence compile(final Affect a) {
     StringConcatenation _builder = new StringConcatenation();
-    EList<String> _vars = a.getVars();
-    _builder.append(_vars);
-    _builder.append(":=");
-    EList<Expr> _exprs = a.getExprs();
-    _builder.append(_exprs);
+    CharSequence _compile = this.compile(a.getVars());
+    _builder.append(_compile);
+    _builder.append(" := ");
+    CharSequence _compile_1 = this.compile(a.getExprs());
+    _builder.append(_compile_1);
     return _builder;
   }
   
   public CharSequence compile(final If i, final String indent) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("if ");
-    Expr _expr = i.getExpr();
-    _builder.append(_expr);
-    _builder.append(" then ");
+    String _condition = i.getCondition();
+    _builder.append(_condition);
+    _builder.append(" then");
     _builder.newLineIfNotEmpty();
-    _builder.append((indent + this.indent_if));
     {
-      EList<Command> _commands = i.getCommands1().getCommands();
-      for(final Command param : _commands) {
-        _builder.append(";");
-        _builder.newLineIfNotEmpty();
+      EList<Command> _list = i.getThenCommands().getList();
+      boolean _hasElements = false;
+      for(final Command cmd : _list) {
+        if (!_hasElements) {
+          _hasElements = true;
+        } else {
+          _builder.appendImmediate(";", "");
+        }
         _builder.append((indent + this.indent_if));
-        Object _compile = this.compile(param, (indent + this.indent_if));
+        Object _compile = this.compile(cmd, (indent + this.indent_if));
         _builder.append(_compile);
+        _builder.newLineIfNotEmpty();
       }
     }
-    _builder.newLineIfNotEmpty();
     _builder.append(indent);
     _builder.append("else");
     _builder.newLineIfNotEmpty();
-    _builder.append((indent + this.indent_if));
     {
-      EList<Command> _commands_1 = i.getCommands2().getCommands();
-      for(final Command param_1 : _commands_1) {
-        _builder.append(";");
-        _builder.newLineIfNotEmpty();
+      EList<Command> _list_1 = i.getElseCommands().getList();
+      boolean _hasElements_1 = false;
+      for(final Command cmd_1 : _list_1) {
+        if (!_hasElements_1) {
+          _hasElements_1 = true;
+        } else {
+          _builder.appendImmediate(";", "");
+        }
         _builder.append((indent + this.indent_if));
-        Object _compile_1 = this.compile(param_1, (indent + this.indent_if));
+        Object _compile_1 = this.compile(cmd_1, (indent + this.indent_if));
         _builder.append(_compile_1);
+        _builder.newLineIfNotEmpty();
       }
     }
-    _builder.newLineIfNotEmpty();
     _builder.append(indent);
     _builder.append("fi");
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
   public CharSequence compile(final For f, final String indent) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("for ");
-    Expr _expr = f.getExpr();
-    _builder.append(_expr);
+    String _condition = f.getCondition();
+    _builder.append(_condition);
     _builder.append(" do");
     _builder.newLineIfNotEmpty();
-    _builder.append((indent + this.indent_for));
-    EList<Command> _commands = f.getCmds().getCommands();
-    _builder.append(_commands);
     {
-      EList<Command> _commands_1 = f.getCmds().getCommands();
-      for(final Command param : _commands_1) {
-        _builder.append(";");
-        _builder.newLineIfNotEmpty();
+      EList<Command> _list = f.getCommands().getList();
+      boolean _hasElements = false;
+      for(final Command cmd : _list) {
+        if (!_hasElements) {
+          _hasElements = true;
+        } else {
+          _builder.appendImmediate(";", "");
+        }
         _builder.append((indent + this.indent_for));
-        Object _compile = this.compile(param, (indent + this.indent_for));
+        Object _compile = this.compile(cmd, (indent + this.indent_for));
         _builder.append(_compile);
         _builder.newLineIfNotEmpty();
       }
     }
     _builder.append(indent);
     _builder.append("od");
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
   public CharSequence compile(final While w, final String indent) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("while ");
-    Expr _expr = w.getExpr();
-    _builder.append(_expr);
+    String _condition = w.getCondition();
+    _builder.append(_condition);
     _builder.append(" do");
     _builder.newLineIfNotEmpty();
-    _builder.append((indent + this.indent_while));
-    EList<Command> _commands = w.getCmds().getCommands();
-    _builder.append(_commands);
     {
-      EList<Command> _commands_1 = w.getCmds().getCommands();
-      for(final Command param : _commands_1) {
-        _builder.append(";");
-        _builder.newLineIfNotEmpty();
+      EList<Command> _list = w.getCommands().getList();
+      boolean _hasElements = false;
+      for(final Command cmd : _list) {
+        if (!_hasElements) {
+          _hasElements = true;
+        } else {
+          _builder.appendImmediate(";", "");
+        }
         _builder.append((indent + this.indent_while));
-        Object _compile = this.compile(param, (indent + this.indent_while));
+        Object _compile = this.compile(cmd, (indent + this.indent_while));
         _builder.append(_compile);
         _builder.newLineIfNotEmpty();
       }
     }
     _builder.append(indent);
     _builder.append("od");
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
 }

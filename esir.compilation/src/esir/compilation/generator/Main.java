@@ -89,7 +89,7 @@ public class Main {
 		//Affichage des erreurs rencontrées dans le fichier
 		if (!listIssue.isEmpty()) {
 			for (Issue issue : listIssue) {
-				throw new ErrorPrettyPrinterException(issue.getMessage());
+				throw new ErrorPrettyPrinterException(issue.getMessage(), issue.getLineNumber(), issue.getOffset());
 			}
 			return -1;
 		}

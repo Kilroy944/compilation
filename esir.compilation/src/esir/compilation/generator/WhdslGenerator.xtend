@@ -4,23 +4,20 @@
  */
 package esir.compilation.generator
 
+import esir.compilation.whdsl.Affect
+import esir.compilation.whdsl.Command
+import esir.compilation.whdsl.For
+import esir.compilation.whdsl.Function
+import esir.compilation.whdsl.If
+import esir.compilation.whdsl.Nop
+import esir.compilation.whdsl.Program
+import esir.compilation.whdsl.While
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import esir.compilation.whdsl.Function
-import esir.compilation.whdsl.Program
-import esir.compilation.whdsl.Commands
-import esir.compilation.whdsl.impl.CommandsImpl
-import esir.compilation.whdsl.Exprs
-import esir.compilation.whdsl.Command
 import esir.compilation.whdsl.Vars
-import esir.compilation.whdsl.impl.CommandImpl
-import esir.compilation.whdsl.Nop
-import esir.compilation.whdsl.Affect
-import esir.compilation.whdsl.While
-import esir.compilation.whdsl.For
-import esir.compilation.whdsl.If
+import esir.compilation.whdsl.Exprs
 
 /**
  * Generates code from your model files on save.
@@ -54,22 +51,23 @@ class WhdslGenerator extends AbstractGenerator {
 		}
 	}
 	
-	def compile (Program p){'''
-		«FOR f : p.functions SEPARATOR '\n'»
-		«f.compile(indent_value)»
-		«ENDFOR»'''
-	}
+	def compile (Program p) '''
+		«FOR f : p.functions»
+			«f.compile(indent_value)»
+			
+		«ENDFOR»
+	'''
 	
-	def compile (Function f, String indent){
-		'''
+	def compile (Function f, String indent) '''
 		function «f.name»:
-		read «FOR param: f.definition.input.vars SEPARATOR ', '»«param»«ENDFOR»
+		read «f.definition.input.vars.compile()»
 		%
-		«indent»«f.definition.commands»«FOR param: f.definition.commands.commands»;
-		«indent»«param.compile(indent)»«ENDFOR»
+		«FOR cmd: f.definition.commands.list SEPARATOR ';'»
+			«indent»«cmd.compile(indent)»
+		«ENDFOR»
 		%
-		write «FOR param: f.definition.output.vars SEPARATOR ', '»«param»«ENDFOR»'''
-	}
+		write «f.definition.output.vars.compile()»
+	'''
 	
 	
 	def compile (Command c, String indent){
@@ -91,38 +89,40 @@ class WhdslGenerator extends AbstractGenerator {
 		
 	}
 	
-	def compile(Nop n){
-		'''nop'''
-	}
+	def compile(Nop n) '''nop'''
 	
-	def compile(Affect a){
-		'''«a.vars»:=«a.exprs»'''	
-	}
-	def compile(If i, String indent){
-		'''if «i.expr» then 
-«indent+indent_if»«FOR param: i.commands1.commands»;
-«indent+indent_if»«param.compile(indent+indent_if)»«ENDFOR»
-«indent»else
-«indent+indent_if»«FOR param: i.commands2.commands»;
-«indent+indent_if»«param.compile(indent+indent_if)»«ENDFOR»
-«indent»fi'''			
-	}
+	def compile(Vars vars) '''«vars.list.join(', ')»'''
 	
-	def compile(For f, String indent){
-		'''for «f.expr» do
-«indent+indent_for»«f.cmds.commands»«FOR param: f.cmds.commands»;
-«indent+indent_for»«param.compile(indent+indent_for)»
+	def compile(Exprs exprs) '''«exprs.list.join(', ')»'''
+	
+	def compile(Affect a) '''«a.vars.compile()» := «a.exprs.compile()»'''
+	
+	def compile(If i, String indent) '''
+		if «i.condition» then
+		«FOR cmd: i.thenCommands.list SEPARATOR ';'»
+			«indent+indent_if»«cmd.compile(indent+indent_if)»
 		«ENDFOR»
-«indent»od'''		
-	}
-	
-	def compile(While w, String indent){
-		'''while «w.expr» do
-«indent+indent_while»«w.cmds.commands»«FOR param: w.cmds.commands»;
-«indent+indent_while»«param.compile(indent+indent_while)»
+		«indent»else
+		«FOR cmd: i.elseCommands.list SEPARATOR ';'»
+			«indent+indent_if»«cmd.compile(indent+indent_if)»
 		«ENDFOR»
-«indent»od'''	
-	}
+		«indent»fi
+	'''
+	
+	def compile(For f, String indent) '''
+		for «f.condition» do
+		«FOR cmd: f.commands.list SEPARATOR ';'»
+			«indent+indent_for»«cmd.compile(indent+indent_for)»
+		«ENDFOR»
+		«indent»od
+	'''
+	
+	def compile(While w, String indent) '''
+		while «w.condition» do
+		«FOR cmd: w.commands.list SEPARATOR ';'»
+			«indent+indent_while»«cmd.compile(indent+indent_while)»
+		«ENDFOR»
+		«indent»od
+	'''
 
-	
 }

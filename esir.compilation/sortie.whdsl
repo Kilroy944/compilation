@@ -1,75 +1,49 @@
 function fonctiona:
 read B, B
 %
-     esir.compilation.whdsl.impl.CommandsImpl@301eda63;
-     nop;
-     if esir.compilation.whdsl.impl.ExprImpl@3d246ea3 then 
-          ;
-          nop
-     else
-          ;
-          nop
-     fi;
-     for esir.compilation.whdsl.impl.ExprImpl@341814d3 do
-          [esir.compilation.whdsl.impl.CommandImpl@4397ad89, esir.compilation.whdsl.impl.CommandImpl@59cba5a];
-          nop
-;
-          nop
-     od;
-     while esir.compilation.whdsl.impl.ExprImpl@1bd39d3c do
-          [esir.compilation.whdsl.impl.CommandImpl@6f19ac19, esir.compilation.whdsl.impl.CommandImpl@119cbf96];
-          nop
-;
-          nop
-     od;
-     if esir.compilation.whdsl.impl.ExprImpl@71329995 then 
-          ;
-          if esir.compilation.whdsl.impl.ExprImpl@768fc0f2 then 
-               ;
-               nop;
-               nop
-          else
-               ;
-               nop
-          fi
-     else
-          ;
-          nop;
-          nop
-     fi
+   nop;
+   if nil then
+      nop
+   else
+      nop
+   fi;
+   for nil do
+      nop;
+      nop
+   od;
+   while nil do
+      nop;
+      nop
+   od;
+   if nil then
+      if nil then
+         nop;
+         nop
+      else
+         nop
+      fi
+   else
+      nop;
+      nop
+   fi
 %
 write A, B, C
 
 function fonctionb:
 read A
 %
-     esir.compilation.whdsl.impl.CommandsImpl@5454d35e;
-     [A]:=[esir.compilation.whdsl.impl.ExprImpl@20c0a64d];
-     [A]:=[esir.compilation.whdsl.impl.ExprImpl@455b6df1];
-     [A, B, C]:=[esir.compilation.whdsl.impl.ExprImpl@4ddbbdf8, esir.compilation.whdsl.impl.ExprImpl@3f67593e, esir.compilation.whdsl.impl.ExprImpl@1ab06251]
+   A := nil;
+   A := nil;
+   A, B, C := nil, nil, nil
 %
 write A, B, C
 
 function fonctionb:
 read A
 %
-     esir.compilation.whdsl.impl.CommandsImpl@41ab013;
-     [A]:=[esir.compilation.whdsl.impl.ExprImpl@14bee915];
-     [A]:=[esir.compilation.whdsl.impl.ExprImpl@1115ec15];
-     [A, B, C]:=[esir.compilation.whdsl.impl.ExprImpl@82ea68c, esir.compilation.whdsl.impl.ExprImpl@59e505b2, esir.compilation.whdsl.impl.ExprImpl@3af0a9da]
+   A := nil;
+   A := nil;
+   A, B, C := nil, nil, nil
 %
 write A, B, C
 
-function fonctionc:
-read X
-%
-     esir.compilation.whdsl.impl.CommandsImpl@43b9fd5;
-     [Y]:=[esir.compilation.whdsl.impl.ExprImpl@79dc5318];
-     while esir.compilation.whdsl.impl.ExprImpl@8e50104 do
-          [esir.compilation.whdsl.impl.CommandImpl@37e4d7bb, esir.compilation.whdsl.impl.CommandImpl@6f7923a5];
-          [Y]:=[esir.compilation.whdsl.impl.ExprImpl@74a6f9c1]
-;
-          [X]:=[esir.compilation.whdsl.impl.ExprImpl@54eb2b70]
-     od
-%
-write Y

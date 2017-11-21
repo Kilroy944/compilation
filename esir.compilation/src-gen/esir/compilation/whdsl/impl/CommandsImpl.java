@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.CommandsImpl#getCommands <em>Commands</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.CommandsImpl#getList <em>List</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,14 +37,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class CommandsImpl extends MinimalEObjectImpl.Container implements Commands
 {
   /**
-   * The cached value of the '{@link #getCommands() <em>Commands</em>}' containment reference list.
+   * The cached value of the '{@link #getList() <em>List</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCommands()
+   * @see #getList()
    * @generated
    * @ordered
    */
-  protected EList<Command> commands;
+  protected EList<Command> list;
 
   /**
    * <!-- begin-user-doc -->
@@ -72,13 +72,13 @@ public class CommandsImpl extends MinimalEObjectImpl.Container implements Comman
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Command> getCommands()
+  public EList<Command> getList()
   {
-    if (commands == null)
+    if (list == null)
     {
-      commands = new EObjectContainmentEList<Command>(Command.class, this, WhdslPackage.COMMANDS__COMMANDS);
+      list = new EObjectContainmentEList<Command>(Command.class, this, WhdslPackage.COMMANDS__LIST);
     }
-    return commands;
+    return list;
   }
 
   /**
@@ -91,8 +91,8 @@ public class CommandsImpl extends MinimalEObjectImpl.Container implements Comman
   {
     switch (featureID)
     {
-      case WhdslPackage.COMMANDS__COMMANDS:
-        return ((InternalEList<?>)getCommands()).basicRemove(otherEnd, msgs);
+      case WhdslPackage.COMMANDS__LIST:
+        return ((InternalEList<?>)getList()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -107,8 +107,8 @@ public class CommandsImpl extends MinimalEObjectImpl.Container implements Comman
   {
     switch (featureID)
     {
-      case WhdslPackage.COMMANDS__COMMANDS:
-        return getCommands();
+      case WhdslPackage.COMMANDS__LIST:
+        return getList();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -124,9 +124,9 @@ public class CommandsImpl extends MinimalEObjectImpl.Container implements Comman
   {
     switch (featureID)
     {
-      case WhdslPackage.COMMANDS__COMMANDS:
-        getCommands().clear();
-        getCommands().addAll((Collection<? extends Command>)newValue);
+      case WhdslPackage.COMMANDS__LIST:
+        getList().clear();
+        getList().addAll((Collection<? extends Command>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -142,8 +142,8 @@ public class CommandsImpl extends MinimalEObjectImpl.Container implements Comman
   {
     switch (featureID)
     {
-      case WhdslPackage.COMMANDS__COMMANDS:
-        getCommands().clear();
+      case WhdslPackage.COMMANDS__LIST:
+        getList().clear();
         return;
     }
     super.eUnset(featureID);
@@ -159,8 +159,8 @@ public class CommandsImpl extends MinimalEObjectImpl.Container implements Comman
   {
     switch (featureID)
     {
-      case WhdslPackage.COMMANDS__COMMANDS:
-        return commands != null && !commands.isEmpty();
+      case WhdslPackage.COMMANDS__LIST:
+        return list != null && !list.isEmpty();
     }
     return super.eIsSet(featureID);
   }

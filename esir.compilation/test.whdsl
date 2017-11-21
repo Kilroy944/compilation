@@ -14,8 +14,6 @@ function fonctionb : read A %
 function fonctionb : read A %
 	A:=nil;A:=nil;A,B,C:=nil,nil,nil
 	  % write A,B,C
-
-function fonctionc    : read X%Y:=    nil;while X do Y:=    (cons (hd X) Y);X:=(tl X) od%write Y
 	 
 	 
 	 

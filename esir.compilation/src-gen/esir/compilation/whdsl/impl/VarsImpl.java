@@ -8,13 +8,10 @@ import esir.compilation.whdsl.WhdslPackage;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeEList;
@@ -27,8 +24,7 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.VarsImpl#getVar <em>Var</em>}</li>
- *   <li>{@link esir.compilation.whdsl.impl.VarsImpl#getVars <em>Vars</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.VarsImpl#getList <em>List</em>}</li>
  * </ul>
  *
  * @generated
@@ -36,34 +32,14 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
 public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
 {
   /**
-   * The default value of the '{@link #getVar() <em>Var</em>}' attribute.
+   * The cached value of the '{@link #getList() <em>List</em>}' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVar()
+   * @see #getList()
    * @generated
    * @ordered
    */
-  protected static final String VAR_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getVar() <em>Var</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getVar()
-   * @generated
-   * @ordered
-   */
-  protected String var = VAR_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getVars() <em>Vars</em>}' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getVars()
-   * @generated
-   * @ordered
-   */
-  protected EList<String> vars;
+  protected EList<String> list;
 
   /**
    * <!-- begin-user-doc -->
@@ -91,36 +67,13 @@ public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getVar()
+  public EList<String> getList()
   {
-    return var;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setVar(String newVar)
-  {
-    String oldVar = var;
-    var = newVar;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.VARS__VAR, oldVar, var));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<String> getVars()
-  {
-    if (vars == null)
+    if (list == null)
     {
-      vars = new EDataTypeEList<String>(String.class, this, WhdslPackage.VARS__VARS);
+      list = new EDataTypeEList<String>(String.class, this, WhdslPackage.VARS__LIST);
     }
-    return vars;
+    return list;
   }
 
   /**
@@ -133,10 +86,8 @@ public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
   {
     switch (featureID)
     {
-      case WhdslPackage.VARS__VAR:
-        return getVar();
-      case WhdslPackage.VARS__VARS:
-        return getVars();
+      case WhdslPackage.VARS__LIST:
+        return getList();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -152,12 +103,9 @@ public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
   {
     switch (featureID)
     {
-      case WhdslPackage.VARS__VAR:
-        setVar((String)newValue);
-        return;
-      case WhdslPackage.VARS__VARS:
-        getVars().clear();
-        getVars().addAll((Collection<? extends String>)newValue);
+      case WhdslPackage.VARS__LIST:
+        getList().clear();
+        getList().addAll((Collection<? extends String>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -173,11 +121,8 @@ public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
   {
     switch (featureID)
     {
-      case WhdslPackage.VARS__VAR:
-        setVar(VAR_EDEFAULT);
-        return;
-      case WhdslPackage.VARS__VARS:
-        getVars().clear();
+      case WhdslPackage.VARS__LIST:
+        getList().clear();
         return;
     }
     super.eUnset(featureID);
@@ -193,10 +138,8 @@ public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
   {
     switch (featureID)
     {
-      case WhdslPackage.VARS__VAR:
-        return VAR_EDEFAULT == null ? var != null : !VAR_EDEFAULT.equals(var);
-      case WhdslPackage.VARS__VARS:
-        return vars != null && !vars.isEmpty();
+      case WhdslPackage.VARS__LIST:
+        return list != null && !list.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -212,10 +155,8 @@ public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (var: ");
-    result.append(var);
-    result.append(", vars: ");
-    result.append(vars);
+    result.append(" (list: ");
+    result.append(list);
     result.append(')');
     return result.toString();
   }

@@ -4,17 +4,17 @@
 package esir.compilation.whdsl.impl;
 
 import esir.compilation.whdsl.Input;
+import esir.compilation.whdsl.Vars;
 import esir.compilation.whdsl.WhdslPackage;
 
-import java.util.Collection;
-
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EDataTypeEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,14 +32,14 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
 public class InputImpl extends MinimalEObjectImpl.Container implements Input
 {
   /**
-   * The cached value of the '{@link #getVars() <em>Vars</em>}' attribute list.
+   * The cached value of the '{@link #getVars() <em>Vars</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getVars()
    * @generated
    * @ordered
    */
-  protected EList<String> vars;
+  protected Vars vars;
 
   /**
    * <!-- begin-user-doc -->
@@ -67,13 +67,63 @@ public class InputImpl extends MinimalEObjectImpl.Container implements Input
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getVars()
+  public Vars getVars()
   {
-    if (vars == null)
-    {
-      vars = new EDataTypeEList<String>(String.class, this, WhdslPackage.INPUT__VARS);
-    }
     return vars;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetVars(Vars newVars, NotificationChain msgs)
+  {
+    Vars oldVars = vars;
+    vars = newVars;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.INPUT__VARS, oldVars, newVars);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setVars(Vars newVars)
+  {
+    if (newVars != vars)
+    {
+      NotificationChain msgs = null;
+      if (vars != null)
+        msgs = ((InternalEObject)vars).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.INPUT__VARS, null, msgs);
+      if (newVars != null)
+        msgs = ((InternalEObject)newVars).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.INPUT__VARS, null, msgs);
+      msgs = basicSetVars(newVars, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.INPUT__VARS, newVars, newVars));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case WhdslPackage.INPUT__VARS:
+        return basicSetVars(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -97,15 +147,13 @@ public class InputImpl extends MinimalEObjectImpl.Container implements Input
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
       case WhdslPackage.INPUT__VARS:
-        getVars().clear();
-        getVars().addAll((Collection<? extends String>)newValue);
+        setVars((Vars)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -122,7 +170,7 @@ public class InputImpl extends MinimalEObjectImpl.Container implements Input
     switch (featureID)
     {
       case WhdslPackage.INPUT__VARS:
-        getVars().clear();
+        setVars((Vars)null);
         return;
     }
     super.eUnset(featureID);
@@ -139,26 +187,9 @@ public class InputImpl extends MinimalEObjectImpl.Container implements Input
     switch (featureID)
     {
       case WhdslPackage.INPUT__VARS:
-        return vars != null && !vars.isEmpty();
+        return vars != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (vars: ");
-    result.append(vars);
-    result.append(')');
-    return result.toString();
   }
 
 } //InputImpl

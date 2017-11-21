@@ -4,7 +4,6 @@
 package esir.compilation.whdsl.impl;
 
 import esir.compilation.whdsl.Commands;
-import esir.compilation.whdsl.Expr;
 import esir.compilation.whdsl.WhdslPackage;
 import esir.compilation.whdsl.While;
 
@@ -25,8 +24,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.WhileImpl#getExpr <em>Expr</em>}</li>
- *   <li>{@link esir.compilation.whdsl.impl.WhileImpl#getCmds <em>Cmds</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.WhileImpl#getCondition <em>Condition</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.WhileImpl#getCommands <em>Commands</em>}</li>
  * </ul>
  *
  * @generated
@@ -34,24 +33,34 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class WhileImpl extends MinimalEObjectImpl.Container implements While
 {
   /**
-   * The cached value of the '{@link #getExpr() <em>Expr</em>}' containment reference.
+   * The default value of the '{@link #getCondition() <em>Condition</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getExpr()
+   * @see #getCondition()
    * @generated
    * @ordered
    */
-  protected Expr expr;
+  protected static final String CONDITION_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getCmds() <em>Cmds</em>}' containment reference.
+   * The cached value of the '{@link #getCondition() <em>Condition</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCmds()
+   * @see #getCondition()
    * @generated
    * @ordered
    */
-  protected Commands cmds;
+  protected String condition = CONDITION_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getCommands() <em>Commands</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCommands()
+   * @generated
+   * @ordered
+   */
+  protected Commands commands;
 
   /**
    * <!-- begin-user-doc -->
@@ -79,9 +88,9 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
    * <!-- end-user-doc -->
    * @generated
    */
-  public Expr getExpr()
+  public String getCondition()
   {
-    return expr;
+    return condition;
   }
 
   /**
@@ -89,13 +98,36 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExpr(Expr newExpr, NotificationChain msgs)
+  public void setCondition(String newCondition)
   {
-    Expr oldExpr = expr;
-    expr = newExpr;
+    String oldCondition = condition;
+    condition = newCondition;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.WHILE__CONDITION, oldCondition, condition));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Commands getCommands()
+  {
+    return commands;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetCommands(Commands newCommands, NotificationChain msgs)
+  {
+    Commands oldCommands = commands;
+    commands = newCommands;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.WHILE__EXPR, oldExpr, newExpr);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.WHILE__COMMANDS, oldCommands, newCommands);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -106,68 +138,20 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExpr(Expr newExpr)
+  public void setCommands(Commands newCommands)
   {
-    if (newExpr != expr)
+    if (newCommands != commands)
     {
       NotificationChain msgs = null;
-      if (expr != null)
-        msgs = ((InternalEObject)expr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.WHILE__EXPR, null, msgs);
-      if (newExpr != null)
-        msgs = ((InternalEObject)newExpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.WHILE__EXPR, null, msgs);
-      msgs = basicSetExpr(newExpr, msgs);
+      if (commands != null)
+        msgs = ((InternalEObject)commands).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.WHILE__COMMANDS, null, msgs);
+      if (newCommands != null)
+        msgs = ((InternalEObject)newCommands).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.WHILE__COMMANDS, null, msgs);
+      msgs = basicSetCommands(newCommands, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.WHILE__EXPR, newExpr, newExpr));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Commands getCmds()
-  {
-    return cmds;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetCmds(Commands newCmds, NotificationChain msgs)
-  {
-    Commands oldCmds = cmds;
-    cmds = newCmds;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.WHILE__CMDS, oldCmds, newCmds);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setCmds(Commands newCmds)
-  {
-    if (newCmds != cmds)
-    {
-      NotificationChain msgs = null;
-      if (cmds != null)
-        msgs = ((InternalEObject)cmds).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.WHILE__CMDS, null, msgs);
-      if (newCmds != null)
-        msgs = ((InternalEObject)newCmds).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.WHILE__CMDS, null, msgs);
-      msgs = basicSetCmds(newCmds, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.WHILE__CMDS, newCmds, newCmds));
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.WHILE__COMMANDS, newCommands, newCommands));
   }
 
   /**
@@ -180,10 +164,8 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
   {
     switch (featureID)
     {
-      case WhdslPackage.WHILE__EXPR:
-        return basicSetExpr(null, msgs);
-      case WhdslPackage.WHILE__CMDS:
-        return basicSetCmds(null, msgs);
+      case WhdslPackage.WHILE__COMMANDS:
+        return basicSetCommands(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -198,10 +180,10 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
   {
     switch (featureID)
     {
-      case WhdslPackage.WHILE__EXPR:
-        return getExpr();
-      case WhdslPackage.WHILE__CMDS:
-        return getCmds();
+      case WhdslPackage.WHILE__CONDITION:
+        return getCondition();
+      case WhdslPackage.WHILE__COMMANDS:
+        return getCommands();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -216,11 +198,11 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
   {
     switch (featureID)
     {
-      case WhdslPackage.WHILE__EXPR:
-        setExpr((Expr)newValue);
+      case WhdslPackage.WHILE__CONDITION:
+        setCondition((String)newValue);
         return;
-      case WhdslPackage.WHILE__CMDS:
-        setCmds((Commands)newValue);
+      case WhdslPackage.WHILE__COMMANDS:
+        setCommands((Commands)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -236,11 +218,11 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
   {
     switch (featureID)
     {
-      case WhdslPackage.WHILE__EXPR:
-        setExpr((Expr)null);
+      case WhdslPackage.WHILE__CONDITION:
+        setCondition(CONDITION_EDEFAULT);
         return;
-      case WhdslPackage.WHILE__CMDS:
-        setCmds((Commands)null);
+      case WhdslPackage.WHILE__COMMANDS:
+        setCommands((Commands)null);
         return;
     }
     super.eUnset(featureID);
@@ -256,12 +238,29 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
   {
     switch (featureID)
     {
-      case WhdslPackage.WHILE__EXPR:
-        return expr != null;
-      case WhdslPackage.WHILE__CMDS:
-        return cmds != null;
+      case WhdslPackage.WHILE__CONDITION:
+        return CONDITION_EDEFAULT == null ? condition != null : !CONDITION_EDEFAULT.equals(condition);
+      case WhdslPackage.WHILE__COMMANDS:
+        return commands != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (condition: ");
+    result.append(condition);
+    result.append(')');
+    return result.toString();
   }
 
 } //WhileImpl
