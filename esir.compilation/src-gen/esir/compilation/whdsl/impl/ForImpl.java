@@ -4,7 +4,6 @@
 package esir.compilation.whdsl.impl;
 
 import esir.compilation.whdsl.Commands;
-import esir.compilation.whdsl.Expr;
 import esir.compilation.whdsl.For;
 import esir.compilation.whdsl.WhdslPackage;
 
@@ -25,7 +24,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.ForImpl#getExpr <em>Expr</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.ForImpl#getCond <em>Cond</em>}</li>
  *   <li>{@link esir.compilation.whdsl.impl.ForImpl#getCmds <em>Cmds</em>}</li>
  * </ul>
  *
@@ -34,14 +33,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class ForImpl extends MinimalEObjectImpl.Container implements For
 {
   /**
-   * The cached value of the '{@link #getExpr() <em>Expr</em>}' containment reference.
+   * The default value of the '{@link #getCond() <em>Cond</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getExpr()
+   * @see #getCond()
    * @generated
    * @ordered
    */
-  protected Expr expr;
+  protected static final String COND_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getCond() <em>Cond</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCond()
+   * @generated
+   * @ordered
+   */
+  protected String cond = COND_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getCmds() <em>Cmds</em>}' containment reference.
@@ -79,9 +88,9 @@ public class ForImpl extends MinimalEObjectImpl.Container implements For
    * <!-- end-user-doc -->
    * @generated
    */
-  public Expr getExpr()
+  public String getCond()
   {
-    return expr;
+    return cond;
   }
 
   /**
@@ -89,37 +98,12 @@ public class ForImpl extends MinimalEObjectImpl.Container implements For
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExpr(Expr newExpr, NotificationChain msgs)
+  public void setCond(String newCond)
   {
-    Expr oldExpr = expr;
-    expr = newExpr;
+    String oldCond = cond;
+    cond = newCond;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR__EXPR, oldExpr, newExpr);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setExpr(Expr newExpr)
-  {
-    if (newExpr != expr)
-    {
-      NotificationChain msgs = null;
-      if (expr != null)
-        msgs = ((InternalEObject)expr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.FOR__EXPR, null, msgs);
-      if (newExpr != null)
-        msgs = ((InternalEObject)newExpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.FOR__EXPR, null, msgs);
-      msgs = basicSetExpr(newExpr, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR__EXPR, newExpr, newExpr));
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR__COND, oldCond, cond));
   }
 
   /**
@@ -180,8 +164,6 @@ public class ForImpl extends MinimalEObjectImpl.Container implements For
   {
     switch (featureID)
     {
-      case WhdslPackage.FOR__EXPR:
-        return basicSetExpr(null, msgs);
       case WhdslPackage.FOR__CMDS:
         return basicSetCmds(null, msgs);
     }
@@ -198,8 +180,8 @@ public class ForImpl extends MinimalEObjectImpl.Container implements For
   {
     switch (featureID)
     {
-      case WhdslPackage.FOR__EXPR:
-        return getExpr();
+      case WhdslPackage.FOR__COND:
+        return getCond();
       case WhdslPackage.FOR__CMDS:
         return getCmds();
     }
@@ -216,8 +198,8 @@ public class ForImpl extends MinimalEObjectImpl.Container implements For
   {
     switch (featureID)
     {
-      case WhdslPackage.FOR__EXPR:
-        setExpr((Expr)newValue);
+      case WhdslPackage.FOR__COND:
+        setCond((String)newValue);
         return;
       case WhdslPackage.FOR__CMDS:
         setCmds((Commands)newValue);
@@ -236,8 +218,8 @@ public class ForImpl extends MinimalEObjectImpl.Container implements For
   {
     switch (featureID)
     {
-      case WhdslPackage.FOR__EXPR:
-        setExpr((Expr)null);
+      case WhdslPackage.FOR__COND:
+        setCond(COND_EDEFAULT);
         return;
       case WhdslPackage.FOR__CMDS:
         setCmds((Commands)null);
@@ -256,12 +238,29 @@ public class ForImpl extends MinimalEObjectImpl.Container implements For
   {
     switch (featureID)
     {
-      case WhdslPackage.FOR__EXPR:
-        return expr != null;
+      case WhdslPackage.FOR__COND:
+        return COND_EDEFAULT == null ? cond != null : !COND_EDEFAULT.equals(cond);
       case WhdslPackage.FOR__CMDS:
         return cmds != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (cond: ");
+    result.append(cond);
+    result.append(')');
+    return result.toString();
   }
 
 } //ForImpl

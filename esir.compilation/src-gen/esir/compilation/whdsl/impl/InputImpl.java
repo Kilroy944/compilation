@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.InputImpl#getVars <em>Vars</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.InputImpl#getVariables <em>Variables</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,14 +32,14 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
 public class InputImpl extends MinimalEObjectImpl.Container implements Input
 {
   /**
-   * The cached value of the '{@link #getVars() <em>Vars</em>}' attribute list.
+   * The cached value of the '{@link #getVariables() <em>Variables</em>}' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVars()
+   * @see #getVariables()
    * @generated
    * @ordered
    */
-  protected EList<String> vars;
+  protected EList<String> variables;
 
   /**
    * <!-- begin-user-doc -->
@@ -67,13 +67,13 @@ public class InputImpl extends MinimalEObjectImpl.Container implements Input
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getVars()
+  public EList<String> getVariables()
   {
-    if (vars == null)
+    if (variables == null)
     {
-      vars = new EDataTypeEList<String>(String.class, this, WhdslPackage.INPUT__VARS);
+      variables = new EDataTypeEList<String>(String.class, this, WhdslPackage.INPUT__VARIABLES);
     }
-    return vars;
+    return variables;
   }
 
   /**
@@ -86,8 +86,8 @@ public class InputImpl extends MinimalEObjectImpl.Container implements Input
   {
     switch (featureID)
     {
-      case WhdslPackage.INPUT__VARS:
-        return getVars();
+      case WhdslPackage.INPUT__VARIABLES:
+        return getVariables();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -103,9 +103,9 @@ public class InputImpl extends MinimalEObjectImpl.Container implements Input
   {
     switch (featureID)
     {
-      case WhdslPackage.INPUT__VARS:
-        getVars().clear();
-        getVars().addAll((Collection<? extends String>)newValue);
+      case WhdslPackage.INPUT__VARIABLES:
+        getVariables().clear();
+        getVariables().addAll((Collection<? extends String>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -121,8 +121,8 @@ public class InputImpl extends MinimalEObjectImpl.Container implements Input
   {
     switch (featureID)
     {
-      case WhdslPackage.INPUT__VARS:
-        getVars().clear();
+      case WhdslPackage.INPUT__VARIABLES:
+        getVariables().clear();
         return;
     }
     super.eUnset(featureID);
@@ -138,8 +138,8 @@ public class InputImpl extends MinimalEObjectImpl.Container implements Input
   {
     switch (featureID)
     {
-      case WhdslPackage.INPUT__VARS:
-        return vars != null && !vars.isEmpty();
+      case WhdslPackage.INPUT__VARIABLES:
+        return variables != null && !variables.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -155,8 +155,8 @@ public class InputImpl extends MinimalEObjectImpl.Container implements Input
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (vars: ");
-    result.append(vars);
+    result.append(" (variables: ");
+    result.append(variables);
     result.append(')');
     return result.toString();
   }

@@ -6,13 +6,14 @@ package esir.compilation.generator;
 import com.google.common.collect.Iterables;
 import esir.compilation.whdsl.Affect;
 import esir.compilation.whdsl.Command;
-import esir.compilation.whdsl.Commands;
-import esir.compilation.whdsl.Expr;
+import esir.compilation.whdsl.Exprs;
 import esir.compilation.whdsl.For;
+import esir.compilation.whdsl.ForEach;
 import esir.compilation.whdsl.Function;
 import esir.compilation.whdsl.If;
 import esir.compilation.whdsl.Nop;
 import esir.compilation.whdsl.Program;
+import esir.compilation.whdsl.Vars;
 import esir.compilation.whdsl.While;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -32,11 +33,13 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 public class WhdslGenerator extends AbstractGenerator {
   private String indent_value = "   ";
   
-  private String indent_if = "   ";
+  private String indent_if = "  ";
   
-  private String indent_for = "   ";
+  private String indent_for = "  ";
   
-  private String indent_while = "   ";
+  private String indent_while = "  ";
+  
+  private String indent_foreach = "  ";
   
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
@@ -46,10 +49,11 @@ public class WhdslGenerator extends AbstractGenerator {
     }
   }
   
-  public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context, final String sortie, final String indent_value, final String indent_if, final String indent_for, final String indent_while) {
+  public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context, final String sortie, final String indent_value, final String indent_if, final String indent_for, final String indent_foreach, final String indent_while) {
     this.indent_value = indent_value;
     this.indent_if = indent_if;
     this.indent_for = indent_for;
+    this.indent_foreach = indent_foreach;
     this.indent_while = indent_while;
     Iterable<Program> _filter = Iterables.<Program>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Program.class);
     for (final Program e : _filter) {
@@ -85,9 +89,9 @@ public class WhdslGenerator extends AbstractGenerator {
     _builder.newLineIfNotEmpty();
     _builder.append("read ");
     {
-      EList<String> _vars = f.getDefinition().getInput().getVars();
+      EList<String> _variables = f.getDefinition().getInput().getVariables();
       boolean _hasElements = false;
-      for(final String param : _vars) {
+      for(final String param : _variables) {
         if (!_hasElements) {
           _hasElements = true;
         } else {
@@ -100,16 +104,16 @@ public class WhdslGenerator extends AbstractGenerator {
     _builder.append("%");
     _builder.newLine();
     _builder.append(indent);
-    Commands _commands = f.getDefinition().getCommands();
-    _builder.append(_commands);
+    CharSequence _compile = this.compile(f.getDefinition().getCommands().getCommand(), indent);
+    _builder.append(_compile);
     {
-      EList<Command> _commands_1 = f.getDefinition().getCommands().getCommands();
-      for(final Command param_1 : _commands_1) {
+      EList<Command> _commands = f.getDefinition().getCommands().getCommands();
+      for(final Command param_1 : _commands) {
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         _builder.append(indent);
-        CharSequence _compile = this.compile(param_1, indent);
-        _builder.append(_compile);
+        CharSequence _compile_1 = this.compile(param_1, indent);
+        _builder.append(_compile_1);
       }
     }
     _builder.newLineIfNotEmpty();
@@ -117,9 +121,9 @@ public class WhdslGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("write ");
     {
-      EList<String> _vars_1 = f.getDefinition().getOutput().getVars();
+      EList<String> _variables_1 = f.getDefinition().getOutput().getVariables();
       boolean _hasElements_1 = false;
-      for(final String param_2 : _vars_1) {
+      for(final String param_2 : _variables_1) {
         if (!_hasElements_1) {
           _hasElements_1 = true;
         } else {
@@ -161,6 +165,14 @@ public class WhdslGenerator extends AbstractGenerator {
             if ((_cmd_8 instanceof While)) {
               EObject _cmd_9 = c.getCmd();
               _xifexpression_4 = this.compile(((While) _cmd_9), indent);
+            } else {
+              CharSequence _xifexpression_5 = null;
+              EObject _cmd_10 = c.getCmd();
+              if ((_cmd_10 instanceof ForEach)) {
+                EObject _cmd_11 = c.getCmd();
+                _xifexpression_5 = this.compile(((ForEach) _cmd_11), indent);
+              }
+              _xifexpression_4 = _xifexpression_5;
             }
             _xifexpression_3 = _xifexpression_4;
           }
@@ -181,30 +193,32 @@ public class WhdslGenerator extends AbstractGenerator {
   
   public CharSequence compile(final Affect a) {
     StringConcatenation _builder = new StringConcatenation();
-    EList<String> _vars = a.getVars();
-    _builder.append(_vars);
+    CharSequence _compile = this.compile(a.getVars());
+    _builder.append(_compile);
     _builder.append(":=");
-    EList<Expr> _exprs = a.getExprs();
-    _builder.append(_exprs);
+    CharSequence _compile_1 = this.compile(a.getExprs());
+    _builder.append(_compile_1);
     return _builder;
   }
   
   public CharSequence compile(final If i, final String indent) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("if ");
-    Expr _expr = i.getExpr();
-    _builder.append(_expr);
+    String _cond = i.getCond();
+    _builder.append(_cond);
     _builder.append(" then ");
     _builder.newLineIfNotEmpty();
     _builder.append((indent + this.indent_if));
+    Object _compile = this.compile(i.getCmdsThen().getCommand(), (indent + this.indent_if));
+    _builder.append(_compile);
     {
-      EList<Command> _commands = i.getCommands1().getCommands();
+      EList<Command> _commands = i.getCmdsThen().getCommands();
       for(final Command param : _commands) {
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         _builder.append((indent + this.indent_if));
-        Object _compile = this.compile(param, (indent + this.indent_if));
-        _builder.append(_compile);
+        Object _compile_1 = this.compile(param, (indent + this.indent_if));
+        _builder.append(_compile_1);
       }
     }
     _builder.newLineIfNotEmpty();
@@ -212,14 +226,16 @@ public class WhdslGenerator extends AbstractGenerator {
     _builder.append("else");
     _builder.newLineIfNotEmpty();
     _builder.append((indent + this.indent_if));
+    Object _compile_2 = this.compile(i.getCmdsElse().getCommand(), (indent + this.indent_if));
+    _builder.append(_compile_2);
     {
-      EList<Command> _commands_1 = i.getCommands2().getCommands();
+      EList<Command> _commands_1 = i.getCmdsElse().getCommands();
       for(final Command param_1 : _commands_1) {
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         _builder.append((indent + this.indent_if));
-        Object _compile_1 = this.compile(param_1, (indent + this.indent_if));
-        _builder.append(_compile_1);
+        Object _compile_3 = this.compile(param_1, (indent + this.indent_if));
+        _builder.append(_compile_3);
       }
     }
     _builder.newLineIfNotEmpty();
@@ -231,24 +247,53 @@ public class WhdslGenerator extends AbstractGenerator {
   public CharSequence compile(final For f, final String indent) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("for ");
-    Expr _expr = f.getExpr();
-    _builder.append(_expr);
+    String _cond = f.getCond();
+    _builder.append(_cond);
     _builder.append(" do");
     _builder.newLineIfNotEmpty();
     _builder.append((indent + this.indent_for));
-    EList<Command> _commands = f.getCmds().getCommands();
-    _builder.append(_commands);
+    Object _compile = this.compile(f.getCmds().getCommand(), (indent + this.indent_for));
+    _builder.append(_compile);
     {
-      EList<Command> _commands_1 = f.getCmds().getCommands();
-      for(final Command param : _commands_1) {
+      EList<Command> _commands = f.getCmds().getCommands();
+      for(final Command param : _commands) {
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         _builder.append((indent + this.indent_for));
-        Object _compile = this.compile(param, (indent + this.indent_for));
-        _builder.append(_compile);
-        _builder.newLineIfNotEmpty();
+        Object _compile_1 = this.compile(param, (indent + this.indent_for));
+        _builder.append(_compile_1);
       }
     }
+    _builder.newLineIfNotEmpty();
+    _builder.append(indent);
+    _builder.append("od");
+    return _builder;
+  }
+  
+  public CharSequence compile(final ForEach f, final String indent) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("foreach ");
+    String _elem = f.getElem();
+    _builder.append(_elem);
+    _builder.append(" in ");
+    String _ensemb = f.getEnsemb();
+    _builder.append(_ensemb);
+    _builder.append(" do");
+    _builder.newLineIfNotEmpty();
+    _builder.append((indent + this.indent_foreach));
+    Object _compile = this.compile(f.getCmds().getCommand(), (indent + this.indent_foreach));
+    _builder.append(_compile);
+    {
+      EList<Command> _commands = f.getCmds().getCommands();
+      for(final Command param : _commands) {
+        _builder.append(";");
+        _builder.newLineIfNotEmpty();
+        _builder.append((indent + this.indent_foreach));
+        Object _compile_1 = this.compile(param, (indent + this.indent_foreach));
+        _builder.append(_compile_1);
+      }
+    }
+    _builder.newLineIfNotEmpty();
     _builder.append(indent);
     _builder.append("od");
     return _builder;
@@ -257,26 +302,54 @@ public class WhdslGenerator extends AbstractGenerator {
   public CharSequence compile(final While w, final String indent) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("while ");
-    Expr _expr = w.getExpr();
-    _builder.append(_expr);
+    String _cond = w.getCond();
+    _builder.append(_cond);
     _builder.append(" do");
     _builder.newLineIfNotEmpty();
     _builder.append((indent + this.indent_while));
-    EList<Command> _commands = w.getCmds().getCommands();
-    _builder.append(_commands);
+    Object _compile = this.compile(w.getCmds().getCommand(), (indent + this.indent_while));
+    _builder.append(_compile);
     {
-      EList<Command> _commands_1 = w.getCmds().getCommands();
-      for(final Command param : _commands_1) {
+      EList<Command> _commands = w.getCmds().getCommands();
+      for(final Command param : _commands) {
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         _builder.append((indent + this.indent_while));
-        Object _compile = this.compile(param, (indent + this.indent_while));
-        _builder.append(_compile);
-        _builder.newLineIfNotEmpty();
+        Object _compile_1 = this.compile(param, (indent + this.indent_while));
+        _builder.append(_compile_1);
       }
     }
+    _builder.newLineIfNotEmpty();
     _builder.append(indent);
     _builder.append("od");
+    return _builder;
+  }
+  
+  public CharSequence compile(final Vars v) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _var = v.getVar();
+    _builder.append(_var);
+    {
+      EList<String> _vars = v.getVars();
+      for(final String param : _vars) {
+        _builder.append(",");
+        _builder.append(param);
+      }
+    }
+    return _builder;
+  }
+  
+  public CharSequence compile(final Exprs e) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _expr = e.getExpr();
+    _builder.append(_expr);
+    {
+      EList<String> _exprs = e.getExprs();
+      for(final String param : _exprs) {
+        _builder.append(",");
+        _builder.append(param);
+      }
+    }
     return _builder;
   }
 }

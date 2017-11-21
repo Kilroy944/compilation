@@ -36,6 +36,7 @@ public class Main {
 		options.addOption("indent", true, "valeur indent");
 		options.addOption("if", true, "indent if");
 		options.addOption("for", true, "indent for");
+		options.addOption("foreach", true, "indent foreach");
 		options.addOption("while", true, "indent while");
 
 		
@@ -66,17 +67,18 @@ public class Main {
 		String indent_value = main.create_indent(" ",cmd.hasOption("indent") ? Integer.parseInt(cmd.getOptionValue("indent")) : 3);
 		String indent_if = main.create_indent(indent_value,cmd.hasOption("if") ? Integer.parseInt(cmd.getOptionValue("if")) : 1);
 		String indent_for = main.create_indent(indent_value,cmd.hasOption("for") ? Integer.parseInt(cmd.getOptionValue("for")) : 1);
+		String indent_foreach = main.create_indent(indent_value,cmd.hasOption("foreach") ? Integer.parseInt(cmd.getOptionValue("foreach")) : 1);
 		String indent_while = main.create_indent(indent_value,cmd.hasOption("while") ? Integer.parseInt(cmd.getOptionValue("while")) : 1);
 
 		
 		//Pretty printing
 		System.out.println("START Pretty printing");
-		main.prettyprint(injector,input,output, indent_value, indent_if, indent_for, indent_while);
+		main.prettyprint(injector,input,output, indent_value, indent_if, indent_for,indent_foreach, indent_while);
 		System.out.println("END Pretty printing");
 	}
 	
 	
-	private int prettyprint(Injector injector, String string,String sortie, String indent_value, String indent_if, String indent_for, String indent_while) throws ErrorPrettyPrinterException{
+	private int prettyprint(Injector injector, String string,String sortie, String indent_value, String indent_if, String indent_for, String indent_foreach, String indent_while) throws ErrorPrettyPrinterException{
 
 		ResourceSet resourceSet = injector.getInstance(ResourceSet.class);
 		Resource resource = resourceSet.getResource(URI.createFileURI(string), true);
@@ -101,7 +103,7 @@ public class Main {
 		context.setCancelIndicator(CancelIndicator.NullImpl);
 		
 		WhdslGenerator generator = injector.getInstance(WhdslGenerator.class);
-		generator.doGenerate(resource, file, context, sortie, indent_value, indent_if, indent_for, indent_while);
+		generator.doGenerate(resource, file, context, sortie, indent_value, indent_if, indent_for, indent_foreach, indent_while);
 
 		System.out.println("Success");
 		

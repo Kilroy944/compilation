@@ -6,9 +6,6 @@
     copyrightFields="false" runtimeVersion="2.12">
   <genPackages prefix="Whdsl" basePackage="esir.compilation" disposableProviderFactory="true"
       fileExtensions="whdsl" ecorePackage="Whdsl.ecore#/">
-    <genClasses ecoreClass="Whdsl.ecore#//Wh">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Wh/elements"/>
-    </genClasses>
     <genClasses ecoreClass="Whdsl.ecore#//Program">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Program/functions"/>
     </genClasses>
@@ -22,84 +19,50 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Definition/output"/>
     </genClasses>
     <genClasses ecoreClass="Whdsl.ecore#//Input">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//Input/vars"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//Input/variables"/>
     </genClasses>
     <genClasses ecoreClass="Whdsl.ecore#//Output">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//Output/vars"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//Output/variables"/>
+    </genClasses>
+    <genClasses ecoreClass="Whdsl.ecore#//Vars">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//Vars/var"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//Vars/vars"/>
     </genClasses>
     <genClasses ecoreClass="Whdsl.ecore#//Commands">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Commands/command"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Commands/commands"/>
     </genClasses>
     <genClasses ecoreClass="Whdsl.ecore#//Command">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Command/cmd"/>
     </genClasses>
     <genClasses ecoreClass="Whdsl.ecore#//If">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//If/expr"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//If/commands1"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//If/commands2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//If/cond"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//If/cmdsThen"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//If/cmdsElse"/>
+    </genClasses>
+    <genClasses ecoreClass="Whdsl.ecore#//Affect">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Affect/vars"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Affect/exprs"/>
+    </genClasses>
+    <genClasses ecoreClass="Whdsl.ecore#//For">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//For/cond"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//For/cmds"/>
+    </genClasses>
+    <genClasses ecoreClass="Whdsl.ecore#//While">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//While/cond"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//While/cmds"/>
     </genClasses>
     <genClasses ecoreClass="Whdsl.ecore#//Nop">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//Nop/nop"/>
     </genClasses>
-    <genClasses ecoreClass="Whdsl.ecore#//Affect">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//Affect/vars"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Affect/exprs"/>
+    <genClasses ecoreClass="Whdsl.ecore#//ForEach">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//ForEach/elem"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//ForEach/ensemb"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ForEach/cmds"/>
     </genClasses>
-    <genClasses ecoreClass="Whdsl.ecore#//For">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//For/expr"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//For/cmds"/>
-    </genClasses>
-    <genClasses ecoreClass="Whdsl.ecore#//Foreach">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Foreach/expr"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Foreach/expr2"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Foreach/cmds"/>
-    </genClasses>
-    <genClasses ecoreClass="Whdsl.ecore#//While">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//While/expr"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//While/cmds"/>
-    </genClasses>
-    <genClasses ecoreClass="Whdsl.ecore#//Expr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Expr/expr"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Expr/exprEq"/>
-    </genClasses>
-    <genClasses ecoreClass="Whdsl.ecore#//ExprSimple">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//ExprSimple/str"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//ExprSimple/varSimple"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//ExprSimple/sym"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//ExprSimple/nameFunction"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprSimple/vars"/>
-    </genClasses>
-    <genClasses ecoreClass="Whdsl.ecore#//ExprAnd">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprAnd/arg1"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprAnd/arg2"/>
-    </genClasses>
-    <genClasses ecoreClass="Whdsl.ecore#//ExprOr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprOr/arg1"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprOr/arg2"/>
-    </genClasses>
-    <genClasses ecoreClass="Whdsl.ecore#//ExprCons">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprCons/arg1"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprCons/arg2"/>
-    </genClasses>
-    <genClasses ecoreClass="Whdsl.ecore#//ExprList">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprList/arg"/>
-    </genClasses>
-    <genClasses ecoreClass="Whdsl.ecore#//ExprHd">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprHd/arg"/>
-    </genClasses>
-    <genClasses ecoreClass="Whdsl.ecore#//ExprTl">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprTl/arg"/>
-    </genClasses>
-    <genClasses ecoreClass="Whdsl.ecore#//ExprSym">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//ExprSym/arg1"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprSym/arg2"/>
-    </genClasses>
-    <genClasses ecoreClass="Whdsl.ecore#//ExprNot">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprNot/arg1"/>
-    </genClasses>
-    <genClasses ecoreClass="Whdsl.ecore#//ExprEq">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprEq/arg1"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprEq/arg2"/>
+    <genClasses ecoreClass="Whdsl.ecore#//Exprs">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//Exprs/expr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//Exprs/exprs"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

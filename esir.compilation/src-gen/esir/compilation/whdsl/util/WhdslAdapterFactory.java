@@ -76,11 +76,6 @@ public class WhdslAdapterFactory extends AdapterFactoryImpl
     new WhdslSwitch<Adapter>()
     {
       @Override
-      public Adapter caseWh(Wh object)
-      {
-        return createWhAdapter();
-      }
-      @Override
       public Adapter caseProgram(Program object)
       {
         return createProgramAdapter();
@@ -106,6 +101,11 @@ public class WhdslAdapterFactory extends AdapterFactoryImpl
         return createOutputAdapter();
       }
       @Override
+      public Adapter caseVars(Vars object)
+      {
+        return createVarsAdapter();
+      }
+      @Override
       public Adapter caseCommands(Commands object)
       {
         return createCommandsAdapter();
@@ -121,11 +121,6 @@ public class WhdslAdapterFactory extends AdapterFactoryImpl
         return createIfAdapter();
       }
       @Override
-      public Adapter caseNop(Nop object)
-      {
-        return createNopAdapter();
-      }
-      @Override
       public Adapter caseAffect(Affect object)
       {
         return createAffectAdapter();
@@ -136,69 +131,24 @@ public class WhdslAdapterFactory extends AdapterFactoryImpl
         return createForAdapter();
       }
       @Override
-      public Adapter caseForeach(Foreach object)
-      {
-        return createForeachAdapter();
-      }
-      @Override
       public Adapter caseWhile(While object)
       {
         return createWhileAdapter();
       }
       @Override
-      public Adapter caseExpr(Expr object)
+      public Adapter caseNop(Nop object)
       {
-        return createExprAdapter();
+        return createNopAdapter();
       }
       @Override
-      public Adapter caseExprSimple(ExprSimple object)
+      public Adapter caseForEach(ForEach object)
       {
-        return createExprSimpleAdapter();
+        return createForEachAdapter();
       }
       @Override
-      public Adapter caseExprAnd(ExprAnd object)
+      public Adapter caseExprs(Exprs object)
       {
-        return createExprAndAdapter();
-      }
-      @Override
-      public Adapter caseExprOr(ExprOr object)
-      {
-        return createExprOrAdapter();
-      }
-      @Override
-      public Adapter caseExprCons(ExprCons object)
-      {
-        return createExprConsAdapter();
-      }
-      @Override
-      public Adapter caseExprList(ExprList object)
-      {
-        return createExprListAdapter();
-      }
-      @Override
-      public Adapter caseExprHd(ExprHd object)
-      {
-        return createExprHdAdapter();
-      }
-      @Override
-      public Adapter caseExprTl(ExprTl object)
-      {
-        return createExprTlAdapter();
-      }
-      @Override
-      public Adapter caseExprSym(ExprSym object)
-      {
-        return createExprSymAdapter();
-      }
-      @Override
-      public Adapter caseExprNot(ExprNot object)
-      {
-        return createExprNotAdapter();
-      }
-      @Override
-      public Adapter caseExprEq(ExprEq object)
-      {
-        return createExprEqAdapter();
+        return createExprsAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -221,21 +171,6 @@ public class WhdslAdapterFactory extends AdapterFactoryImpl
     return modelSwitch.doSwitch((EObject)target);
   }
 
-
-  /**
-   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.Wh <em>Wh</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see esir.compilation.whdsl.Wh
-   * @generated
-   */
-  public Adapter createWhAdapter()
-  {
-    return null;
-  }
 
   /**
    * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.Program <em>Program</em>}'.
@@ -313,6 +248,21 @@ public class WhdslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.Vars <em>Vars</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see esir.compilation.whdsl.Vars
+   * @generated
+   */
+  public Adapter createVarsAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.Commands <em>Commands</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -358,21 +308,6 @@ public class WhdslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.Nop <em>Nop</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see esir.compilation.whdsl.Nop
-   * @generated
-   */
-  public Adapter createNopAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.Affect <em>Affect</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -403,21 +338,6 @@ public class WhdslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.Foreach <em>Foreach</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see esir.compilation.whdsl.Foreach
-   * @generated
-   */
-  public Adapter createForeachAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.While <em>While</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -433,166 +353,46 @@ public class WhdslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.Expr <em>Expr</em>}'.
+   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.Nop <em>Nop</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see esir.compilation.whdsl.Expr
+   * @see esir.compilation.whdsl.Nop
    * @generated
    */
-  public Adapter createExprAdapter()
+  public Adapter createNopAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.ExprSimple <em>Expr Simple</em>}'.
+   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.ForEach <em>For Each</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see esir.compilation.whdsl.ExprSimple
+   * @see esir.compilation.whdsl.ForEach
    * @generated
    */
-  public Adapter createExprSimpleAdapter()
+  public Adapter createForEachAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.ExprAnd <em>Expr And</em>}'.
+   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.Exprs <em>Exprs</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see esir.compilation.whdsl.ExprAnd
+   * @see esir.compilation.whdsl.Exprs
    * @generated
    */
-  public Adapter createExprAndAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.ExprOr <em>Expr Or</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see esir.compilation.whdsl.ExprOr
-   * @generated
-   */
-  public Adapter createExprOrAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.ExprCons <em>Expr Cons</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see esir.compilation.whdsl.ExprCons
-   * @generated
-   */
-  public Adapter createExprConsAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.ExprList <em>Expr List</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see esir.compilation.whdsl.ExprList
-   * @generated
-   */
-  public Adapter createExprListAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.ExprHd <em>Expr Hd</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see esir.compilation.whdsl.ExprHd
-   * @generated
-   */
-  public Adapter createExprHdAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.ExprTl <em>Expr Tl</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see esir.compilation.whdsl.ExprTl
-   * @generated
-   */
-  public Adapter createExprTlAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.ExprSym <em>Expr Sym</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see esir.compilation.whdsl.ExprSym
-   * @generated
-   */
-  public Adapter createExprSymAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.ExprNot <em>Expr Not</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see esir.compilation.whdsl.ExprNot
-   * @generated
-   */
-  public Adapter createExprNotAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link esir.compilation.whdsl.ExprEq <em>Expr Eq</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see esir.compilation.whdsl.ExprEq
-   * @generated
-   */
-  public Adapter createExprEqAdapter()
+  public Adapter createExprsAdapter()
   {
     return null;
   }

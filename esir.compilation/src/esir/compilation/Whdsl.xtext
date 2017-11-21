@@ -2,117 +2,92 @@ grammar esir.compilation.Whdsl with org.eclipse.xtext.common.Terminals
 
 generate whdsl "http://www.compilation.esir/Whdsl"
 
-Wh :
-    elements+=Program;
-  
- 
-Program: 
-	 (functions+=Function)+
+Program:
+	(functions+=Function)*
 ;
 
 Function:
-	'function' name=SYMBOLE ':' definition=Definition
-;
-Definition:
-	'read' input=Input '%' commands=Commands '%' 'write' output=Output
+	'function'name=SYMBOLE':'definition=Definition
 ;
 
+Definition:
+	input=Input'%'
+	commands = Commands
+	'%'output=Output
+;
+
+
+
+/*Input Output */
+	
 Input:
-	vars+=VARIABLE (',' vars+=VARIABLE)*
+	'read' (variables+=VARIABLE)(','variables+=VARIABLE)*
 ;
 
 Output:
-	vars+=VARIABLE (',' vars+=VARIABLE)*
+	'write' (variables+=VARIABLE)(','variables+=VARIABLE)*
 ;
 
+
+Vars:
+	var = VARIABLE(','vars+=VARIABLE)*
+;	
+
+
+/*COMMAND */
+
+
 Commands:
-	commands+=Command (';' commands+=Command)*
+	command = Command (';' commands += Command)*
 ;
 
 Command:
-   cmd=(Nop | Affect | If | For | While | Foreach)
+	(cmd=Nop) | (cmd=Affect) | (cmd=If) | (cmd=For) | (cmd=While) | (cmd=ForEach)	
 ;
+
 
 If:
-	'if' expr=Expr 'then' commands1=Commands ('else' commands2=Commands)? 'fi'
+	'if' cond=Expr 'then' cmdsThen=Commands ('else' cmdsElse=Commands)? 'fi'
 ;
 
+Affect:
+	vars=Vars ':=' exprs=Exprs
+;
+
+For:
+	'for' cond=Expr 'do' cmds=Commands 'od'
+;
+
+While:
+	'while' cond=Expr 'do' cmds=Commands 'od'
+;
 
 Nop:
 	nop='nop'
 ;
 
-Affect:
-	vars+=VARIABLE (',' vars+=VARIABLE)* ':=' exprs+=Expr (',' exprs+=Expr)*
-;
-
-For:
-	'for' expr=Expr 'do' cmds=Commands 'od'
-;
-
-Foreach:
-	'foreach' expr=Expr 'in' expr2=Expr 'do' cmds=Commands 'od'
-;
-
-While:
-	'while' expr=Expr 'do' cmds=Commands 'od'
-;
-
-Expr:
-	expr = ExprAnd | expr = ExprOr | expr =ExprSimple | expr=ExprCons | 
-	expr=ExprList | expr=ExprHd | expr=ExprTl | expr=ExprSym | expr=ExprNot | exprEq=ExprEq |'(' expr=Expr ')'
-;
-
-ExprSimple:
-	=>str=NIL | varSimple=VARIABLE | sym=SYMBOLE  | '(' nameFunction=SYMBOLE vars=Input ')'//pas de fonction dans les param
-;
-
-ExprAnd:
-	arg1=ExprSimple 'and' arg2=Expr 
-;
-
-ExprOr:
-	arg1=ExprSimple 'or' arg2=Expr
-;
-
-ExprCons:
-	'(''cons' arg1=Expr arg2=Expr ')'
-;
-
-ExprList:
-	'(' 'list' arg+=Expr ')'
-;
-
-ExprHd:
-	'(' 'hd' arg=Expr ')'
-;
-
-ExprTl:
-	'(' 'tl' arg=Expr')'
-;
-
-ExprSym:
-	'(' arg1=SYMBOLE arg2+=Expr ')'
-;
-
-ExprNot:
-	'not' arg1=ExprEq
-;
-
-ExprEq:
-	 arg1=ExprSimple '=?' arg2=ExprSimple
+ForEach:
+	'foreach' elem = Expr 'in' ensemb = Expr 'do' cmds = Commands 'od'
 ;
 
 
-terminal NIL:
-	'Nil' | 'nil'
+/* Expression */
+Exprs: 	
+  expr =Expr(',' exprs += Expr)*
 ;
 
 
+Expr: 
+	"1"
+	//(expr = ExprSimple) | (expr = ExprAnd)
+;
+
+
+/*TERMINAL */	
 terminal VARIABLE:
-	'A'..'Z' ID?
+	('A'..'Z')*
 ;
 
 terminal SYMBOLE:
-	'a'..'z' ID?
+	('a'..'z')*
 ;

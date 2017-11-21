@@ -4,8 +4,8 @@
 package esir.compilation.whdsl.impl;
 
 import esir.compilation.whdsl.Commands;
+import esir.compilation.whdsl.ForEach;
 import esir.compilation.whdsl.WhdslPackage;
-import esir.compilation.whdsl.While;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -18,39 +18,60 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>While</b></em>'.
+ * An implementation of the model object '<em><b>For Each</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.WhileImpl#getCond <em>Cond</em>}</li>
- *   <li>{@link esir.compilation.whdsl.impl.WhileImpl#getCmds <em>Cmds</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.ForEachImpl#getElem <em>Elem</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.ForEachImpl#getEnsemb <em>Ensemb</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.ForEachImpl#getCmds <em>Cmds</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class WhileImpl extends MinimalEObjectImpl.Container implements While
+public class ForEachImpl extends MinimalEObjectImpl.Container implements ForEach
 {
   /**
-   * The default value of the '{@link #getCond() <em>Cond</em>}' attribute.
+   * The default value of the '{@link #getElem() <em>Elem</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCond()
+   * @see #getElem()
    * @generated
    * @ordered
    */
-  protected static final String COND_EDEFAULT = null;
+  protected static final String ELEM_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getCond() <em>Cond</em>}' attribute.
+   * The cached value of the '{@link #getElem() <em>Elem</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCond()
+   * @see #getElem()
    * @generated
    * @ordered
    */
-  protected String cond = COND_EDEFAULT;
+  protected String elem = ELEM_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getEnsemb() <em>Ensemb</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEnsemb()
+   * @generated
+   * @ordered
+   */
+  protected static final String ENSEMB_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getEnsemb() <em>Ensemb</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEnsemb()
+   * @generated
+   * @ordered
+   */
+  protected String ensemb = ENSEMB_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getCmds() <em>Cmds</em>}' containment reference.
@@ -67,7 +88,7 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
    * <!-- end-user-doc -->
    * @generated
    */
-  protected WhileImpl()
+  protected ForEachImpl()
   {
     super();
   }
@@ -80,7 +101,7 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
   @Override
   protected EClass eStaticClass()
   {
-    return WhdslPackage.Literals.WHILE;
+    return WhdslPackage.Literals.FOR_EACH;
   }
 
   /**
@@ -88,9 +109,9 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getCond()
+  public String getElem()
   {
-    return cond;
+    return elem;
   }
 
   /**
@@ -98,12 +119,35 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCond(String newCond)
+  public void setElem(String newElem)
   {
-    String oldCond = cond;
-    cond = newCond;
+    String oldElem = elem;
+    elem = newElem;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.WHILE__COND, oldCond, cond));
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR_EACH__ELEM, oldElem, elem));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getEnsemb()
+  {
+    return ensemb;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setEnsemb(String newEnsemb)
+  {
+    String oldEnsemb = ensemb;
+    ensemb = newEnsemb;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR_EACH__ENSEMB, oldEnsemb, ensemb));
   }
 
   /**
@@ -127,7 +171,7 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
     cmds = newCmds;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.WHILE__CMDS, oldCmds, newCmds);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR_EACH__CMDS, oldCmds, newCmds);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -144,14 +188,14 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
     {
       NotificationChain msgs = null;
       if (cmds != null)
-        msgs = ((InternalEObject)cmds).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.WHILE__CMDS, null, msgs);
+        msgs = ((InternalEObject)cmds).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.FOR_EACH__CMDS, null, msgs);
       if (newCmds != null)
-        msgs = ((InternalEObject)newCmds).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.WHILE__CMDS, null, msgs);
+        msgs = ((InternalEObject)newCmds).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.FOR_EACH__CMDS, null, msgs);
       msgs = basicSetCmds(newCmds, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.WHILE__CMDS, newCmds, newCmds));
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.FOR_EACH__CMDS, newCmds, newCmds));
   }
 
   /**
@@ -164,7 +208,7 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
   {
     switch (featureID)
     {
-      case WhdslPackage.WHILE__CMDS:
+      case WhdslPackage.FOR_EACH__CMDS:
         return basicSetCmds(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -180,9 +224,11 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
   {
     switch (featureID)
     {
-      case WhdslPackage.WHILE__COND:
-        return getCond();
-      case WhdslPackage.WHILE__CMDS:
+      case WhdslPackage.FOR_EACH__ELEM:
+        return getElem();
+      case WhdslPackage.FOR_EACH__ENSEMB:
+        return getEnsemb();
+      case WhdslPackage.FOR_EACH__CMDS:
         return getCmds();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -198,10 +244,13 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
   {
     switch (featureID)
     {
-      case WhdslPackage.WHILE__COND:
-        setCond((String)newValue);
+      case WhdslPackage.FOR_EACH__ELEM:
+        setElem((String)newValue);
         return;
-      case WhdslPackage.WHILE__CMDS:
+      case WhdslPackage.FOR_EACH__ENSEMB:
+        setEnsemb((String)newValue);
+        return;
+      case WhdslPackage.FOR_EACH__CMDS:
         setCmds((Commands)newValue);
         return;
     }
@@ -218,10 +267,13 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
   {
     switch (featureID)
     {
-      case WhdslPackage.WHILE__COND:
-        setCond(COND_EDEFAULT);
+      case WhdslPackage.FOR_EACH__ELEM:
+        setElem(ELEM_EDEFAULT);
         return;
-      case WhdslPackage.WHILE__CMDS:
+      case WhdslPackage.FOR_EACH__ENSEMB:
+        setEnsemb(ENSEMB_EDEFAULT);
+        return;
+      case WhdslPackage.FOR_EACH__CMDS:
         setCmds((Commands)null);
         return;
     }
@@ -238,9 +290,11 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
   {
     switch (featureID)
     {
-      case WhdslPackage.WHILE__COND:
-        return COND_EDEFAULT == null ? cond != null : !COND_EDEFAULT.equals(cond);
-      case WhdslPackage.WHILE__CMDS:
+      case WhdslPackage.FOR_EACH__ELEM:
+        return ELEM_EDEFAULT == null ? elem != null : !ELEM_EDEFAULT.equals(elem);
+      case WhdslPackage.FOR_EACH__ENSEMB:
+        return ENSEMB_EDEFAULT == null ? ensemb != null : !ENSEMB_EDEFAULT.equals(ensemb);
+      case WhdslPackage.FOR_EACH__CMDS:
         return cmds != null;
     }
     return super.eIsSet(featureID);
@@ -257,10 +311,12 @@ public class WhileImpl extends MinimalEObjectImpl.Container implements While
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (cond: ");
-    result.append(cond);
+    result.append(" (elem: ");
+    result.append(elem);
+    result.append(", ensemb: ");
+    result.append(ensemb);
     result.append(')');
     return result.toString();
   }
 
-} //WhileImpl
+} //ForEachImpl

@@ -24,15 +24,6 @@ public interface WhdslFactory extends EFactory
   WhdslFactory eINSTANCE = esir.compilation.whdsl.impl.WhdslFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Wh</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Wh</em>'.
-   * @generated
-   */
-  Wh createWh();
-
-  /**
    * Returns a new object of class '<em>Program</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -78,6 +69,15 @@ public interface WhdslFactory extends EFactory
   Output createOutput();
 
   /**
+   * Returns a new object of class '<em>Vars</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Vars</em>'.
+   * @generated
+   */
+  Vars createVars();
+
+  /**
    * Returns a new object of class '<em>Commands</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -105,15 +105,6 @@ public interface WhdslFactory extends EFactory
   If createIf();
 
   /**
-   * Returns a new object of class '<em>Nop</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Nop</em>'.
-   * @generated
-   */
-  Nop createNop();
-
-  /**
    * Returns a new object of class '<em>Affect</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -132,15 +123,6 @@ public interface WhdslFactory extends EFactory
   For createFor();
 
   /**
-   * Returns a new object of class '<em>Foreach</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Foreach</em>'.
-   * @generated
-   */
-  Foreach createForeach();
-
-  /**
    * Returns a new object of class '<em>While</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -150,103 +132,31 @@ public interface WhdslFactory extends EFactory
   While createWhile();
 
   /**
-   * Returns a new object of class '<em>Expr</em>'.
+   * Returns a new object of class '<em>Nop</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Expr</em>'.
+   * @return a new object of class '<em>Nop</em>'.
    * @generated
    */
-  Expr createExpr();
+  Nop createNop();
 
   /**
-   * Returns a new object of class '<em>Expr Simple</em>'.
+   * Returns a new object of class '<em>For Each</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Expr Simple</em>'.
+   * @return a new object of class '<em>For Each</em>'.
    * @generated
    */
-  ExprSimple createExprSimple();
+  ForEach createForEach();
 
   /**
-   * Returns a new object of class '<em>Expr And</em>'.
+   * Returns a new object of class '<em>Exprs</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Expr And</em>'.
+   * @return a new object of class '<em>Exprs</em>'.
    * @generated
    */
-  ExprAnd createExprAnd();
-
-  /**
-   * Returns a new object of class '<em>Expr Or</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Expr Or</em>'.
-   * @generated
-   */
-  ExprOr createExprOr();
-
-  /**
-   * Returns a new object of class '<em>Expr Cons</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Expr Cons</em>'.
-   * @generated
-   */
-  ExprCons createExprCons();
-
-  /**
-   * Returns a new object of class '<em>Expr List</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Expr List</em>'.
-   * @generated
-   */
-  ExprList createExprList();
-
-  /**
-   * Returns a new object of class '<em>Expr Hd</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Expr Hd</em>'.
-   * @generated
-   */
-  ExprHd createExprHd();
-
-  /**
-   * Returns a new object of class '<em>Expr Tl</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Expr Tl</em>'.
-   * @generated
-   */
-  ExprTl createExprTl();
-
-  /**
-   * Returns a new object of class '<em>Expr Sym</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Expr Sym</em>'.
-   * @generated
-   */
-  ExprSym createExprSym();
-
-  /**
-   * Returns a new object of class '<em>Expr Not</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Expr Not</em>'.
-   * @generated
-   */
-  ExprNot createExprNot();
-
-  /**
-   * Returns a new object of class '<em>Expr Eq</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Expr Eq</em>'.
-   * @generated
-   */
-  ExprEq createExprEq();
+  Exprs createExprs();
 
   /**
    * Returns the package supported by this factory.

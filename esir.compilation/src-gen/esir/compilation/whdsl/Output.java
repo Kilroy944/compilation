@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.Output#getVars <em>Vars</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.Output#getVariables <em>Variables</em>}</li>
  * </ul>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getOutput()
@@ -26,19 +26,19 @@ import org.eclipse.emf.ecore.EObject;
 public interface Output extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Vars</b></em>' attribute list.
+   * Returns the value of the '<em><b>Variables</b></em>' attribute list.
    * The list contents are of type {@link java.lang.String}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Vars</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Variables</em>' attribute list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Vars</em>' attribute list.
-   * @see esir.compilation.whdsl.WhdslPackage#getOutput_Vars()
+   * @return the value of the '<em>Variables</em>' attribute list.
+   * @see esir.compilation.whdsl.WhdslPackage#getOutput_Variables()
    * @model unique="false"
    * @generated
    */
-  EList<String> getVars();
+  EList<String> getVariables();
 
 } // Output

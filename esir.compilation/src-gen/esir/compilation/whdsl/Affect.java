@@ -3,8 +3,6 @@
  */
 package esir.compilation.whdsl;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -27,35 +25,55 @@ import org.eclipse.emf.ecore.EObject;
 public interface Affect extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Vars</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Vars</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Vars</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Vars</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Vars</em>' attribute list.
+   * @return the value of the '<em>Vars</em>' containment reference.
+   * @see #setVars(Vars)
    * @see esir.compilation.whdsl.WhdslPackage#getAffect_Vars()
-   * @model unique="false"
+   * @model containment="true"
    * @generated
    */
-  EList<String> getVars();
+  Vars getVars();
 
   /**
-   * Returns the value of the '<em><b>Exprs</b></em>' containment reference list.
-   * The list contents are of type {@link esir.compilation.whdsl.Expr}.
+   * Sets the value of the '{@link esir.compilation.whdsl.Affect#getVars <em>Vars</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Vars</em>' containment reference.
+   * @see #getVars()
+   * @generated
+   */
+  void setVars(Vars value);
+
+  /**
+   * Returns the value of the '<em><b>Exprs</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Exprs</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Exprs</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Exprs</em>' containment reference list.
+   * @return the value of the '<em>Exprs</em>' containment reference.
+   * @see #setExprs(Exprs)
    * @see esir.compilation.whdsl.WhdslPackage#getAffect_Exprs()
    * @model containment="true"
    * @generated
    */
-  EList<Expr> getExprs();
+  Exprs getExprs();
+
+  /**
+   * Sets the value of the '{@link esir.compilation.whdsl.Affect#getExprs <em>Exprs</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Exprs</em>' containment reference.
+   * @see #getExprs()
+   * @generated
+   */
+  void setExprs(Exprs value);
 
 } // Affect

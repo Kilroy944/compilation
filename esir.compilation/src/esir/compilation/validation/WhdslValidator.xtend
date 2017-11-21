@@ -3,6 +3,11 @@
  */
 package esir.compilation.validation
 
+import org.eclipse.xtext.validation.Check
+import esir.compilation.whdsl.Affect
+import esir.compilation.whdsl.WhdslPackage
+import esir.compilation.services.WhdslGrammarAccess
+import com.google.inject.Inject
 
 /**
  * This class contains custom validation rules. 
@@ -10,8 +15,8 @@ package esir.compilation.validation
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 class WhdslValidator extends AbstractWhdslValidator {
-	
-//	public static val INVALID_NAME = 'invalidName'
+		
+public static val INVALID_NAME = 'invalidName'
 //
 //	@Check
 //	def checkGreetingStartsWithCapital(Greeting greeting) {
@@ -21,5 +26,15 @@ class WhdslValidator extends AbstractWhdslValidator {
 //					INVALID_NAME)
 //		}
 //	}
-	
+/* 
+ public static val INVALID_NB = 'invalidNb'
+ 
+ 	@Check
+ 	def checkAffectation(Affect a) {
+ 		if (a.vars.vars.length+1 != a.exprs.exprs.length+1) {
+ 			error('Nb de variable et Nb d expression different', 
+ 					WhdslPackage.Literals.AFFECT,null)
+ 		}
+ 	}
+	*/
 }

@@ -21,6 +21,7 @@ import esir.compilation.whdsl.Affect
 import esir.compilation.whdsl.While
 import esir.compilation.whdsl.For
 import esir.compilation.whdsl.If
+import esir.compilation.whdsl.ForEach
 
 /**
  * Generates code from your model files on save.
@@ -31,9 +32,10 @@ class WhdslGenerator extends AbstractGenerator {
 	
 	
 	String indent_value = '   ';
-	String indent_if = '   ';
-	String indent_for = '   ';
-	String indent_while = '   ';
+	String indent_if = '  ';
+	String indent_for = '  ';
+	String indent_while = '  ';
+	String indent_foreach = '  ';
 
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
@@ -42,11 +44,12 @@ class WhdslGenerator extends AbstractGenerator {
 		}
 	}
 	
-	def doGenerate (Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context, String sortie, String indent_value, String indent_if, String indent_for, String indent_while) {
+	def doGenerate (Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context, String sortie, String indent_value, String indent_if, String indent_for, String indent_foreach, String indent_while) {
 		
 		this.indent_value = indent_value;
 		this.indent_if=indent_if;
 		this.indent_for=indent_for;
+		this.indent_foreach=indent_foreach;
 		this.indent_while=indent_while;
 		
 		for (e : resource.allContents.toIterable.filter(typeof(Program))){
@@ -63,12 +66,12 @@ class WhdslGenerator extends AbstractGenerator {
 	def compile (Function f, String indent){
 		'''
 		function «f.name»:
-		read «FOR param: f.definition.input.vars SEPARATOR ', '»«param»«ENDFOR»
+		read «FOR param: f.definition.input.variables SEPARATOR ', '»«param»«ENDFOR»
 		%
-		«indent»«f.definition.commands»«FOR param: f.definition.commands.commands»;
+		«indent»«f.definition.commands.command.compile(indent)»«FOR param: f.definition.commands.commands»;
 		«indent»«param.compile(indent)»«ENDFOR»
 		%
-		write «FOR param: f.definition.output.vars SEPARATOR ', '»«param»«ENDFOR»'''
+		write «FOR param: f.definition.output.variables SEPARATOR ', '»«param»«ENDFOR»'''
 	}
 	
 	
@@ -88,6 +91,9 @@ class WhdslGenerator extends AbstractGenerator {
 		else if(c.cmd instanceof While){
 			(c.cmd as While).compile(indent);
 		}
+		else if(c.cmd instanceof ForEach){
+			(c.cmd as ForEach).compile(indent);
+		}
 		
 	}
 	
@@ -96,33 +102,50 @@ class WhdslGenerator extends AbstractGenerator {
 	}
 	
 	def compile(Affect a){
-		'''«a.vars»:=«a.exprs»'''	
+		'''«a.vars.compile()»:=«a.exprs.compile()»'''	
 	}
 	def compile(If i, String indent){
-		'''if «i.expr» then 
-«indent+indent_if»«FOR param: i.commands1.commands»;
+		'''if «i.cond» then 
+«indent+indent_if»«i.cmdsThen.command.compile(indent+indent_if)»«FOR param: i.cmdsThen.commands»;
 «indent+indent_if»«param.compile(indent+indent_if)»«ENDFOR»
 «indent»else
-«indent+indent_if»«FOR param: i.commands2.commands»;
+«indent+indent_if»«i.cmdsElse.command.compile(indent+indent_if)»«FOR param: i.cmdsElse.commands»;
 «indent+indent_if»«param.compile(indent+indent_if)»«ENDFOR»
 «indent»fi'''			
 	}
 	
 	def compile(For f, String indent){
-		'''for «f.expr» do
-«indent+indent_for»«f.cmds.commands»«FOR param: f.cmds.commands»;
-«indent+indent_for»«param.compile(indent+indent_for)»
-		«ENDFOR»
+		'''for «f.cond» do
+«indent+indent_for»«f.cmds.command.compile(indent+indent_for)»«FOR param: f.cmds.commands»;
+«indent+indent_for»«param.compile(indent+indent_for)»«ENDFOR»
+«indent»od'''		
+	}
+	
+	
+	def compile(ForEach f, String indent){
+		'''foreach «f.elem» in «f.ensemb» do
+«indent+indent_foreach»«f.cmds.command.compile(indent+indent_foreach)»«FOR param: f.cmds.commands»;
+«indent+indent_foreach»«param.compile(indent+indent_foreach)»«ENDFOR»
 «indent»od'''		
 	}
 	
 	def compile(While w, String indent){
-		'''while «w.expr» do
-«indent+indent_while»«w.cmds.commands»«FOR param: w.cmds.commands»;
-«indent+indent_while»«param.compile(indent+indent_while)»
-		«ENDFOR»
+		'''while «w.cond» do
+«indent+indent_while»«w.cmds.command.compile(indent+indent_while)»«FOR param: w.cmds.commands»;
+«indent+indent_while»«param.compile(indent+indent_while)»«ENDFOR»
 «indent»od'''	
 	}
 
+	def compile(Vars v){
+		'''«v.^var»«FOR param: v.vars »,«param»«ENDFOR»'''
+	}
+
+	
+
+	def compile(Exprs e){
+		'''«e.expr»«FOR param: e.exprs»,«param»«ENDFOR»'''
+}
+	
+	
 	
 }

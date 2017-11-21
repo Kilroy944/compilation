@@ -12,4 +12,5 @@ import esir.compilation.validation.AbstractWhdslValidator;
  */
 @SuppressWarnings("all")
 public class WhdslValidator extends AbstractWhdslValidator {
+  public final static String INVALID_NAME = "invalidName";
 }
