@@ -2,21 +2,21 @@ function fonctiona:
 read B, B
 %
    nop;
-   if nil then
+   if esir.compilation.whdsl.impl.ExprImpl@59e505b2 then
       nop
    else
       nop
    fi;
-   for nil do
+   for esir.compilation.whdsl.impl.ExprImpl@3af0a9da do
       nop;
       nop
    od;
-   while nil do
+   while esir.compilation.whdsl.impl.ExprImpl@43b9fd5 do
       nop;
       nop
    od;
-   if nil then
-      if nil then
+   if esir.compilation.whdsl.impl.ExprImpl@79dc5318 then
+      if esir.compilation.whdsl.impl.ExprImpl@8e50104 then
          nop;
          nop
       else
@@ -32,18 +32,18 @@ write A, B, C
 function fonctionb:
 read A
 %
-   A := nil;
-   A := nil;
-   A, B, C := nil, nil, nil
+   A := esir.compilation.whdsl.impl.ExprImpl@37e4d7bb;
+   A := esir.compilation.whdsl.impl.ExprImpl@6f7923a5;
+   A, B, C := esir.compilation.whdsl.impl.ExprImpl@74a6f9c1, esir.compilation.whdsl.impl.ExprImpl@54eb2b70, esir.compilation.whdsl.impl.ExprImpl@45a37759
 %
 write A, B, C
 
 function fonctionb:
 read A
 %
-   A := nil;
-   A := nil;
-   A, B, C := nil, nil, nil
+   A := esir.compilation.whdsl.impl.ExprImpl@63611043;
+   A := esir.compilation.whdsl.impl.ExprImpl@20ca951f;
+   A, B, C := esir.compilation.whdsl.impl.ExprImpl@2d778add, esir.compilation.whdsl.impl.ExprImpl@73302995, esir.compilation.whdsl.impl.ExprImpl@1838ccb8
 %
 write A, B, C
 

@@ -4,6 +4,7 @@
 package esir.compilation.whdsl.impl;
 
 import esir.compilation.whdsl.Commands;
+import esir.compilation.whdsl.Expr;
 import esir.compilation.whdsl.If;
 import esir.compilation.whdsl.WhdslPackage;
 
@@ -34,24 +35,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class IfImpl extends MinimalEObjectImpl.Container implements If
 {
   /**
-   * The default value of the '{@link #getCondition() <em>Condition</em>}' attribute.
+   * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getCondition()
    * @generated
    * @ordered
    */
-  protected static final String CONDITION_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getCondition() <em>Condition</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getCondition()
-   * @generated
-   * @ordered
-   */
-  protected String condition = CONDITION_EDEFAULT;
+  protected Expr condition;
 
   /**
    * The cached value of the '{@link #getThenCommands() <em>Then Commands</em>}' containment reference.
@@ -99,7 +90,7 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getCondition()
+  public Expr getCondition()
   {
     return condition;
   }
@@ -109,12 +100,37 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCondition(String newCondition)
+  public NotificationChain basicSetCondition(Expr newCondition, NotificationChain msgs)
   {
-    String oldCondition = condition;
+    Expr oldCondition = condition;
     condition = newCondition;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.IF__CONDITION, oldCondition, condition));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.IF__CONDITION, oldCondition, newCondition);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCondition(Expr newCondition)
+  {
+    if (newCondition != condition)
+    {
+      NotificationChain msgs = null;
+      if (condition != null)
+        msgs = ((InternalEObject)condition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.IF__CONDITION, null, msgs);
+      if (newCondition != null)
+        msgs = ((InternalEObject)newCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.IF__CONDITION, null, msgs);
+      msgs = basicSetCondition(newCondition, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.IF__CONDITION, newCondition, newCondition));
   }
 
   /**
@@ -223,6 +239,8 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
   {
     switch (featureID)
     {
+      case WhdslPackage.IF__CONDITION:
+        return basicSetCondition(null, msgs);
       case WhdslPackage.IF__THEN_COMMANDS:
         return basicSetThenCommands(null, msgs);
       case WhdslPackage.IF__ELSE_COMMANDS:
@@ -262,7 +280,7 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
     switch (featureID)
     {
       case WhdslPackage.IF__CONDITION:
-        setCondition((String)newValue);
+        setCondition((Expr)newValue);
         return;
       case WhdslPackage.IF__THEN_COMMANDS:
         setThenCommands((Commands)newValue);
@@ -285,7 +303,7 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
     switch (featureID)
     {
       case WhdslPackage.IF__CONDITION:
-        setCondition(CONDITION_EDEFAULT);
+        setCondition((Expr)null);
         return;
       case WhdslPackage.IF__THEN_COMMANDS:
         setThenCommands((Commands)null);
@@ -308,30 +326,13 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
     switch (featureID)
     {
       case WhdslPackage.IF__CONDITION:
-        return CONDITION_EDEFAULT == null ? condition != null : !CONDITION_EDEFAULT.equals(condition);
+        return condition != null;
       case WhdslPackage.IF__THEN_COMMANDS:
         return thenCommands != null;
       case WhdslPackage.IF__ELSE_COMMANDS:
         return elseCommands != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (condition: ");
-    result.append(condition);
-    result.append(')');
-    return result.toString();
   }
 
 } //IfImpl

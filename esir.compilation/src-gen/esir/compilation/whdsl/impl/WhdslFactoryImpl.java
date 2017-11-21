@@ -72,13 +72,16 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
       case WhdslPackage.OUTPUT: return createOutput();
       case WhdslPackage.COMMANDS: return createCommands();
       case WhdslPackage.COMMAND: return createCommand();
-      case WhdslPackage.EXPRS: return createExprs();
       case WhdslPackage.IF: return createIf();
       case WhdslPackage.AFFECT: return createAffect();
       case WhdslPackage.FOR: return createFor();
       case WhdslPackage.WHILE: return createWhile();
       case WhdslPackage.NOP: return createNop();
       case WhdslPackage.VARS: return createVars();
+      case WhdslPackage.EXPRS: return createExprs();
+      case WhdslPackage.LEXPR: return createLExpr();
+      case WhdslPackage.EXPR: return createExpr();
+      case WhdslPackage.EXPR_SIMPLE: return createExprSimple();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -166,17 +169,6 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Exprs createExprs()
-  {
-    ExprsImpl exprs = new ExprsImpl();
-    return exprs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public If createIf()
   {
     IfImpl if_ = new IfImpl();
@@ -236,6 +228,50 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
   {
     VarsImpl vars = new VarsImpl();
     return vars;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Exprs createExprs()
+  {
+    ExprsImpl exprs = new ExprsImpl();
+    return exprs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LExpr createLExpr()
+  {
+    LExprImpl lExpr = new LExprImpl();
+    return lExpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Expr createExpr()
+  {
+    ExprImpl expr = new ExprImpl();
+    return expr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExprSimple createExprSimple()
+  {
+    ExprSimpleImpl exprSimple = new ExprSimpleImpl();
+    return exprSimple;
   }
 
   /**

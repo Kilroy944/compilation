@@ -6,6 +6,7 @@ package esir.compilation.generator;
 import com.google.common.collect.Iterables;
 import esir.compilation.whdsl.Affect;
 import esir.compilation.whdsl.Command;
+import esir.compilation.whdsl.Expr;
 import esir.compilation.whdsl.Exprs;
 import esir.compilation.whdsl.For;
 import esir.compilation.whdsl.Function;
@@ -62,11 +63,16 @@ public class WhdslGenerator extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     {
       EList<Function> _functions = p.getFunctions();
+      boolean _hasElements = false;
       for(final Function f : _functions) {
+        if (!_hasElements) {
+          _hasElements = true;
+        } else {
+          _builder.appendImmediate("\n", "");
+        }
         CharSequence _compile = this.compile(f, this.indent_value);
         _builder.append(_compile);
         _builder.newLineIfNotEmpty();
-        _builder.newLine();
       }
     }
     return _builder;
@@ -184,7 +190,7 @@ public class WhdslGenerator extends AbstractGenerator {
   public CharSequence compile(final If i, final String indent) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("if ");
-    String _condition = i.getCondition();
+    Expr _condition = i.getCondition();
     _builder.append(_condition);
     _builder.append(" then");
     _builder.newLineIfNotEmpty();
@@ -230,7 +236,7 @@ public class WhdslGenerator extends AbstractGenerator {
   public CharSequence compile(final For f, final String indent) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("for ");
-    String _condition = f.getCondition();
+    Expr _condition = f.getCondition();
     _builder.append(_condition);
     _builder.append(" do");
     _builder.newLineIfNotEmpty();
@@ -258,7 +264,7 @@ public class WhdslGenerator extends AbstractGenerator {
   public CharSequence compile(final While w, final String indent) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("while ");
-    String _condition = w.getCondition();
+    Expr _condition = w.getCondition();
     _builder.append(_condition);
     _builder.append(" do");
     _builder.newLineIfNotEmpty();

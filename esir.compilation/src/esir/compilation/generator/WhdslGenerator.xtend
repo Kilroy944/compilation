@@ -52,9 +52,8 @@ class WhdslGenerator extends AbstractGenerator {
 	}
 	
 	def compile (Program p) '''
-		«FOR f : p.functions»
+		«FOR f : p.functions SEPARATOR '\n'»
 			«f.compile(indent_value)»
-			
 		«ENDFOR»
 	'''
 	

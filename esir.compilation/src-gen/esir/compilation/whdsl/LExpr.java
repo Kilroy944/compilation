@@ -9,21 +9,21 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Exprs</b></em>'.
+ * A representation of the model object '<em><b>LExpr</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.Exprs#getList <em>List</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.LExpr#getList <em>List</em>}</li>
  * </ul>
  *
- * @see esir.compilation.whdsl.WhdslPackage#getExprs()
+ * @see esir.compilation.whdsl.WhdslPackage#getLExpr()
  * @model
  * @generated
  */
-public interface Exprs extends EObject
+public interface LExpr extends EObject
 {
   /**
    * Returns the value of the '<em><b>List</b></em>' containment reference list.
@@ -35,10 +35,10 @@ public interface Exprs extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>List</em>' containment reference list.
-   * @see esir.compilation.whdsl.WhdslPackage#getExprs_List()
+   * @see esir.compilation.whdsl.WhdslPackage#getLExpr_List()
    * @model containment="true"
    * @generated
    */
   EList<Expr> getList();
 
-} // Exprs
+} // LExpr

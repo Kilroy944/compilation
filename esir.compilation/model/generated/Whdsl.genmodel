@@ -30,11 +30,8 @@
     <genClasses ecoreClass="Whdsl.ecore#//Command">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Command/cmd"/>
     </genClasses>
-    <genClasses ecoreClass="Whdsl.ecore#//Exprs">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//Exprs/list"/>
-    </genClasses>
     <genClasses ecoreClass="Whdsl.ecore#//If">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//If/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//If/condition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//If/thenCommands"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//If/elseCommands"/>
     </genClasses>
@@ -43,11 +40,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Affect/exprs"/>
     </genClasses>
     <genClasses ecoreClass="Whdsl.ecore#//For">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//For/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//For/condition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//For/commands"/>
     </genClasses>
     <genClasses ecoreClass="Whdsl.ecore#//While">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//While/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//While/condition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//While/commands"/>
     </genClasses>
     <genClasses ecoreClass="Whdsl.ecore#//Nop">
@@ -55,6 +52,26 @@
     </genClasses>
     <genClasses ecoreClass="Whdsl.ecore#//Vars">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//Vars/list"/>
+    </genClasses>
+    <genClasses ecoreClass="Whdsl.ecore#//Exprs">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Exprs/list"/>
+    </genClasses>
+    <genClasses ecoreClass="Whdsl.ecore#//LExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//LExpr/list"/>
+    </genClasses>
+    <genClasses ecoreClass="Whdsl.ecore#//Expr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Expr/simple"/>
+    </genClasses>
+    <genClasses ecoreClass="Whdsl.ecore#//ExprSimple">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//ExprSimple/nil"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//ExprSimple/var"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//ExprSimple/sym"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprSimple/cons"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprSimple/list"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprSimple/hd"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprSimple/tl"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//ExprSimple/funcName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprSimple/funcParams"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

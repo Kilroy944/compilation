@@ -87,15 +87,6 @@ public interface WhdslFactory extends EFactory
   Command createCommand();
 
   /**
-   * Returns a new object of class '<em>Exprs</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Exprs</em>'.
-   * @generated
-   */
-  Exprs createExprs();
-
-  /**
    * Returns a new object of class '<em>If</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -148,6 +139,42 @@ public interface WhdslFactory extends EFactory
    * @generated
    */
   Vars createVars();
+
+  /**
+   * Returns a new object of class '<em>Exprs</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Exprs</em>'.
+   * @generated
+   */
+  Exprs createExprs();
+
+  /**
+   * Returns a new object of class '<em>LExpr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>LExpr</em>'.
+   * @generated
+   */
+  LExpr createLExpr();
+
+  /**
+   * Returns a new object of class '<em>Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expr</em>'.
+   * @generated
+   */
+  Expr createExpr();
+
+  /**
+   * Returns a new object of class '<em>Expr Simple</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expr Simple</em>'.
+   * @generated
+   */
+  ExprSimple createExprSimple();
 
   /**
    * Returns the package supported by this factory.

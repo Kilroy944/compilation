@@ -12,10 +12,9 @@ Function:
 
 Definition:
 	input=Input'%'
-	commands = Commands
+	commands=Commands
 	'%'output=Output
 ;
-
 
 
 /*Input Output */
@@ -29,8 +28,7 @@ Output:
 ;
 
 
-/*COMMAND */
-
+/* COMMANDS */
 
 Commands:
 	list+=Command (';' list+=Command)*
@@ -39,11 +37,6 @@ Commands:
 Command:
 	(cmd=Nop) | (cmd=Affect) | (cmd=If) | (cmd=For) | (cmd=While)	
 ;
-
-Exprs: 	
-  list+=Expr (',' list+=Expr)*
-;
-
 
 If:
 	'if' condition=Expr 'then' thenCommands=Commands ('else' elseCommands=Commands)? 'fi'
@@ -69,10 +62,33 @@ Vars:
 	list+=VARIABLE (',' list+=VARIABLE)*
 ;	
 
-Expr:
-	NIL
+
+/* EXPRESSIONS */
+Exprs:
+	list+=Expr (',' list+=Expr)*
 ;
 
+// expressions séparées par des blancs, ex: (cons nil (cons nil Y))
+LExpr:
+	list+=Expr (list+=Expr)*
+;
+
+Expr:
+	simple=ExprSimple
+;
+
+ExprSimple:
+	nil=NIL | var=VARIABLE | sym=SYMBOLE |
+	'(' (
+		'cons' cons=LExpr |
+		'list' list=LExpr |
+		'hd' hd=Expr |
+		'tl' tl=Expr |
+		funcName=SYMBOLE funcParams=LExpr
+	) ')'
+;
+
+/* TERMINAUX */
 terminal NIL:
 	'Nil' | 'nil'
 ;

@@ -4,7 +4,7 @@
 package esir.compilation.whdsl.impl;
 
 import esir.compilation.whdsl.Expr;
-import esir.compilation.whdsl.Exprs;
+import esir.compilation.whdsl.LExpr;
 import esir.compilation.whdsl.WhdslPackage;
 
 import java.util.Collection;
@@ -23,18 +23,18 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Exprs</b></em>'.
+ * An implementation of the model object '<em><b>LExpr</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link esir.compilation.whdsl.impl.ExprsImpl#getList <em>List</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.LExprImpl#getList <em>List</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ExprsImpl extends MinimalEObjectImpl.Container implements Exprs
+public class LExprImpl extends MinimalEObjectImpl.Container implements LExpr
 {
   /**
    * The cached value of the '{@link #getList() <em>List</em>}' containment reference list.
@@ -51,7 +51,7 @@ public class ExprsImpl extends MinimalEObjectImpl.Container implements Exprs
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ExprsImpl()
+  protected LExprImpl()
   {
     super();
   }
@@ -64,7 +64,7 @@ public class ExprsImpl extends MinimalEObjectImpl.Container implements Exprs
   @Override
   protected EClass eStaticClass()
   {
-    return WhdslPackage.Literals.EXPRS;
+    return WhdslPackage.Literals.LEXPR;
   }
 
   /**
@@ -76,7 +76,7 @@ public class ExprsImpl extends MinimalEObjectImpl.Container implements Exprs
   {
     if (list == null)
     {
-      list = new EObjectContainmentEList<Expr>(Expr.class, this, WhdslPackage.EXPRS__LIST);
+      list = new EObjectContainmentEList<Expr>(Expr.class, this, WhdslPackage.LEXPR__LIST);
     }
     return list;
   }
@@ -91,7 +91,7 @@ public class ExprsImpl extends MinimalEObjectImpl.Container implements Exprs
   {
     switch (featureID)
     {
-      case WhdslPackage.EXPRS__LIST:
+      case WhdslPackage.LEXPR__LIST:
         return ((InternalEList<?>)getList()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -107,7 +107,7 @@ public class ExprsImpl extends MinimalEObjectImpl.Container implements Exprs
   {
     switch (featureID)
     {
-      case WhdslPackage.EXPRS__LIST:
+      case WhdslPackage.LEXPR__LIST:
         return getList();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -124,7 +124,7 @@ public class ExprsImpl extends MinimalEObjectImpl.Container implements Exprs
   {
     switch (featureID)
     {
-      case WhdslPackage.EXPRS__LIST:
+      case WhdslPackage.LEXPR__LIST:
         getList().clear();
         getList().addAll((Collection<? extends Expr>)newValue);
         return;
@@ -142,7 +142,7 @@ public class ExprsImpl extends MinimalEObjectImpl.Container implements Exprs
   {
     switch (featureID)
     {
-      case WhdslPackage.EXPRS__LIST:
+      case WhdslPackage.LEXPR__LIST:
         getList().clear();
         return;
     }
@@ -159,10 +159,10 @@ public class ExprsImpl extends MinimalEObjectImpl.Container implements Exprs
   {
     switch (featureID)
     {
-      case WhdslPackage.EXPRS__LIST:
+      case WhdslPackage.LEXPR__LIST:
         return list != null && !list.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //ExprsImpl
+} //LExprImpl
