@@ -1780,9 +1780,9 @@ ruleExprEq returns [EObject current=null]
 
 RULE_NIL : ('Nil'|'nil');
 
-RULE_VARIABLE : 'A'..'Z' ('A'..'Z'|'a'..'z')*;
+RULE_VARIABLE : 'A'..'Z' ('A'..'Z'|'a'..'z'|'0'..'9')*;
 
-RULE_SYMBOLE : ('a'..'z')*;
+RULE_SYMBOLE : 'a'..'z' ('A'..'Z'|'a'..'z'|'0'..'9')*;
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

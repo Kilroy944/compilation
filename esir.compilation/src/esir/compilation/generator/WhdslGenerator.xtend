@@ -34,11 +34,11 @@ import esir.compilation.whdsl.ExprEq
 class WhdslGenerator extends AbstractGenerator {
 	
 	
-	String indent_value = '   ';
-	String indent_if = '   ';
-	String indent_for = '   ';
-	String indent_while = '   ';
-	String indent_foreach = '  ';
+	String indent_value;
+	String indent_if;
+	String indent_for;
+	String indent_while;
+	String indent_foreach;
 
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
@@ -102,7 +102,7 @@ class WhdslGenerator extends AbstractGenerator {
 	
 	def compile(Nop n) '''nop'''
 	
-	def compile(Vars vars) '''«vars.list.join(', ')»'''
+	def compile(Vars vars) '''«vars.list.join(',')»'''
 	
 	def compile(Exprs exprs){ '''«FOR exp: exprs.list SEPARATOR ','»«exp.compile()»«ENDFOR»'''
 	}

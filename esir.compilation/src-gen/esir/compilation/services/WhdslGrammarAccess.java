@@ -1263,13 +1263,13 @@ public class WhdslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal VARIABLE:
-	//	'A'..'Z' ('A'..'Z' | 'a'..'z')*;
+	//	'A'..'Z' ('A'..'Z' | 'a'..'z' | '0'..'9')*;
 	public TerminalRule getVARIABLERule() {
 		return tVARIABLE;
 	}
 	
 	//terminal SYMBOLE:
-	//	'a'..'z'*;
+	//	'a'..'z' ('A'..'Z' | 'a'..'z' | '0'..'9')*;
 	public TerminalRule getSYMBOLERule() {
 		return tSYMBOLE;
 	}

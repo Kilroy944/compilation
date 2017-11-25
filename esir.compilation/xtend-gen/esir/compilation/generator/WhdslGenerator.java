@@ -40,15 +40,15 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
  */
 @SuppressWarnings("all")
 public class WhdslGenerator extends AbstractGenerator {
-  private String indent_value = "   ";
+  private String indent_value;
   
-  private String indent_if = "   ";
+  private String indent_if;
   
-  private String indent_for = "   ";
+  private String indent_for;
   
-  private String indent_while = "   ";
+  private String indent_while;
   
-  private String indent_foreach = "  ";
+  private String indent_foreach;
   
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
@@ -184,7 +184,7 @@ public class WhdslGenerator extends AbstractGenerator {
   
   public CharSequence compile(final Vars vars) {
     StringConcatenation _builder = new StringConcatenation();
-    String _join = IterableExtensions.join(vars.getList(), ", ");
+    String _join = IterableExtensions.join(vars.getList(), ",");
     _builder.append(_join);
     return _builder;
   }

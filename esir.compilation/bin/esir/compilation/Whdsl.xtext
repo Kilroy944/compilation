@@ -123,9 +123,9 @@ terminal NIL:
 ;
 
 terminal VARIABLE:
-	('A'..'Z')('A'..'Z'|'a'..'z')*
+	('A'..'Z')('A'..'Z'|'a'..'z'|'0'..'9')*
 ;
 
 terminal SYMBOLE:
-	('a'..'z')*
+	('a'..'z')('A'..'Z'|'a'..'z'|'0'..'9')*
 ;

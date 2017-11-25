@@ -31,7 +31,7 @@ Workflow {
 		}
 		language = StandardLanguage {
 			name = "esir.compilation.Whdsl"
-			fileExtensions = "whdsl"
+			fileExtensions = "wh"
 
 			serializer = {
 				generateStub = false

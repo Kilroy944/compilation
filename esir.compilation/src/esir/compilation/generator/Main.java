@@ -3,7 +3,6 @@ package esir.compilation.generator;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
@@ -54,7 +53,6 @@ public class Main {
 			cmd = parser.parse(options, args);
 		} catch (ParseException e) {
 			System.out.println("Erreur dans les arguments : " + e.getMessage());
-			e.printStackTrace();
 			return;
 		}
 		
@@ -69,6 +67,7 @@ public class Main {
 
 		if(cmd.hasOption("help")){
 			printMan();
+			return;
 		}
 
 		String input, output;
@@ -77,14 +76,18 @@ public class Main {
 			return;
 		}
 		input = cmd.getArgs()[0];
-		output = cmd.hasOption("o") ? cmd.getOptionValue("o") : "sortie.whdsl";
+		if (!input.endsWith(".wh")) {
+			System.out.println("Erreur dans les arguments : le fichier d'entrée doit avoir l'extension .wh");
+			return;
+		}
+		output = cmd.hasOption("o") ? cmd.getOptionValue("o") : input.split(".wh")[0] + ".whpp";
 
 
 		//Injection class Google Guice
 		Injector injector = new WhdslStandaloneSetupGenerated().createInjectorAndDoEMFRegistration();
 		Main main = injector.getInstance(Main.class);
 
-		String indent_value = main.create_indent(" ",cmd.hasOption("all") ? Integer.parseInt(cmd.getOptionValue("all")) : 3);
+		String indent_value = main.create_indent(" ",cmd.hasOption("all") ? Integer.parseInt(cmd.getOptionValue("all")) : 2);
 		String indent_if = main.create_indent(indent_value,cmd.hasOption("if") ? Integer.parseInt(cmd.getOptionValue("if")) : 1);
 		String indent_for = main.create_indent(indent_value,cmd.hasOption("for") ? Integer.parseInt(cmd.getOptionValue("for")) : 1);
 		String indent_foreach = main.create_indent(indent_value,cmd.hasOption("foreach") ? Integer.parseInt(cmd.getOptionValue("foreach")) : 1);
