@@ -3,44 +3,25 @@
  */
 package esir.compilation.tests;
 
-import com.google.inject.Inject;
 import esir.compilation.tests.WhdslInjectorProvider;
 import esir.compilation.whdsl.Program;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.testing.InjectWith;
-import org.eclipse.xtext.testing.XtextRunner;
-import org.eclipse.xtext.testing.util.ParseHelper;
-import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(XtextRunner.class)
-@InjectWith(WhdslInjectorProvider.class)
-@SuppressWarnings("all")
+/* @RunWith(/* name is null */)
+@InjectWith(WhdslInjectorProvider.class) */@SuppressWarnings("all")
 public class WhdslParsingTest {
-  @Inject
-  private ParseHelper<Program> parseHelper;
+  /* @Inject
+   */private /* ParseHelper<Program> */Object parseHelper;
   
   @Test
   public void loadModel() {
-    try {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Hello Xtext!");
-      _builder.newLine();
-      final Program result = this.parseHelper.parse(_builder);
-      Assert.assertNotNull(result);
-      final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
-      StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("Unexpected errors: ");
-      String _join = IterableExtensions.join(errors, ", ");
-      _builder_1.append(_join);
-      Assert.assertTrue(_builder_1.toString(), errors.isEmpty());
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe field WhdslParsingTest.parseHelper refers to the missing type ParseHelper"
+      + "\nparse cannot be resolved"
+      + "\neResource cannot be resolved"
+      + "\nerrors cannot be resolved"
+      + "\njoin cannot be resolved"
+      + "\nisEmpty cannot be resolved");
   }
 }

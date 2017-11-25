@@ -3,12 +3,8 @@
  */
 package esir.compilation.ide;
 
-import com.google.inject.Guice;
 import com.google.inject.Injector;
-import esir.compilation.WhdslRuntimeModule;
 import esir.compilation.WhdslStandaloneSetup;
-import esir.compilation.ide.WhdslIdeModule;
-import org.eclipse.xtext.util.Modules2;
 
 /**
  * Initialization support for running Xtext languages as language servers.
@@ -17,8 +13,7 @@ import org.eclipse.xtext.util.Modules2;
 public class WhdslIdeSetup extends WhdslStandaloneSetup {
   @Override
   public Injector createInjector() {
-    WhdslRuntimeModule _whdslRuntimeModule = new WhdslRuntimeModule();
-    WhdslIdeModule _whdslIdeModule = new WhdslIdeModule();
-    return Guice.createInjector(Modules2.mixin(_whdslRuntimeModule, _whdslIdeModule));
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from WhdslIdeModule to Module");
   }
 }
