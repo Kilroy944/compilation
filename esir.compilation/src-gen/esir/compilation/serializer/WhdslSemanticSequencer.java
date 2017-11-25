@@ -10,6 +10,10 @@ import esir.compilation.whdsl.Command;
 import esir.compilation.whdsl.Commands;
 import esir.compilation.whdsl.Definition;
 import esir.compilation.whdsl.Expr;
+import esir.compilation.whdsl.ExprAnd;
+import esir.compilation.whdsl.ExprEq;
+import esir.compilation.whdsl.ExprNot;
+import esir.compilation.whdsl.ExprOr;
 import esir.compilation.whdsl.ExprSimple;
 import esir.compilation.whdsl.Exprs;
 import esir.compilation.whdsl.For;
@@ -63,6 +67,18 @@ public class WhdslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				return; 
 			case WhdslPackage.EXPR:
 				sequence_Expr(context, (Expr) semanticObject); 
+				return; 
+			case WhdslPackage.EXPR_AND:
+				sequence_ExprAnd(context, (ExprAnd) semanticObject); 
+				return; 
+			case WhdslPackage.EXPR_EQ:
+				sequence_ExprEq(context, (ExprEq) semanticObject); 
+				return; 
+			case WhdslPackage.EXPR_NOT:
+				sequence_ExprNot(context, (ExprNot) semanticObject); 
+				return; 
+			case WhdslPackage.EXPR_OR:
+				sequence_ExprOr(context, (ExprOr) semanticObject); 
 				return; 
 			case WhdslPackage.EXPR_SIMPLE:
 				sequence_ExprSimple(context, (ExprSimple) semanticObject); 
@@ -186,6 +202,54 @@ public class WhdslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
+	 *     ExprAnd returns ExprAnd
+	 *
+	 * Constraint:
+	 *     ((expOr=ExprOr expAnd=ExprAnd) | expOr=ExprOr)
+	 */
+	protected void sequence_ExprAnd(ISerializationContext context, ExprAnd semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ExprEq returns ExprEq
+	 *
+	 * Constraint:
+	 *     ((expSimple=ExprSimple expSimple2=ExprSimple) | exp=Expr)
+	 */
+	protected void sequence_ExprEq(ISerializationContext context, ExprEq semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ExprNot returns ExprNot
+	 *
+	 * Constraint:
+	 *     (expEqNot=ExprEq | expEq=ExprEq)
+	 */
+	protected void sequence_ExprNot(ISerializationContext context, ExprNot semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ExprOr returns ExprOr
+	 *
+	 * Constraint:
+	 *     ((expNot=ExprNot expOr=ExprOr) | expNot=ExprNot)
+	 */
+	protected void sequence_ExprOr(ISerializationContext context, ExprOr semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     ExprSimple returns ExprSimple
 	 *
 	 * Constraint:
@@ -210,16 +274,10 @@ public class WhdslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Expr returns Expr
 	 *
 	 * Constraint:
-	 *     simple=ExprSimple
+	 *     (simple=ExprSimple | logique=ExprAnd)
 	 */
 	protected void sequence_Expr(ISerializationContext context, Expr semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.EXPR__SIMPLE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.EXPR__SIMPLE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getExprAccess().getSimpleExprSimpleParserRuleCall_0(), semanticObject.getSimple());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

@@ -82,6 +82,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Expr">
     <eStructuralFeatures xsi:type="ecore:EReference" name="simple" eType="#//ExprSimple"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="logique" eType="#//ExprAnd"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExprSimple">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nil" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -96,5 +98,30 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="funcName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="funcParams" eType="#//LExpr"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExprAnd">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expOr" eType="#//ExprOr"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expAnd" eType="#//ExprAnd"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExprOr">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expNot" eType="#//ExprNot"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expOr" eType="#//ExprOr"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExprNot">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expEqNot" eType="#//ExprEq"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expEq" eType="#//ExprEq"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExprEq">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expSimple" eType="#//ExprSimple"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expSimple2" eType="#//ExprSimple"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exp" eType="#//Expr" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

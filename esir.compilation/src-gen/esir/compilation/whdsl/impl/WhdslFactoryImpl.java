@@ -83,6 +83,10 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
       case WhdslPackage.LEXPR: return createLExpr();
       case WhdslPackage.EXPR: return createExpr();
       case WhdslPackage.EXPR_SIMPLE: return createExprSimple();
+      case WhdslPackage.EXPR_AND: return createExprAnd();
+      case WhdslPackage.EXPR_OR: return createExprOr();
+      case WhdslPackage.EXPR_NOT: return createExprNot();
+      case WhdslPackage.EXPR_EQ: return createExprEq();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -284,6 +288,50 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
   {
     ExprSimpleImpl exprSimple = new ExprSimpleImpl();
     return exprSimple;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExprAnd createExprAnd()
+  {
+    ExprAndImpl exprAnd = new ExprAndImpl();
+    return exprAnd;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExprOr createExprOr()
+  {
+    ExprOrImpl exprOr = new ExprOrImpl();
+    return exprOr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExprNot createExprNot()
+  {
+    ExprNotImpl exprNot = new ExprNotImpl();
+    return exprNot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExprEq createExprEq()
+  {
+    ExprEqImpl exprEq = new ExprEqImpl();
+    return exprEq;
   }
 
   /**

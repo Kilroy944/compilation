@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.Expr#getSimple <em>Simple</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.Expr#getLogique <em>Logique</em>}</li>
  * </ul>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getExpr()
@@ -48,5 +49,31 @@ public interface Expr extends EObject
    * @generated
    */
   void setSimple(ExprSimple value);
+
+  /**
+   * Returns the value of the '<em><b>Logique</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Logique</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Logique</em>' containment reference.
+   * @see #setLogique(ExprAnd)
+   * @see esir.compilation.whdsl.WhdslPackage#getExpr_Logique()
+   * @model containment="true"
+   * @generated
+   */
+  ExprAnd getLogique();
+
+  /**
+   * Sets the value of the '{@link esir.compilation.whdsl.Expr#getLogique <em>Logique</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Logique</em>' containment reference.
+   * @see #getLogique()
+   * @generated
+   */
+  void setLogique(ExprAnd value);
 
 } // Expr

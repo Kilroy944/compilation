@@ -66,6 +66,7 @@
     </genClasses>
     <genClasses ecoreClass="Whdsl.ecore#//Expr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Expr/simple"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//Expr/logique"/>
     </genClasses>
     <genClasses ecoreClass="Whdsl.ecore#//ExprSimple">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//ExprSimple/nil"/>
@@ -77,6 +78,23 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprSimple/tl"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Whdsl.ecore#//ExprSimple/funcName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprSimple/funcParams"/>
+    </genClasses>
+    <genClasses ecoreClass="Whdsl.ecore#//ExprAnd">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprAnd/expOr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprAnd/expAnd"/>
+    </genClasses>
+    <genClasses ecoreClass="Whdsl.ecore#//ExprOr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprOr/expNot"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprOr/expOr"/>
+    </genClasses>
+    <genClasses ecoreClass="Whdsl.ecore#//ExprNot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprNot/expEqNot"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprNot/expEq"/>
+    </genClasses>
+    <genClasses ecoreClass="Whdsl.ecore#//ExprEq">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprEq/expSimple"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprEq/expSimple2"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Whdsl.ecore#//ExprEq/exp"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

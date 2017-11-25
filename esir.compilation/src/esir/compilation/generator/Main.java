@@ -39,13 +39,13 @@ public class Main {
 		//Récupération arguments
 		Options options = new Options();
 		options.addOption("o", true, "nom du fichier de sortie");
-		options.addOption("indent", true, "valeur indent");
+		options.addOption("all", true, "valeur indent");
 		options.addOption("if", true, "indent if");
 		options.addOption("for", true, "indent for");
 		options.addOption("foreach", true, "indent foreach");
 		options.addOption("while", true, "indent while");
 		options.addOption("test", false, "effectuer les tests");
-		options.addOption("man", false, "manuel d'utilisation");
+		options.addOption("help", false, "manuel d'utilisation");
 
 
 		CommandLineParser parser = new BasicParser();
@@ -67,7 +67,7 @@ public class Main {
 			}
 		}
 
-		if(cmd.hasOption("man")){
+		if(cmd.hasOption("help")){
 			printMan();
 		}
 
@@ -84,7 +84,7 @@ public class Main {
 		Injector injector = new WhdslStandaloneSetupGenerated().createInjectorAndDoEMFRegistration();
 		Main main = injector.getInstance(Main.class);
 
-		String indent_value = main.create_indent(" ",cmd.hasOption("indent") ? Integer.parseInt(cmd.getOptionValue("indent")) : 3);
+		String indent_value = main.create_indent(" ",cmd.hasOption("all") ? Integer.parseInt(cmd.getOptionValue("all")) : 3);
 		String indent_if = main.create_indent(indent_value,cmd.hasOption("if") ? Integer.parseInt(cmd.getOptionValue("if")) : 1);
 		String indent_for = main.create_indent(indent_value,cmd.hasOption("for") ? Integer.parseInt(cmd.getOptionValue("for")) : 1);
 		String indent_foreach = main.create_indent(indent_value,cmd.hasOption("foreach") ? Integer.parseInt(cmd.getOptionValue("foreach")) : 1);

@@ -38,7 +38,12 @@ Commands:
 ;
 
 Command:
-	(cmd=Nop) | (cmd=Affect) | (cmd=If) | (cmd=For) | (cmd=While) | (cmd=ForEach)	
+	(cmd=Nop) |
+	(cmd=Affect) |
+	(cmd=If) |
+	(cmd=For) |
+	(cmd=While) |
+	(cmd=ForEach)	
 ;
 
 
@@ -78,19 +83,39 @@ LExpr:
 ;
 
 Expr:
-	simple=ExprSimple
+	=>(simple=ExprSimple) | logique=ExprAnd
 ;
 
 ExprSimple:
-	nil=NIL | var=VARIABLE | sym=SYMBOLE |
-	'(' (
+	nil=NIL |
+	var=VARIABLE |
+	sym=SYMBOLE |
+	('(' (
 		'cons' cons=LExpr |
 		'list' list=LExpr |
 		'hd' hd=Expr |
 		'tl' tl=Expr |
 		funcName=SYMBOLE funcParams=LExpr
-	) ')'
+	) ')')
 ;
+
+
+ExprAnd:
+    =>(expOr=ExprOr 'and' expAnd=ExprAnd) |  expOr=ExprOr
+;
+
+ExprOr:
+    =>(expNot=ExprNot 'or' expOr=ExprOr) | expNot=ExprNot
+;
+
+ExprNot:
+    ('not' expEqNot=ExprEq) | expEq=ExprEq
+;
+
+ExprEq:
+    (expSimple=ExprSimple '=?' expSimple2=ExprSimple) | '('exp=Expr')'
+;
+
 
 /* TERMINAUX */
 terminal NIL:
@@ -98,7 +123,7 @@ terminal NIL:
 ;
 
 terminal VARIABLE:
-	('A'..'Z')*
+	('A'..'Z')('A'..'Z'|'a'..'z')*
 ;
 
 terminal SYMBOLE:

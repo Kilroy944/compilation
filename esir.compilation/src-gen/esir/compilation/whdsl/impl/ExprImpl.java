@@ -4,6 +4,7 @@
 package esir.compilation.whdsl.impl;
 
 import esir.compilation.whdsl.Expr;
+import esir.compilation.whdsl.ExprAnd;
 import esir.compilation.whdsl.ExprSimple;
 import esir.compilation.whdsl.WhdslPackage;
 
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.impl.ExprImpl#getSimple <em>Simple</em>}</li>
+ *   <li>{@link esir.compilation.whdsl.impl.ExprImpl#getLogique <em>Logique</em>}</li>
  * </ul>
  *
  * @generated
@@ -40,6 +42,16 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
    * @ordered
    */
   protected ExprSimple simple;
+
+  /**
+   * The cached value of the '{@link #getLogique() <em>Logique</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLogique()
+   * @generated
+   * @ordered
+   */
+  protected ExprAnd logique;
 
   /**
    * <!-- begin-user-doc -->
@@ -115,6 +127,54 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
+  public ExprAnd getLogique()
+  {
+    return logique;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetLogique(ExprAnd newLogique, NotificationChain msgs)
+  {
+    ExprAnd oldLogique = logique;
+    logique = newLogique;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR__LOGIQUE, oldLogique, newLogique);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLogique(ExprAnd newLogique)
+  {
+    if (newLogique != logique)
+    {
+      NotificationChain msgs = null;
+      if (logique != null)
+        msgs = ((InternalEObject)logique).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.EXPR__LOGIQUE, null, msgs);
+      if (newLogique != null)
+        msgs = ((InternalEObject)newLogique).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WhdslPackage.EXPR__LOGIQUE, null, msgs);
+      msgs = basicSetLogique(newLogique, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WhdslPackage.EXPR__LOGIQUE, newLogique, newLogique));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -122,6 +182,8 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
     {
       case WhdslPackage.EXPR__SIMPLE:
         return basicSetSimple(null, msgs);
+      case WhdslPackage.EXPR__LOGIQUE:
+        return basicSetLogique(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -138,6 +200,8 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
     {
       case WhdslPackage.EXPR__SIMPLE:
         return getSimple();
+      case WhdslPackage.EXPR__LOGIQUE:
+        return getLogique();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -154,6 +218,9 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
     {
       case WhdslPackage.EXPR__SIMPLE:
         setSimple((ExprSimple)newValue);
+        return;
+      case WhdslPackage.EXPR__LOGIQUE:
+        setLogique((ExprAnd)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -172,6 +239,9 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
       case WhdslPackage.EXPR__SIMPLE:
         setSimple((ExprSimple)null);
         return;
+      case WhdslPackage.EXPR__LOGIQUE:
+        setLogique((ExprAnd)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -188,6 +258,8 @@ public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
     {
       case WhdslPackage.EXPR__SIMPLE:
         return simple != null;
+      case WhdslPackage.EXPR__LOGIQUE:
+        return logique != null;
     }
     return super.eIsSet(featureID);
   }

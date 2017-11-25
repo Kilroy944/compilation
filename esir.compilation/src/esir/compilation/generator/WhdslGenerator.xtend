@@ -21,6 +21,10 @@ import esir.compilation.whdsl.ForEach
 import esir.compilation.whdsl.ExprSimple
 import esir.compilation.whdsl.Expr
 import esir.compilation.whdsl.LExpr
+import esir.compilation.whdsl.ExprAnd
+import esir.compilation.whdsl.ExprOr
+import esir.compilation.whdsl.ExprNot
+import esir.compilation.whdsl.ExprEq
 
 /**
  * Generates code from your model files on save.
@@ -106,8 +110,13 @@ class WhdslGenerator extends AbstractGenerator {
 	def compile(LExpr lexprs){ '''«FOR exp: lexprs.list SEPARATOR ' '»«exp.compile()»«ENDFOR»'''
 	}
 	
-	def compile(Expr e){
-		(e.simple as ExprSimple).compile();
+	def compile(Expr e){		
+		if(e.simple !== null){
+			(e.simple as ExprSimple).compile();
+		}
+		else if(e.logique !== null){
+			(e.logique as ExprAnd).compile();
+		}
 	}
 
 
@@ -147,10 +156,12 @@ class WhdslGenerator extends AbstractGenerator {
 		«FOR cmd: i.thenCommands.list SEPARATOR ';'»
 			«indent+indent_if»«cmd.compile(indent+indent_if)»
 		«ENDFOR»
+		«IF i.elseCommands !== null»
 		«indent»else
 		«FOR cmd: i.elseCommands.list SEPARATOR ';'»
 			«indent+indent_if»«cmd.compile(indent+indent_if)»
 		«ENDFOR»
+		«ENDIF»
 		«indent»fi
 	'''
 	
@@ -178,5 +189,18 @@ class WhdslGenerator extends AbstractGenerator {
 		«ENDFOR»
 		«indent»od
 	'''
+	
+	def compile(ExprAnd e){'''«IF e.expAnd !== null»«e.expOr.compile()» and «e.expAnd.compile()»«ELSE»«e.expOr.compile()»«ENDIF»'''
+	}
+	
+	def compile(ExprOr e){'''«IF e.expOr !== null»«e.expNot.compile()» or «e.expOr.compile()»«ELSE»«e.expNot.compile()»«ENDIF»'''
+	}
+	
+	def compile(ExprNot e){'''«IF e.expEqNot !== null»not «e.expEqNot.compile()»«ELSE»«e.expEq.compile()»«ENDIF»'''
+	}
+	
+	def compile(ExprEq e){'''«IF e.expSimple !== null»«e.expSimple.compile()» =? «e.expSimple2.compile()»«ELSE»(«e.exp.compile()»)«ENDIF»'''
+	}
+	
 
 }

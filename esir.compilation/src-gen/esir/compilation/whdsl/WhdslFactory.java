@@ -186,6 +186,42 @@ public interface WhdslFactory extends EFactory
   ExprSimple createExprSimple();
 
   /**
+   * Returns a new object of class '<em>Expr And</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expr And</em>'.
+   * @generated
+   */
+  ExprAnd createExprAnd();
+
+  /**
+   * Returns a new object of class '<em>Expr Or</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expr Or</em>'.
+   * @generated
+   */
+  ExprOr createExprOr();
+
+  /**
+   * Returns a new object of class '<em>Expr Not</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expr Not</em>'.
+   * @generated
+   */
+  ExprNot createExprNot();
+
+  /**
+   * Returns a new object of class '<em>Expr Eq</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expr Eq</em>'.
+   * @generated
+   */
+  ExprEq createExprEq();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
