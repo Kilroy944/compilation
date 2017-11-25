@@ -11,6 +11,7 @@ import esir.compilation.WhdslStandaloneSetupGenerated;
 @SuppressWarnings("all")
 public class WhdslStandaloneSetup extends WhdslStandaloneSetupGenerated {
   public static void doSetup() {
-    new WhdslStandaloneSetup().createInjectorAndDoEMFRegistration();
+    WhdslStandaloneSetup _whdslStandaloneSetup = new WhdslStandaloneSetup();
+    _whdslStandaloneSetup.createInjectorAndDoEMFRegistration();
   }
 }
