@@ -606,122 +606,413 @@ public interface WhdslPackage extends EPackage
   int EXPR = 16;
 
   /**
-   * The feature id for the '<em><b>Simple</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPR__SIMPLE = 0;
-
-  /**
    * The number of structural features of the '<em>Expr</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPR_FEATURE_COUNT = 1;
+  int EXPR_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link esir.compilation.whdsl.impl.ExprSimpleImpl <em>Expr Simple</em>}' class.
+   * The meta object id for the '{@link esir.compilation.whdsl.impl.ExprAndImpl <em>Expr And</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see esir.compilation.whdsl.impl.ExprSimpleImpl
-   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getExprSimple()
+   * @see esir.compilation.whdsl.impl.ExprAndImpl
+   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getExprAnd()
    * @generated
    */
-  int EXPR_SIMPLE = 17;
+  int EXPR_AND = 17;
 
   /**
-   * The feature id for the '<em><b>Nil</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPR_SIMPLE__NIL = 0;
-
-  /**
-   * The feature id for the '<em><b>Var</b></em>' attribute.
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPR_SIMPLE__VAR = 1;
+  int EXPR_AND__LEFT = EXPR_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Sym</b></em>' attribute.
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPR_SIMPLE__SYM = 2;
+  int EXPR_AND__RIGHT = EXPR_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Cons</b></em>' containment reference.
+   * The number of structural features of the '<em>Expr And</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPR_SIMPLE__CONS = 3;
+  int EXPR_AND_FEATURE_COUNT = EXPR_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>List</b></em>' containment reference.
+   * The meta object id for the '{@link esir.compilation.whdsl.impl.ExprOrImpl <em>Expr Or</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see esir.compilation.whdsl.impl.ExprOrImpl
+   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getExprOr()
+   * @generated
+   */
+  int EXPR_OR = 18;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPR_SIMPLE__LIST = 4;
+  int EXPR_OR__LEFT = EXPR_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Hd</b></em>' containment reference.
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPR_SIMPLE__HD = 5;
+  int EXPR_OR__RIGHT = EXPR_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Tl</b></em>' containment reference.
+   * The number of structural features of the '<em>Expr Or</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPR_SIMPLE__TL = 6;
+  int EXPR_OR_FEATURE_COUNT = EXPR_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Func Name</b></em>' attribute.
+   * The meta object id for the '{@link esir.compilation.whdsl.impl.ExprNotImpl <em>Expr Not</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see esir.compilation.whdsl.impl.ExprNotImpl
+   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getExprNot()
+   * @generated
+   */
+  int EXPR_NOT = 19;
+
+  /**
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPR_SIMPLE__FUNC_NAME = 7;
+  int EXPR_NOT__EXPR = EXPR_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Func Params</b></em>' containment reference.
+   * The number of structural features of the '<em>Expr Not</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPR_SIMPLE__FUNC_PARAMS = 8;
+  int EXPR_NOT_FEATURE_COUNT = EXPR_FEATURE_COUNT + 1;
 
   /**
-   * The number of structural features of the '<em>Expr Simple</em>' class.
+   * The meta object id for the '{@link esir.compilation.whdsl.impl.ExprEqImpl <em>Expr Eq</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see esir.compilation.whdsl.impl.ExprEqImpl
+   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getExprEq()
+   * @generated
+   */
+  int EXPR_EQ = 20;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPR_SIMPLE_FEATURE_COUNT = 9;
+  int EXPR_EQ__LEFT = EXPR_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_EQ__RIGHT = EXPR_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Expr Eq</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_EQ_FEATURE_COUNT = EXPR_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link esir.compilation.whdsl.impl.NillImpl <em>Nill</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see esir.compilation.whdsl.impl.NillImpl
+   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getNill()
+   * @generated
+   */
+  int NILL = 21;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NILL__VALUE = EXPR_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Nill</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NILL_FEATURE_COUNT = EXPR_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link esir.compilation.whdsl.impl.VariableImpl <em>Variable</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see esir.compilation.whdsl.impl.VariableImpl
+   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getVariable()
+   * @generated
+   */
+  int VARIABLE = 22;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE__VALUE = EXPR_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Variable</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_FEATURE_COUNT = EXPR_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link esir.compilation.whdsl.impl.SymbolImpl <em>Symbol</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see esir.compilation.whdsl.impl.SymbolImpl
+   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getSymbol()
+   * @generated
+   */
+  int SYMBOL = 23;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYMBOL__VALUE = EXPR_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Symbol</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYMBOL_FEATURE_COUNT = EXPR_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link esir.compilation.whdsl.impl.ConsImpl <em>Cons</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see esir.compilation.whdsl.impl.ConsImpl
+   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getCons()
+   * @generated
+   */
+  int CONS = 24;
+
+  /**
+   * The feature id for the '<em><b>Exprs</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONS__EXPRS = EXPR_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Cons</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONS_FEATURE_COUNT = EXPR_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link esir.compilation.whdsl.impl.ListImpl <em>List</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see esir.compilation.whdsl.impl.ListImpl
+   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getList()
+   * @generated
+   */
+  int LIST = 25;
+
+  /**
+   * The feature id for the '<em><b>Exprs</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LIST__EXPRS = EXPR_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>List</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LIST_FEATURE_COUNT = EXPR_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link esir.compilation.whdsl.impl.HdImpl <em>Hd</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see esir.compilation.whdsl.impl.HdImpl
+   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getHd()
+   * @generated
+   */
+  int HD = 26;
+
+  /**
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HD__EXPR = EXPR_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Hd</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HD_FEATURE_COUNT = EXPR_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link esir.compilation.whdsl.impl.TlImpl <em>Tl</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see esir.compilation.whdsl.impl.TlImpl
+   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getTl()
+   * @generated
+   */
+  int TL = 27;
+
+  /**
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TL__EXPR = EXPR_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Tl</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TL_FEATURE_COUNT = EXPR_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link esir.compilation.whdsl.impl.CallImpl <em>Call</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see esir.compilation.whdsl.impl.CallImpl
+   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getCall()
+   * @generated
+   */
+  int CALL = 28;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CALL__NAME = EXPR_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Params</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CALL__PARAMS = EXPR_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Call</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CALL_FEATURE_COUNT = EXPR_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link esir.compilation.whdsl.impl.EnclosedExprImpl <em>Enclosed Expr</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see esir.compilation.whdsl.impl.EnclosedExprImpl
+   * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getEnclosedExpr()
+   * @generated
+   */
+  int ENCLOSED_EXPR = 29;
+
+  /**
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENCLOSED_EXPR__EXPR = EXPR_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Enclosed Expr</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENCLOSED_EXPR_FEATURE_COUNT = EXPR_FEATURE_COUNT + 1;
 
 
   /**
@@ -1181,124 +1472,321 @@ public interface WhdslPackage extends EPackage
   EClass getExpr();
 
   /**
-   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.Expr#getSimple <em>Simple</em>}'.
+   * Returns the meta object for class '{@link esir.compilation.whdsl.ExprAnd <em>Expr And</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Simple</em>'.
-   * @see esir.compilation.whdsl.Expr#getSimple()
-   * @see #getExpr()
+   * @return the meta object for class '<em>Expr And</em>'.
+   * @see esir.compilation.whdsl.ExprAnd
    * @generated
    */
-  EReference getExpr_Simple();
+  EClass getExprAnd();
 
   /**
-   * Returns the meta object for class '{@link esir.compilation.whdsl.ExprSimple <em>Expr Simple</em>}'.
+   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.ExprAnd#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Expr Simple</em>'.
-   * @see esir.compilation.whdsl.ExprSimple
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see esir.compilation.whdsl.ExprAnd#getLeft()
+   * @see #getExprAnd()
    * @generated
    */
-  EClass getExprSimple();
+  EReference getExprAnd_Left();
 
   /**
-   * Returns the meta object for the attribute '{@link esir.compilation.whdsl.ExprSimple#getNil <em>Nil</em>}'.
+   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.ExprAnd#getRight <em>Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Nil</em>'.
-   * @see esir.compilation.whdsl.ExprSimple#getNil()
-   * @see #getExprSimple()
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see esir.compilation.whdsl.ExprAnd#getRight()
+   * @see #getExprAnd()
    * @generated
    */
-  EAttribute getExprSimple_Nil();
+  EReference getExprAnd_Right();
 
   /**
-   * Returns the meta object for the attribute '{@link esir.compilation.whdsl.ExprSimple#getVar <em>Var</em>}'.
+   * Returns the meta object for class '{@link esir.compilation.whdsl.ExprOr <em>Expr Or</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Var</em>'.
-   * @see esir.compilation.whdsl.ExprSimple#getVar()
-   * @see #getExprSimple()
+   * @return the meta object for class '<em>Expr Or</em>'.
+   * @see esir.compilation.whdsl.ExprOr
    * @generated
    */
-  EAttribute getExprSimple_Var();
+  EClass getExprOr();
 
   /**
-   * Returns the meta object for the attribute '{@link esir.compilation.whdsl.ExprSimple#getSym <em>Sym</em>}'.
+   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.ExprOr#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Sym</em>'.
-   * @see esir.compilation.whdsl.ExprSimple#getSym()
-   * @see #getExprSimple()
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see esir.compilation.whdsl.ExprOr#getLeft()
+   * @see #getExprOr()
    * @generated
    */
-  EAttribute getExprSimple_Sym();
+  EReference getExprOr_Left();
 
   /**
-   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.ExprSimple#getCons <em>Cons</em>}'.
+   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.ExprOr#getRight <em>Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Cons</em>'.
-   * @see esir.compilation.whdsl.ExprSimple#getCons()
-   * @see #getExprSimple()
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see esir.compilation.whdsl.ExprOr#getRight()
+   * @see #getExprOr()
    * @generated
    */
-  EReference getExprSimple_Cons();
+  EReference getExprOr_Right();
 
   /**
-   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.ExprSimple#getList <em>List</em>}'.
+   * Returns the meta object for class '{@link esir.compilation.whdsl.ExprNot <em>Expr Not</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>List</em>'.
-   * @see esir.compilation.whdsl.ExprSimple#getList()
-   * @see #getExprSimple()
+   * @return the meta object for class '<em>Expr Not</em>'.
+   * @see esir.compilation.whdsl.ExprNot
    * @generated
    */
-  EReference getExprSimple_List();
+  EClass getExprNot();
 
   /**
-   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.ExprSimple#getHd <em>Hd</em>}'.
+   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.ExprNot#getExpr <em>Expr</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Hd</em>'.
-   * @see esir.compilation.whdsl.ExprSimple#getHd()
-   * @see #getExprSimple()
+   * @return the meta object for the containment reference '<em>Expr</em>'.
+   * @see esir.compilation.whdsl.ExprNot#getExpr()
+   * @see #getExprNot()
    * @generated
    */
-  EReference getExprSimple_Hd();
+  EReference getExprNot_Expr();
 
   /**
-   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.ExprSimple#getTl <em>Tl</em>}'.
+   * Returns the meta object for class '{@link esir.compilation.whdsl.ExprEq <em>Expr Eq</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Tl</em>'.
-   * @see esir.compilation.whdsl.ExprSimple#getTl()
-   * @see #getExprSimple()
+   * @return the meta object for class '<em>Expr Eq</em>'.
+   * @see esir.compilation.whdsl.ExprEq
    * @generated
    */
-  EReference getExprSimple_Tl();
+  EClass getExprEq();
 
   /**
-   * Returns the meta object for the attribute '{@link esir.compilation.whdsl.ExprSimple#getFuncName <em>Func Name</em>}'.
+   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.ExprEq#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Func Name</em>'.
-   * @see esir.compilation.whdsl.ExprSimple#getFuncName()
-   * @see #getExprSimple()
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see esir.compilation.whdsl.ExprEq#getLeft()
+   * @see #getExprEq()
    * @generated
    */
-  EAttribute getExprSimple_FuncName();
+  EReference getExprEq_Left();
 
   /**
-   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.ExprSimple#getFuncParams <em>Func Params</em>}'.
+   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.ExprEq#getRight <em>Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Func Params</em>'.
-   * @see esir.compilation.whdsl.ExprSimple#getFuncParams()
-   * @see #getExprSimple()
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see esir.compilation.whdsl.ExprEq#getRight()
+   * @see #getExprEq()
    * @generated
    */
-  EReference getExprSimple_FuncParams();
+  EReference getExprEq_Right();
+
+  /**
+   * Returns the meta object for class '{@link esir.compilation.whdsl.Nill <em>Nill</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Nill</em>'.
+   * @see esir.compilation.whdsl.Nill
+   * @generated
+   */
+  EClass getNill();
+
+  /**
+   * Returns the meta object for the attribute '{@link esir.compilation.whdsl.Nill#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see esir.compilation.whdsl.Nill#getValue()
+   * @see #getNill()
+   * @generated
+   */
+  EAttribute getNill_Value();
+
+  /**
+   * Returns the meta object for class '{@link esir.compilation.whdsl.Variable <em>Variable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Variable</em>'.
+   * @see esir.compilation.whdsl.Variable
+   * @generated
+   */
+  EClass getVariable();
+
+  /**
+   * Returns the meta object for the attribute '{@link esir.compilation.whdsl.Variable#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see esir.compilation.whdsl.Variable#getValue()
+   * @see #getVariable()
+   * @generated
+   */
+  EAttribute getVariable_Value();
+
+  /**
+   * Returns the meta object for class '{@link esir.compilation.whdsl.Symbol <em>Symbol</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Symbol</em>'.
+   * @see esir.compilation.whdsl.Symbol
+   * @generated
+   */
+  EClass getSymbol();
+
+  /**
+   * Returns the meta object for the attribute '{@link esir.compilation.whdsl.Symbol#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see esir.compilation.whdsl.Symbol#getValue()
+   * @see #getSymbol()
+   * @generated
+   */
+  EAttribute getSymbol_Value();
+
+  /**
+   * Returns the meta object for class '{@link esir.compilation.whdsl.Cons <em>Cons</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Cons</em>'.
+   * @see esir.compilation.whdsl.Cons
+   * @generated
+   */
+  EClass getCons();
+
+  /**
+   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.Cons#getExprs <em>Exprs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Exprs</em>'.
+   * @see esir.compilation.whdsl.Cons#getExprs()
+   * @see #getCons()
+   * @generated
+   */
+  EReference getCons_Exprs();
+
+  /**
+   * Returns the meta object for class '{@link esir.compilation.whdsl.List <em>List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>List</em>'.
+   * @see esir.compilation.whdsl.List
+   * @generated
+   */
+  EClass getList();
+
+  /**
+   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.List#getExprs <em>Exprs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Exprs</em>'.
+   * @see esir.compilation.whdsl.List#getExprs()
+   * @see #getList()
+   * @generated
+   */
+  EReference getList_Exprs();
+
+  /**
+   * Returns the meta object for class '{@link esir.compilation.whdsl.Hd <em>Hd</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Hd</em>'.
+   * @see esir.compilation.whdsl.Hd
+   * @generated
+   */
+  EClass getHd();
+
+  /**
+   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.Hd#getExpr <em>Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expr</em>'.
+   * @see esir.compilation.whdsl.Hd#getExpr()
+   * @see #getHd()
+   * @generated
+   */
+  EReference getHd_Expr();
+
+  /**
+   * Returns the meta object for class '{@link esir.compilation.whdsl.Tl <em>Tl</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Tl</em>'.
+   * @see esir.compilation.whdsl.Tl
+   * @generated
+   */
+  EClass getTl();
+
+  /**
+   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.Tl#getExpr <em>Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expr</em>'.
+   * @see esir.compilation.whdsl.Tl#getExpr()
+   * @see #getTl()
+   * @generated
+   */
+  EReference getTl_Expr();
+
+  /**
+   * Returns the meta object for class '{@link esir.compilation.whdsl.Call <em>Call</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Call</em>'.
+   * @see esir.compilation.whdsl.Call
+   * @generated
+   */
+  EClass getCall();
+
+  /**
+   * Returns the meta object for the attribute '{@link esir.compilation.whdsl.Call#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see esir.compilation.whdsl.Call#getName()
+   * @see #getCall()
+   * @generated
+   */
+  EAttribute getCall_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.Call#getParams <em>Params</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Params</em>'.
+   * @see esir.compilation.whdsl.Call#getParams()
+   * @see #getCall()
+   * @generated
+   */
+  EReference getCall_Params();
+
+  /**
+   * Returns the meta object for class '{@link esir.compilation.whdsl.EnclosedExpr <em>Enclosed Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Enclosed Expr</em>'.
+   * @see esir.compilation.whdsl.EnclosedExpr
+   * @generated
+   */
+  EClass getEnclosedExpr();
+
+  /**
+   * Returns the meta object for the containment reference '{@link esir.compilation.whdsl.EnclosedExpr#getExpr <em>Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expr</em>'.
+   * @see esir.compilation.whdsl.EnclosedExpr#getExpr()
+   * @see #getEnclosedExpr()
+   * @generated
+   */
+  EReference getEnclosedExpr_Expr();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -1702,94 +2190,270 @@ public interface WhdslPackage extends EPackage
     EClass EXPR = eINSTANCE.getExpr();
 
     /**
-     * The meta object literal for the '<em><b>Simple</b></em>' containment reference feature.
+     * The meta object literal for the '{@link esir.compilation.whdsl.impl.ExprAndImpl <em>Expr And</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see esir.compilation.whdsl.impl.ExprAndImpl
+     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getExprAnd()
      * @generated
      */
-    EReference EXPR__SIMPLE = eINSTANCE.getExpr_Simple();
+    EClass EXPR_AND = eINSTANCE.getExprAnd();
 
     /**
-     * The meta object literal for the '{@link esir.compilation.whdsl.impl.ExprSimpleImpl <em>Expr Simple</em>}' class.
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see esir.compilation.whdsl.impl.ExprSimpleImpl
-     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getExprSimple()
      * @generated
      */
-    EClass EXPR_SIMPLE = eINSTANCE.getExprSimple();
+    EReference EXPR_AND__LEFT = eINSTANCE.getExprAnd_Left();
 
     /**
-     * The meta object literal for the '<em><b>Nil</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute EXPR_SIMPLE__NIL = eINSTANCE.getExprSimple_Nil();
+    EReference EXPR_AND__RIGHT = eINSTANCE.getExprAnd_Right();
 
     /**
-     * The meta object literal for the '<em><b>Var</b></em>' attribute feature.
+     * The meta object literal for the '{@link esir.compilation.whdsl.impl.ExprOrImpl <em>Expr Or</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see esir.compilation.whdsl.impl.ExprOrImpl
+     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getExprOr()
      * @generated
      */
-    EAttribute EXPR_SIMPLE__VAR = eINSTANCE.getExprSimple_Var();
+    EClass EXPR_OR = eINSTANCE.getExprOr();
 
     /**
-     * The meta object literal for the '<em><b>Sym</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute EXPR_SIMPLE__SYM = eINSTANCE.getExprSimple_Sym();
+    EReference EXPR_OR__LEFT = eINSTANCE.getExprOr_Left();
 
     /**
-     * The meta object literal for the '<em><b>Cons</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference EXPR_SIMPLE__CONS = eINSTANCE.getExprSimple_Cons();
+    EReference EXPR_OR__RIGHT = eINSTANCE.getExprOr_Right();
 
     /**
-     * The meta object literal for the '<em><b>List</b></em>' containment reference feature.
+     * The meta object literal for the '{@link esir.compilation.whdsl.impl.ExprNotImpl <em>Expr Not</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see esir.compilation.whdsl.impl.ExprNotImpl
+     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getExprNot()
      * @generated
      */
-    EReference EXPR_SIMPLE__LIST = eINSTANCE.getExprSimple_List();
+    EClass EXPR_NOT = eINSTANCE.getExprNot();
 
     /**
-     * The meta object literal for the '<em><b>Hd</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference EXPR_SIMPLE__HD = eINSTANCE.getExprSimple_Hd();
+    EReference EXPR_NOT__EXPR = eINSTANCE.getExprNot_Expr();
 
     /**
-     * The meta object literal for the '<em><b>Tl</b></em>' containment reference feature.
+     * The meta object literal for the '{@link esir.compilation.whdsl.impl.ExprEqImpl <em>Expr Eq</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see esir.compilation.whdsl.impl.ExprEqImpl
+     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getExprEq()
      * @generated
      */
-    EReference EXPR_SIMPLE__TL = eINSTANCE.getExprSimple_Tl();
+    EClass EXPR_EQ = eINSTANCE.getExprEq();
 
     /**
-     * The meta object literal for the '<em><b>Func Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute EXPR_SIMPLE__FUNC_NAME = eINSTANCE.getExprSimple_FuncName();
+    EReference EXPR_EQ__LEFT = eINSTANCE.getExprEq_Left();
 
     /**
-     * The meta object literal for the '<em><b>Func Params</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference EXPR_SIMPLE__FUNC_PARAMS = eINSTANCE.getExprSimple_FuncParams();
+    EReference EXPR_EQ__RIGHT = eINSTANCE.getExprEq_Right();
+
+    /**
+     * The meta object literal for the '{@link esir.compilation.whdsl.impl.NillImpl <em>Nill</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see esir.compilation.whdsl.impl.NillImpl
+     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getNill()
+     * @generated
+     */
+    EClass NILL = eINSTANCE.getNill();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute NILL__VALUE = eINSTANCE.getNill_Value();
+
+    /**
+     * The meta object literal for the '{@link esir.compilation.whdsl.impl.VariableImpl <em>Variable</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see esir.compilation.whdsl.impl.VariableImpl
+     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getVariable()
+     * @generated
+     */
+    EClass VARIABLE = eINSTANCE.getVariable();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VARIABLE__VALUE = eINSTANCE.getVariable_Value();
+
+    /**
+     * The meta object literal for the '{@link esir.compilation.whdsl.impl.SymbolImpl <em>Symbol</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see esir.compilation.whdsl.impl.SymbolImpl
+     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getSymbol()
+     * @generated
+     */
+    EClass SYMBOL = eINSTANCE.getSymbol();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SYMBOL__VALUE = eINSTANCE.getSymbol_Value();
+
+    /**
+     * The meta object literal for the '{@link esir.compilation.whdsl.impl.ConsImpl <em>Cons</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see esir.compilation.whdsl.impl.ConsImpl
+     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getCons()
+     * @generated
+     */
+    EClass CONS = eINSTANCE.getCons();
+
+    /**
+     * The meta object literal for the '<em><b>Exprs</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONS__EXPRS = eINSTANCE.getCons_Exprs();
+
+    /**
+     * The meta object literal for the '{@link esir.compilation.whdsl.impl.ListImpl <em>List</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see esir.compilation.whdsl.impl.ListImpl
+     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getList()
+     * @generated
+     */
+    EClass LIST = eINSTANCE.getList();
+
+    /**
+     * The meta object literal for the '<em><b>Exprs</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LIST__EXPRS = eINSTANCE.getList_Exprs();
+
+    /**
+     * The meta object literal for the '{@link esir.compilation.whdsl.impl.HdImpl <em>Hd</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see esir.compilation.whdsl.impl.HdImpl
+     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getHd()
+     * @generated
+     */
+    EClass HD = eINSTANCE.getHd();
+
+    /**
+     * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference HD__EXPR = eINSTANCE.getHd_Expr();
+
+    /**
+     * The meta object literal for the '{@link esir.compilation.whdsl.impl.TlImpl <em>Tl</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see esir.compilation.whdsl.impl.TlImpl
+     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getTl()
+     * @generated
+     */
+    EClass TL = eINSTANCE.getTl();
+
+    /**
+     * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TL__EXPR = eINSTANCE.getTl_Expr();
+
+    /**
+     * The meta object literal for the '{@link esir.compilation.whdsl.impl.CallImpl <em>Call</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see esir.compilation.whdsl.impl.CallImpl
+     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getCall()
+     * @generated
+     */
+    EClass CALL = eINSTANCE.getCall();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CALL__NAME = eINSTANCE.getCall_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Params</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CALL__PARAMS = eINSTANCE.getCall_Params();
+
+    /**
+     * The meta object literal for the '{@link esir.compilation.whdsl.impl.EnclosedExprImpl <em>Enclosed Expr</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see esir.compilation.whdsl.impl.EnclosedExprImpl
+     * @see esir.compilation.whdsl.impl.WhdslPackageImpl#getEnclosedExpr()
+     * @generated
+     */
+    EClass ENCLOSED_EXPR = eINSTANCE.getEnclosedExpr();
+
+    /**
+     * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ENCLOSED_EXPR__EXPR = eINSTANCE.getEnclosedExpr_Expr();
 
   }
 

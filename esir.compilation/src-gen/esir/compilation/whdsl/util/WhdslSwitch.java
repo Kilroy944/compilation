@@ -192,10 +192,107 @@ public class WhdslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WhdslPackage.EXPR_SIMPLE:
+      case WhdslPackage.EXPR_AND:
       {
-        ExprSimple exprSimple = (ExprSimple)theEObject;
-        T result = caseExprSimple(exprSimple);
+        ExprAnd exprAnd = (ExprAnd)theEObject;
+        T result = caseExprAnd(exprAnd);
+        if (result == null) result = caseExpr(exprAnd);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WhdslPackage.EXPR_OR:
+      {
+        ExprOr exprOr = (ExprOr)theEObject;
+        T result = caseExprOr(exprOr);
+        if (result == null) result = caseExpr(exprOr);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WhdslPackage.EXPR_NOT:
+      {
+        ExprNot exprNot = (ExprNot)theEObject;
+        T result = caseExprNot(exprNot);
+        if (result == null) result = caseExpr(exprNot);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WhdslPackage.EXPR_EQ:
+      {
+        ExprEq exprEq = (ExprEq)theEObject;
+        T result = caseExprEq(exprEq);
+        if (result == null) result = caseExpr(exprEq);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WhdslPackage.NILL:
+      {
+        Nill nill = (Nill)theEObject;
+        T result = caseNill(nill);
+        if (result == null) result = caseExpr(nill);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WhdslPackage.VARIABLE:
+      {
+        Variable variable = (Variable)theEObject;
+        T result = caseVariable(variable);
+        if (result == null) result = caseExpr(variable);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WhdslPackage.SYMBOL:
+      {
+        Symbol symbol = (Symbol)theEObject;
+        T result = caseSymbol(symbol);
+        if (result == null) result = caseExpr(symbol);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WhdslPackage.CONS:
+      {
+        Cons cons = (Cons)theEObject;
+        T result = caseCons(cons);
+        if (result == null) result = caseExpr(cons);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WhdslPackage.LIST:
+      {
+        List list = (List)theEObject;
+        T result = caseList(list);
+        if (result == null) result = caseExpr(list);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WhdslPackage.HD:
+      {
+        Hd hd = (Hd)theEObject;
+        T result = caseHd(hd);
+        if (result == null) result = caseExpr(hd);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WhdslPackage.TL:
+      {
+        Tl tl = (Tl)theEObject;
+        T result = caseTl(tl);
+        if (result == null) result = caseExpr(tl);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WhdslPackage.CALL:
+      {
+        Call call = (Call)theEObject;
+        T result = caseCall(call);
+        if (result == null) result = caseExpr(call);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WhdslPackage.ENCLOSED_EXPR:
+      {
+        EnclosedExpr enclosedExpr = (EnclosedExpr)theEObject;
+        T result = caseEnclosedExpr(enclosedExpr);
+        if (result == null) result = caseExpr(enclosedExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -476,17 +573,209 @@ public class WhdslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Expr Simple</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Expr And</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Expr Simple</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Expr And</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseExprSimple(ExprSimple object)
+  public T caseExprAnd(ExprAnd object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Expr Or</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Expr Or</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExprOr(ExprOr object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Expr Not</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Expr Not</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExprNot(ExprNot object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Expr Eq</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Expr Eq</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExprEq(ExprEq object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Nill</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Nill</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNill(Nill object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVariable(Variable object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Symbol</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Symbol</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSymbol(Symbol object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Cons</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Cons</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCons(Cons object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>List</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>List</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseList(List object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Hd</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Hd</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseHd(Hd object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Tl</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Tl</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTl(Tl object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Call</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Call</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCall(Call object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Enclosed Expr</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Enclosed Expr</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEnclosedExpr(EnclosedExpr object)
   {
     return null;
   }

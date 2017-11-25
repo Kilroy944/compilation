@@ -10,12 +10,6 @@ import org.eclipse.emf.ecore.EObject;
  * A representation of the model object '<em><b>Expr</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link esir.compilation.whdsl.Expr#getSimple <em>Simple</em>}</li>
- * </ul>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getExpr()
  * @model
@@ -23,30 +17,4 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Expr extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Simple</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Simple</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Simple</em>' containment reference.
-   * @see #setSimple(ExprSimple)
-   * @see esir.compilation.whdsl.WhdslPackage#getExpr_Simple()
-   * @model containment="true"
-   * @generated
-   */
-  ExprSimple getSimple();
-
-  /**
-   * Sets the value of the '{@link esir.compilation.whdsl.Expr#getSimple <em>Simple</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Simple</em>' containment reference.
-   * @see #getSimple()
-   * @generated
-   */
-  void setSimple(ExprSimple value);
-
 } // Expr

@@ -78,17 +78,36 @@ LExpr:
 ;
 
 Expr:
-	simple=ExprSimple
+	ExprAnd
 ;
 
-ExprSimple:
-	nil=NIL | var=VARIABLE | sym=SYMBOLE |
+ExprAnd returns Expr:
+	ExprOr ({ExprAnd.left=current} 'and' right=ExprOr)*
+;
+
+ExprOr returns Expr:
+	ExprNot ({ExprOr.left=current} 'or' right=ExprNot)*
+;
+
+ExprNot returns Expr:
+	{ExprNot} 'not' expr=ExprEq | ExprEq
+;
+
+ExprEq returns Expr:
+	ExprSimple ({ExprEq.left=current} '=?' right=ExprSimple)?
+;
+
+ExprSimple returns Expr:
+	{Nill} value=NIL | 
+	{Variable} value=VARIABLE |
+	{Symbol} value=SYMBOLE |
 	'(' (
-		'cons' cons=LExpr |
-		'list' list=LExpr |
-		'hd' hd=Expr |
-		'tl' tl=Expr |
-		funcName=SYMBOLE funcParams=LExpr
+		{Cons} 'cons' exprs=LExpr |
+		{List} 'list' exprs=LExpr |
+		{Hd} 'hd' expr=Expr |
+		{Tl} 'tl' expr=Expr |
+		{Call} name=SYMBOLE params=LExpr |
+		{EnclosedExpr} expr=Expr
 	) ')'
 ;
 
@@ -98,9 +117,9 @@ terminal NIL:
 ;
 
 terminal VARIABLE:
-	('A'..'Z')*
+	('A'..'Z')+
 ;
 
 terminal SYMBOLE:
-	('a'..'z')*
+	('a'..'z')+
 ;

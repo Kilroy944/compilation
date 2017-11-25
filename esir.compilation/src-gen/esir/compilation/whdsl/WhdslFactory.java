@@ -177,13 +177,121 @@ public interface WhdslFactory extends EFactory
   Expr createExpr();
 
   /**
-   * Returns a new object of class '<em>Expr Simple</em>'.
+   * Returns a new object of class '<em>Expr And</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Expr Simple</em>'.
+   * @return a new object of class '<em>Expr And</em>'.
    * @generated
    */
-  ExprSimple createExprSimple();
+  ExprAnd createExprAnd();
+
+  /**
+   * Returns a new object of class '<em>Expr Or</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expr Or</em>'.
+   * @generated
+   */
+  ExprOr createExprOr();
+
+  /**
+   * Returns a new object of class '<em>Expr Not</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expr Not</em>'.
+   * @generated
+   */
+  ExprNot createExprNot();
+
+  /**
+   * Returns a new object of class '<em>Expr Eq</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expr Eq</em>'.
+   * @generated
+   */
+  ExprEq createExprEq();
+
+  /**
+   * Returns a new object of class '<em>Nill</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Nill</em>'.
+   * @generated
+   */
+  Nill createNill();
+
+  /**
+   * Returns a new object of class '<em>Variable</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable</em>'.
+   * @generated
+   */
+  Variable createVariable();
+
+  /**
+   * Returns a new object of class '<em>Symbol</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Symbol</em>'.
+   * @generated
+   */
+  Symbol createSymbol();
+
+  /**
+   * Returns a new object of class '<em>Cons</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Cons</em>'.
+   * @generated
+   */
+  Cons createCons();
+
+  /**
+   * Returns a new object of class '<em>List</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>List</em>'.
+   * @generated
+   */
+  List createList();
+
+  /**
+   * Returns a new object of class '<em>Hd</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Hd</em>'.
+   * @generated
+   */
+  Hd createHd();
+
+  /**
+   * Returns a new object of class '<em>Tl</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Tl</em>'.
+   * @generated
+   */
+  Tl createTl();
+
+  /**
+   * Returns a new object of class '<em>Call</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Call</em>'.
+   * @generated
+   */
+  Call createCall();
+
+  /**
+   * Returns a new object of class '<em>Enclosed Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Enclosed Expr</em>'.
+   * @generated
+   */
+  EnclosedExpr createEnclosedExpr();
 
   /**
    * Returns the package supported by this factory.

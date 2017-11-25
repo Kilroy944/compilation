@@ -1,7 +1,7 @@
 function fonctiona : 
 	read B,B % 
 	nop;
-	if (cond A B) then nop else nop fi;
+	if (cons (tl  AC  )  B   ) then nop else nop fi;
 	for nil do nop;nop od;
 	while nil do nop;nop od;
 	if nil then if nil then nop;nop else nop fi else nop; nop fi
