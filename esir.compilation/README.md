@@ -1,30 +1,30 @@
-# compilation
-
 PRETTY PRINTER		    Manuel de l'utilisateur
 
-Auteurs : Vincent Bonhomme - Valentin Conseil - Valention Lion - Karim Oubah - Corentin Roche - Adrien Riou - Adrien Taja 
+NAME
+	whpp - WHILE pretty printer
 
-	"Commande" - Mise en forme d'un fichier passer en paramètre
-
+SYNOPSIS
+	whpp [OPTIONS] source
 
 DESCRIPTION
+	Met en forme le contenu du fichier source. Celui-ci doit posséder l'extension .wh.
 
-	"Commande" met en forme le contenu d'un fichier passé en paramètre sur la sortie standard.
+OPTIONS
+	-o FICHIER
+		Écrit le résultat dans FICHIER.
+		Si -o n'est pas spécifiée, le résultat sera écrit dans un fichier ayant le même nom que le fichier d'entrée mais possédant l'extension .whpp.
 
+	-all X	Règle le nombre d'espaces par indentation à X (par défaut 2).
 
-OPTION
+	-if X, -while X, -for X, -foreach X
+		Règle le nombre d'indentations à X pour une commande particulière.
 
-	- o		Affiche le nom du fichier de sortie
+	-test	Lance les tests.
 
-	- indent	Affiche la valeur de l'indentation
+	-help	Affiche ce manuel.
 
-	- if		Affiche le nombre d'indentation pour la commande 'if'
+SEE ALSO
+	whc
 
-	- for		Affiche le nombre d'indentation pour la commande 'for'
-
-	- while		Affiche le nombre d'indentation pour la commande 'while'
-
-	- test		Effectue les tests sur le pretty printer
-
-
-FSF			21 novembre 2017
+AUTHORS
+	Vincent Bonhomme - Valentin Conseil - Valention Lion - Karim Oubah - Corentin Roche - Adrien Riou - Adrien Taja

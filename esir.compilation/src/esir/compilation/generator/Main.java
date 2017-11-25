@@ -159,8 +159,7 @@ public class Main {
 	public static void printMan(){
 		BufferedReader fent;
 		try {
-			fent  = new BufferedReader( new FileReader( new File("README.md")));
-			System.out.println("MANUEL D'UTILISATION :");
+			fent = new BufferedReader(new FileReader(new File("README.md")));
 			String enr;
 			while ( ( enr = fent.readLine( ) ) != null ) // null en cas de fin de fichier
 			{
