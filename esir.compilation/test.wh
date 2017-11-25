@@ -1,0 +1,33 @@
+function fonctiona : 
+	read B,B % 
+	nop;
+	if (cond A B) then nop else nop fi;
+	for nil do nop;nop od;
+	while nil do nop;nop od;
+	if nil then if nil then nop;nop else nop fi else nop; nop fi
+	% write A,B,C
+
+function fonctionb : read A %
+	foreach nil in nil do nop od
+	 % write A,B,C
+
+function fonctionb : read A %
+	A:=B;A:=nil;A,B,C:=nil,nil,nil
+	  % write A,B,C
+	 
+	 
+function fonctiona : 
+	read B,B % 
+	nop;
+	if (cond A (A) and (not (B) or A =? B)) then 
+	 A:=B else nop fi;
+	for (list (hd A) b c) do nop od;
+	while (tl (list a b c)) do nop;nop od;
+	if (funct A) then nop fi
+	% write A,B,C
+
+function fonctionb : read A %
+	A:=A;A,B,C:=B,C,C
+	  % write A,B,C
+	 
+	

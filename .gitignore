@@ -1,6 +1,6 @@
-/bin
-.xtendbin
-/esir.compilation/
+bin/
+**/src-gen/**
+*.xtendbin
 /esir.compilation.ide/
 /esir.compilation.tests/
 /esir.compilation.ui/
