@@ -6,25 +6,32 @@ package esir.compilation.serializer;
 import com.google.inject.Inject;
 import esir.compilation.services.WhdslGrammarAccess;
 import esir.compilation.whdsl.Affect;
+import esir.compilation.whdsl.Call;
 import esir.compilation.whdsl.Command;
 import esir.compilation.whdsl.Commands;
+import esir.compilation.whdsl.Cons;
 import esir.compilation.whdsl.Definition;
-import esir.compilation.whdsl.Expr;
+import esir.compilation.whdsl.EnclosedExpr;
 import esir.compilation.whdsl.ExprAnd;
 import esir.compilation.whdsl.ExprEq;
 import esir.compilation.whdsl.ExprNot;
 import esir.compilation.whdsl.ExprOr;
-import esir.compilation.whdsl.ExprSimple;
 import esir.compilation.whdsl.Exprs;
 import esir.compilation.whdsl.For;
 import esir.compilation.whdsl.ForEach;
 import esir.compilation.whdsl.Function;
+import esir.compilation.whdsl.Hd;
 import esir.compilation.whdsl.If;
 import esir.compilation.whdsl.Input;
 import esir.compilation.whdsl.LExpr;
+import esir.compilation.whdsl.List;
+import esir.compilation.whdsl.Nill;
 import esir.compilation.whdsl.Nop;
 import esir.compilation.whdsl.Output;
 import esir.compilation.whdsl.Program;
+import esir.compilation.whdsl.Symbol;
+import esir.compilation.whdsl.Tl;
+import esir.compilation.whdsl.Variable;
 import esir.compilation.whdsl.Vars;
 import esir.compilation.whdsl.WhdslPackage;
 import esir.compilation.whdsl.While;
@@ -56,17 +63,23 @@ public class WhdslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case WhdslPackage.AFFECT:
 				sequence_Affect(context, (Affect) semanticObject); 
 				return; 
+			case WhdslPackage.CALL:
+				sequence_ExprSimple(context, (Call) semanticObject); 
+				return; 
 			case WhdslPackage.COMMAND:
 				sequence_Command(context, (Command) semanticObject); 
 				return; 
 			case WhdslPackage.COMMANDS:
 				sequence_Commands(context, (Commands) semanticObject); 
 				return; 
+			case WhdslPackage.CONS:
+				sequence_ExprSimple(context, (Cons) semanticObject); 
+				return; 
 			case WhdslPackage.DEFINITION:
 				sequence_Definition(context, (Definition) semanticObject); 
 				return; 
-			case WhdslPackage.EXPR:
-				sequence_Expr(context, (Expr) semanticObject); 
+			case WhdslPackage.ENCLOSED_EXPR:
+				sequence_ExprSimple(context, (EnclosedExpr) semanticObject); 
 				return; 
 			case WhdslPackage.EXPR_AND:
 				sequence_ExprAnd(context, (ExprAnd) semanticObject); 
@@ -80,9 +93,6 @@ public class WhdslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case WhdslPackage.EXPR_OR:
 				sequence_ExprOr(context, (ExprOr) semanticObject); 
 				return; 
-			case WhdslPackage.EXPR_SIMPLE:
-				sequence_ExprSimple(context, (ExprSimple) semanticObject); 
-				return; 
 			case WhdslPackage.EXPRS:
 				sequence_Exprs(context, (Exprs) semanticObject); 
 				return; 
@@ -95,6 +105,9 @@ public class WhdslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case WhdslPackage.FUNCTION:
 				sequence_Function(context, (Function) semanticObject); 
 				return; 
+			case WhdslPackage.HD:
+				sequence_ExprSimple(context, (Hd) semanticObject); 
+				return; 
 			case WhdslPackage.IF:
 				sequence_If(context, (If) semanticObject); 
 				return; 
@@ -104,6 +117,12 @@ public class WhdslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case WhdslPackage.LEXPR:
 				sequence_LExpr(context, (LExpr) semanticObject); 
 				return; 
+			case WhdslPackage.LIST:
+				sequence_ExprSimple(context, (List) semanticObject); 
+				return; 
+			case WhdslPackage.NILL:
+				sequence_ExprSimple(context, (Nill) semanticObject); 
+				return; 
 			case WhdslPackage.NOP:
 				sequence_Nop(context, (Nop) semanticObject); 
 				return; 
@@ -112,6 +131,15 @@ public class WhdslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				return; 
 			case WhdslPackage.PROGRAM:
 				sequence_Program(context, (Program) semanticObject); 
+				return; 
+			case WhdslPackage.SYMBOL:
+				sequence_ExprSimple(context, (Symbol) semanticObject); 
+				return; 
+			case WhdslPackage.TL:
+				sequence_ExprSimple(context, (Tl) semanticObject); 
+				return; 
+			case WhdslPackage.VARIABLE:
+				sequence_ExprSimple(context, (Variable) semanticObject); 
 				return; 
 			case WhdslPackage.VARS:
 				sequence_Vars(context, (Vars) semanticObject); 
@@ -202,82 +230,336 @@ public class WhdslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
+	 *     Expr returns ExprAnd
 	 *     ExprAnd returns ExprAnd
+	 *     ExprAnd.ExprAnd_1_0 returns ExprAnd
 	 *
 	 * Constraint:
-	 *     ((expOr=ExprOr expAnd=ExprAnd) | expOr=ExprOr)
+	 *     (left=ExprAnd_ExprAnd_1_0 right=ExprOr)
 	 */
 	protected void sequence_ExprAnd(ISerializationContext context, ExprAnd semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.EXPR_AND__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.EXPR_AND__LEFT));
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.EXPR_AND__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.EXPR_AND__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExprAndAccess().getExprAndLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getExprAndAccess().getRightExprOrParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
+	 *     Expr returns ExprEq
+	 *     ExprAnd returns ExprEq
+	 *     ExprAnd.ExprAnd_1_0 returns ExprEq
+	 *     ExprOr returns ExprEq
+	 *     ExprOr.ExprOr_1_0 returns ExprEq
+	 *     ExprNot returns ExprEq
 	 *     ExprEq returns ExprEq
 	 *
 	 * Constraint:
-	 *     ((expSimple=ExprSimple expSimple2=ExprSimple) | exp=Expr)
+	 *     (left=ExprEq_ExprEq_1_0 right=ExprSimple)
 	 */
 	protected void sequence_ExprEq(ISerializationContext context, ExprEq semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.EXPR_EQ__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.EXPR_EQ__LEFT));
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.EXPR_EQ__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.EXPR_EQ__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExprEqAccess().getExprEqLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getExprEqAccess().getRightExprSimpleParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
+	 *     Expr returns ExprNot
+	 *     ExprAnd returns ExprNot
+	 *     ExprAnd.ExprAnd_1_0 returns ExprNot
+	 *     ExprOr returns ExprNot
+	 *     ExprOr.ExprOr_1_0 returns ExprNot
 	 *     ExprNot returns ExprNot
 	 *
 	 * Constraint:
-	 *     (expEqNot=ExprEq | expEq=ExprEq)
+	 *     expr=ExprEq
 	 */
 	protected void sequence_ExprNot(ISerializationContext context, ExprNot semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.EXPR_NOT__EXPR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.EXPR_NOT__EXPR));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExprNotAccess().getExprExprEqParserRuleCall_0_2_0(), semanticObject.getExpr());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
+	 *     Expr returns ExprOr
+	 *     ExprAnd returns ExprOr
+	 *     ExprAnd.ExprAnd_1_0 returns ExprOr
 	 *     ExprOr returns ExprOr
+	 *     ExprOr.ExprOr_1_0 returns ExprOr
 	 *
 	 * Constraint:
-	 *     ((expNot=ExprNot expOr=ExprOr) | expNot=ExprNot)
+	 *     (left=ExprOr_ExprOr_1_0 right=ExprNot)
 	 */
 	protected void sequence_ExprOr(ISerializationContext context, ExprOr semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.EXPR_OR__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.EXPR_OR__LEFT));
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.EXPR_OR__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.EXPR_OR__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExprOrAccess().getExprOrLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getExprOrAccess().getRightExprNotParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     ExprSimple returns ExprSimple
+	 *     Expr returns Call
+	 *     ExprAnd returns Call
+	 *     ExprAnd.ExprAnd_1_0 returns Call
+	 *     ExprOr returns Call
+	 *     ExprOr.ExprOr_1_0 returns Call
+	 *     ExprNot returns Call
+	 *     ExprEq returns Call
+	 *     ExprEq.ExprEq_1_0 returns Call
+	 *     ExprSimple returns Call
 	 *
 	 * Constraint:
-	 *     (
-	 *         nil=NIL | 
-	 *         var=VARIABLE | 
-	 *         sym=SYMBOLE | 
-	 *         cons=LExpr | 
-	 *         list=LExpr | 
-	 *         hd=Expr | 
-	 *         tl=Expr | 
-	 *         (funcName=SYMBOLE funcParams=LExpr)
-	 *     )
+	 *     (name=SYMBOLE params=LExpr)
 	 */
-	protected void sequence_ExprSimple(ISerializationContext context, ExprSimple semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+	protected void sequence_ExprSimple(ISerializationContext context, Call semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.CALL__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.CALL__NAME));
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.CALL__PARAMS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.CALL__PARAMS));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExprSimpleAccess().getNameSYMBOLETerminalRuleCall_3_1_4_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getExprSimpleAccess().getParamsLExprParserRuleCall_3_1_4_2_0(), semanticObject.getParams());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     Expr returns Expr
+	 *     Expr returns Cons
+	 *     ExprAnd returns Cons
+	 *     ExprAnd.ExprAnd_1_0 returns Cons
+	 *     ExprOr returns Cons
+	 *     ExprOr.ExprOr_1_0 returns Cons
+	 *     ExprNot returns Cons
+	 *     ExprEq returns Cons
+	 *     ExprEq.ExprEq_1_0 returns Cons
+	 *     ExprSimple returns Cons
 	 *
 	 * Constraint:
-	 *     (simple=ExprSimple | logique=ExprAnd)
+	 *     exprs=LExpr
 	 */
-	protected void sequence_Expr(ISerializationContext context, Expr semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+	protected void sequence_ExprSimple(ISerializationContext context, Cons semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.CONS__EXPRS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.CONS__EXPRS));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExprSimpleAccess().getExprsLExprParserRuleCall_3_1_0_2_0(), semanticObject.getExprs());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expr returns EnclosedExpr
+	 *     ExprAnd returns EnclosedExpr
+	 *     ExprAnd.ExprAnd_1_0 returns EnclosedExpr
+	 *     ExprOr returns EnclosedExpr
+	 *     ExprOr.ExprOr_1_0 returns EnclosedExpr
+	 *     ExprNot returns EnclosedExpr
+	 *     ExprEq returns EnclosedExpr
+	 *     ExprEq.ExprEq_1_0 returns EnclosedExpr
+	 *     ExprSimple returns EnclosedExpr
+	 *
+	 * Constraint:
+	 *     expr=Expr
+	 */
+	protected void sequence_ExprSimple(ISerializationContext context, EnclosedExpr semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.ENCLOSED_EXPR__EXPR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.ENCLOSED_EXPR__EXPR));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExprSimpleAccess().getExprExprParserRuleCall_3_1_5_1_0(), semanticObject.getExpr());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expr returns Hd
+	 *     ExprAnd returns Hd
+	 *     ExprAnd.ExprAnd_1_0 returns Hd
+	 *     ExprOr returns Hd
+	 *     ExprOr.ExprOr_1_0 returns Hd
+	 *     ExprNot returns Hd
+	 *     ExprEq returns Hd
+	 *     ExprEq.ExprEq_1_0 returns Hd
+	 *     ExprSimple returns Hd
+	 *
+	 * Constraint:
+	 *     expr=Expr
+	 */
+	protected void sequence_ExprSimple(ISerializationContext context, Hd semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.HD__EXPR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.HD__EXPR));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExprSimpleAccess().getExprExprParserRuleCall_3_1_2_2_0(), semanticObject.getExpr());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expr returns List
+	 *     ExprAnd returns List
+	 *     ExprAnd.ExprAnd_1_0 returns List
+	 *     ExprOr returns List
+	 *     ExprOr.ExprOr_1_0 returns List
+	 *     ExprNot returns List
+	 *     ExprEq returns List
+	 *     ExprEq.ExprEq_1_0 returns List
+	 *     ExprSimple returns List
+	 *
+	 * Constraint:
+	 *     exprs=LExpr
+	 */
+	protected void sequence_ExprSimple(ISerializationContext context, List semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.LIST__EXPRS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.LIST__EXPRS));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExprSimpleAccess().getExprsLExprParserRuleCall_3_1_1_2_0(), semanticObject.getExprs());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expr returns Nill
+	 *     ExprAnd returns Nill
+	 *     ExprAnd.ExprAnd_1_0 returns Nill
+	 *     ExprOr returns Nill
+	 *     ExprOr.ExprOr_1_0 returns Nill
+	 *     ExprNot returns Nill
+	 *     ExprEq returns Nill
+	 *     ExprEq.ExprEq_1_0 returns Nill
+	 *     ExprSimple returns Nill
+	 *
+	 * Constraint:
+	 *     value=NIL
+	 */
+	protected void sequence_ExprSimple(ISerializationContext context, Nill semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.NILL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.NILL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExprSimpleAccess().getValueNILTerminalRuleCall_0_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expr returns Symbol
+	 *     ExprAnd returns Symbol
+	 *     ExprAnd.ExprAnd_1_0 returns Symbol
+	 *     ExprOr returns Symbol
+	 *     ExprOr.ExprOr_1_0 returns Symbol
+	 *     ExprNot returns Symbol
+	 *     ExprEq returns Symbol
+	 *     ExprEq.ExprEq_1_0 returns Symbol
+	 *     ExprSimple returns Symbol
+	 *
+	 * Constraint:
+	 *     value=SYMBOLE
+	 */
+	protected void sequence_ExprSimple(ISerializationContext context, Symbol semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.SYMBOL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.SYMBOL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExprSimpleAccess().getValueSYMBOLETerminalRuleCall_2_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expr returns Tl
+	 *     ExprAnd returns Tl
+	 *     ExprAnd.ExprAnd_1_0 returns Tl
+	 *     ExprOr returns Tl
+	 *     ExprOr.ExprOr_1_0 returns Tl
+	 *     ExprNot returns Tl
+	 *     ExprEq returns Tl
+	 *     ExprEq.ExprEq_1_0 returns Tl
+	 *     ExprSimple returns Tl
+	 *
+	 * Constraint:
+	 *     expr=Expr
+	 */
+	protected void sequence_ExprSimple(ISerializationContext context, Tl semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.TL__EXPR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.TL__EXPR));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExprSimpleAccess().getExprExprParserRuleCall_3_1_3_2_0(), semanticObject.getExpr());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expr returns Variable
+	 *     ExprAnd returns Variable
+	 *     ExprAnd.ExprAnd_1_0 returns Variable
+	 *     ExprOr returns Variable
+	 *     ExprOr.ExprOr_1_0 returns Variable
+	 *     ExprNot returns Variable
+	 *     ExprEq returns Variable
+	 *     ExprEq.ExprEq_1_0 returns Variable
+	 *     ExprSimple returns Variable
+	 *
+	 * Constraint:
+	 *     value=VARIABLE
+	 */
+	protected void sequence_ExprSimple(ISerializationContext context, Variable semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, WhdslPackage.Literals.VARIABLE__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, WhdslPackage.Literals.VARIABLE__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExprSimpleAccess().getValueVARIABLETerminalRuleCall_1_1_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	

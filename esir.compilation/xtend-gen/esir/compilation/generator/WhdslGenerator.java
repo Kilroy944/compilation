@@ -5,24 +5,33 @@ package esir.compilation.generator;
 
 import com.google.common.collect.Iterables;
 import esir.compilation.whdsl.Affect;
+import esir.compilation.whdsl.Call;
 import esir.compilation.whdsl.Command;
 import esir.compilation.whdsl.Commands;
+import esir.compilation.whdsl.Cons;
+import esir.compilation.whdsl.EnclosedExpr;
 import esir.compilation.whdsl.Expr;
 import esir.compilation.whdsl.ExprAnd;
 import esir.compilation.whdsl.ExprEq;
 import esir.compilation.whdsl.ExprNot;
 import esir.compilation.whdsl.ExprOr;
-import esir.compilation.whdsl.ExprSimple;
 import esir.compilation.whdsl.Exprs;
 import esir.compilation.whdsl.For;
 import esir.compilation.whdsl.ForEach;
 import esir.compilation.whdsl.Function;
+import esir.compilation.whdsl.Hd;
 import esir.compilation.whdsl.If;
 import esir.compilation.whdsl.LExpr;
+import esir.compilation.whdsl.List;
+import esir.compilation.whdsl.Nill;
 import esir.compilation.whdsl.Nop;
 import esir.compilation.whdsl.Program;
+import esir.compilation.whdsl.Symbol;
+import esir.compilation.whdsl.Tl;
+import esir.compilation.whdsl.Variable;
 import esir.compilation.whdsl.Vars;
 import esir.compilation.whdsl.While;
+import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -40,15 +49,15 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
  */
 @SuppressWarnings("all")
 public class WhdslGenerator extends AbstractGenerator {
-  private String indent_value;
+  private String indent_value = "   ";
   
-  private String indent_if;
+  private String indent_if = "   ";
   
-  private String indent_for;
+  private String indent_for = "   ";
   
-  private String indent_while;
+  private String indent_while = "   ";
   
-  private String indent_foreach;
+  private String indent_foreach = "  ";
   
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
@@ -184,7 +193,7 @@ public class WhdslGenerator extends AbstractGenerator {
   
   public CharSequence compile(final Vars vars) {
     StringConcatenation _builder = new StringConcatenation();
-    String _join = IterableExtensions.join(vars.getList(), ",");
+    String _join = IterableExtensions.join(vars.getList(), ", ");
     _builder.append(_join);
     return _builder;
   }
@@ -226,119 +235,122 @@ public class WhdslGenerator extends AbstractGenerator {
   }
   
   public CharSequence compile(final Expr e) {
-    CharSequence _xifexpression = null;
-    ExprSimple _simple = e.getSimple();
-    boolean _tripleNotEquals = (_simple != null);
-    if (_tripleNotEquals) {
-      ExprSimple _simple_1 = e.getSimple();
-      _xifexpression = this.compile(((ExprSimple) _simple_1));
-    } else {
-      CharSequence _xifexpression_1 = null;
-      ExprAnd _logique = e.getLogique();
-      boolean _tripleNotEquals_1 = (_logique != null);
-      if (_tripleNotEquals_1) {
-        ExprAnd _logique_1 = e.getLogique();
-        _xifexpression_1 = this.compile(((ExprAnd) _logique_1));
-      }
-      _xifexpression = _xifexpression_1;
-    }
-    return _xifexpression;
+    return this.compileExpr(e);
   }
   
-  public CharSequence compile(final ExprSimple e) {
-    CharSequence _xifexpression = null;
-    String _nil = e.getNil();
-    boolean _tripleNotEquals = (_nil != null);
-    if (_tripleNotEquals) {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("nil");
-      _xifexpression = _builder;
-    } else {
-      CharSequence _xifexpression_1 = null;
-      String _var = e.getVar();
-      boolean _tripleNotEquals_1 = (_var != null);
-      if (_tripleNotEquals_1) {
-        StringConcatenation _builder_1 = new StringConcatenation();
-        String _var_1 = e.getVar();
-        _builder_1.append(_var_1);
-        _xifexpression_1 = _builder_1;
-      } else {
-        CharSequence _xifexpression_2 = null;
-        String _sym = e.getSym();
-        boolean _tripleNotEquals_2 = (_sym != null);
-        if (_tripleNotEquals_2) {
-          StringConcatenation _builder_2 = new StringConcatenation();
-          String _sym_1 = e.getSym();
-          _builder_2.append(_sym_1);
-          _xifexpression_2 = _builder_2;
-        } else {
-          CharSequence _xifexpression_3 = null;
-          LExpr _cons = e.getCons();
-          boolean _tripleNotEquals_3 = (_cons != null);
-          if (_tripleNotEquals_3) {
-            StringConcatenation _builder_3 = new StringConcatenation();
-            _builder_3.append("(cons ");
-            CharSequence _compile = this.compile(e.getCons());
-            _builder_3.append(_compile);
-            _builder_3.append(")");
-            _xifexpression_3 = _builder_3;
-          } else {
-            CharSequence _xifexpression_4 = null;
-            LExpr _list = e.getList();
-            boolean _tripleNotEquals_4 = (_list != null);
-            if (_tripleNotEquals_4) {
-              StringConcatenation _builder_4 = new StringConcatenation();
-              _builder_4.append("(list ");
-              CharSequence _compile_1 = this.compile(e.getList());
-              _builder_4.append(_compile_1);
-              _builder_4.append(")");
-              _xifexpression_4 = _builder_4;
-            } else {
-              CharSequence _xifexpression_5 = null;
-              Expr _hd = e.getHd();
-              boolean _tripleNotEquals_5 = (_hd != null);
-              if (_tripleNotEquals_5) {
-                StringConcatenation _builder_5 = new StringConcatenation();
-                _builder_5.append("(hd ");
-                Object _compile_2 = this.compile(e.getHd());
-                _builder_5.append(_compile_2);
-                _builder_5.append(")");
-                _xifexpression_5 = _builder_5;
-              } else {
-                CharSequence _xifexpression_6 = null;
-                Expr _tl = e.getTl();
-                boolean _tripleNotEquals_6 = (_tl != null);
-                if (_tripleNotEquals_6) {
-                  StringConcatenation _builder_6 = new StringConcatenation();
-                  _builder_6.append("(tl ");
-                  Object _compile_3 = this.compile(e.getTl());
-                  _builder_6.append(_compile_3);
-                  _builder_6.append(")");
-                  _xifexpression_6 = _builder_6;
-                } else {
-                  StringConcatenation _builder_7 = new StringConcatenation();
-                  _builder_7.append("(");
-                  String _funcName = e.getFuncName();
-                  _builder_7.append(_funcName);
-                  _builder_7.append(" ");
-                  CharSequence _compile_4 = this.compile(e.getFuncParams());
-                  _builder_7.append(_compile_4);
-                  _builder_7.append(")");
-                  _xifexpression_6 = _builder_7;
-                }
-                _xifexpression_5 = _xifexpression_6;
-              }
-              _xifexpression_4 = _xifexpression_5;
-            }
-            _xifexpression_3 = _xifexpression_4;
-          }
-          _xifexpression_2 = _xifexpression_3;
-        }
-        _xifexpression_1 = _xifexpression_2;
-      }
-      _xifexpression = _xifexpression_1;
-    }
-    return _xifexpression;
+  protected CharSequence _compileExpr(final Variable v) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _value = v.getValue();
+    _builder.append(_value);
+    return _builder;
+  }
+  
+  protected CharSequence _compileExpr(final Symbol s) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _value = s.getValue();
+    _builder.append(_value);
+    return _builder;
+  }
+  
+  protected CharSequence _compileExpr(final Nill n) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("nil");
+    return _builder;
+  }
+  
+  protected CharSequence _compileExpr(final ExprAnd e) {
+    StringConcatenation _builder = new StringConcatenation();
+    Object _compile = this.compile(e.getLeft());
+    _builder.append(_compile);
+    _builder.append(" and ");
+    Object _compile_1 = this.compile(e.getRight());
+    _builder.append(_compile_1);
+    return _builder;
+  }
+  
+  protected CharSequence _compileExpr(final ExprOr e) {
+    StringConcatenation _builder = new StringConcatenation();
+    Object _compile = this.compile(e.getLeft());
+    _builder.append(_compile);
+    _builder.append(" or ");
+    Object _compile_1 = this.compile(e.getRight());
+    _builder.append(_compile_1);
+    return _builder;
+  }
+  
+  protected CharSequence _compileExpr(final ExprEq e) {
+    StringConcatenation _builder = new StringConcatenation();
+    Object _compile = this.compile(e.getLeft());
+    _builder.append(_compile);
+    _builder.append(" =? ");
+    Object _compile_1 = this.compile(e.getRight());
+    _builder.append(_compile_1);
+    return _builder;
+  }
+  
+  protected CharSequence _compileExpr(final ExprNot e) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("not ");
+    Object _compile = this.compile(e.getExpr());
+    _builder.append(_compile);
+    return _builder;
+  }
+  
+  protected CharSequence _compileExpr(final Cons c) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(cons ");
+    CharSequence _compile = this.compile(c.getExprs());
+    _builder.append(_compile);
+    _builder.append(")");
+    return _builder;
+  }
+  
+  protected CharSequence _compileExpr(final List l) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(list ");
+    CharSequence _compile = this.compile(l.getExprs());
+    _builder.append(_compile);
+    _builder.append(")");
+    return _builder;
+  }
+  
+  protected CharSequence _compileExpr(final Hd hd) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(hd ");
+    Object _compile = this.compile(hd.getExpr());
+    _builder.append(_compile);
+    _builder.append(")");
+    return _builder;
+  }
+  
+  protected CharSequence _compileExpr(final Tl tl) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(tl ");
+    Object _compile = this.compile(tl.getExpr());
+    _builder.append(_compile);
+    _builder.append(")");
+    return _builder;
+  }
+  
+  protected CharSequence _compileExpr(final Call c) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(");
+    String _name = c.getName();
+    _builder.append(_name);
+    _builder.append(" ");
+    CharSequence _compile = this.compile(c.getParams());
+    _builder.append(_compile);
+    _builder.append(")");
+    return _builder;
+  }
+  
+  protected CharSequence _compileExpr(final EnclosedExpr ie) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(");
+    Object _compile = this.compile(ie.getExpr());
+    _builder.append(_compile);
+    _builder.append(")");
+    return _builder;
   }
   
   public CharSequence compile(final Affect a) {
@@ -490,79 +502,36 @@ public class WhdslGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  public CharSequence compile(final ExprAnd e) {
-    StringConcatenation _builder = new StringConcatenation();
-    {
-      ExprAnd _expAnd = e.getExpAnd();
-      boolean _tripleNotEquals = (_expAnd != null);
-      if (_tripleNotEquals) {
-        CharSequence _compile = this.compile(e.getExpOr());
-        _builder.append(_compile);
-        _builder.append(" and ");
-        Object _compile_1 = this.compile(e.getExpAnd());
-        _builder.append(_compile_1);
-      } else {
-        CharSequence _compile_2 = this.compile(e.getExpOr());
-        _builder.append(_compile_2);
-      }
+  public CharSequence compileExpr(final Expr c) {
+    if (c instanceof Call) {
+      return _compileExpr((Call)c);
+    } else if (c instanceof Cons) {
+      return _compileExpr((Cons)c);
+    } else if (c instanceof EnclosedExpr) {
+      return _compileExpr((EnclosedExpr)c);
+    } else if (c instanceof ExprAnd) {
+      return _compileExpr((ExprAnd)c);
+    } else if (c instanceof ExprEq) {
+      return _compileExpr((ExprEq)c);
+    } else if (c instanceof ExprNot) {
+      return _compileExpr((ExprNot)c);
+    } else if (c instanceof ExprOr) {
+      return _compileExpr((ExprOr)c);
+    } else if (c instanceof Hd) {
+      return _compileExpr((Hd)c);
+    } else if (c instanceof List) {
+      return _compileExpr((List)c);
+    } else if (c instanceof Nill) {
+      return _compileExpr((Nill)c);
+    } else if (c instanceof Symbol) {
+      return _compileExpr((Symbol)c);
+    } else if (c instanceof Tl) {
+      return _compileExpr((Tl)c);
+    } else if (c instanceof Variable) {
+      return _compileExpr((Variable)c);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(c).toString());
     }
-    return _builder;
-  }
-  
-  public CharSequence compile(final ExprOr e) {
-    StringConcatenation _builder = new StringConcatenation();
-    {
-      ExprOr _expOr = e.getExpOr();
-      boolean _tripleNotEquals = (_expOr != null);
-      if (_tripleNotEquals) {
-        CharSequence _compile = this.compile(e.getExpNot());
-        _builder.append(_compile);
-        _builder.append(" or ");
-        Object _compile_1 = this.compile(e.getExpOr());
-        _builder.append(_compile_1);
-      } else {
-        CharSequence _compile_2 = this.compile(e.getExpNot());
-        _builder.append(_compile_2);
-      }
-    }
-    return _builder;
-  }
-  
-  public CharSequence compile(final ExprNot e) {
-    StringConcatenation _builder = new StringConcatenation();
-    {
-      ExprEq _expEqNot = e.getExpEqNot();
-      boolean _tripleNotEquals = (_expEqNot != null);
-      if (_tripleNotEquals) {
-        _builder.append("not ");
-        CharSequence _compile = this.compile(e.getExpEqNot());
-        _builder.append(_compile);
-      } else {
-        CharSequence _compile_1 = this.compile(e.getExpEq());
-        _builder.append(_compile_1);
-      }
-    }
-    return _builder;
-  }
-  
-  public CharSequence compile(final ExprEq e) {
-    StringConcatenation _builder = new StringConcatenation();
-    {
-      ExprSimple _expSimple = e.getExpSimple();
-      boolean _tripleNotEquals = (_expSimple != null);
-      if (_tripleNotEquals) {
-        CharSequence _compile = this.compile(e.getExpSimple());
-        _builder.append(_compile);
-        _builder.append(" =? ");
-        CharSequence _compile_1 = this.compile(e.getExpSimple2());
-        _builder.append(_compile_1);
-      } else {
-        _builder.append("(");
-        Object _compile_2 = this.compile(e.getExp());
-        _builder.append(_compile_2);
-        _builder.append(")");
-      }
-    }
-    return _builder;
   }
 }

@@ -4,7 +4,9 @@ package esir.compilation.generator;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FilenameFilter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.cli.BasicParser;
@@ -33,7 +35,7 @@ import esir.compilation.WhdslStandaloneSetupGenerated;
 public class Main {
 
 
-	public static void main(String[] args) throws ErrorPrettyPrinterException {
+	public static void main(String[] args) throws IOException {
 
 		//Récupération arguments
 		Options options = new Options();
@@ -47,6 +49,11 @@ public class Main {
 		options.addOption("help", false, "manuel d'utilisation");
 
 
+		//Injection class Google Guice
+		Injector injector = new WhdslStandaloneSetupGenerated().createInjectorAndDoEMFRegistration();
+		Main main = injector.getInstance(Main.class);
+
+
 		CommandLineParser parser = new BasicParser();
 		CommandLine cmd;
 		try {
@@ -55,20 +62,25 @@ public class Main {
 			System.out.println("Erreur dans les arguments : " + e.getMessage());
 			return;
 		}
-		
-		if(cmd.hasOption("test")){
-			try {
-				test(null,null);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 
+		//HELP
 		if(cmd.hasOption("help")){
 			printMan();
 			return;
 		}
+
+
+		//TEST
+		if(cmd.hasOption("test")){
+
+
+			main.test(cmd,main, injector);
+
+
+			return;
+		}
+
+
 
 		String input, output;
 		if (cmd.getArgs().length != 1) {
@@ -83,10 +95,6 @@ public class Main {
 		output = cmd.hasOption("o") ? cmd.getOptionValue("o") : input.split(".wh")[0] + ".whpp";
 
 
-		//Injection class Google Guice
-		Injector injector = new WhdslStandaloneSetupGenerated().createInjectorAndDoEMFRegistration();
-		Main main = injector.getInstance(Main.class);
-
 		String indent_value = main.create_indent(" ",cmd.hasOption("all") ? Integer.parseInt(cmd.getOptionValue("all")) : 2);
 		String indent_if = main.create_indent(indent_value,cmd.hasOption("if") ? Integer.parseInt(cmd.getOptionValue("if")) : 1);
 		String indent_for = main.create_indent(indent_value,cmd.hasOption("for") ? Integer.parseInt(cmd.getOptionValue("for")) : 1);
@@ -96,10 +104,15 @@ public class Main {
 
 		//Pretty printing
 		System.out.println("START Pretty printing");
-		main.prettyprint(injector,input,output, indent_value, indent_if, indent_for,indent_foreach, indent_while);
+		try {
+			main.prettyprint(injector,input,output, indent_value, indent_if, indent_for,indent_foreach, indent_while);
+		} catch (ErrorPrettyPrinterException e) {
+			e.printStackTrace();
+		}
 		System.out.println("END Pretty printing");
 
 	}
+
 
 
 	private int prettyprint(Injector injector, String string,String sortie, String indent_value, String indent_if, String indent_for, String indent_foreach, String indent_while) throws ErrorPrettyPrinterException{
@@ -144,17 +157,7 @@ public class Main {
 		return value_return;
 	}
 
-	// Méthode qui vérifie l'égalité entre 2 listes de fichiers
-	public static boolean test(List<String> good, List<String> a_test) throws IOException {
-		for (int i = 0; i < good.size() && i < a_test.size(); i++) {
-			System.out.println(good.get(i)+" "+a_test.get(i));
-			if (FileUtils.contentEquals(new File("les_tests/"+good.get(i)), new File("les_tests/"+a_test.get(i))) == false) {
-				System.out.println("oui");
-				return false;
-			}
-		}
-		return true;
-	}
+
 
 	public static void printMan(){
 		BufferedReader fent;
@@ -170,5 +173,75 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	
+	
+	
+
+	private void test(CommandLine cmd, Main main, Injector injector) throws IOException {
+		
+		if (cmd.getArgs().length != 2) {
+			System.out.println("Erreur dans les arguments : répertoire de test");
+			return;
+		}
+
+
+		File rep_non_indent = new File(cmd.getArgs()[0]);
+
+		if(!(rep_non_indent.exists() && rep_non_indent.isDirectory())){
+			System.out.println("Repertoire de test inexistant");
+			return;
+		}
+
+		File rep_good = new File(cmd.getArgs()[1]);
+
+		if(!(rep_good.exists() && rep_good.isDirectory())){
+			System.out.println("Repertoire de test inexistant");
+			return;
+		}
+
+		File[] fichier_non_indent = rep_non_indent.listFiles(new FilenameFilter(){
+			public boolean accept(File dir, String name) {
+				return name.endsWith(".wh");
+			}
+		});
+
+		File rep_pretty_print = new File("./rep_pretty_print");
+		rep_pretty_print.mkdir();
+		for (File file : fichier_non_indent) {
+
+			System.out.println("---------------DEBUT TEST---------------");
+			System.out.println("Test pretty print: "+file.getName());
+
+			String path_fichier_sortie = "./"+rep_pretty_print.getPath()+"/"+(file.getName().split(".wh")[0])+".whpp";
+
+			try {
+				if(main.prettyprint(injector, file.getPath(), path_fichier_sortie,"  ","  ","  ","  ","  ") != 0){
+					System.out.println("ERREUR: echec de la validation");
+				}
+				else{
+					File fichier_good = new File("./"+rep_good.getPath()+"/"+(file.getName().split(".wh")[0])+".whpp");
+
+					if(!(fichier_good.exists())){
+						System.out.println("Comparaison impossible: fichier à compararer non trouvé");
+					}
+					else{
+						if (FileUtils.contentEquals(new File(path_fichier_sortie),fichier_good) == false) {
+							System.out.println("ERREUR: Fichier pretty print et fichier bien indenté différent");
+						}
+						else{
+							System.out.println("SUCCES: Pretty print réussi");
+						}
+					}
+				}
+			} catch (ErrorPrettyPrinterException e) {
+				System.out.println(e.getMessage());
+			}
+
+
+		}
+		System.out.println("---------------FIN TEST---------------");
+
 	}
 }

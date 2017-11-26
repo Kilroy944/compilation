@@ -38,12 +38,7 @@ Commands:
 ;
 
 Command:
-	(cmd=Nop) |
-	(cmd=Affect) |
-	(cmd=If) |
-	(cmd=For) |
-	(cmd=While) |
-	(cmd=ForEach)	
+	(cmd=Nop) | (cmd=Affect) | (cmd=If) | (cmd=For) | (cmd=While) | (cmd=ForEach)	
 ;
 
 
@@ -83,39 +78,38 @@ LExpr:
 ;
 
 Expr:
-	=>(simple=ExprSimple) | logique=ExprAnd
+	ExprAnd
 ;
 
-ExprSimple:
-	nil=NIL |
-	var=VARIABLE |
-	sym=SYMBOLE |
-	('(' (
-		'cons' cons=LExpr |
-		'list' list=LExpr |
-		'hd' hd=Expr |
-		'tl' tl=Expr |
-		funcName=SYMBOLE funcParams=LExpr
-	) ')')
+ExprAnd returns Expr:
+	ExprOr ({ExprAnd.left=current} 'and' right=ExprOr)*
 ;
 
-
-ExprAnd:
-    =>(expOr=ExprOr 'and' expAnd=ExprAnd) |  expOr=ExprOr
+ExprOr returns Expr:
+	ExprNot ({ExprOr.left=current} 'or' right=ExprNot)*
 ;
 
-ExprOr:
-    =>(expNot=ExprNot 'or' expOr=ExprOr) | expNot=ExprNot
+ExprNot returns Expr:
+	{ExprNot} 'not' expr=ExprEq | ExprEq
 ;
 
-ExprNot:
-    ('not' expEqNot=ExprEq) | expEq=ExprEq
+ExprEq returns Expr:
+	ExprSimple ({ExprEq.left=current} '=?' right=ExprSimple)?
 ;
 
-ExprEq:
-    (expSimple=ExprSimple '=?' expSimple2=ExprSimple) | '('exp=Expr')'
+ExprSimple returns Expr:
+	{Nill} value=NIL | 
+	{Variable} value=VARIABLE |
+	{Symbol} value=SYMBOLE |
+	'(' (
+		{Cons} 'cons' exprs=LExpr |
+		{List} 'list' exprs=LExpr |
+		{Hd} 'hd' expr=Expr |
+		{Tl} 'tl' expr=Expr |
+		{Call} name=SYMBOLE params=LExpr |
+		{EnclosedExpr} expr=Expr
+	) ')'
 ;
-
 
 /* TERMINAUX */
 terminal NIL:

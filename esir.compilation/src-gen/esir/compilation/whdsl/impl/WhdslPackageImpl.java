@@ -4,25 +4,33 @@
 package esir.compilation.whdsl.impl;
 
 import esir.compilation.whdsl.Affect;
+import esir.compilation.whdsl.Call;
 import esir.compilation.whdsl.Command;
 import esir.compilation.whdsl.Commands;
+import esir.compilation.whdsl.Cons;
 import esir.compilation.whdsl.Definition;
+import esir.compilation.whdsl.EnclosedExpr;
 import esir.compilation.whdsl.Expr;
 import esir.compilation.whdsl.ExprAnd;
 import esir.compilation.whdsl.ExprEq;
 import esir.compilation.whdsl.ExprNot;
 import esir.compilation.whdsl.ExprOr;
-import esir.compilation.whdsl.ExprSimple;
 import esir.compilation.whdsl.Exprs;
 import esir.compilation.whdsl.For;
 import esir.compilation.whdsl.ForEach;
 import esir.compilation.whdsl.Function;
+import esir.compilation.whdsl.Hd;
 import esir.compilation.whdsl.If;
 import esir.compilation.whdsl.Input;
 import esir.compilation.whdsl.LExpr;
+import esir.compilation.whdsl.List;
+import esir.compilation.whdsl.Nill;
 import esir.compilation.whdsl.Nop;
 import esir.compilation.whdsl.Output;
 import esir.compilation.whdsl.Program;
+import esir.compilation.whdsl.Symbol;
+import esir.compilation.whdsl.Tl;
+import esir.compilation.whdsl.Variable;
 import esir.compilation.whdsl.Vars;
 import esir.compilation.whdsl.WhdslFactory;
 import esir.compilation.whdsl.WhdslPackage;
@@ -167,13 +175,6 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass exprSimpleEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass exprAndEClass = null;
 
   /**
@@ -196,6 +197,69 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * @generated
    */
   private EClass exprEqEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass nillEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass variableEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass symbolEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass consEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass listEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass hdEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass tlEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass callEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass enclosedExprEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -695,126 +759,6 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExpr_Simple()
-  {
-    return (EReference)exprEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getExpr_Logique()
-  {
-    return (EReference)exprEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getExprSimple()
-  {
-    return exprSimpleEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getExprSimple_Nil()
-  {
-    return (EAttribute)exprSimpleEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getExprSimple_Var()
-  {
-    return (EAttribute)exprSimpleEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getExprSimple_Sym()
-  {
-    return (EAttribute)exprSimpleEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getExprSimple_Cons()
-  {
-    return (EReference)exprSimpleEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getExprSimple_List()
-  {
-    return (EReference)exprSimpleEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getExprSimple_Hd()
-  {
-    return (EReference)exprSimpleEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getExprSimple_Tl()
-  {
-    return (EReference)exprSimpleEClass.getEStructuralFeatures().get(6);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getExprSimple_FuncName()
-  {
-    return (EAttribute)exprSimpleEClass.getEStructuralFeatures().get(7);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getExprSimple_FuncParams()
-  {
-    return (EReference)exprSimpleEClass.getEStructuralFeatures().get(8);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getExprAnd()
   {
     return exprAndEClass;
@@ -825,7 +769,7 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExprAnd_ExpOr()
+  public EReference getExprAnd_Left()
   {
     return (EReference)exprAndEClass.getEStructuralFeatures().get(0);
   }
@@ -835,7 +779,7 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExprAnd_ExpAnd()
+  public EReference getExprAnd_Right()
   {
     return (EReference)exprAndEClass.getEStructuralFeatures().get(1);
   }
@@ -855,7 +799,7 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExprOr_ExpNot()
+  public EReference getExprOr_Left()
   {
     return (EReference)exprOrEClass.getEStructuralFeatures().get(0);
   }
@@ -865,7 +809,7 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExprOr_ExpOr()
+  public EReference getExprOr_Right()
   {
     return (EReference)exprOrEClass.getEStructuralFeatures().get(1);
   }
@@ -885,19 +829,9 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExprNot_ExpEqNot()
+  public EReference getExprNot_Expr()
   {
     return (EReference)exprNotEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getExprNot_ExpEq()
-  {
-    return (EReference)exprNotEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -915,7 +849,7 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExprEq_ExpSimple()
+  public EReference getExprEq_Left()
   {
     return (EReference)exprEqEClass.getEStructuralFeatures().get(0);
   }
@@ -925,7 +859,7 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExprEq_ExpSimple2()
+  public EReference getExprEq_Right()
   {
     return (EReference)exprEqEClass.getEStructuralFeatures().get(1);
   }
@@ -935,9 +869,189 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExprEq_Exp()
+  public EClass getNill()
   {
-    return (EReference)exprEqEClass.getEStructuralFeatures().get(2);
+    return nillEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getNill_Value()
+  {
+    return (EAttribute)nillEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getVariable()
+  {
+    return variableEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVariable_Value()
+  {
+    return (EAttribute)variableEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSymbol()
+  {
+    return symbolEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSymbol_Value()
+  {
+    return (EAttribute)symbolEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCons()
+  {
+    return consEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCons_Exprs()
+  {
+    return (EReference)consEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getList()
+  {
+    return listEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getList_Exprs()
+  {
+    return (EReference)listEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getHd()
+  {
+    return hdEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getHd_Expr()
+  {
+    return (EReference)hdEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getTl()
+  {
+    return tlEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTl_Expr()
+  {
+    return (EReference)tlEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCall()
+  {
+    return callEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCall_Name()
+  {
+    return (EAttribute)callEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCall_Params()
+  {
+    return (EReference)callEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getEnclosedExpr()
+  {
+    return enclosedExprEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEnclosedExpr_Expr()
+  {
+    return (EReference)enclosedExprEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1029,36 +1143,49 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
     createEReference(lExprEClass, LEXPR__LIST);
 
     exprEClass = createEClass(EXPR);
-    createEReference(exprEClass, EXPR__SIMPLE);
-    createEReference(exprEClass, EXPR__LOGIQUE);
-
-    exprSimpleEClass = createEClass(EXPR_SIMPLE);
-    createEAttribute(exprSimpleEClass, EXPR_SIMPLE__NIL);
-    createEAttribute(exprSimpleEClass, EXPR_SIMPLE__VAR);
-    createEAttribute(exprSimpleEClass, EXPR_SIMPLE__SYM);
-    createEReference(exprSimpleEClass, EXPR_SIMPLE__CONS);
-    createEReference(exprSimpleEClass, EXPR_SIMPLE__LIST);
-    createEReference(exprSimpleEClass, EXPR_SIMPLE__HD);
-    createEReference(exprSimpleEClass, EXPR_SIMPLE__TL);
-    createEAttribute(exprSimpleEClass, EXPR_SIMPLE__FUNC_NAME);
-    createEReference(exprSimpleEClass, EXPR_SIMPLE__FUNC_PARAMS);
 
     exprAndEClass = createEClass(EXPR_AND);
-    createEReference(exprAndEClass, EXPR_AND__EXP_OR);
-    createEReference(exprAndEClass, EXPR_AND__EXP_AND);
+    createEReference(exprAndEClass, EXPR_AND__LEFT);
+    createEReference(exprAndEClass, EXPR_AND__RIGHT);
 
     exprOrEClass = createEClass(EXPR_OR);
-    createEReference(exprOrEClass, EXPR_OR__EXP_NOT);
-    createEReference(exprOrEClass, EXPR_OR__EXP_OR);
+    createEReference(exprOrEClass, EXPR_OR__LEFT);
+    createEReference(exprOrEClass, EXPR_OR__RIGHT);
 
     exprNotEClass = createEClass(EXPR_NOT);
-    createEReference(exprNotEClass, EXPR_NOT__EXP_EQ_NOT);
-    createEReference(exprNotEClass, EXPR_NOT__EXP_EQ);
+    createEReference(exprNotEClass, EXPR_NOT__EXPR);
 
     exprEqEClass = createEClass(EXPR_EQ);
-    createEReference(exprEqEClass, EXPR_EQ__EXP_SIMPLE);
-    createEReference(exprEqEClass, EXPR_EQ__EXP_SIMPLE2);
-    createEReference(exprEqEClass, EXPR_EQ__EXP);
+    createEReference(exprEqEClass, EXPR_EQ__LEFT);
+    createEReference(exprEqEClass, EXPR_EQ__RIGHT);
+
+    nillEClass = createEClass(NILL);
+    createEAttribute(nillEClass, NILL__VALUE);
+
+    variableEClass = createEClass(VARIABLE);
+    createEAttribute(variableEClass, VARIABLE__VALUE);
+
+    symbolEClass = createEClass(SYMBOL);
+    createEAttribute(symbolEClass, SYMBOL__VALUE);
+
+    consEClass = createEClass(CONS);
+    createEReference(consEClass, CONS__EXPRS);
+
+    listEClass = createEClass(LIST);
+    createEReference(listEClass, LIST__EXPRS);
+
+    hdEClass = createEClass(HD);
+    createEReference(hdEClass, HD__EXPR);
+
+    tlEClass = createEClass(TL);
+    createEReference(tlEClass, TL__EXPR);
+
+    callEClass = createEClass(CALL);
+    createEAttribute(callEClass, CALL__NAME);
+    createEReference(callEClass, CALL__PARAMS);
+
+    enclosedExprEClass = createEClass(ENCLOSED_EXPR);
+    createEReference(enclosedExprEClass, ENCLOSED_EXPR__EXPR);
   }
 
   /**
@@ -1090,6 +1217,19 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    exprAndEClass.getESuperTypes().add(this.getExpr());
+    exprOrEClass.getESuperTypes().add(this.getExpr());
+    exprNotEClass.getESuperTypes().add(this.getExpr());
+    exprEqEClass.getESuperTypes().add(this.getExpr());
+    nillEClass.getESuperTypes().add(this.getExpr());
+    variableEClass.getESuperTypes().add(this.getExpr());
+    symbolEClass.getESuperTypes().add(this.getExpr());
+    consEClass.getESuperTypes().add(this.getExpr());
+    listEClass.getESuperTypes().add(this.getExpr());
+    hdEClass.getESuperTypes().add(this.getExpr());
+    tlEClass.getESuperTypes().add(this.getExpr());
+    callEClass.getESuperTypes().add(this.getExpr());
+    enclosedExprEClass.getESuperTypes().add(this.getExpr());
 
     // Initialize classes and features; add operations and parameters
     initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1151,36 +1291,49 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
     initEReference(getLExpr_List(), this.getExpr(), null, "list", null, 0, -1, LExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(exprEClass, Expr.class, "Expr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getExpr_Simple(), this.getExprSimple(), null, "simple", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExpr_Logique(), this.getExprAnd(), null, "logique", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(exprSimpleEClass, ExprSimple.class, "ExprSimple", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getExprSimple_Nil(), ecorePackage.getEString(), "nil", null, 0, 1, ExprSimple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getExprSimple_Var(), ecorePackage.getEString(), "var", null, 0, 1, ExprSimple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getExprSimple_Sym(), ecorePackage.getEString(), "sym", null, 0, 1, ExprSimple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExprSimple_Cons(), this.getLExpr(), null, "cons", null, 0, 1, ExprSimple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExprSimple_List(), this.getLExpr(), null, "list", null, 0, 1, ExprSimple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExprSimple_Hd(), this.getExpr(), null, "hd", null, 0, 1, ExprSimple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExprSimple_Tl(), this.getExpr(), null, "tl", null, 0, 1, ExprSimple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getExprSimple_FuncName(), ecorePackage.getEString(), "funcName", null, 0, 1, ExprSimple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExprSimple_FuncParams(), this.getLExpr(), null, "funcParams", null, 0, 1, ExprSimple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(exprAndEClass, ExprAnd.class, "ExprAnd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getExprAnd_ExpOr(), this.getExprOr(), null, "expOr", null, 0, 1, ExprAnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExprAnd_ExpAnd(), this.getExprAnd(), null, "expAnd", null, 0, 1, ExprAnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExprAnd_Left(), this.getExpr(), null, "left", null, 0, 1, ExprAnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExprAnd_Right(), this.getExpr(), null, "right", null, 0, 1, ExprAnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(exprOrEClass, ExprOr.class, "ExprOr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getExprOr_ExpNot(), this.getExprNot(), null, "expNot", null, 0, 1, ExprOr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExprOr_ExpOr(), this.getExprOr(), null, "expOr", null, 0, 1, ExprOr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExprOr_Left(), this.getExpr(), null, "left", null, 0, 1, ExprOr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExprOr_Right(), this.getExpr(), null, "right", null, 0, 1, ExprOr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(exprNotEClass, ExprNot.class, "ExprNot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getExprNot_ExpEqNot(), this.getExprEq(), null, "expEqNot", null, 0, 1, ExprNot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExprNot_ExpEq(), this.getExprEq(), null, "expEq", null, 0, 1, ExprNot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExprNot_Expr(), this.getExpr(), null, "expr", null, 0, 1, ExprNot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(exprEqEClass, ExprEq.class, "ExprEq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getExprEq_ExpSimple(), this.getExprSimple(), null, "expSimple", null, 0, 1, ExprEq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExprEq_ExpSimple2(), this.getExprSimple(), null, "expSimple2", null, 0, 1, ExprEq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExprEq_Exp(), this.getExpr(), null, "exp", null, 0, 1, ExprEq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExprEq_Left(), this.getExpr(), null, "left", null, 0, 1, ExprEq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExprEq_Right(), this.getExpr(), null, "right", null, 0, 1, ExprEq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(nillEClass, Nill.class, "Nill", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNill_Value(), ecorePackage.getEString(), "value", null, 0, 1, Nill.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getVariable_Value(), ecorePackage.getEString(), "value", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(symbolEClass, Symbol.class, "Symbol", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSymbol_Value(), ecorePackage.getEString(), "value", null, 0, 1, Symbol.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(consEClass, Cons.class, "Cons", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCons_Exprs(), this.getLExpr(), null, "exprs", null, 0, 1, Cons.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(listEClass, List.class, "List", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getList_Exprs(), this.getLExpr(), null, "exprs", null, 0, 1, List.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(hdEClass, Hd.class, "Hd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getHd_Expr(), this.getExpr(), null, "expr", null, 0, 1, Hd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(tlEClass, Tl.class, "Tl", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTl_Expr(), this.getExpr(), null, "expr", null, 0, 1, Tl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(callEClass, Call.class, "Call", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCall_Name(), ecorePackage.getEString(), "name", null, 0, 1, Call.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCall_Params(), this.getLExpr(), null, "params", null, 0, 1, Call.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(enclosedExprEClass, EnclosedExpr.class, "EnclosedExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEnclosedExpr_Expr(), this.getExpr(), null, "expr", null, 0, 1, EnclosedExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

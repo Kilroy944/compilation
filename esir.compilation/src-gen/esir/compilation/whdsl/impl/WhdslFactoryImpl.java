@@ -82,11 +82,19 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
       case WhdslPackage.EXPRS: return createExprs();
       case WhdslPackage.LEXPR: return createLExpr();
       case WhdslPackage.EXPR: return createExpr();
-      case WhdslPackage.EXPR_SIMPLE: return createExprSimple();
       case WhdslPackage.EXPR_AND: return createExprAnd();
       case WhdslPackage.EXPR_OR: return createExprOr();
       case WhdslPackage.EXPR_NOT: return createExprNot();
       case WhdslPackage.EXPR_EQ: return createExprEq();
+      case WhdslPackage.NILL: return createNill();
+      case WhdslPackage.VARIABLE: return createVariable();
+      case WhdslPackage.SYMBOL: return createSymbol();
+      case WhdslPackage.CONS: return createCons();
+      case WhdslPackage.LIST: return createList();
+      case WhdslPackage.HD: return createHd();
+      case WhdslPackage.TL: return createTl();
+      case WhdslPackage.CALL: return createCall();
+      case WhdslPackage.ENCLOSED_EXPR: return createEnclosedExpr();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -284,17 +292,6 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ExprSimple createExprSimple()
-  {
-    ExprSimpleImpl exprSimple = new ExprSimpleImpl();
-    return exprSimple;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public ExprAnd createExprAnd()
   {
     ExprAndImpl exprAnd = new ExprAndImpl();
@@ -332,6 +329,105 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
   {
     ExprEqImpl exprEq = new ExprEqImpl();
     return exprEq;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Nill createNill()
+  {
+    NillImpl nill = new NillImpl();
+    return nill;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Variable createVariable()
+  {
+    VariableImpl variable = new VariableImpl();
+    return variable;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Symbol createSymbol()
+  {
+    SymbolImpl symbol = new SymbolImpl();
+    return symbol;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Cons createCons()
+  {
+    ConsImpl cons = new ConsImpl();
+    return cons;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public List createList()
+  {
+    ListImpl list = new ListImpl();
+    return list;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Hd createHd()
+  {
+    HdImpl hd = new HdImpl();
+    return hd;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Tl createTl()
+  {
+    TlImpl tl = new TlImpl();
+    return tl;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Call createCall()
+  {
+    CallImpl call = new CallImpl();
+    return call;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EnclosedExpr createEnclosedExpr()
+  {
+    EnclosedExprImpl enclosedExpr = new EnclosedExprImpl();
+    return enclosedExpr;
   }
 
   /**

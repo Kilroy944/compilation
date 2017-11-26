@@ -4,27 +4,35 @@
 package esir.compilation.generator
 
 import esir.compilation.whdsl.Affect
+import esir.compilation.whdsl.Call
 import esir.compilation.whdsl.Command
+import esir.compilation.whdsl.Cons
+import esir.compilation.whdsl.EnclosedExpr
+import esir.compilation.whdsl.Expr
+import esir.compilation.whdsl.ExprAnd
+import esir.compilation.whdsl.ExprEq
+import esir.compilation.whdsl.ExprNot
+import esir.compilation.whdsl.ExprOr
+import esir.compilation.whdsl.Exprs
 import esir.compilation.whdsl.For
+import esir.compilation.whdsl.ForEach
 import esir.compilation.whdsl.Function
+import esir.compilation.whdsl.Hd
 import esir.compilation.whdsl.If
+import esir.compilation.whdsl.LExpr
+import esir.compilation.whdsl.List
+import esir.compilation.whdsl.Nill
 import esir.compilation.whdsl.Nop
 import esir.compilation.whdsl.Program
+import esir.compilation.whdsl.Symbol
+import esir.compilation.whdsl.Tl
+import esir.compilation.whdsl.Variable
+import esir.compilation.whdsl.Vars
 import esir.compilation.whdsl.While
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import esir.compilation.whdsl.Vars
-import esir.compilation.whdsl.Exprs
-import esir.compilation.whdsl.ForEach
-import esir.compilation.whdsl.ExprSimple
-import esir.compilation.whdsl.Expr
-import esir.compilation.whdsl.LExpr
-import esir.compilation.whdsl.ExprAnd
-import esir.compilation.whdsl.ExprOr
-import esir.compilation.whdsl.ExprNot
-import esir.compilation.whdsl.ExprEq
 
 /**
  * Generates code from your model files on save.
@@ -34,11 +42,11 @@ import esir.compilation.whdsl.ExprEq
 class WhdslGenerator extends AbstractGenerator {
 	
 	
-	String indent_value;
-	String indent_if;
-	String indent_for;
-	String indent_while;
-	String indent_foreach;
+	String indent_value = '   ';
+	String indent_if = '   ';
+	String indent_for = '   ';
+	String indent_while = '   ';
+	String indent_foreach = '  ';
 
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
@@ -60,13 +68,16 @@ class WhdslGenerator extends AbstractGenerator {
 		}
 	}
 	
-	def compile (Program p) '''
+	def compile (Program p) {
+		'''
 		«FOR f : p.functions SEPARATOR '\n'»
 			«f.compile(indent_value)»
 		«ENDFOR»
-	'''
+		'''
+	}
 	
-	def compile (Function f, String indent) '''
+	def compile (Function f, String indent) {
+		'''
 		function «f.name»:
 		read «f.definition.input.vars.compile()»
 		%
@@ -75,7 +86,8 @@ class WhdslGenerator extends AbstractGenerator {
 		«ENDFOR»
 		%
 		write «f.definition.output.vars.compile()»
-	'''
+		'''
+	}
 	
 	
 	def compile (Command c, String indent){
@@ -100,107 +112,126 @@ class WhdslGenerator extends AbstractGenerator {
 		
 	}
 	
-	def compile(Nop n) '''nop'''
-	
-	def compile(Vars vars) '''«vars.list.join(',')»'''
-	
-	def compile(Exprs exprs){ '''«FOR exp: exprs.list SEPARATOR ','»«exp.compile()»«ENDFOR»'''
+	def compile(Nop n) {
+		'''nop'''
 	}
 	
-	def compile(LExpr lexprs){ '''«FOR exp: lexprs.list SEPARATOR ' '»«exp.compile()»«ENDFOR»'''
+	def compile(Vars vars) {
+		'''«vars.list.join(', ')»'''
 	}
 	
-	def compile(Expr e){		
-		if(e.simple !== null){
-			(e.simple as ExprSimple).compile();
-		}
-		else if(e.logique !== null){
-			(e.logique as ExprAnd).compile();
-		}
+	def compile(Exprs exprs) {
+		'''«FOR exp: exprs.list SEPARATOR ','»«exp.compile()»«ENDFOR»'''
+	}
+	
+	def compile(LExpr lexprs) {
+		'''«FOR exp: lexprs.list SEPARATOR ' '»«exp.compile()»«ENDFOR»'''
+	}
+	
+	def compile(Expr e){
+		e.compileExpr()
 	}
 
-
-	
-	def compile(ExprSimple e){
-		if(e.nil !== null){
-			'''nil'''
-		}
-		else if(e.^var !== null){
-			'''«e.^var»'''
-		}
-		else if(e.sym !== null){
-			'''«e.sym»'''
-		}
-		else if(e.cons !== null){
-			'''(cons «e.cons.compile()»)'''
-		}
-		else if(e.list !== null){
-			'''(list «e.list.compile()»)'''
-		}
-		else if(e.hd !== null){
-			'''(hd «e.hd.compile()»)'''
-		}
-		else if(e.tl !== null){
-			'''(tl «e.tl.compile()»)'''
-		}
-		else {
-			'''(«e.funcName» «e.funcParams.compile()»)'''
-		}
-		
+	def dispatch compileExpr(Variable v) {
+		'''«v.value»'''
 	}
 	
-	def compile(Affect a) '''«a.vars.compile()» := «a.exprs.compile()»'''
+	def dispatch compileExpr(Symbol s) {
+		'''«s.value»'''
+	}
 	
-	def compile(If i, String indent) '''
+	def dispatch compileExpr(Nill n) {
+		'''nil'''
+	}
+	
+	def dispatch compileExpr(ExprAnd e) {
+		'''«e.left.compile()» and «e.right.compile()»'''
+	}
+	
+	def dispatch compileExpr(ExprOr e) {
+		'''«e.left.compile()» or «e.right.compile()»'''
+	}
+	
+	def dispatch compileExpr(ExprEq e) {
+		'''«e.left.compile()» =? «e.right.compile()»'''
+	}
+	
+	def dispatch compileExpr(ExprNot e) {
+		'''not «e.expr.compile()»'''
+	}
+	
+	def dispatch compileExpr(Cons c) {
+		'''(cons «c.exprs.compile()»)'''
+	}
+	
+	def dispatch compileExpr(List l) {
+		'''(list «l.exprs.compile()»)'''
+	}
+	
+	def dispatch compileExpr(Hd hd) {
+		'''(hd «hd.expr.compile()»)'''
+	}
+	
+	def dispatch compileExpr(Tl tl) {
+		'''(tl «tl.expr.compile()»)'''
+	}
+	
+	def dispatch compileExpr(Call c) {
+		'''(«c.name» «c.params.compile()»)'''
+	}
+	
+	def dispatch compileExpr(EnclosedExpr ie) {
+		'''(«ie.expr.compile()»)'''
+	}
+	
+	def compile(Affect a) {
+		'''«a.vars.compile()» := «a.exprs.compile()»'''
+	}
+	
+	def compile(If i, String indent) {
+		'''
 		if «i.condition.compile()» then
 		«FOR cmd: i.thenCommands.list SEPARATOR ';'»
 			«indent+indent_if»«cmd.compile(indent+indent_if)»
 		«ENDFOR»
 		«IF i.elseCommands !== null»
-		«indent»else
-		«FOR cmd: i.elseCommands.list SEPARATOR ';'»
-			«indent+indent_if»«cmd.compile(indent+indent_if)»
-		«ENDFOR»
+			«indent»else
+			«FOR cmd: i.elseCommands.list SEPARATOR ';'»
+				«indent+indent_if»«cmd.compile(indent+indent_if)»
+			«ENDFOR»
 		«ENDIF»
 		«indent»fi
-	'''
+		'''
+	}
 	
-	def compile(For f, String indent) '''
+	def compile(For f, String indent) {
+		'''
 		for «f.condition.compile()» do
 		«FOR cmd: f.commands.list SEPARATOR ';'»
 			«indent+indent_for»«cmd.compile(indent+indent_for)»
 		«ENDFOR»
 		«indent»od
-	'''
+		'''
+	}
 	
-	def compile(ForEach f, String indent){'''
+	def compile(ForEach f, String indent) {
+		'''
 		foreach «f.elem.compile()» in «f.ensemb.compile()» do
 		«FOR cmd: f.commands.list SEPARATOR ';'»
 			«indent+indent_foreach»«cmd.compile(indent+indent_foreach)»
 		«ENDFOR»
 		«indent»od
-	'''		
+		'''
 	}
 	
-	def compile(While w, String indent) '''
+	def compile(While w, String indent) {
+		'''
 		while «w.condition.compile()» do
 		«FOR cmd: w.commands.list SEPARATOR ';'»
 			«indent+indent_while»«cmd.compile(indent+indent_while)»
 		«ENDFOR»
 		«indent»od
-	'''
-	
-	def compile(ExprAnd e){'''«IF e.expAnd !== null»«e.expOr.compile()» and «e.expAnd.compile()»«ELSE»«e.expOr.compile()»«ENDIF»'''
+		'''
 	}
-	
-	def compile(ExprOr e){'''«IF e.expOr !== null»«e.expNot.compile()» or «e.expOr.compile()»«ELSE»«e.expNot.compile()»«ENDIF»'''
-	}
-	
-	def compile(ExprNot e){'''«IF e.expEqNot !== null»not «e.expEqNot.compile()»«ELSE»«e.expEq.compile()»«ENDIF»'''
-	}
-	
-	def compile(ExprEq e){'''«IF e.expSimple !== null»«e.expSimple.compile()» =? «e.expSimple2.compile()»«ELSE»(«e.exp.compile()»)«ENDIF»'''
-	}
-	
 
 }
