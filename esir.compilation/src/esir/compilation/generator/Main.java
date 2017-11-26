@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.cli.BasicParser;
@@ -69,14 +68,9 @@ public class Main {
 			return;
 		}
 
-
 		//TEST
 		if(cmd.hasOption("test")){
-
-
 			main.test(cmd,main, injector);
-
-
 			return;
 		}
 
@@ -202,6 +196,7 @@ public class Main {
 		}
 
 		File[] fichier_non_indent = rep_non_indent.listFiles(new FilenameFilter(){
+			@Override
 			public boolean accept(File dir, String name) {
 				return name.endsWith(".wh");
 			}

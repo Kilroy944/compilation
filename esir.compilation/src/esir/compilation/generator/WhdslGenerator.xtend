@@ -41,12 +41,12 @@ import org.eclipse.xtext.generator.IGeneratorContext
  */
 class WhdslGenerator extends AbstractGenerator {
 	
-	
-	String indent_value = '   ';
-	String indent_if = '   ';
-	String indent_for = '   ';
-	String indent_while = '   ';
-	String indent_foreach = '  ';
+
+	String indent_value;
+	String indent_if;
+	String indent_for;
+	String indent_while;
+	String indent_foreach;
 
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
@@ -81,7 +81,7 @@ class WhdslGenerator extends AbstractGenerator {
 		function «f.name»:
 		read «f.definition.input.vars.compile()»
 		%
-		«FOR cmd: f.definition.commands.list SEPARATOR ';'»
+		«FOR cmd: f.definition.commands.list SEPARATOR ' ;'»
 			«indent»«cmd.compile(indent)»
 		«ENDFOR»
 		%
@@ -117,7 +117,7 @@ class WhdslGenerator extends AbstractGenerator {
 	}
 	
 	def compile(Vars vars) {
-		'''«vars.list.join(', ')»'''
+		'''«vars.list.join(',')»'''
 	}
 	
 	def compile(Exprs exprs) {
@@ -161,27 +161,27 @@ class WhdslGenerator extends AbstractGenerator {
 	}
 	
 	def dispatch compileExpr(Cons c) {
-		'''(cons «c.exprs.compile()»)'''
+		'''( cons «c.exprs.compile()» )'''
 	}
 	
 	def dispatch compileExpr(List l) {
-		'''(list «l.exprs.compile()»)'''
+		'''( list «l.exprs.compile()» )'''
 	}
 	
 	def dispatch compileExpr(Hd hd) {
-		'''(hd «hd.expr.compile()»)'''
+		'''( hd «hd.expr.compile()» )'''
 	}
 	
 	def dispatch compileExpr(Tl tl) {
-		'''(tl «tl.expr.compile()»)'''
+		'''( tl «tl.expr.compile()» )'''
 	}
 	
 	def dispatch compileExpr(Call c) {
-		'''(«c.name» «c.params.compile()»)'''
+		'''( «c.name» «c.params.compile()» )'''
 	}
 	
 	def dispatch compileExpr(EnclosedExpr ie) {
-		'''(«ie.expr.compile()»)'''
+		'''( «ie.expr.compile()» )'''
 	}
 	
 	def compile(Affect a) {
@@ -196,7 +196,7 @@ class WhdslGenerator extends AbstractGenerator {
 		«ENDFOR»
 		«IF i.elseCommands !== null»
 			«indent»else
-			«FOR cmd: i.elseCommands.list SEPARATOR ';'»
+			«FOR cmd: i.elseCommands.list SEPARATOR ' ;'»
 				«indent+indent_if»«cmd.compile(indent+indent_if)»
 			«ENDFOR»
 		«ENDIF»
@@ -207,7 +207,7 @@ class WhdslGenerator extends AbstractGenerator {
 	def compile(For f, String indent) {
 		'''
 		for «f.condition.compile()» do
-		«FOR cmd: f.commands.list SEPARATOR ';'»
+		«FOR cmd: f.commands.list SEPARATOR ' ;'»
 			«indent+indent_for»«cmd.compile(indent+indent_for)»
 		«ENDFOR»
 		«indent»od
@@ -217,7 +217,7 @@ class WhdslGenerator extends AbstractGenerator {
 	def compile(ForEach f, String indent) {
 		'''
 		foreach «f.elem.compile()» in «f.ensemb.compile()» do
-		«FOR cmd: f.commands.list SEPARATOR ';'»
+		«FOR cmd: f.commands.list SEPARATOR ' ;'»
 			«indent+indent_foreach»«cmd.compile(indent+indent_foreach)»
 		«ENDFOR»
 		«indent»od
@@ -227,7 +227,7 @@ class WhdslGenerator extends AbstractGenerator {
 	def compile(While w, String indent) {
 		'''
 		while «w.condition.compile()» do
-		«FOR cmd: w.commands.list SEPARATOR ';'»
+		«FOR cmd: w.commands.list SEPARATOR ' ;'»
 			«indent+indent_while»«cmd.compile(indent+indent_while)»
 		«ENDFOR»
 		«indent»od

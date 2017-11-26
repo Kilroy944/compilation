@@ -90,7 +90,8 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
    * <!-- end-user-doc -->
    * @generated
    */
-  public Expr getCondition()
+  @Override
+public Expr getCondition()
   {
     return condition;
   }
@@ -117,7 +118,8 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCondition(Expr newCondition)
+  @Override
+public void setCondition(Expr newCondition)
   {
     if (newCondition != condition)
     {
@@ -138,7 +140,8 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
    * <!-- end-user-doc -->
    * @generated
    */
-  public Commands getThenCommands()
+  @Override
+public Commands getThenCommands()
   {
     return thenCommands;
   }
@@ -165,7 +168,8 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setThenCommands(Commands newThenCommands)
+  @Override
+public void setThenCommands(Commands newThenCommands)
   {
     if (newThenCommands != thenCommands)
     {
@@ -186,7 +190,8 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
    * <!-- end-user-doc -->
    * @generated
    */
-  public Commands getElseCommands()
+  @Override
+public Commands getElseCommands()
   {
     return elseCommands;
   }
@@ -213,7 +218,8 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setElseCommands(Commands newElseCommands)
+  @Override
+public void setElseCommands(Commands newElseCommands)
   {
     if (newElseCommands != elseCommands)
     {

@@ -79,7 +79,8 @@ public class ForImpl extends MinimalEObjectImpl.Container implements For
    * <!-- end-user-doc -->
    * @generated
    */
-  public Expr getCondition()
+  @Override
+public Expr getCondition()
   {
     return condition;
   }
@@ -106,7 +107,8 @@ public class ForImpl extends MinimalEObjectImpl.Container implements For
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCondition(Expr newCondition)
+  @Override
+public void setCondition(Expr newCondition)
   {
     if (newCondition != condition)
     {
@@ -127,7 +129,8 @@ public class ForImpl extends MinimalEObjectImpl.Container implements For
    * <!-- end-user-doc -->
    * @generated
    */
-  public Commands getCommands()
+  @Override
+public Commands getCommands()
   {
     return commands;
   }
@@ -154,7 +157,8 @@ public class ForImpl extends MinimalEObjectImpl.Container implements For
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCommands(Commands newCommands)
+  @Override
+public void setCommands(Commands newCommands)
   {
     if (newCommands != commands)
     {

@@ -105,7 +105,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Program createProgram()
+  @Override
+public Program createProgram()
   {
     ProgramImpl program = new ProgramImpl();
     return program;
@@ -116,7 +117,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Function createFunction()
+  @Override
+public Function createFunction()
   {
     FunctionImpl function = new FunctionImpl();
     return function;
@@ -127,7 +129,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Definition createDefinition()
+  @Override
+public Definition createDefinition()
   {
     DefinitionImpl definition = new DefinitionImpl();
     return definition;
@@ -138,7 +141,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Input createInput()
+  @Override
+public Input createInput()
   {
     InputImpl input = new InputImpl();
     return input;
@@ -149,7 +153,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Output createOutput()
+  @Override
+public Output createOutput()
   {
     OutputImpl output = new OutputImpl();
     return output;
@@ -160,7 +165,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Vars createVars()
+  @Override
+public Vars createVars()
   {
     VarsImpl vars = new VarsImpl();
     return vars;
@@ -171,7 +177,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Commands createCommands()
+  @Override
+public Commands createCommands()
   {
     CommandsImpl commands = new CommandsImpl();
     return commands;
@@ -182,7 +189,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Command createCommand()
+  @Override
+public Command createCommand()
   {
     CommandImpl command = new CommandImpl();
     return command;
@@ -193,7 +201,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public If createIf()
+  @Override
+public If createIf()
   {
     IfImpl if_ = new IfImpl();
     return if_;
@@ -204,7 +213,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Affect createAffect()
+  @Override
+public Affect createAffect()
   {
     AffectImpl affect = new AffectImpl();
     return affect;
@@ -215,7 +225,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public For createFor()
+  @Override
+public For createFor()
   {
     ForImpl for_ = new ForImpl();
     return for_;
@@ -226,7 +237,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public While createWhile()
+  @Override
+public While createWhile()
   {
     WhileImpl while_ = new WhileImpl();
     return while_;
@@ -237,7 +249,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Nop createNop()
+  @Override
+public Nop createNop()
   {
     NopImpl nop = new NopImpl();
     return nop;
@@ -248,7 +261,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ForEach createForEach()
+  @Override
+public ForEach createForEach()
   {
     ForEachImpl forEach = new ForEachImpl();
     return forEach;
@@ -259,7 +273,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Exprs createExprs()
+  @Override
+public Exprs createExprs()
   {
     ExprsImpl exprs = new ExprsImpl();
     return exprs;
@@ -270,7 +285,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public LExpr createLExpr()
+  @Override
+public LExpr createLExpr()
   {
     LExprImpl lExpr = new LExprImpl();
     return lExpr;
@@ -281,7 +297,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Expr createExpr()
+  @Override
+public Expr createExpr()
   {
     ExprImpl expr = new ExprImpl();
     return expr;
@@ -292,7 +309,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ExprAnd createExprAnd()
+  @Override
+public ExprAnd createExprAnd()
   {
     ExprAndImpl exprAnd = new ExprAndImpl();
     return exprAnd;
@@ -303,7 +321,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ExprOr createExprOr()
+  @Override
+public ExprOr createExprOr()
   {
     ExprOrImpl exprOr = new ExprOrImpl();
     return exprOr;
@@ -314,7 +333,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ExprNot createExprNot()
+  @Override
+public ExprNot createExprNot()
   {
     ExprNotImpl exprNot = new ExprNotImpl();
     return exprNot;
@@ -325,7 +345,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ExprEq createExprEq()
+  @Override
+public ExprEq createExprEq()
   {
     ExprEqImpl exprEq = new ExprEqImpl();
     return exprEq;
@@ -336,7 +357,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Nill createNill()
+  @Override
+public Nill createNill()
   {
     NillImpl nill = new NillImpl();
     return nill;
@@ -347,7 +369,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Variable createVariable()
+  @Override
+public Variable createVariable()
   {
     VariableImpl variable = new VariableImpl();
     return variable;
@@ -358,7 +381,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Symbol createSymbol()
+  @Override
+public Symbol createSymbol()
   {
     SymbolImpl symbol = new SymbolImpl();
     return symbol;
@@ -369,7 +393,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Cons createCons()
+  @Override
+public Cons createCons()
   {
     ConsImpl cons = new ConsImpl();
     return cons;
@@ -380,7 +405,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public List createList()
+  @Override
+public List createList()
   {
     ListImpl list = new ListImpl();
     return list;
@@ -391,7 +417,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Hd createHd()
+  @Override
+public Hd createHd()
   {
     HdImpl hd = new HdImpl();
     return hd;
@@ -402,7 +429,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Tl createTl()
+  @Override
+public Tl createTl()
   {
     TlImpl tl = new TlImpl();
     return tl;
@@ -413,7 +441,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Call createCall()
+  @Override
+public Call createCall()
   {
     CallImpl call = new CallImpl();
     return call;
@@ -424,7 +453,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public EnclosedExpr createEnclosedExpr()
+  @Override
+public EnclosedExpr createEnclosedExpr()
   {
     EnclosedExprImpl enclosedExpr = new EnclosedExprImpl();
     return enclosedExpr;
@@ -435,7 +465,8 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public WhdslPackage getWhdslPackage()
+  @Override
+public WhdslPackage getWhdslPackage()
   {
     return (WhdslPackage)getEPackage();
   }

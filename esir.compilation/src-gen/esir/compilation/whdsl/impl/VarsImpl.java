@@ -67,7 +67,8 @@ public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getList()
+  @Override
+public EList<String> getList()
   {
     if (list == null)
     {

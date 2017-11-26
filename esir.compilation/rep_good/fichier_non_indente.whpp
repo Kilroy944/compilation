@@ -1,13 +1,13 @@
 function f1:
 read X
 %
-  Y := nil;
+  Y := nil ;
   while X do
-    nop;
-    nop;
-    nop;
-    Y := X;
-    W := U;
+    nop ;
+    nop ;
+    nop ;
+    Y := X ;
+    W := U ;
     Truc := azer
   od
 %
@@ -16,10 +16,10 @@ write Y
 function f2:
 read X
 %
-  Y := nil;
+  Y := nil ;
   while X do
-    nop;
-    nop;
+    nop ;
+    nop ;
     Y := X
   od
 %
@@ -28,7 +28,7 @@ write Y
 function f3:
 read X
 %
-  Y := nil;
+  Y := nil ;
   foreach X in Y do
     foreach Y in Z do
       foreach Z in A do
@@ -36,9 +36,9 @@ read X
           nop
         fi
       od
-    od;
-    nop;
-    Y := X;
+    od ;
+    nop ;
+    Y := X ;
     W := U
   od
 %
@@ -47,11 +47,11 @@ write Y
 function f4:
 read X
 %
-  Y := nil;
+  Y := nil ;
   foreach X in Y do
-    nop;
-    nop;
-    Y := X;
+    nop ;
+    nop ;
+    Y := X ;
     W := U
   od
 %
@@ -60,10 +60,10 @@ write Y
 function f5:
 read X
 %
-  Y := nil;
+  Y := nil ;
   while X do
-    nop;
-    nop;
+    nop ;
+    nop ;
     Y := X
   od
 %
@@ -72,10 +72,10 @@ write Y
 function f6:
 read Abc
 %
-  if (cons (tl (hd bla))) then
+  if ( cons ( tl ( hd bla ) ) ) then
     nop
   else
-    nop;
+    nop ;
     nop
   fi
 %
@@ -102,7 +102,7 @@ write Ba
 function f9:
 read Abc
 %
-  Jd, Hg := nil,toto,tata,titi
+  Jd,Hg := nil,toto,tata,titi
 %
 write Ba
 
@@ -118,7 +118,7 @@ write Ba
 function f11:
 read Var3
 %
-  nop;
+  nop ;
   nop
 %
 write Var
@@ -126,10 +126,10 @@ write Var
 function f12:
 read X
 %
-  Y := nil;
+  Y := nil ;
   while X do
-    Y := (cons (hd X) Y);
-    X := (tl X)
+    Y := ( cons ( hd X ) Y ) ;
+    X := ( tl X )
   od
 %
 write Y
@@ -137,8 +137,8 @@ write Y
 function f13:
 read A
 %
-  A := nil;
-  A := nil;
-  A, B, C := nil,nil,nil
+  A := nil ;
+  A := nil ;
+  A,B,C := nil,nil,nil
 %
-write A, B, C
+write A,B,C

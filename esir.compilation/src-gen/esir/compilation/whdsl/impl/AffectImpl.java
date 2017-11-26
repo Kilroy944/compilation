@@ -79,7 +79,8 @@ public class AffectImpl extends MinimalEObjectImpl.Container implements Affect
    * <!-- end-user-doc -->
    * @generated
    */
-  public Vars getVars()
+  @Override
+public Vars getVars()
   {
     return vars;
   }
@@ -106,7 +107,8 @@ public class AffectImpl extends MinimalEObjectImpl.Container implements Affect
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVars(Vars newVars)
+  @Override
+public void setVars(Vars newVars)
   {
     if (newVars != vars)
     {
@@ -127,7 +129,8 @@ public class AffectImpl extends MinimalEObjectImpl.Container implements Affect
    * <!-- end-user-doc -->
    * @generated
    */
-  public Exprs getExprs()
+  @Override
+public Exprs getExprs()
   {
     return exprs;
   }
@@ -154,7 +157,8 @@ public class AffectImpl extends MinimalEObjectImpl.Container implements Affect
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExprs(Exprs newExprs)
+  @Override
+public void setExprs(Exprs newExprs)
   {
     if (newExprs != exprs)
     {

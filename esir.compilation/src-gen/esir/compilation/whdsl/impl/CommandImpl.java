@@ -67,7 +67,8 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * <!-- end-user-doc -->
    * @generated
    */
-  public EObject getCmd()
+  @Override
+public EObject getCmd()
   {
     return cmd;
   }
@@ -94,7 +95,8 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCmd(EObject newCmd)
+  @Override
+public void setCmd(EObject newCmd)
   {
     if (newCmd != cmd)
     {

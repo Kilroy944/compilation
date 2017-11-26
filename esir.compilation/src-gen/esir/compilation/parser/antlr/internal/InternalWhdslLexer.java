@@ -6,9 +6,6 @@ import org.eclipse.xtext.parser.antlr.Lexer;
 
 
 import org.antlr.runtime.*;
-import java.util.Stack;
-import java.util.List;
-import java.util.ArrayList;
 
 @SuppressWarnings("all")
 public class InternalWhdslLexer extends Lexer {
@@ -64,7 +61,8 @@ public class InternalWhdslLexer extends Lexer {
         super(input,state);
 
     }
-    public String getGrammarFileName() { return "InternalWhdsl.g"; }
+    @Override
+	public String getGrammarFileName() { return "InternalWhdsl.g"; }
 
     // $ANTLR start "T__14"
     public final void mT__14() throws RecognitionException {
@@ -1328,7 +1326,8 @@ public class InternalWhdslLexer extends Lexer {
     }
     // $ANTLR end "RULE_ANY_OTHER"
 
-    public void mTokens() throws RecognitionException {
+    @Override
+	public void mTokens() throws RecognitionException {
         // InternalWhdsl.g:1:8: ( T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | RULE_NIL | RULE_VARIABLE | RULE_SYMBOLE | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
         int alt15=39;
         alt15 = dfa15.predict(input);
@@ -1782,10 +1781,12 @@ public class InternalWhdslLexer extends Lexer {
             this.special = DFA15_special;
             this.transition = DFA15_transition;
         }
-        public String getDescription() {
+        @Override
+		public String getDescription() {
             return "1:1: Tokens : ( T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | RULE_NIL | RULE_VARIABLE | RULE_SYMBOLE | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
-        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
+        @Override
+		public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {

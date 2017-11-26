@@ -91,7 +91,8 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
    * <!-- end-user-doc -->
    * @generated
    */
-  public Input getInput()
+  @Override
+public Input getInput()
   {
     return input;
   }
@@ -118,7 +119,8 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setInput(Input newInput)
+  @Override
+public void setInput(Input newInput)
   {
     if (newInput != input)
     {
@@ -139,7 +141,8 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
    * <!-- end-user-doc -->
    * @generated
    */
-  public Commands getCommands()
+  @Override
+public Commands getCommands()
   {
     return commands;
   }
@@ -166,7 +169,8 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCommands(Commands newCommands)
+  @Override
+public void setCommands(Commands newCommands)
   {
     if (newCommands != commands)
     {
@@ -187,7 +191,8 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
    * <!-- end-user-doc -->
    * @generated
    */
-  public Output getOutput()
+  @Override
+public Output getOutput()
   {
     return output;
   }
@@ -214,7 +219,8 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setOutput(Output newOutput)
+  @Override
+public void setOutput(Output newOutput)
   {
     if (newOutput != output)
     {

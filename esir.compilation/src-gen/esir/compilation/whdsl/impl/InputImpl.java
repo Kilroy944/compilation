@@ -67,7 +67,8 @@ public class InputImpl extends MinimalEObjectImpl.Container implements Input
    * <!-- end-user-doc -->
    * @generated
    */
-  public Vars getVars()
+  @Override
+public Vars getVars()
   {
     return vars;
   }
@@ -94,7 +95,8 @@ public class InputImpl extends MinimalEObjectImpl.Container implements Input
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVars(Vars newVars)
+  @Override
+public void setVars(Vars newVars)
   {
     if (newVars != vars)
     {

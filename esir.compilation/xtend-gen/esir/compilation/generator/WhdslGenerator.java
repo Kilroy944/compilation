@@ -49,15 +49,15 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
  */
 @SuppressWarnings("all")
 public class WhdslGenerator extends AbstractGenerator {
-  private String indent_value = "   ";
+  private String indent_value;
   
-  private String indent_if = "   ";
+  private String indent_if;
   
-  private String indent_for = "   ";
+  private String indent_for;
   
-  private String indent_while = "   ";
+  private String indent_while;
   
-  private String indent_foreach = "  ";
+  private String indent_foreach;
   
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
@@ -118,7 +118,7 @@ public class WhdslGenerator extends AbstractGenerator {
         if (!_hasElements) {
           _hasElements = true;
         } else {
-          _builder.appendImmediate(";", "");
+          _builder.appendImmediate(" ;", "");
         }
         _builder.append(indent);
         CharSequence _compile_1 = this.compile(cmd, indent);
@@ -193,7 +193,7 @@ public class WhdslGenerator extends AbstractGenerator {
   
   public CharSequence compile(final Vars vars) {
     StringConcatenation _builder = new StringConcatenation();
-    String _join = IterableExtensions.join(vars.getList(), ", ");
+    String _join = IterableExtensions.join(vars.getList(), ",");
     _builder.append(_join);
     return _builder;
   }
@@ -298,58 +298,58 @@ public class WhdslGenerator extends AbstractGenerator {
   
   protected CharSequence _compileExpr(final Cons c) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("(cons ");
+    _builder.append("( cons ");
     CharSequence _compile = this.compile(c.getExprs());
     _builder.append(_compile);
-    _builder.append(")");
+    _builder.append(" )");
     return _builder;
   }
   
   protected CharSequence _compileExpr(final List l) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("(list ");
+    _builder.append("( list ");
     CharSequence _compile = this.compile(l.getExprs());
     _builder.append(_compile);
-    _builder.append(")");
+    _builder.append(" )");
     return _builder;
   }
   
   protected CharSequence _compileExpr(final Hd hd) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("(hd ");
+    _builder.append("( hd ");
     Object _compile = this.compile(hd.getExpr());
     _builder.append(_compile);
-    _builder.append(")");
+    _builder.append(" )");
     return _builder;
   }
   
   protected CharSequence _compileExpr(final Tl tl) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("(tl ");
+    _builder.append("( tl ");
     Object _compile = this.compile(tl.getExpr());
     _builder.append(_compile);
-    _builder.append(")");
+    _builder.append(" )");
     return _builder;
   }
   
   protected CharSequence _compileExpr(final Call c) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("(");
+    _builder.append("( ");
     String _name = c.getName();
     _builder.append(_name);
     _builder.append(" ");
     CharSequence _compile = this.compile(c.getParams());
     _builder.append(_compile);
-    _builder.append(")");
+    _builder.append(" )");
     return _builder;
   }
   
   protected CharSequence _compileExpr(final EnclosedExpr ie) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("(");
+    _builder.append("( ");
     Object _compile = this.compile(ie.getExpr());
     _builder.append(_compile);
-    _builder.append(")");
+    _builder.append(" )");
     return _builder;
   }
   
@@ -399,7 +399,7 @@ public class WhdslGenerator extends AbstractGenerator {
             if (!_hasElements_1) {
               _hasElements_1 = true;
             } else {
-              _builder.appendImmediate(";", "");
+              _builder.appendImmediate(" ;", "");
             }
             _builder.append((indent + this.indent_if));
             Object _compile_2 = this.compile(cmd_1, (indent + this.indent_if));
@@ -429,7 +429,7 @@ public class WhdslGenerator extends AbstractGenerator {
         if (!_hasElements) {
           _hasElements = true;
         } else {
-          _builder.appendImmediate(";", "");
+          _builder.appendImmediate(" ;", "");
         }
         _builder.append((indent + this.indent_for));
         Object _compile_1 = this.compile(cmd, (indent + this.indent_for));
@@ -460,7 +460,7 @@ public class WhdslGenerator extends AbstractGenerator {
         if (!_hasElements) {
           _hasElements = true;
         } else {
-          _builder.appendImmediate(";", "");
+          _builder.appendImmediate(" ;", "");
         }
         _builder.append((indent + this.indent_foreach));
         Object _compile_2 = this.compile(cmd, (indent + this.indent_foreach));
@@ -488,7 +488,7 @@ public class WhdslGenerator extends AbstractGenerator {
         if (!_hasElements) {
           _hasElements = true;
         } else {
-          _builder.appendImmediate(";", "");
+          _builder.appendImmediate(" ;", "");
         }
         _builder.append((indent + this.indent_while));
         Object _compile_1 = this.compile(cmd, (indent + this.indent_while));

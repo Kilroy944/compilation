@@ -19,7 +19,8 @@ OPTIONS
 	-if X, -while X, -for X, -foreach X
 		Règle le nombre d'indentations à X pour une commande particulière.
 
-	-test	Lance les tests.
+	-test REP_SOURCE REP_FORMATE
+		Formate tous les fichiers contenus dans REP_SOURCE et vérifie qu'ils sont égaux à ceux dans REP_FORMATE. Ne modifie pas REP_SOURCE.
 
 	-help	Affiche ce manuel.
 

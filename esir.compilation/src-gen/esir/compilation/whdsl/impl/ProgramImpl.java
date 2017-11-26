@@ -72,7 +72,8 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Function> getFunctions()
+  @Override
+public EList<Function> getFunctions()
   {
     if (functions == null)
     {

@@ -74,7 +74,8 @@ public class NopImpl extends MinimalEObjectImpl.Container implements Nop
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getNop()
+  @Override
+public String getNop()
   {
     return nop;
   }
@@ -84,7 +85,8 @@ public class NopImpl extends MinimalEObjectImpl.Container implements Nop
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setNop(String newNop)
+  @Override
+public void setNop(String newNop)
   {
     String oldNop = nop;
     nop = newNop;

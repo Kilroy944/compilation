@@ -72,7 +72,8 @@ public class ExprsImpl extends MinimalEObjectImpl.Container implements Exprs
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Expr> getList()
+  @Override
+public EList<Expr> getList()
   {
     if (list == null)
     {

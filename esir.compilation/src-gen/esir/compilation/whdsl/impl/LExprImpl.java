@@ -72,7 +72,8 @@ public class LExprImpl extends MinimalEObjectImpl.Container implements LExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Expr> getList()
+  @Override
+public EList<Expr> getList()
   {
     if (list == null)
     {

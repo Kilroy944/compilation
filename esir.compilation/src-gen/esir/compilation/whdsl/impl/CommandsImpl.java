@@ -72,7 +72,8 @@ public class CommandsImpl extends MinimalEObjectImpl.Container implements Comman
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Command> getList()
+  @Override
+public EList<Command> getList()
   {
     if (list == null)
     {

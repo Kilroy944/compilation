@@ -329,7 +329,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getProgram()
+  @Override
+public EClass getProgram()
   {
     return programEClass;
   }
@@ -339,7 +340,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProgram_Functions()
+  @Override
+public EReference getProgram_Functions()
   {
     return (EReference)programEClass.getEStructuralFeatures().get(0);
   }
@@ -349,7 +351,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getFunction()
+  @Override
+public EClass getFunction()
   {
     return functionEClass;
   }
@@ -359,7 +362,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFunction_Name()
+  @Override
+public EAttribute getFunction_Name()
   {
     return (EAttribute)functionEClass.getEStructuralFeatures().get(0);
   }
@@ -369,7 +373,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFunction_Definition()
+  @Override
+public EReference getFunction_Definition()
   {
     return (EReference)functionEClass.getEStructuralFeatures().get(1);
   }
@@ -379,7 +384,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getDefinition()
+  @Override
+public EClass getDefinition()
   {
     return definitionEClass;
   }
@@ -389,7 +395,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDefinition_Input()
+  @Override
+public EReference getDefinition_Input()
   {
     return (EReference)definitionEClass.getEStructuralFeatures().get(0);
   }
@@ -399,7 +406,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDefinition_Commands()
+  @Override
+public EReference getDefinition_Commands()
   {
     return (EReference)definitionEClass.getEStructuralFeatures().get(1);
   }
@@ -409,7 +417,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDefinition_Output()
+  @Override
+public EReference getDefinition_Output()
   {
     return (EReference)definitionEClass.getEStructuralFeatures().get(2);
   }
@@ -419,7 +428,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getInput()
+  @Override
+public EClass getInput()
   {
     return inputEClass;
   }
@@ -429,7 +439,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getInput_Vars()
+  @Override
+public EReference getInput_Vars()
   {
     return (EReference)inputEClass.getEStructuralFeatures().get(0);
   }
@@ -439,7 +450,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getOutput()
+  @Override
+public EClass getOutput()
   {
     return outputEClass;
   }
@@ -449,7 +461,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOutput_Vars()
+  @Override
+public EReference getOutput_Vars()
   {
     return (EReference)outputEClass.getEStructuralFeatures().get(0);
   }
@@ -459,7 +472,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getVars()
+  @Override
+public EClass getVars()
   {
     return varsEClass;
   }
@@ -469,7 +483,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getVars_List()
+  @Override
+public EAttribute getVars_List()
   {
     return (EAttribute)varsEClass.getEStructuralFeatures().get(0);
   }
@@ -479,7 +494,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getCommands()
+  @Override
+public EClass getCommands()
   {
     return commandsEClass;
   }
@@ -489,7 +505,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCommands_List()
+  @Override
+public EReference getCommands_List()
   {
     return (EReference)commandsEClass.getEStructuralFeatures().get(0);
   }
@@ -499,7 +516,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getCommand()
+  @Override
+public EClass getCommand()
   {
     return commandEClass;
   }
@@ -509,7 +527,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCommand_Cmd()
+  @Override
+public EReference getCommand_Cmd()
   {
     return (EReference)commandEClass.getEStructuralFeatures().get(0);
   }
@@ -519,7 +538,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getIf()
+  @Override
+public EClass getIf()
   {
     return ifEClass;
   }
@@ -529,7 +549,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getIf_Condition()
+  @Override
+public EReference getIf_Condition()
   {
     return (EReference)ifEClass.getEStructuralFeatures().get(0);
   }
@@ -539,7 +560,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getIf_ThenCommands()
+  @Override
+public EReference getIf_ThenCommands()
   {
     return (EReference)ifEClass.getEStructuralFeatures().get(1);
   }
@@ -549,7 +571,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getIf_ElseCommands()
+  @Override
+public EReference getIf_ElseCommands()
   {
     return (EReference)ifEClass.getEStructuralFeatures().get(2);
   }
@@ -559,7 +582,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAffect()
+  @Override
+public EClass getAffect()
   {
     return affectEClass;
   }
@@ -569,7 +593,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAffect_Vars()
+  @Override
+public EReference getAffect_Vars()
   {
     return (EReference)affectEClass.getEStructuralFeatures().get(0);
   }
@@ -579,7 +604,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAffect_Exprs()
+  @Override
+public EReference getAffect_Exprs()
   {
     return (EReference)affectEClass.getEStructuralFeatures().get(1);
   }
@@ -589,7 +615,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getFor()
+  @Override
+public EClass getFor()
   {
     return forEClass;
   }
@@ -599,7 +626,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFor_Condition()
+  @Override
+public EReference getFor_Condition()
   {
     return (EReference)forEClass.getEStructuralFeatures().get(0);
   }
@@ -609,7 +637,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFor_Commands()
+  @Override
+public EReference getFor_Commands()
   {
     return (EReference)forEClass.getEStructuralFeatures().get(1);
   }
@@ -619,7 +648,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getWhile()
+  @Override
+public EClass getWhile()
   {
     return whileEClass;
   }
@@ -629,7 +659,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getWhile_Condition()
+  @Override
+public EReference getWhile_Condition()
   {
     return (EReference)whileEClass.getEStructuralFeatures().get(0);
   }
@@ -639,7 +670,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getWhile_Commands()
+  @Override
+public EReference getWhile_Commands()
   {
     return (EReference)whileEClass.getEStructuralFeatures().get(1);
   }
@@ -649,7 +681,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getNop()
+  @Override
+public EClass getNop()
   {
     return nopEClass;
   }
@@ -659,7 +692,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getNop_Nop()
+  @Override
+public EAttribute getNop_Nop()
   {
     return (EAttribute)nopEClass.getEStructuralFeatures().get(0);
   }
@@ -669,7 +703,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getForEach()
+  @Override
+public EClass getForEach()
   {
     return forEachEClass;
   }
@@ -679,7 +714,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getForEach_Elem()
+  @Override
+public EReference getForEach_Elem()
   {
     return (EReference)forEachEClass.getEStructuralFeatures().get(0);
   }
@@ -689,7 +725,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getForEach_Ensemb()
+  @Override
+public EReference getForEach_Ensemb()
   {
     return (EReference)forEachEClass.getEStructuralFeatures().get(1);
   }
@@ -699,7 +736,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getForEach_Commands()
+  @Override
+public EReference getForEach_Commands()
   {
     return (EReference)forEachEClass.getEStructuralFeatures().get(2);
   }
@@ -709,7 +747,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getExprs()
+  @Override
+public EClass getExprs()
   {
     return exprsEClass;
   }
@@ -719,7 +758,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExprs_List()
+  @Override
+public EReference getExprs_List()
   {
     return (EReference)exprsEClass.getEStructuralFeatures().get(0);
   }
@@ -729,7 +769,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getLExpr()
+  @Override
+public EClass getLExpr()
   {
     return lExprEClass;
   }
@@ -739,7 +780,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLExpr_List()
+  @Override
+public EReference getLExpr_List()
   {
     return (EReference)lExprEClass.getEStructuralFeatures().get(0);
   }
@@ -749,7 +791,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getExpr()
+  @Override
+public EClass getExpr()
   {
     return exprEClass;
   }
@@ -759,7 +802,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getExprAnd()
+  @Override
+public EClass getExprAnd()
   {
     return exprAndEClass;
   }
@@ -769,7 +813,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExprAnd_Left()
+  @Override
+public EReference getExprAnd_Left()
   {
     return (EReference)exprAndEClass.getEStructuralFeatures().get(0);
   }
@@ -779,7 +824,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExprAnd_Right()
+  @Override
+public EReference getExprAnd_Right()
   {
     return (EReference)exprAndEClass.getEStructuralFeatures().get(1);
   }
@@ -789,7 +835,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getExprOr()
+  @Override
+public EClass getExprOr()
   {
     return exprOrEClass;
   }
@@ -799,7 +846,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExprOr_Left()
+  @Override
+public EReference getExprOr_Left()
   {
     return (EReference)exprOrEClass.getEStructuralFeatures().get(0);
   }
@@ -809,7 +857,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExprOr_Right()
+  @Override
+public EReference getExprOr_Right()
   {
     return (EReference)exprOrEClass.getEStructuralFeatures().get(1);
   }
@@ -819,7 +868,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getExprNot()
+  @Override
+public EClass getExprNot()
   {
     return exprNotEClass;
   }
@@ -829,7 +879,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExprNot_Expr()
+  @Override
+public EReference getExprNot_Expr()
   {
     return (EReference)exprNotEClass.getEStructuralFeatures().get(0);
   }
@@ -839,7 +890,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getExprEq()
+  @Override
+public EClass getExprEq()
   {
     return exprEqEClass;
   }
@@ -849,7 +901,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExprEq_Left()
+  @Override
+public EReference getExprEq_Left()
   {
     return (EReference)exprEqEClass.getEStructuralFeatures().get(0);
   }
@@ -859,7 +912,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExprEq_Right()
+  @Override
+public EReference getExprEq_Right()
   {
     return (EReference)exprEqEClass.getEStructuralFeatures().get(1);
   }
@@ -869,7 +923,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getNill()
+  @Override
+public EClass getNill()
   {
     return nillEClass;
   }
@@ -879,7 +934,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getNill_Value()
+  @Override
+public EAttribute getNill_Value()
   {
     return (EAttribute)nillEClass.getEStructuralFeatures().get(0);
   }
@@ -889,7 +945,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getVariable()
+  @Override
+public EClass getVariable()
   {
     return variableEClass;
   }
@@ -899,7 +956,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getVariable_Value()
+  @Override
+public EAttribute getVariable_Value()
   {
     return (EAttribute)variableEClass.getEStructuralFeatures().get(0);
   }
@@ -909,7 +967,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getSymbol()
+  @Override
+public EClass getSymbol()
   {
     return symbolEClass;
   }
@@ -919,7 +978,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getSymbol_Value()
+  @Override
+public EAttribute getSymbol_Value()
   {
     return (EAttribute)symbolEClass.getEStructuralFeatures().get(0);
   }
@@ -929,7 +989,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getCons()
+  @Override
+public EClass getCons()
   {
     return consEClass;
   }
@@ -939,7 +1000,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCons_Exprs()
+  @Override
+public EReference getCons_Exprs()
   {
     return (EReference)consEClass.getEStructuralFeatures().get(0);
   }
@@ -949,7 +1011,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getList()
+  @Override
+public EClass getList()
   {
     return listEClass;
   }
@@ -959,7 +1022,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getList_Exprs()
+  @Override
+public EReference getList_Exprs()
   {
     return (EReference)listEClass.getEStructuralFeatures().get(0);
   }
@@ -969,7 +1033,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getHd()
+  @Override
+public EClass getHd()
   {
     return hdEClass;
   }
@@ -979,7 +1044,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getHd_Expr()
+  @Override
+public EReference getHd_Expr()
   {
     return (EReference)hdEClass.getEStructuralFeatures().get(0);
   }
@@ -989,7 +1055,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getTl()
+  @Override
+public EClass getTl()
   {
     return tlEClass;
   }
@@ -999,7 +1066,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTl_Expr()
+  @Override
+public EReference getTl_Expr()
   {
     return (EReference)tlEClass.getEStructuralFeatures().get(0);
   }
@@ -1009,7 +1077,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getCall()
+  @Override
+public EClass getCall()
   {
     return callEClass;
   }
@@ -1019,7 +1088,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getCall_Name()
+  @Override
+public EAttribute getCall_Name()
   {
     return (EAttribute)callEClass.getEStructuralFeatures().get(0);
   }
@@ -1029,7 +1099,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCall_Params()
+  @Override
+public EReference getCall_Params()
   {
     return (EReference)callEClass.getEStructuralFeatures().get(1);
   }
@@ -1039,7 +1110,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getEnclosedExpr()
+  @Override
+public EClass getEnclosedExpr()
   {
     return enclosedExprEClass;
   }
@@ -1049,7 +1121,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEnclosedExpr_Expr()
+  @Override
+public EReference getEnclosedExpr_Expr()
   {
     return (EReference)enclosedExprEClass.getEStructuralFeatures().get(0);
   }
@@ -1059,7 +1132,8 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public WhdslFactory getWhdslFactory()
+  @Override
+public WhdslFactory getWhdslFactory()
   {
     return (WhdslFactory)getEFactoryInstance();
   }

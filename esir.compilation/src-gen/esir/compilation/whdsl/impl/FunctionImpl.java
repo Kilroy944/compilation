@@ -88,7 +88,8 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  @Override
+public String getName()
   {
     return name;
   }
@@ -98,7 +99,8 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  @Override
+public void setName(String newName)
   {
     String oldName = name;
     name = newName;
@@ -111,7 +113,8 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
    * <!-- end-user-doc -->
    * @generated
    */
-  public Definition getDefinition()
+  @Override
+public Definition getDefinition()
   {
     return definition;
   }
@@ -138,7 +141,8 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setDefinition(Definition newDefinition)
+  @Override
+public void setDefinition(Definition newDefinition)
   {
     if (newDefinition != definition)
     {

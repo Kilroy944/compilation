@@ -90,7 +90,8 @@ public class ForEachImpl extends MinimalEObjectImpl.Container implements ForEach
    * <!-- end-user-doc -->
    * @generated
    */
-  public Expr getElem()
+  @Override
+public Expr getElem()
   {
     return elem;
   }
@@ -117,7 +118,8 @@ public class ForEachImpl extends MinimalEObjectImpl.Container implements ForEach
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setElem(Expr newElem)
+  @Override
+public void setElem(Expr newElem)
   {
     if (newElem != elem)
     {
@@ -138,7 +140,8 @@ public class ForEachImpl extends MinimalEObjectImpl.Container implements ForEach
    * <!-- end-user-doc -->
    * @generated
    */
-  public Expr getEnsemb()
+  @Override
+public Expr getEnsemb()
   {
     return ensemb;
   }
@@ -165,7 +168,8 @@ public class ForEachImpl extends MinimalEObjectImpl.Container implements ForEach
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setEnsemb(Expr newEnsemb)
+  @Override
+public void setEnsemb(Expr newEnsemb)
   {
     if (newEnsemb != ensemb)
     {
@@ -186,7 +190,8 @@ public class ForEachImpl extends MinimalEObjectImpl.Container implements ForEach
    * <!-- end-user-doc -->
    * @generated
    */
-  public Commands getCommands()
+  @Override
+public Commands getCommands()
   {
     return commands;
   }
@@ -213,7 +218,8 @@ public class ForEachImpl extends MinimalEObjectImpl.Container implements ForEach
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCommands(Commands newCommands)
+  @Override
+public void setCommands(Commands newCommands)
   {
     if (newCommands != commands)
     {

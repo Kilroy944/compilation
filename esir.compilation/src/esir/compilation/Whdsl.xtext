@@ -63,7 +63,7 @@ Nop:
 ;
 
 ForEach:
-	'foreach' elem = Expr 'in' ensemb = Expr 'do' commands = Commands 'od'
+	'foreach' elem=Expr 'in' ensemb=Expr 'do' commands=Commands 'od'
 ;
 
 
