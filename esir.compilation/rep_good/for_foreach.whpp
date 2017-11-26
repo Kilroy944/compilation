@@ -1,8 +1,0 @@
-function testfunction:
-read A,B,C
-%
-  foreach nil in nil do
-    nop
-  od
-%
-write A,B,C

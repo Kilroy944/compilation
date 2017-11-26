@@ -1,0 +1,1 @@
+function testfunction: read A ,B ,C % if nil then foreach nil in nil do if nil then nop; nop fi od else nop fi % write A ,B, C

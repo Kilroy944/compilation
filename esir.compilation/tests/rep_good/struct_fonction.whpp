@@ -1,0 +1,6 @@
+function testfunction:
+read A,B,C
+%
+  nop
+%
+write A,B,C

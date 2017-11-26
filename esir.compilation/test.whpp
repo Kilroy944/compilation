@@ -1,20 +1,20 @@
 function fonctiona:
 read B,B
 %
-  nop;
-  if (cond A B) then
+  nop ;
+  if ( cond A B ) then
     nop
   else
     nop
-  fi;
+  fi ;
   for nil do
-    nop;
+    nop ;
     nop
-  od;
+  od ;
   while nil do
-    nop;
+    nop ;
     nop
-  od;
+  od ;
   if nil then
     if nil then
       nop;
@@ -23,7 +23,7 @@ read B,B
       nop
     fi
   else
-    nop;
+    nop ;
     nop
   fi
 %
@@ -41,8 +41,8 @@ write A,B,C
 function fonctionb:
 read A
 %
-  A := B;
-  A := nil;
+  A := B ;
+  A := nil ;
   A,B,C := nil,nil,nil
 %
 write A,B,C
@@ -50,20 +50,20 @@ write A,B,C
 function fonctiona:
 read B,B
 %
-  nop;
-  if (cond A (A) and (not (B) or A =? B)) then
+  nop ;
+  if ( cond A ( A ) and ( not ( B ) or A =? B ) ) then
     A := B
   else
     nop
-  fi;
-  for (list (hd A) b c) do
+  fi ;
+  for ( list ( hd A ) b c ) do
     nop
-  od;
-  while (tl (list a b c)) do
-    nop;
+  od ;
+  while ( tl ( list a b c ) ) do
+    nop ;
     nop
-  od;
-  if (funct A) then
+  od ;
+  if ( funct A ) then
     nop
   fi
 %
@@ -72,7 +72,7 @@ write A,B,C
 function fonctionb:
 read A
 %
-  A := A;
+  A := A ;
   A,B,C := B,C,C
 %
 write A,B,C

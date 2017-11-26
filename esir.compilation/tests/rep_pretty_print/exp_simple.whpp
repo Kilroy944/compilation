@@ -1,0 +1,15 @@
+function testfunction:
+read A,B,C
+%
+  if nil then
+    foreach ( cons A ) in B do
+      if A then
+        A := C;
+        nop
+      fi
+    od
+  else
+    nop
+  fi
+%
+write A,B,C

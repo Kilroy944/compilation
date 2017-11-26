@@ -1,4 +1,0 @@
-function AwrongA:
-read a,b,c%
-nop
-write a,b

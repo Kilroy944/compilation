@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 
 import org.apache.commons.cli.BasicParser;
@@ -108,7 +110,7 @@ public class Main {
 	}
 
 
-
+	//-test rep_non_indent rep_good
 	private int prettyprint(Injector injector, String string,String sortie, String indent_value, String indent_if, String indent_for, String indent_foreach, String indent_while) throws ErrorPrettyPrinterException{
 
 		ResourceSet resourceSet = injector.getInstance(ResourceSet.class);
@@ -152,11 +154,15 @@ public class Main {
 	}
 
 
-
+	
 	public static void printMan(){
 		BufferedReader fent;
 		try {
-			fent = new BufferedReader(new FileReader(new File("README.md")));
+			
+			InputStream is =Main.class.getClassLoader().getResourceAsStream("README.md");
+			fent = new BufferedReader(new InputStreamReader(is));
+			
+			//fent = new BufferedReader(new FileReader(new File("./README.md")));
 			String enr;
 			while ( ( enr = fent.readLine( ) ) != null ) // null en cas de fin de fichier
 			{
@@ -223,7 +229,7 @@ public class Main {
 					/*Recupère le fichier good correspondant à celui qui à été indenté*/
 					File fichier_good = new File("./"+rep_good.getPath()+"/"+(file.getName().split(".wh")[0])+".whpp");
 
-					/*Si le fichier good existe, il est comparé à celui indenter par le pretty*/
+					/*Si le fichier good existe, il est comparé à celui indenté par le pretty*/
 					if(!(fichier_good.exists())){
 						System.out.println("Comparaison impossible: fichier à comparer non trouvé");
 					}
