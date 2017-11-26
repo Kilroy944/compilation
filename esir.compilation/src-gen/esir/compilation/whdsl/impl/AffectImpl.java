@@ -23,11 +23,11 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.impl.AffectImpl#getVars <em>Vars</em>}</li>
  *   <li>{@link esir.compilation.whdsl.impl.AffectImpl#getExprs <em>Exprs</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -79,8 +79,7 @@ public class AffectImpl extends MinimalEObjectImpl.Container implements Affect
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Vars getVars()
+  public Vars getVars()
   {
     return vars;
   }
@@ -107,8 +106,7 @@ public Vars getVars()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public void setVars(Vars newVars)
+  public void setVars(Vars newVars)
   {
     if (newVars != vars)
     {
@@ -129,8 +127,7 @@ public void setVars(Vars newVars)
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Exprs getExprs()
+  public Exprs getExprs()
   {
     return exprs;
   }
@@ -157,8 +154,7 @@ public Exprs getExprs()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public void setExprs(Exprs newExprs)
+  public void setExprs(Exprs newExprs)
   {
     if (newExprs != exprs)
     {

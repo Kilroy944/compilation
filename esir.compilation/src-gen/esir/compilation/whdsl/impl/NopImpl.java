@@ -19,10 +19,10 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.impl.NopImpl#getNop <em>Nop</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -74,8 +74,7 @@ public class NopImpl extends MinimalEObjectImpl.Container implements Nop
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public String getNop()
+  public String getNop()
   {
     return nop;
   }
@@ -85,8 +84,7 @@ public String getNop()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public void setNop(String newNop)
+  public void setNop(String newNop)
   {
     String oldNop = nop;
     nop = newNop;

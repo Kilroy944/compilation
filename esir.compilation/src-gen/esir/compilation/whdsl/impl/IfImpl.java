@@ -23,12 +23,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.impl.IfImpl#getCondition <em>Condition</em>}</li>
  *   <li>{@link esir.compilation.whdsl.impl.IfImpl#getThenCommands <em>Then Commands</em>}</li>
  *   <li>{@link esir.compilation.whdsl.impl.IfImpl#getElseCommands <em>Else Commands</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -90,8 +90,7 @@ public class IfImpl extends MinimalEObjectImpl.Container implements If
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Expr getCondition()
+  public Expr getCondition()
   {
     return condition;
   }
@@ -118,8 +117,7 @@ public Expr getCondition()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public void setCondition(Expr newCondition)
+  public void setCondition(Expr newCondition)
   {
     if (newCondition != condition)
     {
@@ -140,8 +138,7 @@ public void setCondition(Expr newCondition)
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Commands getThenCommands()
+  public Commands getThenCommands()
   {
     return thenCommands;
   }
@@ -168,8 +165,7 @@ public Commands getThenCommands()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public void setThenCommands(Commands newThenCommands)
+  public void setThenCommands(Commands newThenCommands)
   {
     if (newThenCommands != thenCommands)
     {
@@ -190,8 +186,7 @@ public void setThenCommands(Commands newThenCommands)
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Commands getElseCommands()
+  public Commands getElseCommands()
   {
     return elseCommands;
   }
@@ -218,8 +213,7 @@ public Commands getElseCommands()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public void setElseCommands(Commands newElseCommands)
+  public void setElseCommands(Commands newElseCommands)
   {
     if (newElseCommands != elseCommands)
     {

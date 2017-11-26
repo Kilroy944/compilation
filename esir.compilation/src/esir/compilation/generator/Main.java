@@ -180,7 +180,7 @@ public class Main {
 			return;
 		}
 
-
+		/*Ouverture du répertoire des fichiers à indenter*/
 		File rep_non_indent = new File(cmd.getArgs()[0]);
 
 		if(!(rep_non_indent.exists() && rep_non_indent.isDirectory())){
@@ -188,13 +188,15 @@ public class Main {
 			return;
 		}
 
+		/*Ouverture du répertoire des fichiers indenter*/
 		File rep_good = new File(cmd.getArgs()[1]);
-
+		
 		if(!(rep_good.exists() && rep_good.isDirectory())){
 			System.out.println("Repertoire de test inexistant");
 			return;
 		}
 
+		/*Récupération des fichiers .wh à indenter*/
 		File[] fichier_non_indent = rep_non_indent.listFiles(new FilenameFilter(){
 			@Override
 			public boolean accept(File dir, String name) {
@@ -204,6 +206,8 @@ public class Main {
 
 		File rep_pretty_print = new File("./rep_pretty_print");
 		rep_pretty_print.mkdir();
+		
+		/*Pour tous les fichiers non indentés */
 		for (File file : fichier_non_indent) {
 
 			System.out.println("---------------DEBUT TEST---------------");
@@ -216,10 +220,12 @@ public class Main {
 					System.out.println("ERREUR: echec de la validation");
 				}
 				else{
+					/*Recupère le fichier good correspondant à celui qui à été indenté*/
 					File fichier_good = new File("./"+rep_good.getPath()+"/"+(file.getName().split(".wh")[0])+".whpp");
 
+					/*Si le fichier good existe, il est comparé à celui indenter par le pretty*/
 					if(!(fichier_good.exists())){
-						System.out.println("Comparaison impossible: fichier à compararer non trouvé");
+						System.out.println("Comparaison impossible: fichier à comparer non trouvé");
 					}
 					else{
 						if (FileUtils.contentEquals(new File(path_fichier_sortie),fichier_good) == false) {

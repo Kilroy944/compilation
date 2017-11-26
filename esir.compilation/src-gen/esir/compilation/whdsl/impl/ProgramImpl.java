@@ -27,10 +27,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.impl.ProgramImpl#getFunctions <em>Functions</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -72,8 +72,7 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EList<Function> getFunctions()
+  public EList<Function> getFunctions()
   {
     if (functions == null)
     {

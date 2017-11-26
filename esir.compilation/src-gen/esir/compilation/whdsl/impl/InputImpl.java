@@ -22,10 +22,10 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.impl.InputImpl#getVars <em>Vars</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -67,8 +67,7 @@ public class InputImpl extends MinimalEObjectImpl.Container implements Input
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Vars getVars()
+  public Vars getVars()
   {
     return vars;
   }
@@ -95,8 +94,7 @@ public Vars getVars()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public void setVars(Vars newVars)
+  public void setVars(Vars newVars)
   {
     if (newVars != vars)
     {

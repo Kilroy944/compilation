@@ -14,10 +14,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.Program#getFunctions <em>Functions</em>}</li>
  * </ul>
+ * </p>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getProgram()
  * @model

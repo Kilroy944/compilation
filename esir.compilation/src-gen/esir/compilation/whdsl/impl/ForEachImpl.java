@@ -23,12 +23,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.impl.ForEachImpl#getElem <em>Elem</em>}</li>
  *   <li>{@link esir.compilation.whdsl.impl.ForEachImpl#getEnsemb <em>Ensemb</em>}</li>
  *   <li>{@link esir.compilation.whdsl.impl.ForEachImpl#getCommands <em>Commands</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -90,8 +90,7 @@ public class ForEachImpl extends MinimalEObjectImpl.Container implements ForEach
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Expr getElem()
+  public Expr getElem()
   {
     return elem;
   }
@@ -118,8 +117,7 @@ public Expr getElem()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public void setElem(Expr newElem)
+  public void setElem(Expr newElem)
   {
     if (newElem != elem)
     {
@@ -140,8 +138,7 @@ public void setElem(Expr newElem)
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Expr getEnsemb()
+  public Expr getEnsemb()
   {
     return ensemb;
   }
@@ -168,8 +165,7 @@ public Expr getEnsemb()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public void setEnsemb(Expr newEnsemb)
+  public void setEnsemb(Expr newEnsemb)
   {
     if (newEnsemb != ensemb)
     {
@@ -190,8 +186,7 @@ public void setEnsemb(Expr newEnsemb)
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Commands getCommands()
+  public Commands getCommands()
   {
     return commands;
   }
@@ -218,8 +213,7 @@ public Commands getCommands()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public void setCommands(Commands newCommands)
+  public void setCommands(Commands newCommands)
   {
     if (newCommands != commands)
     {

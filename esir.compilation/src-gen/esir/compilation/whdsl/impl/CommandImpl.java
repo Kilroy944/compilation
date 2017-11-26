@@ -22,10 +22,10 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.impl.CommandImpl#getCmd <em>Cmd</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -67,8 +67,7 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EObject getCmd()
+  public EObject getCmd()
   {
     return cmd;
   }
@@ -95,8 +94,7 @@ public EObject getCmd()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public void setCmd(EObject newCmd)
+  public void setCmd(EObject newCmd)
   {
     if (newCmd != cmd)
     {

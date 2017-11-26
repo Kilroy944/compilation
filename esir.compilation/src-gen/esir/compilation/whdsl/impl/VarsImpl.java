@@ -22,10 +22,10 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.impl.VarsImpl#getList <em>List</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -67,8 +67,7 @@ public class VarsImpl extends MinimalEObjectImpl.Container implements Vars
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EList<String> getList()
+  public EList<String> getList()
   {
     if (list == null)
     {

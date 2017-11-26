@@ -27,10 +27,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.impl.ExprsImpl#getList <em>List</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -72,8 +72,7 @@ public class ExprsImpl extends MinimalEObjectImpl.Container implements Exprs
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EList<Expr> getList()
+  public EList<Expr> getList()
   {
     if (list == null)
     {

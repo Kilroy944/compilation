@@ -23,11 +23,11 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.impl.ForImpl#getCondition <em>Condition</em>}</li>
  *   <li>{@link esir.compilation.whdsl.impl.ForImpl#getCommands <em>Commands</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -79,8 +79,7 @@ public class ForImpl extends MinimalEObjectImpl.Container implements For
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Expr getCondition()
+  public Expr getCondition()
   {
     return condition;
   }
@@ -107,8 +106,7 @@ public Expr getCondition()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public void setCondition(Expr newCondition)
+  public void setCondition(Expr newCondition)
   {
     if (newCondition != condition)
     {
@@ -129,8 +127,7 @@ public void setCondition(Expr newCondition)
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Commands getCommands()
+  public Commands getCommands()
   {
     return commands;
   }
@@ -157,8 +154,7 @@ public Commands getCommands()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public void setCommands(Commands newCommands)
+  public void setCommands(Commands newCommands)
   {
     if (newCommands != commands)
     {

@@ -329,8 +329,7 @@ public class WhdslPackageImpl extends EPackageImpl implements WhdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getProgram()
+  public EClass getProgram()
   {
     return programEClass;
   }
@@ -340,8 +339,7 @@ public EClass getProgram()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getProgram_Functions()
+  public EReference getProgram_Functions()
   {
     return (EReference)programEClass.getEStructuralFeatures().get(0);
   }
@@ -351,8 +349,7 @@ public EReference getProgram_Functions()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getFunction()
+  public EClass getFunction()
   {
     return functionEClass;
   }
@@ -362,8 +359,7 @@ public EClass getFunction()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EAttribute getFunction_Name()
+  public EAttribute getFunction_Name()
   {
     return (EAttribute)functionEClass.getEStructuralFeatures().get(0);
   }
@@ -373,8 +369,7 @@ public EAttribute getFunction_Name()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getFunction_Definition()
+  public EReference getFunction_Definition()
   {
     return (EReference)functionEClass.getEStructuralFeatures().get(1);
   }
@@ -384,8 +379,7 @@ public EReference getFunction_Definition()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getDefinition()
+  public EClass getDefinition()
   {
     return definitionEClass;
   }
@@ -395,8 +389,7 @@ public EClass getDefinition()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getDefinition_Input()
+  public EReference getDefinition_Input()
   {
     return (EReference)definitionEClass.getEStructuralFeatures().get(0);
   }
@@ -406,8 +399,7 @@ public EReference getDefinition_Input()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getDefinition_Commands()
+  public EReference getDefinition_Commands()
   {
     return (EReference)definitionEClass.getEStructuralFeatures().get(1);
   }
@@ -417,8 +409,7 @@ public EReference getDefinition_Commands()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getDefinition_Output()
+  public EReference getDefinition_Output()
   {
     return (EReference)definitionEClass.getEStructuralFeatures().get(2);
   }
@@ -428,8 +419,7 @@ public EReference getDefinition_Output()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getInput()
+  public EClass getInput()
   {
     return inputEClass;
   }
@@ -439,8 +429,7 @@ public EClass getInput()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getInput_Vars()
+  public EReference getInput_Vars()
   {
     return (EReference)inputEClass.getEStructuralFeatures().get(0);
   }
@@ -450,8 +439,7 @@ public EReference getInput_Vars()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getOutput()
+  public EClass getOutput()
   {
     return outputEClass;
   }
@@ -461,8 +449,7 @@ public EClass getOutput()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getOutput_Vars()
+  public EReference getOutput_Vars()
   {
     return (EReference)outputEClass.getEStructuralFeatures().get(0);
   }
@@ -472,8 +459,7 @@ public EReference getOutput_Vars()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getVars()
+  public EClass getVars()
   {
     return varsEClass;
   }
@@ -483,8 +469,7 @@ public EClass getVars()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EAttribute getVars_List()
+  public EAttribute getVars_List()
   {
     return (EAttribute)varsEClass.getEStructuralFeatures().get(0);
   }
@@ -494,8 +479,7 @@ public EAttribute getVars_List()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getCommands()
+  public EClass getCommands()
   {
     return commandsEClass;
   }
@@ -505,8 +489,7 @@ public EClass getCommands()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getCommands_List()
+  public EReference getCommands_List()
   {
     return (EReference)commandsEClass.getEStructuralFeatures().get(0);
   }
@@ -516,8 +499,7 @@ public EReference getCommands_List()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getCommand()
+  public EClass getCommand()
   {
     return commandEClass;
   }
@@ -527,8 +509,7 @@ public EClass getCommand()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getCommand_Cmd()
+  public EReference getCommand_Cmd()
   {
     return (EReference)commandEClass.getEStructuralFeatures().get(0);
   }
@@ -538,8 +519,7 @@ public EReference getCommand_Cmd()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getIf()
+  public EClass getIf()
   {
     return ifEClass;
   }
@@ -549,8 +529,7 @@ public EClass getIf()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getIf_Condition()
+  public EReference getIf_Condition()
   {
     return (EReference)ifEClass.getEStructuralFeatures().get(0);
   }
@@ -560,8 +539,7 @@ public EReference getIf_Condition()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getIf_ThenCommands()
+  public EReference getIf_ThenCommands()
   {
     return (EReference)ifEClass.getEStructuralFeatures().get(1);
   }
@@ -571,8 +549,7 @@ public EReference getIf_ThenCommands()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getIf_ElseCommands()
+  public EReference getIf_ElseCommands()
   {
     return (EReference)ifEClass.getEStructuralFeatures().get(2);
   }
@@ -582,8 +559,7 @@ public EReference getIf_ElseCommands()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getAffect()
+  public EClass getAffect()
   {
     return affectEClass;
   }
@@ -593,8 +569,7 @@ public EClass getAffect()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getAffect_Vars()
+  public EReference getAffect_Vars()
   {
     return (EReference)affectEClass.getEStructuralFeatures().get(0);
   }
@@ -604,8 +579,7 @@ public EReference getAffect_Vars()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getAffect_Exprs()
+  public EReference getAffect_Exprs()
   {
     return (EReference)affectEClass.getEStructuralFeatures().get(1);
   }
@@ -615,8 +589,7 @@ public EReference getAffect_Exprs()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getFor()
+  public EClass getFor()
   {
     return forEClass;
   }
@@ -626,8 +599,7 @@ public EClass getFor()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getFor_Condition()
+  public EReference getFor_Condition()
   {
     return (EReference)forEClass.getEStructuralFeatures().get(0);
   }
@@ -637,8 +609,7 @@ public EReference getFor_Condition()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getFor_Commands()
+  public EReference getFor_Commands()
   {
     return (EReference)forEClass.getEStructuralFeatures().get(1);
   }
@@ -648,8 +619,7 @@ public EReference getFor_Commands()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getWhile()
+  public EClass getWhile()
   {
     return whileEClass;
   }
@@ -659,8 +629,7 @@ public EClass getWhile()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getWhile_Condition()
+  public EReference getWhile_Condition()
   {
     return (EReference)whileEClass.getEStructuralFeatures().get(0);
   }
@@ -670,8 +639,7 @@ public EReference getWhile_Condition()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getWhile_Commands()
+  public EReference getWhile_Commands()
   {
     return (EReference)whileEClass.getEStructuralFeatures().get(1);
   }
@@ -681,8 +649,7 @@ public EReference getWhile_Commands()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getNop()
+  public EClass getNop()
   {
     return nopEClass;
   }
@@ -692,8 +659,7 @@ public EClass getNop()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EAttribute getNop_Nop()
+  public EAttribute getNop_Nop()
   {
     return (EAttribute)nopEClass.getEStructuralFeatures().get(0);
   }
@@ -703,8 +669,7 @@ public EAttribute getNop_Nop()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getForEach()
+  public EClass getForEach()
   {
     return forEachEClass;
   }
@@ -714,8 +679,7 @@ public EClass getForEach()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getForEach_Elem()
+  public EReference getForEach_Elem()
   {
     return (EReference)forEachEClass.getEStructuralFeatures().get(0);
   }
@@ -725,8 +689,7 @@ public EReference getForEach_Elem()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getForEach_Ensemb()
+  public EReference getForEach_Ensemb()
   {
     return (EReference)forEachEClass.getEStructuralFeatures().get(1);
   }
@@ -736,8 +699,7 @@ public EReference getForEach_Ensemb()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getForEach_Commands()
+  public EReference getForEach_Commands()
   {
     return (EReference)forEachEClass.getEStructuralFeatures().get(2);
   }
@@ -747,8 +709,7 @@ public EReference getForEach_Commands()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getExprs()
+  public EClass getExprs()
   {
     return exprsEClass;
   }
@@ -758,8 +719,7 @@ public EClass getExprs()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getExprs_List()
+  public EReference getExprs_List()
   {
     return (EReference)exprsEClass.getEStructuralFeatures().get(0);
   }
@@ -769,8 +729,7 @@ public EReference getExprs_List()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getLExpr()
+  public EClass getLExpr()
   {
     return lExprEClass;
   }
@@ -780,8 +739,7 @@ public EClass getLExpr()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getLExpr_List()
+  public EReference getLExpr_List()
   {
     return (EReference)lExprEClass.getEStructuralFeatures().get(0);
   }
@@ -791,8 +749,7 @@ public EReference getLExpr_List()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getExpr()
+  public EClass getExpr()
   {
     return exprEClass;
   }
@@ -802,8 +759,7 @@ public EClass getExpr()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getExprAnd()
+  public EClass getExprAnd()
   {
     return exprAndEClass;
   }
@@ -813,8 +769,7 @@ public EClass getExprAnd()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getExprAnd_Left()
+  public EReference getExprAnd_Left()
   {
     return (EReference)exprAndEClass.getEStructuralFeatures().get(0);
   }
@@ -824,8 +779,7 @@ public EReference getExprAnd_Left()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getExprAnd_Right()
+  public EReference getExprAnd_Right()
   {
     return (EReference)exprAndEClass.getEStructuralFeatures().get(1);
   }
@@ -835,8 +789,7 @@ public EReference getExprAnd_Right()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getExprOr()
+  public EClass getExprOr()
   {
     return exprOrEClass;
   }
@@ -846,8 +799,7 @@ public EClass getExprOr()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getExprOr_Left()
+  public EReference getExprOr_Left()
   {
     return (EReference)exprOrEClass.getEStructuralFeatures().get(0);
   }
@@ -857,8 +809,7 @@ public EReference getExprOr_Left()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getExprOr_Right()
+  public EReference getExprOr_Right()
   {
     return (EReference)exprOrEClass.getEStructuralFeatures().get(1);
   }
@@ -868,8 +819,7 @@ public EReference getExprOr_Right()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getExprNot()
+  public EClass getExprNot()
   {
     return exprNotEClass;
   }
@@ -879,8 +829,7 @@ public EClass getExprNot()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getExprNot_Expr()
+  public EReference getExprNot_Expr()
   {
     return (EReference)exprNotEClass.getEStructuralFeatures().get(0);
   }
@@ -890,8 +839,7 @@ public EReference getExprNot_Expr()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getExprEq()
+  public EClass getExprEq()
   {
     return exprEqEClass;
   }
@@ -901,8 +849,7 @@ public EClass getExprEq()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getExprEq_Left()
+  public EReference getExprEq_Left()
   {
     return (EReference)exprEqEClass.getEStructuralFeatures().get(0);
   }
@@ -912,8 +859,7 @@ public EReference getExprEq_Left()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getExprEq_Right()
+  public EReference getExprEq_Right()
   {
     return (EReference)exprEqEClass.getEStructuralFeatures().get(1);
   }
@@ -923,8 +869,7 @@ public EReference getExprEq_Right()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getNill()
+  public EClass getNill()
   {
     return nillEClass;
   }
@@ -934,8 +879,7 @@ public EClass getNill()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EAttribute getNill_Value()
+  public EAttribute getNill_Value()
   {
     return (EAttribute)nillEClass.getEStructuralFeatures().get(0);
   }
@@ -945,8 +889,7 @@ public EAttribute getNill_Value()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getVariable()
+  public EClass getVariable()
   {
     return variableEClass;
   }
@@ -956,8 +899,7 @@ public EClass getVariable()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EAttribute getVariable_Value()
+  public EAttribute getVariable_Value()
   {
     return (EAttribute)variableEClass.getEStructuralFeatures().get(0);
   }
@@ -967,8 +909,7 @@ public EAttribute getVariable_Value()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getSymbol()
+  public EClass getSymbol()
   {
     return symbolEClass;
   }
@@ -978,8 +919,7 @@ public EClass getSymbol()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EAttribute getSymbol_Value()
+  public EAttribute getSymbol_Value()
   {
     return (EAttribute)symbolEClass.getEStructuralFeatures().get(0);
   }
@@ -989,8 +929,7 @@ public EAttribute getSymbol_Value()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getCons()
+  public EClass getCons()
   {
     return consEClass;
   }
@@ -1000,8 +939,7 @@ public EClass getCons()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getCons_Exprs()
+  public EReference getCons_Exprs()
   {
     return (EReference)consEClass.getEStructuralFeatures().get(0);
   }
@@ -1011,8 +949,7 @@ public EReference getCons_Exprs()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getList()
+  public EClass getList()
   {
     return listEClass;
   }
@@ -1022,8 +959,7 @@ public EClass getList()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getList_Exprs()
+  public EReference getList_Exprs()
   {
     return (EReference)listEClass.getEStructuralFeatures().get(0);
   }
@@ -1033,8 +969,7 @@ public EReference getList_Exprs()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getHd()
+  public EClass getHd()
   {
     return hdEClass;
   }
@@ -1044,8 +979,7 @@ public EClass getHd()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getHd_Expr()
+  public EReference getHd_Expr()
   {
     return (EReference)hdEClass.getEStructuralFeatures().get(0);
   }
@@ -1055,8 +989,7 @@ public EReference getHd_Expr()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getTl()
+  public EClass getTl()
   {
     return tlEClass;
   }
@@ -1066,8 +999,7 @@ public EClass getTl()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getTl_Expr()
+  public EReference getTl_Expr()
   {
     return (EReference)tlEClass.getEStructuralFeatures().get(0);
   }
@@ -1077,8 +1009,7 @@ public EReference getTl_Expr()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getCall()
+  public EClass getCall()
   {
     return callEClass;
   }
@@ -1088,8 +1019,7 @@ public EClass getCall()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EAttribute getCall_Name()
+  public EAttribute getCall_Name()
   {
     return (EAttribute)callEClass.getEStructuralFeatures().get(0);
   }
@@ -1099,8 +1029,7 @@ public EAttribute getCall_Name()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getCall_Params()
+  public EReference getCall_Params()
   {
     return (EReference)callEClass.getEStructuralFeatures().get(1);
   }
@@ -1110,8 +1039,7 @@ public EReference getCall_Params()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EClass getEnclosedExpr()
+  public EClass getEnclosedExpr()
   {
     return enclosedExprEClass;
   }
@@ -1121,8 +1049,7 @@ public EClass getEnclosedExpr()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EReference getEnclosedExpr_Expr()
+  public EReference getEnclosedExpr_Expr()
   {
     return (EReference)enclosedExprEClass.getEStructuralFeatures().get(0);
   }
@@ -1132,8 +1059,7 @@ public EReference getEnclosedExpr_Expr()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public WhdslFactory getWhdslFactory()
+  public WhdslFactory getWhdslFactory()
   {
     return (WhdslFactory)getEFactoryInstance();
   }

@@ -24,12 +24,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.impl.DefinitionImpl#getInput <em>Input</em>}</li>
  *   <li>{@link esir.compilation.whdsl.impl.DefinitionImpl#getCommands <em>Commands</em>}</li>
  *   <li>{@link esir.compilation.whdsl.impl.DefinitionImpl#getOutput <em>Output</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -91,8 +91,7 @@ public class DefinitionImpl extends MinimalEObjectImpl.Container implements Defi
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Input getInput()
+  public Input getInput()
   {
     return input;
   }
@@ -119,8 +118,7 @@ public Input getInput()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public void setInput(Input newInput)
+  public void setInput(Input newInput)
   {
     if (newInput != input)
     {
@@ -141,8 +139,7 @@ public void setInput(Input newInput)
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Commands getCommands()
+  public Commands getCommands()
   {
     return commands;
   }
@@ -169,8 +166,7 @@ public Commands getCommands()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public void setCommands(Commands newCommands)
+  public void setCommands(Commands newCommands)
   {
     if (newCommands != commands)
     {
@@ -191,8 +187,7 @@ public void setCommands(Commands newCommands)
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Output getOutput()
+  public Output getOutput()
   {
     return output;
   }
@@ -219,8 +214,7 @@ public Output getOutput()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public void setOutput(Output newOutput)
+  public void setOutput(Output newOutput)
   {
     if (newOutput != output)
     {

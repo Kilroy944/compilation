@@ -22,11 +22,11 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.impl.FunctionImpl#getName <em>Name</em>}</li>
  *   <li>{@link esir.compilation.whdsl.impl.FunctionImpl#getDefinition <em>Definition</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -88,8 +88,7 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public String getName()
+  public String getName()
   {
     return name;
   }
@@ -99,8 +98,7 @@ public String getName()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public void setName(String newName)
+  public void setName(String newName)
   {
     String oldName = name;
     name = newName;
@@ -113,8 +111,7 @@ public void setName(String newName)
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Definition getDefinition()
+  public Definition getDefinition()
   {
     return definition;
   }
@@ -141,8 +138,7 @@ public Definition getDefinition()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public void setDefinition(Definition newDefinition)
+  public void setDefinition(Definition newDefinition)
   {
     if (newDefinition != definition)
     {

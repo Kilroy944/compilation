@@ -105,8 +105,7 @@ public class WhdslFactoryImpl extends EFactoryImpl implements WhdslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Program createProgram()
+  public Program createProgram()
   {
     ProgramImpl program = new ProgramImpl();
     return program;
@@ -117,8 +116,7 @@ public Program createProgram()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Function createFunction()
+  public Function createFunction()
   {
     FunctionImpl function = new FunctionImpl();
     return function;
@@ -129,8 +127,7 @@ public Function createFunction()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Definition createDefinition()
+  public Definition createDefinition()
   {
     DefinitionImpl definition = new DefinitionImpl();
     return definition;
@@ -141,8 +138,7 @@ public Definition createDefinition()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Input createInput()
+  public Input createInput()
   {
     InputImpl input = new InputImpl();
     return input;
@@ -153,8 +149,7 @@ public Input createInput()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Output createOutput()
+  public Output createOutput()
   {
     OutputImpl output = new OutputImpl();
     return output;
@@ -165,8 +160,7 @@ public Output createOutput()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Vars createVars()
+  public Vars createVars()
   {
     VarsImpl vars = new VarsImpl();
     return vars;
@@ -177,8 +171,7 @@ public Vars createVars()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Commands createCommands()
+  public Commands createCommands()
   {
     CommandsImpl commands = new CommandsImpl();
     return commands;
@@ -189,8 +182,7 @@ public Commands createCommands()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Command createCommand()
+  public Command createCommand()
   {
     CommandImpl command = new CommandImpl();
     return command;
@@ -201,8 +193,7 @@ public Command createCommand()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public If createIf()
+  public If createIf()
   {
     IfImpl if_ = new IfImpl();
     return if_;
@@ -213,8 +204,7 @@ public If createIf()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Affect createAffect()
+  public Affect createAffect()
   {
     AffectImpl affect = new AffectImpl();
     return affect;
@@ -225,8 +215,7 @@ public Affect createAffect()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public For createFor()
+  public For createFor()
   {
     ForImpl for_ = new ForImpl();
     return for_;
@@ -237,8 +226,7 @@ public For createFor()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public While createWhile()
+  public While createWhile()
   {
     WhileImpl while_ = new WhileImpl();
     return while_;
@@ -249,8 +237,7 @@ public While createWhile()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Nop createNop()
+  public Nop createNop()
   {
     NopImpl nop = new NopImpl();
     return nop;
@@ -261,8 +248,7 @@ public Nop createNop()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public ForEach createForEach()
+  public ForEach createForEach()
   {
     ForEachImpl forEach = new ForEachImpl();
     return forEach;
@@ -273,8 +259,7 @@ public ForEach createForEach()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Exprs createExprs()
+  public Exprs createExprs()
   {
     ExprsImpl exprs = new ExprsImpl();
     return exprs;
@@ -285,8 +270,7 @@ public Exprs createExprs()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public LExpr createLExpr()
+  public LExpr createLExpr()
   {
     LExprImpl lExpr = new LExprImpl();
     return lExpr;
@@ -297,8 +281,7 @@ public LExpr createLExpr()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Expr createExpr()
+  public Expr createExpr()
   {
     ExprImpl expr = new ExprImpl();
     return expr;
@@ -309,8 +292,7 @@ public Expr createExpr()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public ExprAnd createExprAnd()
+  public ExprAnd createExprAnd()
   {
     ExprAndImpl exprAnd = new ExprAndImpl();
     return exprAnd;
@@ -321,8 +303,7 @@ public ExprAnd createExprAnd()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public ExprOr createExprOr()
+  public ExprOr createExprOr()
   {
     ExprOrImpl exprOr = new ExprOrImpl();
     return exprOr;
@@ -333,8 +314,7 @@ public ExprOr createExprOr()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public ExprNot createExprNot()
+  public ExprNot createExprNot()
   {
     ExprNotImpl exprNot = new ExprNotImpl();
     return exprNot;
@@ -345,8 +325,7 @@ public ExprNot createExprNot()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public ExprEq createExprEq()
+  public ExprEq createExprEq()
   {
     ExprEqImpl exprEq = new ExprEqImpl();
     return exprEq;
@@ -357,8 +336,7 @@ public ExprEq createExprEq()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Nill createNill()
+  public Nill createNill()
   {
     NillImpl nill = new NillImpl();
     return nill;
@@ -369,8 +347,7 @@ public Nill createNill()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Variable createVariable()
+  public Variable createVariable()
   {
     VariableImpl variable = new VariableImpl();
     return variable;
@@ -381,8 +358,7 @@ public Variable createVariable()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Symbol createSymbol()
+  public Symbol createSymbol()
   {
     SymbolImpl symbol = new SymbolImpl();
     return symbol;
@@ -393,8 +369,7 @@ public Symbol createSymbol()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Cons createCons()
+  public Cons createCons()
   {
     ConsImpl cons = new ConsImpl();
     return cons;
@@ -405,8 +380,7 @@ public Cons createCons()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public List createList()
+  public List createList()
   {
     ListImpl list = new ListImpl();
     return list;
@@ -417,8 +391,7 @@ public List createList()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Hd createHd()
+  public Hd createHd()
   {
     HdImpl hd = new HdImpl();
     return hd;
@@ -429,8 +402,7 @@ public Hd createHd()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Tl createTl()
+  public Tl createTl()
   {
     TlImpl tl = new TlImpl();
     return tl;
@@ -441,8 +413,7 @@ public Tl createTl()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public Call createCall()
+  public Call createCall()
   {
     CallImpl call = new CallImpl();
     return call;
@@ -453,8 +424,7 @@ public Call createCall()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public EnclosedExpr createEnclosedExpr()
+  public EnclosedExpr createEnclosedExpr()
   {
     EnclosedExprImpl enclosedExpr = new EnclosedExprImpl();
     return enclosedExpr;
@@ -465,8 +435,7 @@ public EnclosedExpr createEnclosedExpr()
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-public WhdslPackage getWhdslPackage()
+  public WhdslPackage getWhdslPackage()
   {
     return (WhdslPackage)getEPackage();
   }
