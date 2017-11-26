@@ -56,6 +56,11 @@ public class Main {
 			return;
 		}
 		
+		if (cmd.hasOption("help")) {
+			printMan();
+			return;
+		}
+
 		if(cmd.hasOption("test")){
 			try {
 				test(null,null);
@@ -63,11 +68,6 @@ public class Main {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
-
-		if(cmd.hasOption("help")){
-			printMan();
-			return;
 		}
 
 		String input, output;
