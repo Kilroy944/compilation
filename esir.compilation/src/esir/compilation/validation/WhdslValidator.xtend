@@ -26,15 +26,15 @@ public static val INVALID_NAME = 'invalidName'
 //					INVALID_NAME)
 //		}
 //	}
-/* 
+
  public static val INVALID_NB = 'invalidNb'
  
  	@Check
  	def checkAffectation(Affect a) {
- 		if (a.vars.vars.length+1 != a.exprs.exprs.length+1) {
- 			error('Nb de variable et Nb d expression different', 
- 					WhdslPackage.Literals.AFFECT,null)
+ 		if (a.vars.list.length != a.exprs.list.length) {
+ 			error('Nb de variable et Nb d expression different dans affectation', 
+ 					null,null)
  		}
  	}
-	*/
+	
 }

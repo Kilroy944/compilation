@@ -4,6 +4,9 @@
 package esir.compilation.validation;
 
 import esir.compilation.validation.AbstractWhdslValidator;
+import esir.compilation.whdsl.Affect;
+import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.xbase.lib.Conversions;
 
 /**
  * This class contains custom validation rules.
@@ -13,4 +16,17 @@ import esir.compilation.validation.AbstractWhdslValidator;
 @SuppressWarnings("all")
 public class WhdslValidator extends AbstractWhdslValidator {
   public final static String INVALID_NAME = "invalidName";
+  
+  public final static String INVALID_NB = "invalidNb";
+  
+  @Check
+  public void checkAffectation(final Affect a) {
+    int _length = ((Object[])Conversions.unwrapArray(a.getVars().getList(), Object.class)).length;
+    int _length_1 = ((Object[])Conversions.unwrapArray(a.getExprs().getList(), Object.class)).length;
+    boolean _notEquals = (_length != _length_1);
+    if (_notEquals) {
+      this.error("Nb de variable et Nb d expression different dans affectation", 
+        null, null);
+    }
+  }
 }

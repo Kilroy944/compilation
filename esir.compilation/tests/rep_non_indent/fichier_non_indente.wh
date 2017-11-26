@@ -14,7 +14,7 @@ function f7: read Abc%while condition do nop od%write Ba
 
 function f8: read Abc%for condition do nop od%write Ba
 
-function f9: read Abc%Jd,Hg:=nil,toto,tata,titi%write Ba
+function f9: read Abc%Jd,Hg,G,T:=nil,toto,tata,titi%write Ba
 
 function f10: read Abc%foreach a in b do nop od%write Ba
 

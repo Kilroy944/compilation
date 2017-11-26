@@ -102,7 +102,7 @@ write Ba
 function f9:
 read Abc
 %
-  Jd,Hg := nil,toto,tata,titi
+  Jd,Hg,G,T := nil,toto,tata,titi
 %
 write Ba
 
