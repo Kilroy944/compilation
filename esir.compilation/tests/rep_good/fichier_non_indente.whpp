@@ -72,7 +72,7 @@ write Y
 function f6:
 read Abc
 %
-  if ( cons ( tl ( hd bla ) ) ) then
+  if (cons (tl (hd bla))) then
     nop
   else
     nop ;
@@ -128,8 +128,8 @@ read X
 %
   Y := nil ;
   while X do
-    Y := ( cons ( hd X ) Y ) ;
-    X := ( tl X )
+    Y := (cons (hd X) Y) ;
+    X := (tl X)
   od
 %
 write Y

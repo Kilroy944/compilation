@@ -3,7 +3,6 @@ package esir.compilation.generator;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -89,7 +88,6 @@ public class Main {
 			return;
 		}
 		output = cmd.hasOption("o") ? cmd.getOptionValue("o") : input.split(".wh")[0] + ".whpp";
-
 
 		String indent_value = main.create_indent(" ",cmd.hasOption("all") ? Integer.parseInt(cmd.getOptionValue("all")) : 2);
 		String indent_if = main.create_indent(indent_value,cmd.hasOption("if") ? Integer.parseInt(cmd.getOptionValue("if")) : 1);

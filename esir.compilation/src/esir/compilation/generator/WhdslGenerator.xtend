@@ -161,27 +161,27 @@ class WhdslGenerator extends AbstractGenerator {
 	}
 	
 	def dispatch compileExpr(Cons c) {
-		'''( cons «c.exprs.compile()» )'''
+		'''(cons «c.exprs.compile()»)'''
 	}
 	
 	def dispatch compileExpr(List l) {
-		'''( list «l.exprs.compile()» )'''
+		'''(list «l.exprs.compile()»)'''
 	}
 	
 	def dispatch compileExpr(Hd hd) {
-		'''( hd «hd.expr.compile()» )'''
+		'''(hd «hd.expr.compile()»)'''
 	}
 	
 	def dispatch compileExpr(Tl tl) {
-		'''( tl «tl.expr.compile()» )'''
+		'''(tl «tl.expr.compile()»)'''
 	}
 	
 	def dispatch compileExpr(Call c) {
-		'''( «c.name» «c.params.compile()» )'''
+		'''(«c.name» «c.params.compile()»)'''
 	}
 	
 	def dispatch compileExpr(EnclosedExpr ie) {
-		'''( «ie.expr.compile()» )'''
+		'''(«ie.expr.compile()»)'''
 	}
 	
 	def compile(Affect a) {

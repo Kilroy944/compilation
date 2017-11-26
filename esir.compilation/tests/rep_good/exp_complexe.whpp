@@ -2,10 +2,10 @@ function testfunction:
 read A,B,C
 %
   if nil then
-    foreach ( cons A ) in B do
+    foreach (cons A) in B do
       if A then
-        A := ( hd C );
-        B := ( cons ( hd A ) B );
+        A := (hd C);
+        B := (cons (hd A) B);
         nop
       fi
     od
