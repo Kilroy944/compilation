@@ -191,7 +191,7 @@ class WhdslGenerator extends AbstractGenerator {
 	def compile(If i, String indent) {
 		'''
 		if «i.condition.compile()» then
-		«FOR cmd: i.thenCommands.list SEPARATOR ';'»
+		«FOR cmd: i.thenCommands.list SEPARATOR ' ;'»
 			«indent+indent_if»«cmd.compile(indent+indent_if)»
 		«ENDFOR»
 		«IF i.elseCommands !== null»

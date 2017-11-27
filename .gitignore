@@ -1,6 +1,8 @@
 bin/
+**/xtend-gen/**
 **/src-gen/**
 *.xtendbin
+/esir.compilation/model/generated/*
 /esir.compilation.ide/
 /esir.compilation.tests/
 /esir.compilation.ui/

@@ -4,7 +4,7 @@ read A,B,C
   if nil then
     foreach (cons A) in B do
       if A then
-        A := C;
+        A := C ;
         nop
       fi
     od

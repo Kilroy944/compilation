@@ -4,7 +4,7 @@ read A,B,C
   if nil then
     foreach nil in nil do
       if nil then
-        nop;
+        nop ;
         nop
       fi
     od
