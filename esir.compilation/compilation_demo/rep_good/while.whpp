@@ -1,0 +1,8 @@
+function testfunction:
+read A,B,C
+%
+  while nil do
+    nop
+  od
+%
+write A,B,C

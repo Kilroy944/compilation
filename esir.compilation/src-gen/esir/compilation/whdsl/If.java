@@ -12,12 +12,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.If#getCondition <em>Condition</em>}</li>
  *   <li>{@link esir.compilation.whdsl.If#getThenCommands <em>Then Commands</em>}</li>
  *   <li>{@link esir.compilation.whdsl.If#getElseCommands <em>Else Commands</em>}</li>
  * </ul>
- * </p>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getIf()
  * @model

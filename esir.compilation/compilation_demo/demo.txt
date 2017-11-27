@@ -1,0 +1,10 @@
+java -jar whpp.jar -help
+
+java -jar whpp.jar -test rep_non_indent/ rep_good/
+
+java -jar whpp.jar fichier_non_indente.wh 
+
+java -jar whpp.jar fichier_non_indente.wh -o sortie.whpp
+
+java -jar whpp.jar fichier_non_indente.wh -o sortie.whpp -all 5 -if 2 -for 2 
+

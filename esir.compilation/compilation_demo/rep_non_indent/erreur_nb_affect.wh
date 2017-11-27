@@ -1,0 +1,1 @@
+function testfunction:read A,B,C%A,B := T,G,C%write A,B,C

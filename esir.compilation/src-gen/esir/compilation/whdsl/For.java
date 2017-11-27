@@ -12,11 +12,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.For#getCondition <em>Condition</em>}</li>
  *   <li>{@link esir.compilation.whdsl.For#getCommands <em>Commands</em>}</li>
  * </ul>
- * </p>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getFor()
  * @model

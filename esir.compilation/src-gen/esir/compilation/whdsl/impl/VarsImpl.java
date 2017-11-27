@@ -22,10 +22,10 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.impl.VarsImpl#getList <em>List</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

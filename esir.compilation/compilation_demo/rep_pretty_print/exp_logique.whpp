@@ -1,0 +1,11 @@
+function fonctiona:
+read A,B
+%
+  nop ;
+  if ((((A) or (B))) and (B)) then
+    A := B
+  else
+    nop
+  fi
+%
+write B

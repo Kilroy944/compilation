@@ -23,11 +23,11 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.impl.AffectImpl#getVars <em>Vars</em>}</li>
  *   <li>{@link esir.compilation.whdsl.impl.AffectImpl#getExprs <em>Exprs</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

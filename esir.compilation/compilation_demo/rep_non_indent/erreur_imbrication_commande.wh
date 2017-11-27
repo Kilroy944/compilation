@@ -1,0 +1,11 @@
+function ok:
+read A%
+B:=nil;
+while A do
+if A then
+while X do
+nop
+fi
+od
+od
+%write R

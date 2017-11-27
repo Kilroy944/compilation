@@ -12,12 +12,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.ForEach#getElem <em>Elem</em>}</li>
  *   <li>{@link esir.compilation.whdsl.ForEach#getEnsemb <em>Ensemb</em>}</li>
  *   <li>{@link esir.compilation.whdsl.ForEach#getCommands <em>Commands</em>}</li>
  * </ul>
- * </p>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getForEach()
  * @model

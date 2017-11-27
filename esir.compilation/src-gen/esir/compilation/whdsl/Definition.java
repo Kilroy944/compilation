@@ -12,12 +12,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.Definition#getInput <em>Input</em>}</li>
  *   <li>{@link esir.compilation.whdsl.Definition#getCommands <em>Commands</em>}</li>
  *   <li>{@link esir.compilation.whdsl.Definition#getOutput <em>Output</em>}</li>
  * </ul>
- * </p>
  *
  * @see esir.compilation.whdsl.WhdslPackage#getDefinition()
  * @model

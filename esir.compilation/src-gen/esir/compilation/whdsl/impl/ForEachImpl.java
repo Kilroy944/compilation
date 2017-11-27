@@ -23,12 +23,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link esir.compilation.whdsl.impl.ForEachImpl#getElem <em>Elem</em>}</li>
  *   <li>{@link esir.compilation.whdsl.impl.ForEachImpl#getEnsemb <em>Ensemb</em>}</li>
  *   <li>{@link esir.compilation.whdsl.impl.ForEachImpl#getCommands <em>Commands</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
