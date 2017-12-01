@@ -83,10 +83,17 @@ public class Main {
 			return;
 		}
 		input = cmd.getArgs()[0];
+		
+		if(!new File(input).exists()){
+			System.out.println("Erreur: fichier d'entrée inexistant");
+			return;
+		}
+		
 		if (!input.endsWith(".wh")) {
 			System.out.println("Erreur dans les arguments : le fichier d'entrée doit avoir l'extension .wh");
 			return;
 		}
+		
 		output = cmd.hasOption("o") ? cmd.getOptionValue("o") : input.split(".wh")[0] + ".whpp";
 
 		String indent_value = main.create_indent(" ",cmd.hasOption("all") ? Integer.parseInt(cmd.getOptionValue("all")) : 2);
