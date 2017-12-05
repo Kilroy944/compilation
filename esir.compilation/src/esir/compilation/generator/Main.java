@@ -122,7 +122,7 @@ public class Main {
 		Resource resource = resourceSet.getResource(URI.createFileURI(string), true);
 
 		//Analyse du fichier
-		IResourceValidator validator = injector.getInstance(IResourceValidator.class);;
+		IResourceValidator validator = injector.getInstance(IResourceValidator.class);
 		List<Issue> listIssue = validator.validate(resource,CheckMode.ALL, CancelIndicator.NullImpl);
 
 
