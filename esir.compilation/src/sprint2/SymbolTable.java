@@ -9,51 +9,36 @@ public class SymbolTable {
 
 	//Voir : https://en.wikipedia.org/wiki/Three-address_code
 	
-	//Une étiquette par fonction/commande avec une liste de code3@ associée
-	private HashMap<String, ArrayList<Code3Address>> table;
-	private int uniqueTagId = 0;
-
+	private HashMap<String, FunctionRepresentation> listFunctions;
+	private int counterFunction = 0;
 	
 	public SymbolTable(){
-		table=new HashMap<>();
+		listFunctions=new HashMap<>();
 	}
 	
-	/**
-	 * Ajout d'une étiquette
-	 * @param tag
-	 */
-	public String addTag(String tag){
+	public void addFunction(String name,int nbInput,int nbOutput) throws DoubleFunctionException{
 		
-		String newTag = tag+uniqueTagId;
-		table.put(newTag, new ArrayList<Code3Address>());
-		uniqueTagId++;
-		return newTag;
+		if(!listFunctions.containsKey(name)){
+			listFunctions.put(name, new FunctionRepresentation("f"+counterFunction,nbInput,nbOutput));
+			counterFunction++;
+		}
+		else{
+			throw new DoubleFunctionException(name);
+		}
 	}
-	
-	/**
-	 * Ajout d'une opération à la l'étiquette
-	 * @param tag
-	 * @param code
-	 */
-	public void addOp(String tag, Code3Address code){
-		table.get(tag).add(code);
+
+	public FunctionRepresentation getFunction(String name) {
+		return listFunctions.get(name);
 	}
 	
 	public String toString(){
+				
+		String result="";
 		
-		StringBuilder result = new StringBuilder();
-		
-		for (Entry<String, ArrayList<Code3Address>> entry : table.entrySet())
+		for (Entry<String, FunctionRepresentation> entry : listFunctions.entrySet())
 		{
-			result.append(entry.getKey()+" : ");
-		    for(Code3Address code : entry.getValue()){
-		    	result.append("\t"+code.toString());
-			    result.append(System.getProperty("line.separator"));
-
-		    }
+			result+=entry.toString();
 		}
-		return result.toString();
+		return result;
 	}
-	
-	
 }

@@ -10,10 +10,18 @@ public class MainSprint2 {
 		
 		GeneratorSymbolTable genTs = GeneratorSymbolTable.getInstance();
 		if(args.length == 0){
-			genTs.init("input.wh", "output.go");
+			try {
+				genTs.init("input.wh", "output.go");
+			} catch (DoubleFunctionException e) {
+				e.printStackTrace();
+			}
 		}
 		else{
-			genTs.init(args[0], args[1]);
+			try {
+				genTs.init(args[0], args[1]);
+			} catch (DoubleFunctionException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

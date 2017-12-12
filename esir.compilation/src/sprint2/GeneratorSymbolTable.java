@@ -31,10 +31,7 @@ public class GeneratorSymbolTable {
 
 	
 	private String inputFile,outputFile;
-	
-	private HashMap<String, FunctionRepresentation> listFunctions;
-	
-	
+
 	private SymbolTable symbolTable;
 	
 	
@@ -42,11 +39,10 @@ public class GeneratorSymbolTable {
 		return new WhdslStandaloneSetupGenerated().createInjectorAndDoEMFRegistration().getInstance(GeneratorSymbolTable.class);
 	}
 	
-	public void init(String inputFile,String outFile) {
+	public void init(String inputFile,String outFile) throws DoubleFunctionException {
 		
 		this.inputFile=inputFile;
 		this.outputFile=outFile;
-		listFunctions=new HashMap<>();
 		symbolTable =new SymbolTable();
 		
 		//Récupération du fichier while source
@@ -79,34 +75,26 @@ public class GeneratorSymbolTable {
 	/**
 	 * Sauvegarde dans une liste les définitions des fonctions d'un programme et s'assure de leur unicité
 	 * @param program
+	 * @throws DoubleFunctionException 
 	 */
-	private void registerFunctions(Program program) {
+	private void registerFunctions(Program program) throws DoubleFunctionException {
 		
 		for (Function f : program.getFunctions()) {
 			
-			if(!listFunctions.containsKey(f.getName())){
-				listFunctions.put(f.getName(), new FunctionRepresentation());
-			}
-			else{
-				
-			}
+				symbolTable.addFunction(f.getName(),f.getDefinition().getInput().getVars().getList().size()
+						,f.getDefinition().getOutput().getVars().getList().size());
 		}
 	}
 	
 	private void iterateElement(Program p){
 		for (Function f : p.getFunctions()) {
-			iterateElement(f,listFunctions.get(f.getName()));
+			iterateElement(f,symbolTable.getFunction(f.getName()));
 		}
 	}
 	private void iterateElement(Function f, FunctionRepresentation fr){
-		
-		//Ajout etiquette + mise à jour du nom de la fonction avec son id unique
-		fr.setName(symbolTable.addTag(f.getName()));
-		
 		iterateElement(f.getDefinition(),fr);
 	}
 	private void iterateElement(Definition c, FunctionRepresentation fr){
-
 		iterateElement(c.getInput(),fr);
 		iterateElement(c.getOutput(),fr);
 	}
@@ -116,8 +104,9 @@ public class GeneratorSymbolTable {
 		EList<String> vars = i.getVars().getList();
 	
 		for(String v : vars){
-			Code3Address codeRead = new Code3Address(Op.READ, v, "", "");
-			symbolTable.addOp(fr.getName(), codeRead);
+			fr.addVar(v);
+			Code3Address codeRead = new Code3Address(Op.READ, new Addr(), new Addr(), new Addr());
+			fr.addOp(fr.getName(), codeRead);
 		}
 		
 	}
@@ -126,8 +115,8 @@ public class GeneratorSymbolTable {
 		EList<String> vars = o.getVars().getList();
 		
 		for(String v : vars){
-			Code3Address codeWrite = new Code3Address(Op.WRITE, v, "", "");
-			symbolTable.addOp(fr.getName(), codeWrite);
+			Code3Address codeWrite = new Code3Address(Op.WRITE, new Addr(), new Addr(), new Addr());
+			fr.addOp(fr.getName(), codeWrite);
 		}
 	}
 	
