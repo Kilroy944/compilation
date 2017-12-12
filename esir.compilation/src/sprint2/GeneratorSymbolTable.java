@@ -1,6 +1,5 @@
 package sprint2;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -96,6 +95,7 @@ public class GeneratorSymbolTable {
 	}
 	private void iterateElement(Definition c, FunctionRepresentation fr){
 		iterateElement(c.getInput(),fr);
+		iterateElement(c.getCommands(),fr);
 		iterateElement(c.getOutput(),fr);
 	}
 	
@@ -120,7 +120,75 @@ public class GeneratorSymbolTable {
 		}
 	}
 	
+	private void iterateElement(Commands c, FunctionRepresentation fr){
+		
+		EList<Command> l = c.getList();
+		
+		for(Command co : l){
+			iterateElement(co,fr);	
+		}
+		
+	}
 	private void iterateElement(Command c, FunctionRepresentation fr){
+		
+		EObject o = c.getCmd();
+		
+		if(o instanceof For){
+			iterateElement((For)o,fr);
+		}
+		else if(o instanceof Affect){
+			iterateElement((Affect)o,fr);
+		}
+		
 	}
 	
+	
+	private void iterateElement(Affect a, FunctionRepresentation fr) {
+		iterateElement(a.getExprs(),fr);
+		EList<String> vars =a.getVars().getList();
+		
+		for(String v : vars){
+			fr.addVar(v);
+		}
+		
+	}
+
+	private void iterateElement(Exprs exprs, FunctionRepresentation fr) {
+		EList<Expr> l = exprs.getList();
+
+		for(Expr e : l){
+			iterateElement(e,fr);
+		}
+	}
+
+	private void iterateElement(Expr e, FunctionRepresentation fr) {
+		 
+		if(e instanceof Call){
+			iterateElement((Call)e,fr);
+		}
+		
+	}
+	
+	private void iterateElement(Call c/*,int nbOutput*/, FunctionRepresentation fr){
+		
+		
+		if(symbolTable.hasFunction(c.getName())){
+			
+			if( c.getParams().getList().size() != symbolTable.getFunction(c.getName()).getNbInput() ){
+				throw new SymbolTableError();
+			}
+			
+		}
+		else{
+			throw new SymbolTableError();
+		}
+	}
+	private void iterateElement(For c, FunctionRepresentation fr){
+		
+		
+		
+		
+	}
+	
+
 }

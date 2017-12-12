@@ -31,6 +31,10 @@ public class SymbolTable {
 		return listFunctions.get(name);
 	}
 	
+	public boolean hasFunction(String name){
+		return listFunctions.containsKey(name);
+	}
+	
 	public String toString(){
 				
 		String result="";

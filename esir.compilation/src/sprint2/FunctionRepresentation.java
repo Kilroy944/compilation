@@ -15,7 +15,7 @@ public class FunctionRepresentation {
 	//Une étiquette par fonction/commande avec une liste de code3@ associée
 	private HashMap<String, ArrayList<Code3Address>> table;
 	
-	private HashMap<String, Boolean> variableTable;
+	private HashMap<String, Integer> variableTable;
 
 	
 	public FunctionRepresentation(String name,int nbInput,int nbOutput){
@@ -64,7 +64,7 @@ public class FunctionRepresentation {
 		String result="["+name+", nbIn : "+nbInput+", nbOut : "+nbOutput+"]\n";
 		
 		result+="Table des variables : \n";
-		for (Entry<String, Boolean> entry : variableTable.entrySet()){
+		for (Entry<String, Integer> entry : variableTable.entrySet()){
 			result+=entry+"\n";
 		}
 		
@@ -83,6 +83,16 @@ public class FunctionRepresentation {
 	}
 
 	public void addVar(String v) {
-		variableTable.put(v, false);
+		variableTable.put(v, counterVar);
+		counterVar++;
 	}
+
+	public int getNbInput() {
+		return nbInput;
+	}
+
+	public int getNbOutput() {
+		return nbOutput;
+	}
+	
 }
