@@ -147,6 +147,9 @@ public class GeneratorSymbolTable {
 		else if(o instanceof Nop){
 			iterateElement((Nop)o,fr);
 		}
+		else {
+			fr.getCode().addCode3Adress(fr.getCode().getCurrentTag(), new Code3Address(Op.BOUCHON, "_", "_", "_"));;
+		}
 		
 	}
 	
@@ -157,11 +160,24 @@ public class GeneratorSymbolTable {
 	private void iterateElement(Affect a, FunctionRepresentation fr) {
 		iterateElement(a.getExprs(),fr);
 		EList<String> vars =a.getVars().getList();
-		
+		EList<Expr> exprs = a.getExprs().getList();
+		//Vérifier que le nombre de var a gauche et droite est correcte
+
+		int indexExpr = 0;
 		for(String v : vars){
 			fr.addVar(v);
+			
+			String startTag = fr.getCode().getCurrentTag();
+			String tagExp = fr.getCode().getNextTag();
+			
+			fr.getCode().addCode3Adress(startTag, new Code3Address(Op.AFFECT, v, tagExp, "_"));;
+			
+			fr.getCode().setCurrentTag(tagExp);
+
+			iterateElement(exprs.get(indexExpr), fr);
+			
+			fr.getCode().setCurrentTag(startTag);
 		}
-	//	fr.addOp(fr.getName(),new Code3Address(Op.AFFECT,));
 		
 	}
 
@@ -186,6 +202,7 @@ public class GeneratorSymbolTable {
 	
 	
 	
+	
 	private void iterateElement(Call c/*,int nbOutput*/, FunctionRepresentation fr){
 		
 		
@@ -194,6 +211,7 @@ public class GeneratorSymbolTable {
 			if( c.getParams().getList().size() != symbolTable.getFunction(c.getName()).getNbInput() ){
 				throw new SymbolTableError();
 			}
+			
 			
 		}
 		else{
@@ -217,7 +235,7 @@ public class GeneratorSymbolTable {
 		
 		iterateElement(fo, fr);
 		
-		fr.getCode().addCode3Adress(startTag, new Code3Address(Op.FOR, tagCond, "_", "_"));
+		fr.getCode().addCode3Adress(startTag, new Code3Address(Op.FOR, tagCond, tagFor, "_"));
 		fr.getCode().setCurrentTag(startTag);
 
 	}
