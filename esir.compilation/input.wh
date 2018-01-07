@@ -2,11 +2,15 @@ function testfunction:
 read A,B,C
 %
   if nil then
-    nop
+    for (cons A) do
+      if A then
+        A := (hd C) ;
+        B := (cons (hd A) B) ;
+        nop
+      fi
+    od
   else
-    if nil then
-      nop
-    fi
+    nop
   fi
 %
 write A,B,C

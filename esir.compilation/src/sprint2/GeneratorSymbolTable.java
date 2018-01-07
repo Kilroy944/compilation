@@ -33,7 +33,6 @@ public class GeneratorSymbolTable {
 		
 	private SymbolTable symbolTable;
 	
-	
 	public static GeneratorSymbolTable getInstance(){
 		return new WhdslStandaloneSetupGenerated().createInjectorAndDoEMFRegistration().getInstance(GeneratorSymbolTable.class);
 	}
@@ -102,11 +101,11 @@ public class GeneratorSymbolTable {
 	private void iterateElement(Input i, FunctionRepresentation fr){
 		
 		EList<String> vars = i.getVars().getList();
-	
+			
 		for(String v : vars){
 			fr.addVar(v);
-			Code3Address codeRead = new Code3Address(Op.READ, new Addr(), new Addr(), new Addr());
-			fr.addOp(fr.getName(), codeRead);
+			String tag = fr.getCode().getCurrentTag();
+			fr.getCode().addCode3Adress(tag,new Code3Address(Op.READ, v, "_", "_") );
 		}
 		
 	}
@@ -115,18 +114,21 @@ public class GeneratorSymbolTable {
 		EList<String> vars = o.getVars().getList();
 		
 		for(String v : vars){
-			Code3Address codeWrite = new Code3Address(Op.WRITE, new Addr(), new Addr(), new Addr());
-			fr.addOp(fr.getName(), codeWrite);
+			fr.addVar(v);
+			String tag = fr.getCode().getCurrentTag();
+			fr.getCode().addCode3Adress(tag,new Code3Address(Op.WRITE, v, "_", "_") );
 		}
 	}
 	
 	private void iterateElement(Commands c, FunctionRepresentation fr){
 		
 		EList<Command> l = c.getList();
-		
-		for(Command co : l){
-			iterateElement(co,fr);	
+		if(l!=null){
+			for(Command co : l){
+				iterateElement(co,fr);	
+			}
 		}
+		
 		
 	}
 	private void iterateElement(Command c, FunctionRepresentation fr){
@@ -139,9 +141,18 @@ public class GeneratorSymbolTable {
 		else if(o instanceof Affect){
 			iterateElement((Affect)o,fr);
 		}
+		else if(o instanceof If){
+			iterateElement((If)o,fr);
+		}
+		else if(o instanceof Nop){
+			iterateElement((Nop)o,fr);
+		}
 		
 	}
 	
+	private void iterateElement(Nop a, FunctionRepresentation fr) {
+		fr.getCode().addCode3Adress(fr.getCode().getCurrentTag(), new Code3Address(Op.NOP, "_", "_", "_"));;
+	}
 	
 	private void iterateElement(Affect a, FunctionRepresentation fr) {
 		iterateElement(a.getExprs(),fr);
@@ -150,6 +161,7 @@ public class GeneratorSymbolTable {
 		for(String v : vars){
 			fr.addVar(v);
 		}
+	//	fr.addOp(fr.getName(),new Code3Address(Op.AFFECT,));
 		
 	}
 
@@ -166,8 +178,13 @@ public class GeneratorSymbolTable {
 		if(e instanceof Call){
 			iterateElement((Call)e,fr);
 		}
+		else{
+			fr.getCode().addCode3Adress(fr.getCode().getCurrentTag(), new Code3Address(Op.BOUCHON, "_", "_", "_"));;
+		}
 		
 	}
+	
+	
 	
 	private void iterateElement(Call c/*,int nbOutput*/, FunctionRepresentation fr){
 		
@@ -185,10 +202,55 @@ public class GeneratorSymbolTable {
 	}
 	private void iterateElement(For c, FunctionRepresentation fr){
 		
+		String startTag = fr.getCode().getCurrentTag();
+
+		String tagCond = fr.getCode().getNextTag();
+		fr.getCode().setCurrentTag(tagCond);
+
+		Expr cond = c.getCondition();
+		iterateElement(cond,fr);
+
+		String tagFor = fr.getCode().getNextTag();
+		fr.getCode().setCurrentTag(tagFor);
+
+		Commands fo = c.getCommands();
 		
+		iterateElement(fo, fr);
 		
-		
+		fr.getCode().addCode3Adress(startTag, new Code3Address(Op.FOR, tagCond, "_", "_"));
+		fr.getCode().setCurrentTag(startTag);
+
 	}
 	
+	private void iterateElement(If i, FunctionRepresentation fr){
+		
+		String startTag = fr.getCode().getCurrentTag();
+
+		String tagCond = fr.getCode().getNextTag();
+		fr.getCode().setCurrentTag(tagCond);
+
+		Expr cond = i.getCondition();
+
+		iterateElement(cond,fr);
+		
+		//If
+		String tagThen = fr.getCode().getNextTag();
+		fr.getCode().setCurrentTag(tagThen);
+		iterateElement(i.getThenCommands(), fr);
+		
+		//Else
+		String tagElse = fr.getCode().getNextTag();
+		fr.getCode().setCurrentTag(tagElse);
+	
+		Commands els = i.getElseCommands();
+		if(els !=null){
+			iterateElement(els, fr);
+		}
+		
+		
+		fr.getCode().setCurrentTag(startTag);
+		fr.getCode().addCode3Adress(startTag, new Code3Address(Op.IF, tagCond, tagThen, tagElse));
+		
+	}
 
 }

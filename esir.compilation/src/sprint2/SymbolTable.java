@@ -7,14 +7,17 @@ import java.util.Map.Entry;
 
 public class SymbolTable {
 
-	
-	//Voir : https://en.wikipedia.org/wiki/Three-address_code
-	
+		
 	private HashMap<String, FunctionRepresentation> listFunctions;
-	private int counterFunction = 0;
 	
+	private HashMap<String, Integer> listSymbol;
+	
+	private int counterFunction = 0;
+	private int counterSymbol = 0;
+
 	public SymbolTable(){
 		listFunctions=new HashMap<>();
+		listSymbol=new HashMap<>();
 	}
 	
 	public void addFunction(String name,int nbInput,int nbOutput) throws DoubleFunctionException{
@@ -28,6 +31,16 @@ public class SymbolTable {
 		}
 	}
 
+	public void addSymbol(String name) throws DoubleFunctionException{
+		if(!listSymbol.containsKey(name)){
+			listSymbol.put(name, counterSymbol);
+			counterSymbol++;
+		}
+		else{
+			throw new DoubleFunctionException(name);
+		}
+	}
+	
 	public FunctionRepresentation getFunction(String name) {
 		return listFunctions.get(name);
 	}
