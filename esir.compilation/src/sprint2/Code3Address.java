@@ -3,11 +3,11 @@ package sprint2;
 public class Code3Address {
 
 	private Op operator;
-	private Addr argr1;
-	private Addr argr2;
-	private Addr result;
+	private String argr1;
+	private String argr2;
+	private String result;
 	
-	public Code3Address(Op operator, Addr argr1, Addr argr2, Addr result) {
+	public Code3Address(Op operator, String argr1, String argr2, String result) {
 		super();
 		this.operator = operator;
 		this.argr1 = argr1;
@@ -17,7 +17,7 @@ public class Code3Address {
 
 	@Override
 	public String toString() {
-		return "<operator=" + operator + ", argr1=" + argr1 + ", argr2=" + argr2 + ", response=" + result
+		return "<operator=" + operator + ", argr1=" + argr1 + ", argr2=" + argr2 + ", dest=" + result
 				+ ">";
 	}
 }
