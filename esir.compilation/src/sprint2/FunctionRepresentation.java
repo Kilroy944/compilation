@@ -8,6 +8,7 @@ public class FunctionRepresentation {
 
 	private String name;
 	private int counterVar = 0;
+	private int counterTempVar = 0;
 
 	private int nbInput,nbOutput;
 	
@@ -80,6 +81,16 @@ public class FunctionRepresentation {
 			
 	}
 
+	public int addTempVar(String v) {
+		
+		if(!tempVariableTable.containsKey(v)){
+			tempVariableTable.put(v, counterTempVar);
+			counterTempVar++;	
+		}
+		return counterTempVar;
+			
+	}
+	
 	public int getNbInput() {
 		return nbInput;
 	}

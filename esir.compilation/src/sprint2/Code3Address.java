@@ -17,7 +17,7 @@ public class Code3Address {
 
 	@Override
 	public String toString() {
-		return "<operator=" + operator + ", argr1=" + argr1 + ", argr2=" + argr2 + ", dest=" + result
+		return "<operator=" + operator + ", argr1=" + argr1 + ", argr2=" + argr2 + ", arg3=" + result
 				+ ">";
 	}
 	
