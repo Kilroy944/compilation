@@ -147,6 +147,7 @@ public class GeneratorSymbolTable {
 		else if(o instanceof Nop){
 			iterateElement((Nop)o,fr);
 		}
+		
 		else {
 			fr.getCode().addCode3Adress(fr.getCode().getCurrentTag(), new Code3Address(Op.BOUCHON, "_", "_", "_"));;
 		}
