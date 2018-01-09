@@ -15,13 +15,12 @@ public class FunctionRepresentation {
 	private HashMap<String, Integer> variableTable;
 	private HashMap<String, Integer> tempVariableTable;
 	
-	private Code3AdressList code;
+	private ArrayList<Code3Address> code;
 	
 	public FunctionRepresentation(String name,int nbInput,int nbOutput){
 		variableTable=new HashMap<>();
 		tempVariableTable=new HashMap<>();
-		code = new Code3AdressList();
-		code.setCurrentTag("l0");
+		code = new ArrayList<Code3Address>();
 		
 		this.name=name;
 
@@ -38,7 +37,7 @@ public class FunctionRepresentation {
 		return name;
 	}
 	
-	public Code3AdressList getCode(){
+	public ArrayList<Code3Address> getCode(){
 		return code;
 	}
 	
@@ -72,22 +71,27 @@ public class FunctionRepresentation {
 		return result;
 	}
 
-	public void addVar(String v) {
+	public String addVar(String v) {
 		
 		if(!variableTable.containsKey(v)){
 			variableTable.put(v, counterVar);
 			counterVar++;	
+			return "v"+(counterVar-1);
 		}
-			
+		return "v";	
 	}
 
-	public int addTempVar(String v) {
+	public void addCode3Address(Code3Address c){
+		code.add(c);
+	}
+	
+	public String addTempVar(String v) {
 		
 		if(!tempVariableTable.containsKey(v)){
 			tempVariableTable.put(v, counterTempVar);
 			counterTempVar++;	
 		}
-		return counterTempVar;
+		return "vt"+(counterTempVar-1);
 			
 	}
 	

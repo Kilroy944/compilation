@@ -19,6 +19,7 @@ import com.google.inject.Inject;
 import esir.compilation.WhdslStandaloneSetupGenerated;
 import esir.compilation.generator.WhdslGenerator;
 import esir.compilation.whdsl.*;
+import sprint2.operations.READ;
 
 public class GeneratorSymbolTable {
 
@@ -103,9 +104,8 @@ public class GeneratorSymbolTable {
 		EList<String> vars = i.getVars().getList();
 			
 		for(String v : vars){
-			fr.addVar(v);
-			String tag = fr.getCode().getCurrentTag();
-			fr.getCode().addCode3Adress(tag,new Code3Address(Op.READ, v, "_", "_") );
+			String idV = fr.addVar(v);
+			fr.addCode3Address(new Code3Address(new READ(), idV, "_", "_") );
 		}
 		
 	}
@@ -113,11 +113,11 @@ public class GeneratorSymbolTable {
 	private void iterateElement(Output o, FunctionRepresentation fr){
 		EList<String> vars = o.getVars().getList();
 		
-		for(String v : vars){
+		/*for(String v : vars){
 			fr.addVar(v);
 			String tag = fr.getCode().getCurrentTag();
 			fr.getCode().addCode3Adress(tag,new Code3Address(Op.WRITE, v, "_", "_") );
-		}
+		}*/
 	}
 	
 	private void iterateElement(Commands c, FunctionRepresentation fr){
@@ -154,13 +154,13 @@ public class GeneratorSymbolTable {
 			iterateElement((ForEach)o, fr);
 		}
 		else {
-			fr.getCode().addCode3Adress(fr.getCode().getCurrentTag(), new Code3Address(Op.BOUCHON, "_", "_", "_"));;
+		//	fr.getCode().addCode3Adress(fr.getCode().getCurrentTag(), new Code3Address(Op.BOUCHON, "_", "_", "_"));;
 		}
 		
 	}
 	
 	private void iterateElement(Nop a, FunctionRepresentation fr) {
-		fr.getCode().addCode3Adress(fr.getCode().getCurrentTag(), new Code3Address(Op.NOP, "_", "_", "_"));;
+		//fr.getCode().addCode3Adress(fr.getCode().getCurrentTag(), new Code3Address(Op.NOP, "_", "_", "_"));;
 	}
 	
 	private void iterateElement(Affect a, FunctionRepresentation fr) {
@@ -173,7 +173,7 @@ public class GeneratorSymbolTable {
 		for(String v : vars){
 			fr.addVar(v);
 			
-			String startTag = fr.getCode().getCurrentTag();
+		/*	String startTag = fr.getCode().getCurrentTag();
 			String tagExp = fr.getCode().getNextTag();
 			
 			fr.getCode().addCode3Adress(startTag, new Code3Address(Op.AFFECT, v, tagExp, "_"));;
@@ -182,7 +182,7 @@ public class GeneratorSymbolTable {
 
 			iterateElement(exprs.get(indexExpr), fr);
 			
-			fr.getCode().setCurrentTag(startTag);
+			fr.getCode().setCurrentTag(startTag);*/
 		}
 		
 	}
@@ -204,7 +204,7 @@ public class GeneratorSymbolTable {
 			iterateElement((Cons)e,fr);
 		}
 		else{
-			fr.getCode().addCode3Adress(fr.getCode().getCurrentTag(), new Code3Address(Op.BOUCHON, "_", "_", "_"));;
+			//fr.getCode().addCode3Adress(fr.getCode().getCurrentTag(), new Code3Address(Op.BOUCHON, "_", "_", "_"));;
 		}
 		
 	}
@@ -225,13 +225,12 @@ public class GeneratorSymbolTable {
 	
 	private void iterateElement(Cons c, FunctionRepresentation fr){
 		
-		String startTag = fr.getCode().getCurrentTag();
+		//String startTag = fr.getCode().getCurrentTag();
 
 		c.getExprs();
-		int idA = fr.addTempVar("A");
-		fr.getCode().addCode3Adress(startTag, new Code3Address(Op.AFFECT, ""+idA, "_", "_"));
+	//	int idA = fr.addTempVar("A");
 
-		fr.getCode().addCode3Adress(startTag, new Code3Address(Op.CONS, ""+idA, "var suite" , "_"));
+		//fr.getCode().addCode3Adress(startTag, new Code3Address(Op.CONS, ""+idA, "var suite" , "_"));
 		
 	}
 	
@@ -253,7 +252,7 @@ public class GeneratorSymbolTable {
 		}
 	}
 	private void iterateElement(For c, FunctionRepresentation fr){
-		
+		/*
 		String startTag = fr.getCode().getCurrentTag();
 
 		String tagCond = fr.getCode().getNextTag();
@@ -270,13 +269,13 @@ public class GeneratorSymbolTable {
 		iterateElement(fo, fr);
 		
 		fr.getCode().addCode3Adress(startTag, new Code3Address(Op.FOR, tagCond, tagFor, "_"));
-		fr.getCode().setCurrentTag(startTag);
+		fr.getCode().setCurrentTag(startTag);*/
 
 	}
 	
 	private void iterateElement(While w, FunctionRepresentation fr){
 		
-		String startTag = fr.getCode().getCurrentTag();
+		/*String startTag = fr.getCode().getCurrentTag();
 
 		String tagCond = fr.getCode().getNextTag();
 		fr.getCode().setCurrentTag(tagCond);
@@ -292,7 +291,7 @@ public class GeneratorSymbolTable {
 		iterateElement(fo, fr);
 		
 		fr.getCode().addCode3Adress(startTag, new Code3Address(Op.WHILE, tagCond, tagWhile, "_"));
-		fr.getCode().setCurrentTag(startTag);
+		fr.getCode().setCurrentTag(startTag);*/
 		
 	}	
 	
@@ -302,7 +301,7 @@ public class GeneratorSymbolTable {
 	
 	private void iterateElement(If i, FunctionRepresentation fr){
 		
-		String startTag = fr.getCode().getCurrentTag();
+	/*	String startTag = fr.getCode().getCurrentTag();
 
 		String tagCond = fr.getCode().getNextTag();
 		fr.getCode().setCurrentTag(tagCond);
@@ -330,7 +329,7 @@ public class GeneratorSymbolTable {
 		else{
 			fr.getCode().setCurrentTag(startTag);
 			fr.getCode().addCode3Adress(startTag, new Code3Address(Op.IF, tagCond, tagThen, "_"));
-		}
+		}*/
 		
 	}
 
