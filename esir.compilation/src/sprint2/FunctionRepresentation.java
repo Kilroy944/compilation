@@ -13,13 +13,11 @@ public class FunctionRepresentation {
 	private int nbInput,nbOutput;
 	
 	private HashMap<String, Integer> variableTable;
-	private HashMap<String, Integer> tempVariableTable;
 	
 	private ArrayList<Code3Address> code;
 	
 	public FunctionRepresentation(String name,int nbInput,int nbOutput){
 		variableTable=new HashMap<>();
-		tempVariableTable=new HashMap<>();
 		code = new ArrayList<Code3Address>();
 		
 		this.name=name;
@@ -41,6 +39,7 @@ public class FunctionRepresentation {
 		return code;
 	}
 	
+	@Override
 	public String toString(){
 	
 		String result="["+name+", nbIn : "+nbInput+", nbOut : "+nbOutput+"]\n";
@@ -49,10 +48,7 @@ public class FunctionRepresentation {
 		for (Entry<String, Integer> entry : variableTable.entrySet()){
 			result+=entry+"\n";
 		}
-		result+="Table des variables temporaires : \n";
-		for (Entry<String, Integer> entry : tempVariableTable.entrySet()){
-			result+=entry+"\n";
-		}
+		result += "Nombre de variables temporaires : " + counterTempVar + "\n";
 		
 		result+="Table des codes 3@ : \n";
 			
@@ -82,14 +78,8 @@ public class FunctionRepresentation {
 		code.add(c);
 	}
 	
-	public String addTempVar(String v) {
-		
-		if(!tempVariableTable.containsKey(v)){
-			tempVariableTable.put(v, counterTempVar);
-			counterTempVar++;	
-		}
-		return "vt"+(counterTempVar-1);
-			
+	public String getNewTempVar() {
+		return "vt" + counterTempVar++;
 	}
 	
 	public int getNbInput() {

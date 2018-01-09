@@ -2,7 +2,7 @@ function testfunction:
 read A,B,C
 %
   if nil then
-      if A then
+      if (cons (hd A) B) then
        nop
       fi
   else

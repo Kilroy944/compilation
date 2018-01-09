@@ -1,14 +1,15 @@
 package sprint2.operations;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import sprint2.Code3Address;
 
 public class IF extends Operation{
 
-	private ArrayList<Code3Address> listCodeCondition;
-	private ArrayList<Code3Address> listCodeThen;
-	private ArrayList<Code3Address> listCodeElse;
+	private List<Code3Address> listCodeCondition;
+	private List<Code3Address> listCodeThen;
+	private List<Code3Address> listCodeElse;
 
 	
 	public IF() {
@@ -20,6 +21,7 @@ public class IF extends Operation{
 	    
 	}
 
+	@Override
 	public String toString(){
 		
 		String ret = "IF \n";
@@ -37,32 +39,32 @@ public class IF extends Operation{
 		return ret;
 	}
 
-	public ArrayList<Code3Address> getListCodeCondition() {
+	public List<Code3Address> getListCodeCondition() {
 		return listCodeCondition;
 	}
 
 
-	public void setListCodeCondition(ArrayList<Code3Address> listCodeCondition) {
+	public void setListCodeCondition(List<Code3Address> listCodeCondition) {
 		this.listCodeCondition = listCodeCondition;
 	}
 
 
-	public ArrayList<Code3Address> getListCodeThen() {
+	public List<Code3Address> getListCodeThen() {
 		return listCodeThen;
 	}
 
 
-	public void setListCodeThen(ArrayList<Code3Address> listCodeThen) {
+	public void setListCodeThen(List<Code3Address> listCodeThen) {
 		this.listCodeThen = listCodeThen;
 	}
 
 
-	public ArrayList<Code3Address> getListCodeElse() {
+	public List<Code3Address> getListCodeElse() {
 		return listCodeElse;
 	}
 
 
-	public void setListCodeElse(ArrayList<Code3Address> listCodeElse) {
+	public void setListCodeElse(List<Code3Address> listCodeElse) {
 		this.listCodeElse = listCodeElse;
 	}
 
