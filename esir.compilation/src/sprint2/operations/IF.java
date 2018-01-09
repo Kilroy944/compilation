@@ -11,15 +11,46 @@ public class IF extends Operation{
 	private ArrayList<Code3Address> listCodeElse;
 
 	
-	public IF(String name, ArrayList<Code3Address> lc, ArrayList<Code3Address> lt, ArrayList<Code3Address> le  ) {
-		super(name);
+	public IF() {
+		super("IF");
 
-		this.listCodeCondition=lc;
-		this.listCodeElse=le;
-		this.listCodeThen=lt;
+		this.listCodeCondition=new ArrayList<>();
+		this.listCodeElse=new ArrayList<>();
+		this.listCodeThen=new ArrayList<>();
 	    
 	}
 
+
+	public ArrayList<Code3Address> getListCodeCondition() {
+		return listCodeCondition;
+	}
+
+
+	public void setListCodeCondition(ArrayList<Code3Address> listCodeCondition) {
+		this.listCodeCondition = listCodeCondition;
+	}
+
+
+	public ArrayList<Code3Address> getListCodeThen() {
+		return listCodeThen;
+	}
+
+
+	public void setListCodeThen(ArrayList<Code3Address> listCodeThen) {
+		this.listCodeThen = listCodeThen;
+	}
+
+
+	public ArrayList<Code3Address> getListCodeElse() {
+		return listCodeElse;
+	}
+
+
+	public void setListCodeElse(ArrayList<Code3Address> listCodeElse) {
+		this.listCodeElse = listCodeElse;
+	}
+
+	
 	
 	
 }
