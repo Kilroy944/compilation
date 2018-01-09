@@ -9,6 +9,10 @@ public enum Op {
 	NOP,
 	BOUCHON,
 	FOR,
+	WHILE,
+	CONS,
+	HD,
+	TL,
 }
 
 

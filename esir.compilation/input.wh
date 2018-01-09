@@ -14,3 +14,11 @@ read A,B,C
   fi
 %
 write A,B,C
+
+
+function f:
+read X
+%
+ X:= (cons nil X)
+%
+write X

@@ -43,10 +43,19 @@ public class SymbolTable {
 	public FunctionRepresentation getFunction(String name) {
 		return listFunctions.get(name);
 	}
-	
+
 	public boolean hasFunction(String name){
 		return listFunctions.containsKey(name);
 	}
+	
+	public boolean hasSymbol(String name){
+		return listSymbol.containsKey(name);
+	}
+	
+	public int getSymbol(String name) {
+		return listSymbol.get(name);
+	}
+	
 	
 	public String toString(){
 				
