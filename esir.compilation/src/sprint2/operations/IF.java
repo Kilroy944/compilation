@@ -20,6 +20,22 @@ public class IF extends Operation{
 	    
 	}
 
+	public String toString(){
+		
+		String ret = "IF \n";
+		
+		for(Code3Address c : listCodeCondition){
+			ret += "\t"+c.toString()+"\n";
+		}
+		for(Code3Address c : listCodeThen){
+			ret += "\t"+c.toString()+"\n";
+		}
+		for(Code3Address c : listCodeElse){
+			ret += "\t"+c.toString()+"\n";
+		}
+		
+		return ret;
+	}
 
 	public ArrayList<Code3Address> getListCodeCondition() {
 		return listCodeCondition;
