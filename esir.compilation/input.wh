@@ -6,7 +6,9 @@ read A,B,C
        nop
       fi
   else
-    nop
+    while nil do
+    	A,B := B,C
+    od
   fi
 %
 write A,B,C

@@ -32,19 +32,27 @@ import esir.compilation.whdsl.Function;
 import esir.compilation.whdsl.Hd;
 import esir.compilation.whdsl.If;
 import esir.compilation.whdsl.Input;
+import esir.compilation.whdsl.LExpr;
 import esir.compilation.whdsl.Nill;
 import esir.compilation.whdsl.Nop;
 import esir.compilation.whdsl.Output;
 import esir.compilation.whdsl.Program;
+import esir.compilation.whdsl.Symbol;
+import esir.compilation.whdsl.Tl;
 import esir.compilation.whdsl.Variable;
 import esir.compilation.whdsl.While;
+import sprint2.operations.AFFECT;
 import sprint2.operations.BOUCHON;
+import sprint2.operations.CALL;
 import sprint2.operations.CONS;
+import sprint2.operations.FOR;
 import sprint2.operations.HD;
 import sprint2.operations.IF;
 import sprint2.operations.NOP;
 import sprint2.operations.Nil;
 import sprint2.operations.READ;
+import sprint2.operations.TL;
+import sprint2.operations.WHILE;
 import sprint2.operations.WRITE;
 
 public class GeneratorSymbolTable {
@@ -198,6 +206,7 @@ public class GeneratorSymbolTable {
 		
 	}
 	
+	
 	private ReturnIterate iterateElement(Nop a, FunctionRepresentation fr) {
 		
 		Code3Address code = new Code3Address(new NOP(), "_", "_", "_");
@@ -208,31 +217,24 @@ public class GeneratorSymbolTable {
 	}
 	
 	private ReturnIterate iterateElement(Affect a, FunctionRepresentation fr) {
-		iterateElement(a.getExprs(),fr);
 		EList<String> vars =a.getVars().getList();
 		EList<Expr> exprs = a.getExprs().getList();
 		//Vérifier que le nombre de var a gauche et droite est correcte
 
+		List<Code3Address> listAffectation =new ArrayList<>();
+
+		
 		int indexExpr = 0;
 		for(String v : vars){
-			fr.addVar(v);
+			String idV = fr.addVar(v);
 			
-		/*	String startTag = fr.getCode().getCurrentTag();
-			String tagExp = fr.getCode().getNextTag();
-			
-			fr.getCode().addCode3Adress(startTag, new Code3Address(Op.AFFECT, v, tagExp, "_"));;
-			
-			fr.getCode().setCurrentTag(tagExp);
-
-			iterateElement(exprs.get(indexExpr), fr);
-			
-			fr.getCode().setCurrentTag(startTag);*/
+			ReturnIterate rtExp = iterateElement(exprs.get(indexExpr),fr);
+			indexExpr++;
+			Code3Address codeIf = new Code3Address(new AFFECT(), idV , rtExp.getAddr(), "_");
+			listAffectation.add(codeIf);
 		}
-		Code3Address codeIf = new Code3Address(new BOUCHON(), "_", "_", "_");
-		ArrayList<Code3Address> la =new ArrayList<>();
-		la.add(codeIf);
 		
-		return new ReturnIterate("_", la);
+		return new ReturnIterate("_", listAffectation);
 	}
 
 	private ReturnIterate iterateElement(Exprs exprs, FunctionRepresentation fr) {
@@ -263,6 +265,9 @@ public class GeneratorSymbolTable {
 		}
 		else if (e instanceof Hd) {
 			return iterateElement((Hd) e, fr);
+		}
+		else if (e instanceof Tl) {
+			return iterateElement((Tl) e, fr);
 		}
 		else if (e instanceof Call) {
 			iterateElement((Call)e,fr);
@@ -314,6 +319,19 @@ public class GeneratorSymbolTable {
 		return new ReturnIterate(res, code);
 	}
 	
+	
+	private ReturnIterate iterateElement(Tl h, FunctionRepresentation fr) {
+		ReturnIterate arg = iterateElement(h.getExpr(), fr);
+
+		String res = fr.getNewTempVar();
+
+		List<Code3Address> code = new ArrayList<>();
+		code.addAll(arg.getListCode());
+		code.add(new Code3Address(new TL(), res, arg.getAddr(), "_"));
+
+		return new ReturnIterate(res, code);
+	}
+	
 	private ReturnIterate iterateElement(Cons c, FunctionRepresentation fr) {
 		// 2 args pour l'instant
 		if (c.getExprs().getList().size() != 2) throw new IllegalArgumentException("Cons à 2 param seulement");
@@ -340,67 +358,76 @@ public class GeneratorSymbolTable {
 				throw new SymbolTableError();
 			}
 			
+			EList<Expr> le = c.getParams().getList();
+			ArrayList<Code3Address> listCodeExp = new ArrayList<>();
+			CALL call = new CALL();
 			
+			for(Expr e : le){
+				ReturnIterate rtExp = iterateElement(e,fr);
+				listCodeExp.addAll(rtExp.getListCode());
+				call.getListVarCall().add(rtExp.getAddr());
+			}
+			//Comment lier les returns de la fonction aux variables affectées
+			//Retourner plusieurs addr dans ReturnIterate ?
+			for(int i=0; i<symbolTable.getFunction(c.getName()).getNbOutput(); i++ ){
+				String idVarTemp = fr.getNewTempVar();
+				call.getListVarReturn().add(idVarTemp);
+			}
+			
+			List<Code3Address> code = new ArrayList<>();
+			code.add(new Code3Address(call, "_", symbolTable.getFunction(c.getName()).getName(), "_"));			
+			
+			return new ReturnIterate("_", code);
 		}
 		else{
 			throw new SymbolTableError();
 		}
-		
-		return null;
 	}
-	private ReturnIterate iterateElement(For c, FunctionRepresentation fr){
+	private ReturnIterate iterateElement(For f, FunctionRepresentation fr){
 		
-		Code3Address codeIf = new Code3Address(new BOUCHON(), "_", "_", "_");
-		ArrayList<Code3Address> la =new ArrayList<>();
-		la.add(codeIf);
+		FOR fo = new FOR();
 		
-		return new ReturnIterate("_", la);
-		/*
-		String startTag = fr.getCode().getCurrentTag();
-
-		String tagCond = fr.getCode().getNextTag();
-		fr.getCode().setCurrentTag(tagCond);
-
-		Expr cond = c.getCondition();
-		iterateElement(cond,fr);
-
-		String tagFor = fr.getCode().getNextTag();
-		fr.getCode().setCurrentTag(tagFor);
-
-		Commands fo = c.getCommands();
+		Expr cond = f.getCondition();
 		
-		iterateElement(fo, fr);
+		ReturnIterate rtCond = iterateElement(cond,fr);
 		
-		fr.getCode().addCode3Adress(startTag, new Code3Address(Op.FOR, tagCond, tagFor, "_"));
-		fr.getCode().setCurrentTag(startTag);*/
+		//Do
+		
+		Commands do_ = f.getCommands();
+		ReturnIterate rtDo = iterateElement(do_,fr);
+		
+		fo.setListCodeCondition(rtCond.getListCode());
+		fo.setListCodeDo(rtDo.getListCode());
 
+		Code3Address codeFor = new Code3Address(fo, "_", rtCond.getAddr(), "_");
+		ArrayList<Code3Address> l =new ArrayList<>();
+		l.add(codeFor);
+		
+		return new ReturnIterate("_", l);
+	
 	}
 	
 	private ReturnIterate iterateElement(While w, FunctionRepresentation fr){
 		
-		Code3Address codeIf = new Code3Address(new BOUCHON(), "_", "_", "_");
-		ArrayList<Code3Address> la =new ArrayList<>();
-		la.add(codeIf);
+		WHILE wh = new WHILE();
 		
-		return new ReturnIterate("_", la);
-		
-		/*String startTag = fr.getCode().getCurrentTag();
-
-		String tagCond = fr.getCode().getNextTag();
-		fr.getCode().setCurrentTag(tagCond);
-
 		Expr cond = w.getCondition();
-		iterateElement(cond,fr);
-
-		String tagWhile = fr.getCode().getNextTag();
-		fr.getCode().setCurrentTag(tagWhile);
-
-		Commands fo = w.getCommands();
 		
-		iterateElement(fo, fr);
+		ReturnIterate rtCond = iterateElement(cond,fr);
 		
-		fr.getCode().addCode3Adress(startTag, new Code3Address(Op.WHILE, tagCond, tagWhile, "_"));
-		fr.getCode().setCurrentTag(startTag);*/
+		//Do
+		
+		Commands do_ = w.getCommands();
+		ReturnIterate rtDo = iterateElement(do_,fr);
+		
+		wh.setListCodeCondition(rtCond.getListCode());
+		wh.setListCodeDo(rtDo.getListCode());
+
+		Code3Address codeWhile = new Code3Address(wh, "_", rtCond.getAddr(), "_");
+		ArrayList<Code3Address> l =new ArrayList<>();
+		l.add(codeWhile);
+		
+		return new ReturnIterate("_", l);
 		
 	}	
 	
