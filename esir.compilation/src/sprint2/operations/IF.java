@@ -23,20 +23,31 @@ public class IF extends Operation{
 
 	@Override
 	public String toString(){
-		
+		return toString(0);
+	}
+
+	@Override
+	public String toString(int indent) {
+		String ind = "";
+		for (int i = 0; i < indent; i++)
+			ind += "\t";
+
 		String ret = "IF \n";
-		
-		for(Code3Address c : listCodeCondition){
-			ret += "\t"+c.toString()+"\n";
+
+		ret += ind + "\t(cond)\n";
+		for (Code3Address c : listCodeCondition) {
+			ret += c.toString(indent + 1) + "\n";
 		}
-		for(Code3Address c : listCodeThen){
-			ret += "\t"+c.toString()+"\n";
+		ret += ind + "\t(then)\n";
+		for (Code3Address c : listCodeThen) {
+			ret += c.toString(indent + 1) + "\n";
 		}
-		for(Code3Address c : listCodeElse){
-			ret += "\t"+c.toString()+"\n";
+		ret += ind + "\t(else)\n";
+		for (Code3Address c : listCodeElse) {
+			ret += c.toString(indent + 1) + "\n";
 		}
-		
-		return ret;
+
+		return ret + ind;
 	}
 
 	public List<Code3Address> getListCodeCondition() {
