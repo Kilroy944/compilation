@@ -17,6 +17,7 @@ public class SymbolTable {
 	public SymbolTable(){
 		listFunctions=new HashMap<>();
 		listSymbol=new HashMap<>();
+		addSymbol("nil");
 	}
 	
 	public void addFunction(String name,int nbInput,int nbOutput) throws DoubleFunctionException{
