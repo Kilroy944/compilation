@@ -55,18 +55,13 @@ public class FunctionRepresentation {
 		}
 		
 		result+="Table des codes 3@ : \n";
-		
-		result+=code.toString();
-		
-
-		/*for (Entry<String, ArrayList<Code3Address>> entry : table.entrySet())
+			
+		for (Code3Address c : code)
 		{
-			result+=entry.getKey()+" : ";
-		    for(Code3Address code : entry.getValue()){
-		    	result+="\t"+code.toString()+"\n";
-		    }
+			result+=c.toString();
 		    result+=System.getProperty("line.separator");
-		}*/
+		}
+		
 		result+=System.getProperty("line.separator");
 		return result;
 	}
@@ -78,7 +73,9 @@ public class FunctionRepresentation {
 			counterVar++;	
 			return "v"+(counterVar-1);
 		}
-		return "v";	
+		else{
+			return "v"+variableTable.get(v);	
+		}
 	}
 
 	public void addCode3Address(Code3Address c){
