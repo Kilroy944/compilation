@@ -203,6 +203,9 @@ public class GeneratorSymbolTable {
 		else if(e instanceof Cons){
 			iterateElement((Cons)e,fr);
 		}
+		else if(e instanceof Symbol){
+			
+		}
 		else{
 			//fr.getCode().addCode3Adress(fr.getCode().getCurrentTag(), new Code3Address(Op.BOUCHON, "_", "_", "_"));;
 		}
