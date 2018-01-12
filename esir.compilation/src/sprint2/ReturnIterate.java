@@ -1,22 +1,22 @@
 package sprint2;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ReturnIterate {
 
-	private ArrayList<Code3Address> listCode;
+	private List<Code3Address> listCode;
 	private String addr;
 	
-	public ReturnIterate(String addr,ArrayList<Code3Address> list){
+	public ReturnIterate(String addr, List<Code3Address> list) {
 		this.addr=addr;
 		this.listCode=list;
 	}
 
-	public ArrayList<Code3Address> getListCode() {
+	public List<Code3Address> getListCode() {
 		return listCode;
 	}
 
-	public void setListCode(ArrayList<Code3Address> listCode) {
+	public void setListCode(List<Code3Address> listCode) {
 		this.listCode = listCode;
 	}
 

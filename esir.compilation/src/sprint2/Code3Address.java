@@ -19,7 +19,7 @@ public class Code3Address {
 
 	@Override
 	public String toString() {
-		return "<op=" + operator + ", a1=" + argr1 + ", a2=" + argr2 + ", a3=" + argr3
+		return "<" + operator + ", " + argr1 + ", " + argr2 + ", " + argr3
 				+ ">";
 	}
 }

@@ -2,13 +2,9 @@ function testfunction:
 read A,B,C
 %
   if nil then
-    for (cons A) do
-      if A then
-        A := (hd C) ;
-        B := (cons (hd A) B) ;
-        nop
+      if (cons (hd A) B) then
+       nop
       fi
-    od
   else
     nop
   fi
@@ -16,9 +12,3 @@ read A,B,C
 write A,B,C
 
 
-function f:
-read X
-%
- X:= (cons nil X)
-%
-write X
