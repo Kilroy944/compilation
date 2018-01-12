@@ -6,8 +6,8 @@ read A,B,C
        nop
       fi
   else
-    while A do
-    	A,B := B,C
+    while toto do
+    	A,B := B,toto
     od
   fi
 %
