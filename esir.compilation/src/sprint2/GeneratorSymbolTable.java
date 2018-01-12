@@ -35,6 +35,7 @@ import esir.compilation.whdsl.Nill;
 import esir.compilation.whdsl.Nop;
 import esir.compilation.whdsl.Output;
 import esir.compilation.whdsl.Program;
+import esir.compilation.whdsl.Symbol;
 import esir.compilation.whdsl.Tl;
 import esir.compilation.whdsl.Variable;
 import esir.compilation.whdsl.While;
@@ -43,6 +44,7 @@ import sprint2.operations.BOUCHON;
 import sprint2.operations.CALL;
 import sprint2.operations.CONS;
 import sprint2.operations.FOR;
+import sprint2.operations.FOREACH;
 import sprint2.operations.HD;
 import sprint2.operations.IF;
 import sprint2.operations.NOP;
@@ -268,9 +270,11 @@ public class GeneratorSymbolTable {
 			return iterateElement((Tl) e, fr);
 		}
 		else if (e instanceof Call) {
-			iterateElement((Call)e,fr);
+			return iterateElement((Call)e,fr);
 		}
-		
+		else if(e instanceof Symbol){
+			return iterateElement((Symbol)e,fr);
+		}
 
 		Code3Address code = new Code3Address(new BOUCHON(), "_", "_", "_");
 		ArrayList<Code3Address> la =new ArrayList<>();
@@ -278,6 +282,17 @@ public class GeneratorSymbolTable {
 		
 		return new ReturnIterateExpr(new ArrayList<>(), la);
 	}
+	
+	private ReturnIterateExpr iterateElement(Symbol s, FunctionRepresentation fr) {
+		
+		String idS = symbolTable.addSymbol(s.getValue());
+		List<String> listAddr = new ArrayList<>();
+		listAddr.add(idS);
+		
+		return new ReturnIterateExpr(listAddr, new ArrayList<Code3Address>());
+	}
+
+	
 	/*
 	 * 	{Nill} value=NIL | 
 	{Variable} value=VARIABLE |
@@ -453,11 +468,38 @@ public class GeneratorSymbolTable {
 	}	
 	
 	private ReturnIterateCmd iterateElement(ForEach fe, FunctionRepresentation fr) {
-		Code3Address codeIf = new Code3Address(new BOUCHON(), "_", "_", "_");
-		ArrayList<Code3Address> la =new ArrayList<>();
-		la.add(codeIf);
 		
-		return new ReturnIterateCmd(la);
+		FOREACH fo = new FOREACH();
+		
+		Expr cond = fe.getElem();
+		
+		ReturnIterateExpr rtCond = iterateElement(cond,fr);
+		
+		//In 
+		
+		Expr in = fe.getEnsemb();
+		
+		ReturnIterateExpr rtIn = iterateElement(in,fr);
+
+		if (rtCond.getNbAddr() != 1) throw new VariablesCountException(1, rtCond.getNbAddr());
+		if (rtIn.getNbAddr() != 1) throw new VariablesCountException(1, rtIn.getNbAddr());
+
+		//Do
+		
+		Commands do_ = fe.getCommands();
+		ReturnIterateCmd rtDo = iterateElement(do_, fr);
+		
+		fo.setListCodeCondition(rtCond.getListCode());
+		fo.setListCodeDo(rtDo.getListCode());
+		fo.setListCodeIn(rtIn.getListCode());
+
+		Code3Address codeFor = new Code3Address(fo, "_", rtCond.getListAddr().get(0), "_");
+		ArrayList<Code3Address> l =new ArrayList<>();
+		l.add(codeFor);
+		
+		return new ReturnIterateCmd(l);
+		
+		
 	}	
 	
 	private ReturnIterateCmd iterateElement(If i, FunctionRepresentation fr) {

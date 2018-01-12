@@ -31,13 +31,14 @@ public class SymbolTable {
 		}
 	}
 
-	public void addSymbol(String name) throws DoubleFunctionException{
+	public String addSymbol(String name) throws DoubleFunctionException{
 		if(!listSymbol.containsKey(name)){
 			listSymbol.put(name, counterSymbol);
 			counterSymbol++;
+			return "s" + (counterSymbol-1);
 		}
 		else{
-			throw new DoubleFunctionException(name);
+			return "s"+listSymbol.get(name);
 		}
 	}
 	
@@ -52,6 +53,11 @@ public class SymbolTable {
 	public String toString(){
 				
 		String result="";
+		
+		result+="Table des symboles : \n";
+		for (Entry<String, Integer> entry : listSymbol.entrySet()){
+			result+=entry+"\n";
+		}
 		
 		for (Entry<String, FunctionRepresentation> entry : listFunctions.entrySet())
 		{
