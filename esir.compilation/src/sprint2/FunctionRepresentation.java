@@ -50,7 +50,7 @@ public class FunctionRepresentation {
 		}
 		result += "Nombre de variables temporaires : " + counterTempVar + "\n";
 		
-		result+="Table des codes 3@ : \n";
+		result += "Liste de codes 3@ : \n";
 			
 		for (Code3Address c : code)
 		{

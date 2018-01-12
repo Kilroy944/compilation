@@ -5,20 +5,17 @@ import java.util.List;
 
 import sprint2.Code3Address;
 
-public class IF extends Operation{
+public class FOR extends Operation{
 
 	private List<Code3Address> listCodeCondition;
-	private List<Code3Address> listCodeThen;
-	private List<Code3Address> listCodeElse;
-
+	private List<Code3Address> listCodeDo;
 	
-	public IF() {
-		super("IF");
+	
+	public FOR() {
+		super("FOR");
 
 		this.listCodeCondition=new ArrayList<>();
-		this.listCodeElse=new ArrayList<>();
-		this.listCodeThen=new ArrayList<>();
-	    
+		this.listCodeDo=new ArrayList<>();
 	}
 
 	@Override
@@ -32,23 +29,21 @@ public class IF extends Operation{
 		for (int i = 0; i < indent; i++)
 			ind += "\t";
 
-		String ret = "IF \n";
+		String ret = "FOR \n";
 
 		ret += ind + "\t(cond)\n";
 		for (Code3Address c : listCodeCondition) {
 			ret += c.toString(indent + 1) + "\n";
 		}
-		ret += ind + "\t(then)\n";
-		for (Code3Address c : listCodeThen) {
-			ret += c.toString(indent + 1) + "\n";
-		}
-		ret += ind + "\t(else)\n";
-		for (Code3Address c : listCodeElse) {
+		ret += ind + "\t(do)\n";
+		for (Code3Address c : listCodeDo) {
 			ret += c.toString(indent + 1) + "\n";
 		}
 
 		return ret + ind;
 	}
+
+	
 
 	public List<Code3Address> getListCodeCondition() {
 		return listCodeCondition;
@@ -60,26 +55,13 @@ public class IF extends Operation{
 	}
 
 
-	public List<Code3Address> getListCodeThen() {
-		return listCodeThen;
+	public List<Code3Address> getListCodeDo() {
+		return listCodeDo;
 	}
 
 
-	public void setListCodeThen(List<Code3Address> listCodeThen) {
-		this.listCodeThen = listCodeThen;
+	public void setListCodeDo(List<Code3Address> listCodeDo) {
+		this.listCodeDo = listCodeDo;
 	}
 
-
-	public List<Code3Address> getListCodeElse() {
-		return listCodeElse;
-	}
-
-
-	public void setListCodeElse(List<Code3Address> listCodeElse) {
-		this.listCodeElse = listCodeElse;
-	}
-
-	
-	
-	
 }

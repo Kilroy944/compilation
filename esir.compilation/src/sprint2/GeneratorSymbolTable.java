@@ -25,7 +25,6 @@ import esir.compilation.whdsl.Commands;
 import esir.compilation.whdsl.Cons;
 import esir.compilation.whdsl.Definition;
 import esir.compilation.whdsl.Expr;
-import esir.compilation.whdsl.Exprs;
 import esir.compilation.whdsl.For;
 import esir.compilation.whdsl.ForEach;
 import esir.compilation.whdsl.Function;
@@ -36,15 +35,21 @@ import esir.compilation.whdsl.Nill;
 import esir.compilation.whdsl.Nop;
 import esir.compilation.whdsl.Output;
 import esir.compilation.whdsl.Program;
+import esir.compilation.whdsl.Tl;
 import esir.compilation.whdsl.Variable;
 import esir.compilation.whdsl.While;
+import sprint2.operations.AFFECT;
 import sprint2.operations.BOUCHON;
+import sprint2.operations.CALL;
 import sprint2.operations.CONS;
+import sprint2.operations.FOR;
 import sprint2.operations.HD;
 import sprint2.operations.IF;
 import sprint2.operations.NOP;
 import sprint2.operations.Nil;
 import sprint2.operations.READ;
+import sprint2.operations.TL;
+import sprint2.operations.WHILE;
 import sprint2.operations.WRITE;
 
 public class GeneratorSymbolTable {
@@ -121,7 +126,7 @@ public class GeneratorSymbolTable {
 	}
 	private void iterateElement(Definition c, FunctionRepresentation fr){
 		iterateElement(c.getInput(),fr);
-		ReturnIterate rt = iterateElement(c.getCommands(),fr);
+		ReturnIterateCmd rt = iterateElement(c.getCommands(), fr);
 		
 		for(Code3Address code : rt.getListCode()){
 			fr.addCode3Address(code);
@@ -152,21 +157,22 @@ public class GeneratorSymbolTable {
 		}
 	}
 	
-	private ReturnIterate iterateElement(Commands c, FunctionRepresentation fr){
+	private ReturnIterateCmd iterateElement(Commands c, FunctionRepresentation fr) {
 		
 		ArrayList<Code3Address> fusion = new ArrayList<>();
 		
 		EList<Command> l = c.getList();
 		if(l!=null){
 			for(Command co : l){
-				ReturnIterate rt = iterateElement(co,fr);	
+				ReturnIterateCmd rt = iterateElement(co, fr);
 				fusion.addAll(rt.getListCode());
 			}
 		}
 		
-		return new ReturnIterate("", fusion);		
+		return new ReturnIterateCmd(fusion);
 	}
-	private ReturnIterate iterateElement(Command c, FunctionRepresentation fr){
+
+	private ReturnIterateCmd iterateElement(Command c, FunctionRepresentation fr) {
 		
 		EObject o = c.getCmd();
 		
@@ -193,64 +199,58 @@ public class GeneratorSymbolTable {
 			ArrayList<Code3Address> la =new ArrayList<>();
 			la.add(codeIf);
 			
-			return new ReturnIterate("_", la);
+			return new ReturnIterateCmd(la);
 		}
 		
 	}
 	
-	private ReturnIterate iterateElement(Nop a, FunctionRepresentation fr) {
+	
+	private ReturnIterateCmd iterateElement(Nop a, FunctionRepresentation fr) {
 		
 		Code3Address code = new Code3Address(new NOP(), "_", "_", "_");
 		ArrayList<Code3Address> la =new ArrayList<>();
 		la.add(code);
 		
-		return new ReturnIterate("_", la);
+		return new ReturnIterateCmd(la);
 	}
 	
-	private ReturnIterate iterateElement(Affect a, FunctionRepresentation fr) {
-		iterateElement(a.getExprs(),fr);
+	private ReturnIterateCmd iterateElement(Affect a, FunctionRepresentation fr) {
 		EList<String> vars =a.getVars().getList();
 		EList<Expr> exprs = a.getExprs().getList();
 		//Vérifier que le nombre de var a gauche et droite est correcte
 
-		int indexExpr = 0;
-		for(String v : vars){
-			fr.addVar(v);
-			
-		/*	String startTag = fr.getCode().getCurrentTag();
-			String tagExp = fr.getCode().getNextTag();
-			
-			fr.getCode().addCode3Adress(startTag, new Code3Address(Op.AFFECT, v, tagExp, "_"));;
-			
-			fr.getCode().setCurrentTag(tagExp);
+		List<Code3Address> listAffectation =new ArrayList<>();
 
-			iterateElement(exprs.get(indexExpr), fr);
-			
-			fr.getCode().setCurrentTag(startTag);*/
-		}
-		Code3Address codeIf = new Code3Address(new BOUCHON(), "_", "_", "_");
-		ArrayList<Code3Address> la =new ArrayList<>();
-		la.add(codeIf);
 		
-		return new ReturnIterate("_", la);
-	}
+		for (Expr e : exprs) {
 
-	private ReturnIterate iterateElement(Exprs exprs, FunctionRepresentation fr) {
-		EList<Expr> l = exprs.getList();
+			ReturnIterateExpr rtExp = iterateElement(e, fr);
+			for (int i = 0; i < rtExp.getNbAddr(); i++) {
+				String v;
+				try {
+					v = vars.get(0);
+					vars.remove(0);
+				} catch (IndexOutOfBoundsException ie) {
+					throw new VariablesCountException(0, 0);
+				}
 
-		for(Expr e : l){
-			iterateElement(e,fr);
+				listAffectation.addAll(rtExp.getListCode());
+
+				String idV = fr.addVar(v);
+				Code3Address codeIf = new Code3Address(new AFFECT(), idV, rtExp.getListAddr().get(i), "_");
+				listAffectation.add(codeIf);
+			}
+
 		}
 		
-		Code3Address codeIf = new Code3Address(new BOUCHON(), "_", "_", "_");
-		ArrayList<Code3Address> la =new ArrayList<>();
-		la.add(codeIf);
-		
-		return new ReturnIterate("_", la);
-		
+		if (vars.size() != 0) {
+			throw new VariablesCountException(0, 0);
+		}
+
+		return new ReturnIterateCmd(listAffectation);
 	}
 
-	private ReturnIterate iterateElement(Expr e, FunctionRepresentation fr) {
+	private ReturnIterateExpr iterateElement(Expr e, FunctionRepresentation fr) {
 		 
 		if (e instanceof Nill) {
 			return iterateElement((Nill) e, fr);
@@ -264,16 +264,19 @@ public class GeneratorSymbolTable {
 		else if (e instanceof Hd) {
 			return iterateElement((Hd) e, fr);
 		}
+		else if (e instanceof Tl) {
+			return iterateElement((Tl) e, fr);
+		}
 		else if (e instanceof Call) {
 			iterateElement((Call)e,fr);
 		}
 		
 
-		Code3Address codeIf = new Code3Address(new BOUCHON(), "_", "_", "_");
+		Code3Address code = new Code3Address(new BOUCHON(), "_", "_", "_");
 		ArrayList<Code3Address> la =new ArrayList<>();
-		la.add(codeIf);
+		la.add(code);
 		
-		return new ReturnIterate("_", la);
+		return new ReturnIterateExpr(new ArrayList<>(), la);
 	}
 	/*
 	 * 	{Nill} value=NIL | 
@@ -289,49 +292,80 @@ public class GeneratorSymbolTable {
 	) ')'
 	 * */
 
-	private ReturnIterate iterateElement(Nill n, FunctionRepresentation fr) {
+	private ReturnIterateExpr iterateElement(Nill n, FunctionRepresentation fr) {
 		String res = fr.getNewTempVar();
 
 		List<Code3Address> code = new ArrayList<>();
 		code.add(new Code3Address(new Nil(), res, "_", "_"));
+		List<String> addrs = new ArrayList<>();
+		addrs.add(res);
 
-		return new ReturnIterate(res, code);
+		return new ReturnIterateExpr(addrs, code);
 	}
 	
-	private ReturnIterate iterateElement(Variable v, FunctionRepresentation fr) {
-		return new ReturnIterate(fr.addVar(v.getValue()), new ArrayList<>());
+	private ReturnIterateExpr iterateElement(Variable v, FunctionRepresentation fr) {
+		String addr = fr.addVar(v.getValue());
+		List<String> addrs = new ArrayList<>();
+		addrs.add(addr);
+		return new ReturnIterateExpr(addrs, new ArrayList<>());
 	}
 
-	private ReturnIterate iterateElement(Hd h, FunctionRepresentation fr) {
-		ReturnIterate arg = iterateElement(h.getExpr(), fr);
+	private ReturnIterateExpr iterateElement(Hd h, FunctionRepresentation fr) {
+		ReturnIterateExpr arg = iterateElement(h.getExpr(), fr);
+		
+		if (arg.getNbAddr() != 1) throw new VariablesCountException(1, arg.getNbAddr());
 
 		String res = fr.getNewTempVar();
 
 		List<Code3Address> code = new ArrayList<>();
 		code.addAll(arg.getListCode());
-		code.add(new Code3Address(new HD(), res, arg.getAddr(), "_"));
+		code.add(new Code3Address(new HD(), res, arg.getListAddr().get(0), "_"));
+		List<String> addrs = new ArrayList<>();
+		addrs.add(res);
 
-		return new ReturnIterate(res, code);
+		return new ReturnIterateExpr(addrs, code);
 	}
 	
-	private ReturnIterate iterateElement(Cons c, FunctionRepresentation fr) {
+	
+	private ReturnIterateExpr iterateElement(Tl h, FunctionRepresentation fr) {
+		ReturnIterateExpr arg = iterateElement(h.getExpr(), fr);
+
+		if (arg.getNbAddr() != 1) throw new VariablesCountException(1, arg.getNbAddr());
+
+		String res = fr.getNewTempVar();
+
+		List<Code3Address> code = new ArrayList<>();
+		code.addAll(arg.getListCode());
+		code.add(new Code3Address(new TL(), res, arg.getListAddr().get(0), "_"));
+		List<String> addrs = new ArrayList<>();
+		addrs.add(res);
+
+		return new ReturnIterateExpr(addrs, code);
+	}
+	
+	private ReturnIterateExpr iterateElement(Cons c, FunctionRepresentation fr) {
 		// 2 args pour l'instant
-		if (c.getExprs().getList().size() != 2) throw new IllegalArgumentException("Cons à 2 param seulement");
+		if (c.getExprs().getList().size() != 2) throw new IllegalArgumentException("Cons a 2 param seulement");
 		
-		ReturnIterate arg1 = iterateElement(c.getExprs().getList().get(0), fr);
-		ReturnIterate arg2 = iterateElement(c.getExprs().getList().get(1), fr);
+		ReturnIterateExpr arg1 = iterateElement(c.getExprs().getList().get(0), fr);
+		ReturnIterateExpr arg2 = iterateElement(c.getExprs().getList().get(1), fr);
+
+		if (arg1.getNbAddr() != 1) throw new VariablesCountException(1, arg1.getNbAddr());
+		if (arg2.getNbAddr() != 1) throw new VariablesCountException(1, arg2.getNbAddr());
 
 		String res = fr.getNewTempVar();
 
 		List<Code3Address> code = new ArrayList<>();
 		code.addAll(arg1.getListCode());
 		code.addAll(arg2.getListCode());
-		code.add(new Code3Address(new CONS(), res, arg1.getAddr(), arg2.getAddr()));
+		code.add(new Code3Address(new CONS(), res, arg1.getListAddr().get(0), arg2.getListAddr().get(0)));
+		List<String> addrs = new ArrayList<>();
+		addrs.add(res);
 
-		return new ReturnIterate(res, code);
+		return new ReturnIterateExpr(addrs, code);
 	}
 	
-	private ReturnIterate iterateElement(Call c/*,int nbOutput*/, FunctionRepresentation fr){
+	private ReturnIterateExpr iterateElement(Call c/*,int nbOutput*/, FunctionRepresentation fr){
 		
 		
 		if(symbolTable.hasFunction(c.getName())){
@@ -340,106 +374,122 @@ public class GeneratorSymbolTable {
 				throw new SymbolTableError();
 			}
 			
+			EList<Expr> le = c.getParams().getList();
+			ArrayList<Code3Address> listCodeExp = new ArrayList<>();
+			CALL call = new CALL();
 			
+			for(Expr e : le){
+				ReturnIterateExpr rtExp = iterateElement(e,fr);
+				listCodeExp.addAll(rtExp.getListCode());
+				call.getListVarCall().addAll(rtExp.getListAddr());
+			}
+			//Comment lier les returns de la fonction aux variables affectées
+			//Retourner plusieurs addr dans ReturnIterate ?
+			for(int i=0; i<symbolTable.getFunction(c.getName()).getNbOutput(); i++ ){
+				String idVarTemp = fr.getNewTempVar();
+				call.getListVarReturn().add(idVarTemp);
+			}
+			
+			List<Code3Address> code = new ArrayList<>();
+			code.add(new Code3Address(call, "_", symbolTable.getFunction(c.getName()).getName(), "_"));			
+			
+			return new ReturnIterateExpr(call.getListVarReturn(), code);
 		}
 		else{
 			throw new SymbolTableError();
 		}
-		
-		return null;
 	}
-	private ReturnIterate iterateElement(For c, FunctionRepresentation fr){
+
+	private ReturnIterateCmd iterateElement(For f, FunctionRepresentation fr) {
 		
-		Code3Address codeIf = new Code3Address(new BOUCHON(), "_", "_", "_");
-		ArrayList<Code3Address> la =new ArrayList<>();
-		la.add(codeIf);
+		FOR fo = new FOR();
 		
-		return new ReturnIterate("_", la);
-		/*
-		String startTag = fr.getCode().getCurrentTag();
-
-		String tagCond = fr.getCode().getNextTag();
-		fr.getCode().setCurrentTag(tagCond);
-
-		Expr cond = c.getCondition();
-		iterateElement(cond,fr);
-
-		String tagFor = fr.getCode().getNextTag();
-		fr.getCode().setCurrentTag(tagFor);
-
-		Commands fo = c.getCommands();
+		Expr cond = f.getCondition();
 		
-		iterateElement(fo, fr);
-		
-		fr.getCode().addCode3Adress(startTag, new Code3Address(Op.FOR, tagCond, tagFor, "_"));
-		fr.getCode().setCurrentTag(startTag);*/
+		ReturnIterateExpr rtCond = iterateElement(cond,fr);
 
+		if (rtCond.getNbAddr() != 1) throw new VariablesCountException(1, rtCond.getNbAddr());
+		
+		//Do
+		
+		Commands do_ = f.getCommands();
+		ReturnIterateCmd rtDo = iterateElement(do_, fr);
+		
+		fo.setListCodeCondition(rtCond.getListCode());
+		fo.setListCodeDo(rtDo.getListCode());
+
+		Code3Address codeFor = new Code3Address(fo, "_", rtCond.getListAddr().get(0), "_");
+		ArrayList<Code3Address> l =new ArrayList<>();
+		l.add(codeFor);
+		
+		return new ReturnIterateCmd(l);
+	
 	}
 	
-	private ReturnIterate iterateElement(While w, FunctionRepresentation fr){
+	private ReturnIterateCmd iterateElement(While w, FunctionRepresentation fr) {
 		
-		Code3Address codeIf = new Code3Address(new BOUCHON(), "_", "_", "_");
-		ArrayList<Code3Address> la =new ArrayList<>();
-		la.add(codeIf);
+		WHILE wh = new WHILE();
 		
-		return new ReturnIterate("_", la);
-		
-		/*String startTag = fr.getCode().getCurrentTag();
-
-		String tagCond = fr.getCode().getNextTag();
-		fr.getCode().setCurrentTag(tagCond);
-
 		Expr cond = w.getCondition();
-		iterateElement(cond,fr);
-
-		String tagWhile = fr.getCode().getNextTag();
-		fr.getCode().setCurrentTag(tagWhile);
-
-		Commands fo = w.getCommands();
 		
-		iterateElement(fo, fr);
+		ReturnIterateExpr rtCond = iterateElement(cond,fr);
+
+		if (rtCond.getNbAddr() != 1) throw new VariablesCountException(1, rtCond.getNbAddr());
+
+		//Do
 		
-		fr.getCode().addCode3Adress(startTag, new Code3Address(Op.WHILE, tagCond, tagWhile, "_"));
-		fr.getCode().setCurrentTag(startTag);*/
+		Commands do_ = w.getCommands();
+		ReturnIterateCmd rtDo = iterateElement(do_, fr);
+		
+		wh.setListCodeCondition(rtCond.getListCode());
+		wh.setListCodeDo(rtDo.getListCode());
+
+		Code3Address codeWhile = new Code3Address(wh, "_", rtCond.getListAddr().get(0), "_");
+		ArrayList<Code3Address> l =new ArrayList<>();
+		l.add(codeWhile);
+		
+		return new ReturnIterateCmd(l);
 		
 	}	
 	
-	private ReturnIterate iterateElement(ForEach fe, FunctionRepresentation fr){
+	private ReturnIterateCmd iterateElement(ForEach fe, FunctionRepresentation fr) {
 		Code3Address codeIf = new Code3Address(new BOUCHON(), "_", "_", "_");
 		ArrayList<Code3Address> la =new ArrayList<>();
 		la.add(codeIf);
 		
-		return new ReturnIterate("_", la);
+		return new ReturnIterateCmd(la);
 	}	
 	
-	private ReturnIterate iterateElement(If i, FunctionRepresentation fr){
+	private ReturnIterateCmd iterateElement(If i, FunctionRepresentation fr) {
 		
 		IF if_ = new IF();
 		
 		Expr cond = i.getCondition();
 		
-		ReturnIterate rtCond = iterateElement(cond,fr);
+		ReturnIterateExpr rtCond = iterateElement(cond,fr);
 		
+		if (rtCond.getNbAddr() != 1) throw new VariablesCountException(1, rtCond.getNbAddr());
+
 		//If
-		ReturnIterate rtThen = iterateElement(i.getThenCommands(), fr);
+		ReturnIterateCmd rtThen = iterateElement(i.getThenCommands(), fr);
 		
 		//Else
 		
 		Commands els = i.getElseCommands();
 		if(els !=null){
 			
-			ReturnIterate rtElse = iterateElement(els, fr);
+			ReturnIterateCmd rtElse = iterateElement(els, fr);
 			if_.setListCodeElse(rtElse.getListCode());
 		}
 			if_.setListCodeCondition(rtCond.getListCode());
 			if_.setListCodeThen(rtThen.getListCode());
 		
 
-		Code3Address codeIf = new Code3Address(if_, "_", rtCond.getAddr(), "_");
+		Code3Address codeIf = new Code3Address(if_, "_", rtCond.getListAddr().get(0), "_");
 		ArrayList<Code3Address> l =new ArrayList<>();
 		l.add(codeIf);
 		
-		return new ReturnIterate("_", l);
+		return new ReturnIterateCmd(l);
 	}
 
 }

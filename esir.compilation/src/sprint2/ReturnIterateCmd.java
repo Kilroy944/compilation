@@ -2,13 +2,11 @@ package sprint2;
 
 import java.util.List;
 
-public class ReturnIterate {
+public class ReturnIterateCmd {
 
 	private List<Code3Address> listCode;
-	private String addr;
 	
-	public ReturnIterate(String addr, List<Code3Address> list) {
-		this.addr=addr;
+	public ReturnIterateCmd(List<Code3Address> list) {
 		this.listCode=list;
 	}
 
@@ -20,13 +18,4 @@ public class ReturnIterate {
 		this.listCode = listCode;
 	}
 
-	public String getAddr() {
-		return addr;
-	}
-
-	public void setAddr(String addr) {
-		this.addr = addr;
-	}
-	
-	
 }

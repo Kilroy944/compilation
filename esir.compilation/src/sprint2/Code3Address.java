@@ -19,7 +19,16 @@ public class Code3Address {
 
 	@Override
 	public String toString() {
-		return "<" + operator + ", " + argr1 + ", " + argr2 + ", " + argr3
+		return toString(0);
+	}
+
+	public String toString(int indent) {
+		String ind = "";
+		for (int i = 0; i < indent; i++)
+			ind += "\t";
+
+		return ind + "<" + operator.toString(indent) + ", " + argr1 + ", " + argr2 + ", " + argr3
 				+ ">";
 	}
+	
 }

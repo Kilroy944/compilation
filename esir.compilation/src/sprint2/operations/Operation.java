@@ -8,7 +8,12 @@ public abstract class Operation {
 		this.name=name;
 	}
 	
-	public String toString(){
+	@Override
+	public String toString() {
+		return name;
+	}
+
+	public String toString(int indent) {
 		return name;
 	}
 }
