@@ -62,6 +62,22 @@ public class FunctionRepresentation {
 		return result;
 	}
 
+	
+	public String printCodeGo(){
+		
+		String result = "\nfunc "+name+ "( ){";
+		
+		for (Code3Address c : code)
+		{
+			result+=c.printCodeGo(this);
+		    result+=System.getProperty("line.separator");
+		}
+		
+		
+		return result+="\n}\n";
+	}
+	
+	
 	public String addVar(String v) {
 		
 		if(!variableTable.containsKey(v)){

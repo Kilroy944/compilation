@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import sprint2.Code3Address;
+import sprint2.FunctionRepresentation;
 
 public class WHILE extends Operation{
 
@@ -61,6 +62,12 @@ public class WHILE extends Operation{
 
 	public void setListCodeDo(List<Code3Address> listCodeDo) {
 		this.listCodeDo = listCodeDo;
+	}
+
+	@Override
+	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

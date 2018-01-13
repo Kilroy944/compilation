@@ -500,9 +500,6 @@ public class GeneratorSymbolTable {
 		
 		if(symbolTable.hasFunction(c.getName())){
 			
-			if( c.getParams().getList().size() != symbolTable.getFunction(c.getName()).getNbInput() ){
-				throw new SymbolTableError();
-			}
 			
 			EList<Expr> le = c.getParams().getList();
 			ArrayList<Code3Address> listCodeExp = new ArrayList<>();
@@ -513,13 +510,18 @@ public class GeneratorSymbolTable {
 				listCodeExp.addAll(rtExp.getListCode());
 				call.getListVarCall().addAll(rtExp.getListAddr());
 			}
-			//Comment lier les returns de la fonction aux variables affectées
-			//Retourner plusieurs addr dans ReturnIterate ?
+		
 			for(int i=0; i<symbolTable.getFunction(c.getName()).getNbOutput(); i++ ){
 				String idVarTemp = fr.getNewTempVar();
 				call.getListVarReturn().add(idVarTemp);
 			}
 			
+			//Verification nb input 
+
+			if( call.getListVarCall().size() != symbolTable.getFunction(c.getName()).getNbInput() ){
+				throw new SymbolTableError();
+			}
+
 			List<Code3Address> code = new ArrayList<>();
 			code.add(new Code3Address(call, "_", symbolTable.getFunction(c.getName()).getName(), "_"));			
 			

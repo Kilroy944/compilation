@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import sprint2.Code3Address;
+import sprint2.FunctionRepresentation;
 
 public class EXPOR extends Operation {
 
@@ -55,5 +56,11 @@ public class EXPOR extends Operation {
 		}
 
 		return ret + ind;
+	}
+
+	@Override
+	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

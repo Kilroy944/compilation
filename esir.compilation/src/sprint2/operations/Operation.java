@@ -1,5 +1,7 @@
 package sprint2.operations;
 
+import sprint2.FunctionRepresentation;
+
 public abstract class Operation {
 
 	String name;
@@ -18,6 +20,6 @@ public abstract class Operation {
 	}
 	
 	//public abstract String toString(int indent);
-	//public abstract String toStringGo(int indent);
+	public abstract String printCodeGo(FunctionRepresentation fr, String arg1,String arg2, String arg3);
 
 }

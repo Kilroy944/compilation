@@ -3,6 +3,7 @@ package sprint2.operations;
 import java.util.List;
 
 import sprint2.Code3Address;
+import sprint2.FunctionRepresentation;
 
 public class CALL extends Operation{
 
@@ -74,6 +75,13 @@ public class CALL extends Operation{
 		}
 
 		return ret + ind;
+	}
+
+
+	@Override
+	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

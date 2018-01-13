@@ -63,6 +63,27 @@ public class SymbolTable {
 		{
 			result+=entry.toString();
 		}
+		
+		result+=printCodeGo();
+		
 		return result;
 	}
+	
+	public String printCodeGo(){
+		
+		String result = "package main\n";
+		
+		result+="\ntype Node struct {\nLeft  Tree \nRight Tree \n}\ntype Tree = Node*\n";
+		
+		
+		result+="\nfunc main(){ \n}\n";
+		
+		for (Entry<String, FunctionRepresentation> entry : listFunctions.entrySet())
+		{
+			result+=entry.getValue().printCodeGo();
+		}
+		
+		return result;
+	}
+	
 }
