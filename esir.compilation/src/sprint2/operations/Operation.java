@@ -16,4 +16,8 @@ public abstract class Operation {
 	public String toString(int indent) {
 		return name;
 	}
+	
+	//public abstract String toString(int indent);
+	//public abstract String toStringGo(int indent);
+
 }

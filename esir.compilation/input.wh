@@ -6,7 +6,7 @@ read A,B,C
        nop
       fi
   else
-    while toto do
+    while (hd A) and (tl B) do
     	A,B := B,toto
     od
   fi

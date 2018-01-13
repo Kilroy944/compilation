@@ -24,7 +24,12 @@ import esir.compilation.whdsl.Command;
 import esir.compilation.whdsl.Commands;
 import esir.compilation.whdsl.Cons;
 import esir.compilation.whdsl.Definition;
+import esir.compilation.whdsl.EnclosedExpr;
 import esir.compilation.whdsl.Expr;
+import esir.compilation.whdsl.ExprAnd;
+import esir.compilation.whdsl.ExprEq;
+import esir.compilation.whdsl.ExprNot;
+import esir.compilation.whdsl.ExprOr;
 import esir.compilation.whdsl.For;
 import esir.compilation.whdsl.ForEach;
 import esir.compilation.whdsl.Function;
@@ -43,6 +48,9 @@ import sprint2.operations.AFFECT;
 import sprint2.operations.BOUCHON;
 import sprint2.operations.CALL;
 import sprint2.operations.CONS;
+import sprint2.operations.EXPAND;
+import sprint2.operations.EXPNOT;
+import sprint2.operations.EXPOR;
 import sprint2.operations.FOR;
 import sprint2.operations.FOREACH;
 import sprint2.operations.HD;
@@ -219,7 +227,6 @@ public class GeneratorSymbolTable {
 	private ReturnIterateCmd iterateElement(Affect a, FunctionRepresentation fr) {
 		EList<String> vars =a.getVars().getList();
 		EList<Expr> exprs = a.getExprs().getList();
-		//Vérifier que le nombre de var a gauche et droite est correcte
 
 		List<Code3Address> listAffectation =new ArrayList<>();
 
@@ -275,6 +282,21 @@ public class GeneratorSymbolTable {
 		else if(e instanceof Symbol){
 			return iterateElement((Symbol)e,fr);
 		}
+		else if(e instanceof ExprAnd){
+			return iterateElement((ExprAnd)e,fr);
+		}
+		else if(e instanceof ExprOr){
+			return iterateElement((ExprOr)e,fr);
+		}
+		else if(e instanceof ExprEq){
+			return iterateElement((ExprEq)e,fr);
+		}
+		else if(e instanceof ExprNot){
+			return iterateElement((ExprNot)e,fr);
+		}
+		else if(e instanceof EnclosedExpr){
+			return iterateElement((EnclosedExpr)e,fr);
+		}
 
 		Code3Address code = new Code3Address(new BOUCHON(), "_", "_", "_");
 		ArrayList<Code3Address> la =new ArrayList<>();
@@ -293,20 +315,87 @@ public class GeneratorSymbolTable {
 	}
 
 	
-	/*
-	 * 	{Nill} value=NIL | 
-	{Variable} value=VARIABLE |
-	{Symbol} value=SYMBOLE |
-	'(' (
-		{Cons} 'cons' exprs=LExpr |
-		{List} 'list' exprs=LExpr |
-		{Hd} 'hd' expr=Expr |
-		{Tl} 'tl' expr=Expr |
-		{Call} name=SYMBOLE params=LExpr |
-		{EnclosedExpr} expr=Expr
-	) ')'
-	 * */
 
+	private ReturnIterateExpr iterateElement(ExprAnd e, FunctionRepresentation fr) {
+		
+		EXPAND expAnd = new EXPAND();
+		
+		String idVt = fr.getNewTempVar();
+		
+		ReturnIterateExpr rtGauche = iterateElement(e.getLeft(),fr);
+		ReturnIterateExpr rtDroite = iterateElement(e.getRight(),fr);
+
+		if (rtDroite.getNbAddr() != 1) throw new VariablesCountException(1, rtDroite.getNbAddr());
+		if (rtGauche.getNbAddr() != 1) throw new VariablesCountException(1, rtGauche.getNbAddr());
+
+		
+		expAnd.getListCodeLeft().addAll(rtGauche.getListCode());
+		expAnd.getListCodeRight().addAll(rtDroite.getListCode());
+
+		
+		List<String> listAddr = new ArrayList<>();
+		listAddr.add(idVt);
+		
+		List<Code3Address> listCode = new ArrayList<>();
+		listCode.add(new Code3Address(expAnd,idVt, rtGauche.getListAddr().get(0), rtDroite.getListAddr().get(0)));
+				
+		return new ReturnIterateExpr(listAddr, listCode);
+		
+	}
+	
+	private ReturnIterateExpr iterateElement(ExprOr e, FunctionRepresentation fr) {
+		
+		EXPOR expOr = new EXPOR();
+		
+		String idVt = fr.getNewTempVar();
+		
+		ReturnIterateExpr rtGauche = iterateElement(e.getLeft(),fr);
+		ReturnIterateExpr rtDroite = iterateElement(e.getRight(),fr);
+
+		if (rtDroite.getNbAddr() != 1) throw new VariablesCountException(1, rtDroite.getNbAddr());
+		if (rtGauche.getNbAddr() != 1) throw new VariablesCountException(1, rtGauche.getNbAddr());
+
+		
+		expOr.getListCodeLeft().addAll(rtGauche.getListCode());
+		expOr.getListCodeRight().addAll(rtDroite.getListCode());
+
+		List<String> listAddr = new ArrayList<>();
+		listAddr.add(idVt);
+		
+		List<Code3Address> listCode = new ArrayList<>();
+		listCode.add(new Code3Address(expOr,idVt, rtGauche.getListAddr().get(0), rtDroite.getListAddr().get(0)));
+				
+		return new ReturnIterateExpr(listAddr, listCode);
+	}
+	
+	private ReturnIterateExpr iterateElement(ExprNot e, FunctionRepresentation fr) {
+		EXPNOT expNot = new EXPNOT();
+		
+		String idVt = fr.getNewTempVar();
+		
+		ReturnIterateExpr rtExp = iterateElement(e.getExpr(),fr);
+
+		if (rtExp.getNbAddr() != 1) throw new VariablesCountException(1, rtExp.getNbAddr());
+		
+		expNot.getListCode().addAll(rtExp.getListCode());
+		
+		List<String> listAddr = new ArrayList<>();
+		listAddr.add(idVt);
+		
+		List<Code3Address> listCode = new ArrayList<>();
+		listCode.add(new Code3Address(expNot, idVt,rtExp.getListAddr().get(0),"_"));
+		
+	
+		return new ReturnIterateExpr(listAddr, listCode);	}
+	
+	private ReturnIterateExpr iterateElement(ExprEq e, FunctionRepresentation fr) {
+		return null;
+	}
+
+	private ReturnIterateExpr iterateElement(EnclosedExpr e, FunctionRepresentation fr) {
+		return null;
+	}
+	
 	private ReturnIterateExpr iterateElement(Nill n, FunctionRepresentation fr) {
 		String res = fr.getNewTempVar();
 
