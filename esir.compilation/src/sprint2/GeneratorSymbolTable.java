@@ -49,6 +49,7 @@ import sprint2.operations.BOUCHON;
 import sprint2.operations.CALL;
 import sprint2.operations.CONS;
 import sprint2.operations.EXPAND;
+import sprint2.operations.EXPEQUAL;
 import sprint2.operations.EXPNOT;
 import sprint2.operations.EXPOR;
 import sprint2.operations.FOR;
@@ -386,14 +387,39 @@ public class GeneratorSymbolTable {
 		listCode.add(new Code3Address(expNot, idVt,rtExp.getListAddr().get(0),"_"));
 		
 	
-		return new ReturnIterateExpr(listAddr, listCode);	}
+		return new ReturnIterateExpr(listAddr, listCode);	
+	}
 	
 	private ReturnIterateExpr iterateElement(ExprEq e, FunctionRepresentation fr) {
-		return null;
+
+		EXPEQUAL expEqual = new EXPEQUAL();
+		
+		String idVt = fr.getNewTempVar();
+		
+		ReturnIterateExpr rtGauche = iterateElement(e.getLeft(),fr);
+		ReturnIterateExpr rtDroite = iterateElement(e.getRight(),fr);
+
+		if (rtDroite.getNbAddr() != 1) throw new VariablesCountException(1, rtDroite.getNbAddr());
+		if (rtGauche.getNbAddr() != 1) throw new VariablesCountException(1, rtGauche.getNbAddr());
+
+		
+		expEqual.getListCodeLeft().addAll(rtGauche.getListCode());
+		expEqual.getListCodeRight().addAll(rtDroite.getListCode());
+
+		List<String> listAddr = new ArrayList<>();
+		listAddr.add(idVt);
+		
+		List<Code3Address> listCode = new ArrayList<>();
+		listCode.add(new Code3Address(expEqual,idVt, rtGauche.getListAddr().get(0), rtDroite.getListAddr().get(0)));
+				
+		return new ReturnIterateExpr(listAddr, listCode);	
 	}
 
 	private ReturnIterateExpr iterateElement(EnclosedExpr e, FunctionRepresentation fr) {
-		return null;
+
+
+		return iterateElement(e.getExpr(), fr);
+	
 	}
 	
 	private ReturnIterateExpr iterateElement(Nill n, FunctionRepresentation fr) {
