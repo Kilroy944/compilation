@@ -12,7 +12,8 @@ read A,B,C
 %
   if nil then
         A := (hd C) ;
-        B := (cons (hd A) B)  
+        B := (cons (hd A) B) ;
+        C := (testList1 A B )
   else
     nop
   fi
