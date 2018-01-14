@@ -2,7 +2,9 @@ function testList1 :
 read A,B
 %
 for (cons A B) do
-	nop
+	if (A and B and (A or B) ) then
+		nop
+	fi
 od
 %
 write B

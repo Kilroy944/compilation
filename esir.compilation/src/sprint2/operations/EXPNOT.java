@@ -47,6 +47,13 @@ public class EXPNOT extends Operation{
 
 	@Override
 	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
-		return arg1+"=!("+arg2+")\n";
+		String result="";
+		
+		for(Code3Address c : listCode){
+			result+=c.printCodeGo(fr);
+		}
+		
+		result+=arg1+"=!("+arg2+")\n";
+		return result;
 	}
 }
