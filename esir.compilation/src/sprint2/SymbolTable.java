@@ -1,5 +1,9 @@
 package sprint2;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
@@ -55,6 +59,26 @@ public class SymbolTable {
 		return listSymbol.get(name);
 	}
 	
+	
+	public void writeFile(File output) throws IOException{
+		FileWriter outFile = new FileWriter(output);
+		BufferedWriter writer = new BufferedWriter(outFile);
+		
+		String result="";
+		
+		result+="Table des symboles : \n";
+		for (Entry<String, Integer> entry : listSymbol.entrySet()){
+			result+=entry+"\n";
+		}
+		
+		for (Entry<String, FunctionRepresentation> entry : listFunctions.entrySet())
+		{
+			result+=entry.toString();
+		}
+		
+		writer.write(result);
+		writer.close();
+	}
 	
 	@Override
 	public String toString(){

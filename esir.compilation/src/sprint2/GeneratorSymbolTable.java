@@ -1,5 +1,7 @@
 package sprint2;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,11 +75,18 @@ public class GeneratorSymbolTable {
 
 	private SymbolTable symbolTable;
 	
+	private File output;
+	
 	public static GeneratorSymbolTable getInstance(){
 		return new WhdslStandaloneSetupGenerated().createInjectorAndDoEMFRegistration().getInstance(GeneratorSymbolTable.class);
 	}
 	
-	public void init(String inputFile,String outFile) throws DoubleFunctionException {
+	public int init(String inputFile,String outFile) throws DoubleFunctionException, IOException {
+		output = new File(outFile);
+		return init(inputFile);
+	}
+	
+	public int init(String inputFile) throws DoubleFunctionException, IOException {
 		
 		symbolTable =new SymbolTable();
 		
@@ -91,7 +100,7 @@ public class GeneratorSymbolTable {
 			for (Issue issue : list) {
 				System.err.println(issue);
 			}
-			return;
+			return -1;
 		}
 
 		//Création de l'arbre de parcours
@@ -104,7 +113,14 @@ public class GeneratorSymbolTable {
 			}
 		}
 		
-		System.out.println(symbolTable);
+		if(output == null){
+			System.out.println(symbolTable);
+		}else{
+			symbolTable.writeFile(output);
+		}
+		
+		
+		return 0;
 	}
 	
 	
