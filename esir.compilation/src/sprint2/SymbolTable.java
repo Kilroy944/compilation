@@ -5,11 +5,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
 public class SymbolTable {
 
-	private HashMap<String, FunctionRepresentation> listFunctions;
+	private LinkedHashMap<String, FunctionRepresentation> listFunctions;
 	
 	private HashMap<String, Integer> listSymbol;
 	
@@ -17,7 +18,7 @@ public class SymbolTable {
 	private int counterSymbol = 0;
 
 	public SymbolTable(){
-		listFunctions=new HashMap<>();
+		listFunctions=new LinkedHashMap<>();
 		listSymbol=new HashMap<>();
 		addSymbol("nil");
 	}
@@ -107,12 +108,38 @@ public class SymbolTable {
 		result+="\ntype Tree struct {\nLeft  *Tree \nRight *Tree \n}\n";
 		
 		
-		result+="\nfunc main(){ \n}\n";
+		result+="\nfunc main(){\n";
+		
+		
+		boolean first = true;
 		
 		for (Entry<String, FunctionRepresentation> entry : listFunctions.entrySet())
 		{
-			result+=entry.getValue().printCodeGo();
+			if(first){
+				int nbIn = entry.getValue().getNbInput();
+				result+="\t"+entry.getKey()+"(";
+					boolean firstIn =true;
+					for(int i=0;i<nbIn;i++){
+						
+						if(firstIn){
+							result+="nil";
+							firstIn=false;
+						}
+						else{
+							result+=",nil";
+						}
+						
+					}
+				result+=")";
+				result+=" \n}\n";
+				result+=entry.getValue().printCodeGo();
+				first=false;
+			}
+			else{
+				result+=entry.getValue().printCodeGo();
+			}
 		}
+		
 		
 		return result;
 	}

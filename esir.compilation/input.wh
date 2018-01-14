@@ -1,36 +1,27 @@
-function testfunction:
-read A,B,C
-%
-  if nil then
-      if (cons (hd A) B D X) then
-       nop
-      fi
-  else
-    while (hd (cons A C)) and (tl B) do
-    	A,B := B,toto;
-    	if (A =? B and C =? D) or A then
-    		nop
-    	fi
-    od
-  fi
-%
-write A,B,C
-
-function testExp : 
+function testList1 : 
 read A,B
 %
-if not ((A =? B and C =? D) or A) then
-    		nop
-fi
+nop
 %
 write B
 
-
-function testList : 
+function testList2 : 
 read A,B
 %
-if (list (hd A) B D X)  then
-    		nop
-fi
+nop
+%
+write B
+
+function testList3 : 
+read A,B
+%
+nop
+%
+write B
+
+function testList0 : 
+read A,B
+%
+nop
 %
 write B

@@ -95,7 +95,16 @@ public class FunctionRepresentation {
 	
 	public String printCodeGo(){
 		
-		String result = "\nfunc "+name+ "( ){";
+		String result = "\nfunc "+name+ "(";
+		
+		result+="(";
+		boolean firstIn =true;
+		for(int i=0;i<this.getNbInput();i++){
+			
+			
+		}
+		result +=" *Tree){";
+		
 		
 		for (Code3Address c : code)
 		{
