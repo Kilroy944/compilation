@@ -62,7 +62,6 @@ public class EXPAND extends Operation{
 
 	@Override
 	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
-		// TODO Auto-generated method stub
-		return null;
+		return arg1+"=("+arg2+" && "+arg3+")\n";
 	}
 }

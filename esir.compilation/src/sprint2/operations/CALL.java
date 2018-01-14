@@ -80,8 +80,17 @@ public class CALL extends Operation{
 
 	@Override
 	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
-		// TODO Auto-generated method stub
-		return null;
+		String result="";
+		
+		for(String v : listVarCall){
+			//result+=
+		}
+		
+		result+="="+arg2+"(";
+		
+		result+=")\n";
+		
+		return result;
 	}
 
 	
