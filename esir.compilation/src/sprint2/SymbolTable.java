@@ -107,9 +107,12 @@ public class SymbolTable {
 		
 		result+="\ntype Tree struct {\nLeft  *Tree \nRight *Tree \n}\n";
 		
+		//Allocation var temporaires
+				if(listSymbol.size()!=0){
+					result +="var s["+listSymbol.size()+"] *Tree\n";
+				}
 		
 		result+="\nfunc main(){\n";
-		
 		
 		boolean first = true;
 		
@@ -117,7 +120,7 @@ public class SymbolTable {
 		{
 			if(first){
 				int nbIn = entry.getValue().getNbInput();
-				result+="\t"+entry.getKey()+"(";
+				result+="\t"+entry.getValue().getName()+"(";
 					boolean firstIn =true;
 					for(int i=0;i<nbIn;i++){
 						

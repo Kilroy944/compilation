@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import sprint2.operations.READ;
+import sprint2.operations.WRITE;
+
 public class FunctionRepresentation {
 
 	private String name;
@@ -97,15 +100,40 @@ public class FunctionRepresentation {
 		
 		String result = "\nfunc "+name+ "(";
 		
-		result+="(";
-		boolean firstIn =true;
-		for(int i=0;i<this.getNbInput();i++){
-			
-			
+		//Param In
+		
+		while(!code.isEmpty() && code.get(0).getOperation() instanceof READ){
+			result+=code.get(0).getArg1();
+			result+=", ";
+			code.remove(0);
+
 		}
-		result +=" *Tree){";
+		result=result.substring(0, result.length()-2); 
+		result +=" *Tree)";
 		
+		//Param Out
 		
+		int index = (code.size())-1;
+		
+		result+=" (";
+		
+		while(!code.isEmpty() && code.get(index).getOperation() instanceof WRITE){
+			result+=code.get(index).getArg1();
+			result+=", ";
+			code.remove(index);
+			index=code.size()-1;
+		}
+		result=result.substring(0, result.length()-2); 
+		result +=" *Tree)";
+		
+		result+="{\n";
+		
+		//Allocation var temporaires
+		if(counterTempVar!=0){
+			result +="var vt["+counterTempVar+"] *Tree\n";
+		}
+		
+		//Parcours des autres codes 3@
 		for (Code3Address c : code)
 		{
 			result+=c.printCodeGo(this);
@@ -113,6 +141,6 @@ public class FunctionRepresentation {
 		}
 		
 		
-		return result+="\n}\n";
+		return result+="\n\treturn \n}\n";
 	}
 }

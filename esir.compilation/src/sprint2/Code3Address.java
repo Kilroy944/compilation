@@ -35,4 +35,21 @@ public class Code3Address {
 		return operator.printCodeGo(fr, arg1, arg2, arg3);
 	}
 	
+	public Operation getOperation(){
+		return operator;
+	}
+
+	public String getArg1() {
+		return arg1;
+	}
+
+	public String getArg2() {
+		return arg2;
+	}
+
+	public String getArg3() {
+		return arg3;
+	}
+	
+	
 }
