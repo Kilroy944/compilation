@@ -25,6 +25,7 @@ fi
 %
 write B
 
+
 function testList : 
 read A,B
 %
@@ -33,4 +34,3 @@ if (list (hd A) B D X)  then
 fi
 %
 write B
-

@@ -55,8 +55,8 @@ public class SymbolTable {
 		return listSymbol.containsKey(name);
 	}
 	
-	public int getSymbol(String name) {
-		return listSymbol.get(name);
+	public String getSymbol(String name) {
+		return "s"+listSymbol.get(name);
 	}
 	
 	
@@ -104,7 +104,7 @@ public class SymbolTable {
 		
 		String result = "package main\n";
 		
-		result+="\ntype Node struct {\nLeft  Tree \nRight Tree \n}\ntype Tree = Node*\n";
+		result+="\ntype Tree struct {\nLeft  *Tree \nRight *Tree \n}\n";
 		
 		
 		result+="\nfunc main(){ \n}\n";

@@ -346,10 +346,7 @@ public class GeneratorSymbolTable {
 				res = fr.getNewTempVar();
 				
 				if(first){
-					String idNil = fr.getNewTempVar();
-					code.add(new Code3Address(new Nil(),idNil,"_","_"));
-					code.add(new Code3Address(new CONS(), res,listTempAddr.get(listTempAddr.size()-1), idNil));
-					listTempAddr.remove(listTempAddr.size()-1);
+					code.add(new Code3Address(new CONS(), res,listTempAddr.get(listTempAddr.size()-1), symbolTable.getSymbol("nil") ));
 					listTempAddr.remove(listTempAddr.size()-1);
 					first=false;
 				}
@@ -575,7 +572,7 @@ public class GeneratorSymbolTable {
 		return new ReturnIterateExpr(addrs, code);
 	}
 	
-	private ReturnIterateExpr iterateElement(Call c/*,int nbOutput*/, FunctionRepresentation fr){
+	private ReturnIterateExpr iterateElement(Call c, FunctionRepresentation fr){
 		
 		
 		if(symbolTable.hasFunction(c.getName())){
