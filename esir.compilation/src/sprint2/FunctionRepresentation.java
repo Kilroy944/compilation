@@ -133,6 +133,11 @@ public class FunctionRepresentation {
 			result +="var vt"+i+" *Tree\n";
 		}
 		
+		//Allocation var
+		for(int i=0;i<variableTable.size();i++){
+			result +="var v"+i+" *Tree\n";
+		}
+		
 		//Parcours des autres codes 3@
 		for (Code3Address c : code)
 		{
@@ -141,6 +146,6 @@ public class FunctionRepresentation {
 		}
 		
 		
-		return result+="\n\treturn \n}\n";
+		return result+="\nreturn \n}\n";
 	}
 }

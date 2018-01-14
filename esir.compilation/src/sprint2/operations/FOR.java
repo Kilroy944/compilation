@@ -5,7 +5,6 @@ import java.util.List;
 
 import sprint2.Code3Address;
 import sprint2.FunctionRepresentation;
-import sprint2.Tools;
 
 public class FOR extends Operation{
 
@@ -77,7 +76,7 @@ public class FOR extends Operation{
 			result+=System.getProperty("line.separator");
 		}
 		
-		result += "var e = treeToNumber("+Tools.convertVar(arg2)+") \nfor i:=0;i<e;i++ {\n  ";
+		result += "var e = treeToNumber("+arg2+") \nfor i:=0;i<e;i++ {\n  ";
 		
 		//Parcours des autres codes 3@
 		for (Code3Address c : listCodeDo)

@@ -7,28 +7,6 @@ od
 %
 write B
 
-function testList2 : 
-read A,B
-%
-nop
-%
-write B
-
-function testList3 : 
-read A,B
-%
-nop
-%
-write B
-
-function testList0 : 
-read A,B
-%
-nop
-%
-write B
-
-
 function testfunction:
 read A,B,C
 %
