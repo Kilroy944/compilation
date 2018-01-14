@@ -2,44 +2,20 @@ function testList1 :
 read A,B
 %
 for (cons A B) do
-	nop
+	if (A and B and (A or B) ) then
+		nop
+	fi
 od
 %
 write B
-
-function testList2 : 
-read A,B
-%
-nop
-%
-write B
-
-function testList3 : 
-read A,B
-%
-nop
-%
-write B
-
-function testList0 : 
-read A,B
-%
-nop
-%
-write B
-
 
 function testfunction:
 read A,B,C
 %
   if nil then
-    foreach (cons A B) in B do
-      if A then
         A := (hd C) ;
         B := (cons (hd A) B) ;
-        nop
-      fi
-    od
+        C := (testList1 A B )
   else
     nop
   fi

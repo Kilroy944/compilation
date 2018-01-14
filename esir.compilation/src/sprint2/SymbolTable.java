@@ -107,10 +107,12 @@ public class SymbolTable {
 		
 		result+="\ntype Tree struct {\nLeft  *Tree \nRight *Tree \n}\n";
 		
-		//Allocation var temporaires
-				if(listSymbol.size()!=0){
-					result +="var s["+listSymbol.size()+"] *Tree\n";
-				}
+		
+		
+		//Allocation symbole
+		for(int i=0;i<listSymbol.size();i++){
+			result +="var s"+i+" *Tree\n";
+		}
 		
 		result+="\nfunc main(){\n";
 		

@@ -60,7 +60,6 @@ import sprint2.operations.FOREACH;
 import sprint2.operations.HD;
 import sprint2.operations.IF;
 import sprint2.operations.NOP;
-import sprint2.operations.Nil;
 import sprint2.operations.READ;
 import sprint2.operations.TL;
 import sprint2.operations.WHILE;
@@ -480,14 +479,11 @@ public class GeneratorSymbolTable {
 	}
 	
 	private ReturnIterateExpr iterateElement(Nill n, FunctionRepresentation fr) {
-		String res = fr.getNewTempVar();
 
-		List<Code3Address> code = new ArrayList<>();
-		code.add(new Code3Address(new Nil(), res, "_", "_"));
 		List<String> addrs = new ArrayList<>();
-		addrs.add(res);
+		addrs.add(symbolTable.getSymbol("nil"));
 
-		return new ReturnIterateExpr(addrs, code);
+		return new ReturnIterateExpr(addrs, new ArrayList<>());
 	}
 	
 	private ReturnIterateExpr iterateElement(Variable v, FunctionRepresentation fr) {

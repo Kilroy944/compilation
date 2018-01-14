@@ -60,7 +60,16 @@ public class EXPOR extends Operation {
 
 	@Override
 	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
-		// TODO Auto-generated method stub
-		return null;
+	
+		String result="";
+		
+		for(Code3Address c : listCodeLeft){
+			result+=c.printCodeGo(fr);
+		}
+		for(Code3Address c : listCodeRight){
+			result+=c.printCodeGo(fr);
+		}
+		result+= arg1+"=("+arg2+" || "+arg3+")\n";
+		return result;
 	}
 }
