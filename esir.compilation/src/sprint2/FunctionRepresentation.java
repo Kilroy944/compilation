@@ -136,7 +136,7 @@ public class FunctionRepresentation {
 		//Parcours des autres codes 3@
 		for (Code3Address c : code)
 		{
-			result+=c.printCodeGo();
+			result+=c.printCodeGo(this);
 		    result+=System.getProperty("line.separator");
 		}
 		
