@@ -5,6 +5,7 @@ import java.util.List;
 
 import sprint2.Code3Address;
 import sprint2.FunctionRepresentation;
+import sprint2.Tools;
 
 public class FOR extends Operation{
 
@@ -67,12 +68,7 @@ public class FOR extends Operation{
 
 	@Override
 	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
-
-		String var = arg2;
-		if(arg2.charAt(1)=='t'){//Variable temporaire
-			var = "vt["+arg2.substring(2)+"]";
-		}
-		
+	
 		String result="";
 		
 		for (Code3Address c : listCodeCondition)
@@ -81,7 +77,7 @@ public class FOR extends Operation{
 			result+=System.getProperty("line.separator");
 		}
 		
-		result += "var e = treeToNumber("+var+") \nfor i:=0;i<e;i++ {\n  ";
+		result += "var e = treeToNumber("+Tools.convertVar(arg2)+") \nfor i:=0;i<e;i++ {\n  ";
 		
 		//Parcours des autres codes 3@
 		for (Code3Address c : listCodeDo)
