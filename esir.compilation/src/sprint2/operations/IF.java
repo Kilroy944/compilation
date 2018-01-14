@@ -50,6 +50,16 @@ public class IF extends Operation{
 
 		return ret + ind;
 	}
+	
+	public String printCodeGo(){
+		String result="";
+		
+		for (Code3Address code3Address : listCodeCondition) {
+			code3Address.getOperation().printCodeGo();
+		}
+		
+		return result;
+	}
 
 	public List<Code3Address> getListCodeCondition() {
 		return listCodeCondition;
@@ -80,11 +90,7 @@ public class IF extends Operation{
 		this.listCodeElse = listCodeElse;
 	}
 
-	@Override
-	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	
 	

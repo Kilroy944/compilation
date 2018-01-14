@@ -10,9 +10,10 @@ public class READ extends Operation{
 	}
 
 	@Override
-	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
+	public String printCodeGo() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

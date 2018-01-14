@@ -74,8 +74,9 @@ public class FOREACH extends Operation{
 		this.listCodeIn = listCodeIn;
 	}
 
+
 	@Override
-	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
+	public String printCodeGo() {
 		// TODO Auto-generated method stub
 		return null;
 	}
