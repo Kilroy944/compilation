@@ -38,6 +38,7 @@ import esir.compilation.whdsl.Function;
 import esir.compilation.whdsl.Hd;
 import esir.compilation.whdsl.If;
 import esir.compilation.whdsl.Input;
+import esir.compilation.whdsl.LExpr;
 import esir.compilation.whdsl.Nill;
 import esir.compilation.whdsl.Nop;
 import esir.compilation.whdsl.Output;
@@ -309,6 +310,9 @@ public class GeneratorSymbolTable {
 		else if(e instanceof EnclosedExpr){
 			return iterateElement((EnclosedExpr)e,fr);
 		}
+		else if(e instanceof esir.compilation.whdsl.List){
+			return iterateElement((esir.compilation.whdsl.List)e,fr);
+		} 
 
 		Code3Address code = new Code3Address(new BOUCHON(), "_", "_", "_");
 		ArrayList<Code3Address> la =new ArrayList<>();
@@ -316,6 +320,51 @@ public class GeneratorSymbolTable {
 		
 		return new ReturnIterateExpr(new ArrayList<>(), la);
 	}
+	
+	private ReturnIterateExpr iterateElement(esir.compilation.whdsl.List l, FunctionRepresentation fr) {			
+			
+			EList<Expr> listExp = l.getExprs().getList();
+			List<Code3Address> code = new ArrayList<>();
+			List<String> addrs = new ArrayList<>();
+
+			List<String> listTempAddr = new ArrayList<>();
+			
+			
+			for(Expr e : listExp){
+				ReturnIterateExpr rtExp1 = iterateElement(e,fr);
+				code.addAll(rtExp1.getListCode());
+				listTempAddr.addAll(rtExp1.getListAddr());
+			}
+			
+			if (listTempAddr.size() < 2) throw new VariablesCountException(2, listTempAddr.size());
+
+			boolean first = true;
+			String res="",previousRes="";
+			
+			while(listTempAddr.size() > 0)
+			{
+				res = fr.getNewTempVar();
+				
+				if(first){
+					String idNil = fr.getNewTempVar();
+					code.add(new Code3Address(new Nil(),idNil,"_","_"));
+					code.add(new Code3Address(new CONS(), res,listTempAddr.get(listTempAddr.size()-1), idNil));
+					listTempAddr.remove(listTempAddr.size()-1);
+					listTempAddr.remove(listTempAddr.size()-1);
+					first=false;
+				}
+				else{
+					code.add(new Code3Address(new CONS(), res,listTempAddr.get(listTempAddr.size()-1), previousRes));
+					listTempAddr.remove(listTempAddr.size()-1);
+				}
+				previousRes = res;
+
+			}
+			
+			addrs.add(res);
+			return new ReturnIterateExpr(addrs, code);
+	}
+
 	
 	private ReturnIterateExpr iterateElement(Symbol s, FunctionRepresentation fr) {
 		
@@ -485,24 +534,44 @@ public class GeneratorSymbolTable {
 	}
 	
 	private ReturnIterateExpr iterateElement(Cons c, FunctionRepresentation fr) {
-		// 2 args pour l'instant
-		if (c.getExprs().getList().size() != 2) throw new IllegalArgumentException("Cons a 2 param seulement");
-		
-		ReturnIterateExpr arg1 = iterateElement(c.getExprs().getList().get(0), fr);
-		ReturnIterateExpr arg2 = iterateElement(c.getExprs().getList().get(1), fr);
-
-		if (arg1.getNbAddr() != 1) throw new VariablesCountException(1, arg1.getNbAddr());
-		if (arg2.getNbAddr() != 1) throw new VariablesCountException(1, arg2.getNbAddr());
-
-		String res = fr.getNewTempVar();
-
+	
+		EList<Expr> listExp = c.getExprs().getList();
 		List<Code3Address> code = new ArrayList<>();
-		code.addAll(arg1.getListCode());
-		code.addAll(arg2.getListCode());
-		code.add(new Code3Address(new CONS(), res, arg1.getListAddr().get(0), arg2.getListAddr().get(0)));
 		List<String> addrs = new ArrayList<>();
-		addrs.add(res);
 
+		List<String> listTempAddr = new ArrayList<>();
+		
+		
+		for(Expr e : listExp){
+			ReturnIterateExpr rtExp1 = iterateElement(e,fr);
+			code.addAll(rtExp1.getListCode());
+			listTempAddr.addAll(rtExp1.getListAddr());
+		}
+		
+		if (listTempAddr.size() < 2) throw new VariablesCountException(2, listTempAddr.size());
+
+		boolean first = true;
+		String res="",previousRes="";
+		
+		while(listTempAddr.size() > 0)
+		{
+			res = fr.getNewTempVar();
+			
+			if(first){
+				code.add(new Code3Address(new CONS(), res,listTempAddr.get(listTempAddr.size()-2) , listTempAddr.get(listTempAddr.size()-1)));
+				listTempAddr.remove(listTempAddr.size()-1);
+				listTempAddr.remove(listTempAddr.size()-1);
+				first=false;
+			}
+			else{
+				code.add(new Code3Address(new CONS(), res,listTempAddr.get(listTempAddr.size()-1), previousRes));
+				listTempAddr.remove(listTempAddr.size()-1);
+			}
+			previousRes = res;
+
+		}
+		
+		addrs.add(res);
 		return new ReturnIterateExpr(addrs, code);
 	}
 	
