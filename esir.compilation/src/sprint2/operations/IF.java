@@ -85,23 +85,23 @@ public class IF extends Operation{
 		String result="";
 
 		for (Code3Address code3Address : listCodeCondition) {
-			result += code3Address.getOperation().printCodeGo(fr,code3Address.getArg1(),code3Address.getArg2(),code3Address.getArg3())+"\n";
+			result += code3Address.printCodeGo(fr);
 		}
 		result+="if isTrue("+arg2+"){\n";
 
 		for (Code3Address code3Address : listCodeThen) {
-			result += code3Address.getOperation().printCodeGo(fr,code3Address.getArg1(),code3Address.getArg2(),code3Address.getArg3())+"\n";
+			result += code3Address.printCodeGo(fr);
 		}
 
-		result+="}\n";
+		result+="\n}\n";
 
 		if (listCodeElse.size() != 0){
 			result+="else{\n";
 			
 			for (Code3Address code3Address : listCodeElse) {
-				result += code3Address.getOperation().printCodeGo(fr,code3Address.getArg1(),code3Address.getArg2(),code3Address.getArg3())+"\n";
+				result += code3Address.printCodeGo(fr);
 			}
-			result+="}\n";
+			result+="\n}\n";
 		}
 
 		return result;

@@ -60,7 +60,6 @@ import sprint2.operations.FOREACH;
 import sprint2.operations.HD;
 import sprint2.operations.IF;
 import sprint2.operations.NOP;
-import sprint2.operations.Nil;
 import sprint2.operations.READ;
 import sprint2.operations.TL;
 import sprint2.operations.WHILE;
