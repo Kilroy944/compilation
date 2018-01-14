@@ -1,7 +1,9 @@
 function testList1 : 
 read A,B
 %
-nop
+for (cons A B) do
+	nop
+od
 %
 write B
 
@@ -43,3 +45,4 @@ read A,B,C
   fi
 %
 write A,B,C
+

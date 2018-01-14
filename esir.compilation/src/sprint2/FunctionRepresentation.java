@@ -129,8 +129,8 @@ public class FunctionRepresentation {
 		result+="{\n";
 		
 		//Allocation var temporaires
-		if(counterTempVar!=0){
-			result +="var vt["+counterTempVar+"] *Tree\n";
+		for(int i=0;i<counterTempVar;i++){
+			result +="var vt"+i+" *Tree\n";
 		}
 		
 		//Parcours des autres codes 3@
