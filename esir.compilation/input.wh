@@ -6,10 +6,22 @@ read A,B,C
        nop
       fi
   else
-    while toto do
-    	A,B := B,toto
+    while (hd (cons A C)) and (tl B) do
+    	A,B := B,toto;
+    	if (A =? B and C =? D) or A then
+    		nop
+    	fi
     od
   fi
 %
-
 write A,B,C
+
+function testExp : 
+read A,B
+%
+if not ((A =? B and C =? D) or A) then
+    		nop
+fi
+%
+write B
+

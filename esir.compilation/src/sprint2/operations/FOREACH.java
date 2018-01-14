@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import sprint2.Code3Address;
+import sprint2.FunctionRepresentation;
 
 public class FOREACH extends Operation{
 
@@ -30,7 +31,7 @@ public class FOREACH extends Operation{
 		for (int i = 0; i < indent; i++)
 			ind += "\t";
 
-		String ret = "FOR \n";
+		String ret = "FOREACH \n";
 
 		ret += ind + "\t(cond)\n";
 		for (Code3Address c : listCodeCondition) {
@@ -71,6 +72,12 @@ public class FOREACH extends Operation{
 
 	public void setListCodeIn(List<Code3Address> listCodeIn) {
 		this.listCodeIn = listCodeIn;
+	}
+
+	@Override
+	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

@@ -1,8 +1,6 @@
 package sprint2;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Map.Entry;
 
 public class SymbolTable {
@@ -34,8 +32,7 @@ public class SymbolTable {
 	public String addSymbol(String name) throws DoubleFunctionException{
 		if(!listSymbol.containsKey(name)){
 			listSymbol.put(name, counterSymbol);
-			counterSymbol++;
-			return "s" + (counterSymbol-1);
+			return "s" + counterSymbol++;
 		}
 		else{
 			return "s"+listSymbol.get(name);
@@ -59,6 +56,7 @@ public class SymbolTable {
 	}
 	
 	
+	@Override
 	public String toString(){
 				
 		String result="";
@@ -72,6 +70,27 @@ public class SymbolTable {
 		{
 			result+=entry.toString();
 		}
+		
+		result+=printCodeGo();
+		
 		return result;
 	}
+	
+	public String printCodeGo(){
+		
+		String result = "package main\n";
+		
+		result+="\ntype Node struct {\nLeft  Tree \nRight Tree \n}\ntype Tree = Node*\n";
+		
+		
+		result+="\nfunc main(){ \n}\n";
+		
+		for (Entry<String, FunctionRepresentation> entry : listFunctions.entrySet())
+		{
+			result+=entry.getValue().printCodeGo();
+		}
+		
+		return result;
+	}
+	
 }

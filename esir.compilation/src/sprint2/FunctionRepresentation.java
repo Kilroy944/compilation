@@ -21,7 +21,6 @@ public class FunctionRepresentation {
 		code = new ArrayList<Code3Address>();
 		
 		this.name=name;
-
 		this.nbInput=nbInput;
 		this.nbOutput=nbOutput;
 	}
@@ -38,6 +37,37 @@ public class FunctionRepresentation {
 	public ArrayList<Code3Address> getCode(){
 		return code;
 	}
+	
+	
+	public String addVar(String v) {
+		
+		if(!variableTable.containsKey(v)){
+			variableTable.put(v, counterVar);
+			counterVar++;	
+			return "v"+(counterVar-1);
+		}
+		else{
+			return "v"+variableTable.get(v);	
+		}
+	}
+
+	public void addCode3Address(Code3Address c){
+		code.add(c);
+	}
+	
+	public String getNewTempVar() {
+		return "vt" + counterTempVar++;
+	}
+	
+	public int getNbInput() {
+		return nbInput;
+	}
+
+	public int getNbOutput() {
+		return nbOutput;
+	}
+	
+	
 	
 	@Override
 	public String toString(){
@@ -62,33 +92,18 @@ public class FunctionRepresentation {
 		return result;
 	}
 
-	public String addVar(String v) {
+	
+	public String printCodeGo(){
 		
-		if(!variableTable.containsKey(v)){
-			variableTable.put(v, counterVar);
-			counterVar++;	
-			return "v"+(counterVar-1);
+		String result = "\nfunc "+name+ "( ){";
+		
+		for (Code3Address c : code)
+		{
+			result+=c.printCodeGo(this);
+		    result+=System.getProperty("line.separator");
 		}
-		else{
-			return "v"+variableTable.get(v);	
-		}
+		
+		
+		return result+="\n}\n";
 	}
-
-	public void addCode3Address(Code3Address c){
-		code.add(c);
-	}
-	
-
-	public String getNewTempVar() {
-		return "vt" + counterTempVar++;
-	}
-	
-	public int getNbInput() {
-		return nbInput;
-	}
-
-	public int getNbOutput() {
-		return nbOutput;
-	}
-	
 }
