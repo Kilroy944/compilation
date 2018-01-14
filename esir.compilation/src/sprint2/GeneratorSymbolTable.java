@@ -113,10 +113,13 @@ public class GeneratorSymbolTable {
 			}
 		}
 		
+		
+		System.out.println(symbolTable);
+		
 		if(output == null){
-			System.out.println(symbolTable);
+			symbolTable.printCodeGo();
 		}else{
-			symbolTable.writeFile(output);
+			symbolTable.writeFileGo(output);
 		}
 		
 		

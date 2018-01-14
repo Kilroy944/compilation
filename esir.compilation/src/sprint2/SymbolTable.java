@@ -61,25 +61,23 @@ public class SymbolTable {
 	}
 	
 	
-	public void writeFile(File output) throws IOException{
+	public void writeFile3Add(File output) throws IOException{
 		FileWriter outFile = new FileWriter(output);
 		BufferedWriter writer = new BufferedWriter(outFile);
 		
-		String result="";
-		
-		result+="Table des symboles : \n";
-		for (Entry<String, Integer> entry : listSymbol.entrySet()){
-			result+=entry+"\n";
-		}
-		
-		for (Entry<String, FunctionRepresentation> entry : listFunctions.entrySet())
-		{
-			result+=entry.toString();
-		}
-		
-		writer.write(result);
+		writer.write(toString());
 		writer.close();
 	}
+	
+	public void writeFileGo(File output) throws IOException{
+		FileWriter outFile = new FileWriter(output);
+		BufferedWriter writer = new BufferedWriter(outFile);
+		
+		writer.write(printCodeGo());
+		writer.close();
+	}
+	
+	
 	
 	@Override
 	public String toString(){
@@ -95,8 +93,6 @@ public class SymbolTable {
 		{
 			result+=entry.toString();
 		}
-		
-		result+=printCodeGo();
 		
 		return result;
 	}
