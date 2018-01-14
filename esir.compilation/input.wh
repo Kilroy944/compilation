@@ -25,3 +25,21 @@ read A,B
 nop
 %
 write B
+
+
+function testfunction:
+read A,B,C
+%
+  if nil then
+    foreach (cons A B) in B do
+      if A then
+        A := (hd C) ;
+        B := (cons (hd A) B) ;
+        nop
+      fi
+    od
+  else
+    nop
+  fi
+%
+write A,B,C

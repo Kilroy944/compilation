@@ -66,8 +66,20 @@ public class WHILE extends Operation{
 
 	@Override
 	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
-		// TODO Auto-generated method stub
-		return null;
+		String result="";
+
+		for (Code3Address code3Address : listCodeCondition) {
+			result += code3Address.getOperation().printCodeGo(fr,code3Address.getArg1(),code3Address.getArg2(),code3Address.getArg3())+"\n";
+		}
+		result+="for "+arg2+"{\n";
+
+		for (Code3Address code3Address : listCodeDo) {
+			result += code3Address.getOperation().printCodeGo(fr,code3Address.getArg1(),code3Address.getArg2(),code3Address.getArg3())+"\n";
+		}
+
+		result+="}\n";
+
+		return result;
 	}
 	
 	
