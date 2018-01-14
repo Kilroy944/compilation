@@ -683,7 +683,7 @@ public class GeneratorSymbolTable {
 		fo.setListCodeDo(rtDo.getListCode());
 		fo.setListCodeIn(rtIn.getListCode());
 
-		Code3Address codeFor = new Code3Address(fo, "_", rtCond.getListAddr().get(0), "_");
+		Code3Address codeFor = new Code3Address(fo, "_", rtCond.getListAddr().get(0), rtIn.getListAddr().get(0));
 		ArrayList<Code3Address> l =new ArrayList<>();
 		l.add(codeFor);
 		

@@ -17,7 +17,9 @@ read A,B,C
         B := (cons (hd A) B) ;
         C := (testList1 A B )
   else
-    nop
+    foreach A in C do
+    	nop
+    od
   fi
 %
 write A,B,C

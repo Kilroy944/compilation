@@ -76,7 +76,31 @@ public class FOREACH extends Operation{
 
 	@Override
 	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
-		return null;
+		String result="";
+		
+		
+		for (Code3Address c : listCodeCondition)
+		{
+			result+=c.printCodeGo(fr);
+			result+=System.getProperty("line.separator");
+		}
+		
+		for (Code3Address c : listCodeIn)
+		{
+			result+=c.printCodeGo(fr);
+			result+=System.getProperty("line.separator");
+		}
+		
+		result+="for "+arg3+" in treeToRange("+arg2+"){\n";
+		
+		for (Code3Address c : listCodeDo)
+		{
+			result+=c.printCodeGo(fr);
+			result+=System.getProperty("line.separator");
+		}
+		
+		result+="}\n";
+		return result;
 	}
 	
 }
