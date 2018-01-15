@@ -10,7 +10,7 @@ public class CONS extends Operation{
 
 	@Override
 	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
-		return arg1+"=cons("+arg2+","+arg3+")\n";
+		return arg1+"= libWH.Cons("+arg2+","+arg3+")\n";
 	}
 
 }
