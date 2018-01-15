@@ -118,21 +118,27 @@ public class FunctionRepresentation {
 		//Param Out
 		
 		int index = (code.size())-1;
-				
+		
+		result+="(";
 		String out="";
 		while(!code.isEmpty() && code.get(index).getOperation() instanceof WRITE){
 			out=code.get(index).getArg1()+","+out;
 			code.remove(index);
 			index=code.size()-1;
-			result+="*libWH.Tree ";
+			result+="*libWH.Tree, ";
 		}
 		out=out.substring(0, out.length()-1); 
-		
-		result+=" {\n\n";
+		result=result.substring(0, result.length()-2); 
+		result+=") {\n\n";
 		
 		//Allocation var
 		for(int i=nbVarRead;i<variableTable.size();i++){
 			result +="var v"+i+" *libWH.Tree\n";
+		}
+		
+		//Allocation var
+		for(int i=0;i<counterTempVar;i++){
+			result +="var vt"+i+" *libWH.Tree\n";
 		}
 		
 		//Parcours des autres codes 3@
