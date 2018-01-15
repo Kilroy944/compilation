@@ -1,8 +1,10 @@
 package sprint2;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
@@ -12,56 +14,82 @@ import org.apache.commons.cli.ParseException;
 
 public class MainSprint2 {
 
-	
+
 	public static String Indent = "   ";
 
 
 	/*args[0] = fichier d'entrée args[1] = fichier de sortie*/
 	public static void main(String args[]) throws IOException{
-		
+
 		//Récupération arguments
 		Options options = new Options();
 		options.addOption("test", false, "effectuer les tests");
-		
+
 		CommandLineParser parser = new BasicParser();
 		CommandLine cmd;
-		
+
 		try {
 			cmd = parser.parse(options, args);
 		} catch (ParseException e) {
 			System.out.println("Erreur dans les arguments : " + e.getMessage());
 			return;
 		}
-		
+
 		GeneratorSymbolTable genTs = GeneratorSymbolTable.getInstance();
-		
-		
+
+
 		if(cmd.hasOption("test")){
 			test(cmd, genTs);
 			return;
 		}
-		
-		if(args.length == 0){
+
+		if(args.length == 2){
+			if(!new File(args[1]).exists()){
+				System.out.println("Erreur: fichier d'entrée inexistant");
+				return;
+			}
+
+			if (!args[0].endsWith(".wh")) {
+				System.out.println("Erreur dans les arguments : le fichier d'entrée doit avoir l'extension .wh");
+				return;
+			}
 			try {
-				genTs.init("input.wh");
+				genTs.init(args[0], args[1]);
+				execGo(args[1]);
 			} catch (DoubleFunctionException e) {
 				e.printStackTrace();
 			}
 		}
 		else{
-			try {
-				genTs.init(args[0], args[1]);
-			} catch (DoubleFunctionException e) {
-				e.printStackTrace();
-			}
+			System.out.println("Erreur dans les arguments : nb d'arguments incorrect");
+			return;
 		}
 	}
-	
-	private static void test(CommandLine cmd, GeneratorSymbolTable genTs) {
-		
+
+	private static void execGo(String prog) {
+		System.out.println("###### COMPILATION GO #######");
+		Process p;
+		try {
+			p = Runtime.getRuntime().exec("go build "+prog);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		System.out.println("###### EXECUTION GO #######");
+		try {
+			p = Runtime.getRuntime().exec("./"+prog.split(".go")[0]);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private static int test(CommandLine cmd, GeneratorSymbolTable genTs) {
+
 		if (cmd.getArgs().length != 1) {
 			System.out.println("Erreur dans les arguments : répertoire de test");
-			return;
+			return -1;
 		}
 
 		/*Ouverture du répertoire des fichiers à tester*/
@@ -69,7 +97,7 @@ public class MainSprint2 {
 
 		if(!(rep_test.exists() && rep_test.isDirectory())){
 			System.out.println("Repertoire de test inexistant");
-			return;
+			return -1;
 		}
 
 
@@ -83,7 +111,7 @@ public class MainSprint2 {
 
 		File rep_code_3A = new File("./rep_code_3A");
 		rep_code_3A.mkdir();
-		
+
 		System.out.println("---------------DEBUT TEST---------------");
 
 		/*Pour tous les fichiers a tester */
@@ -91,15 +119,16 @@ public class MainSprint2 {
 			System.out.println("Test code 3@: "+file.getName());
 
 			String path_fichier_sortie = "./"+rep_code_3A.getPath()+"/"+(file.getName().split(".wh")[0])+".txt";
-			
+
 			try{
-			genTs.init(file.getPath(), path_fichier_sortie);
+				genTs.init(file.getPath(), path_fichier_sortie);
 			}catch(IOException ioe){
 				ioe.printStackTrace();
 			}
 
 		}
 		System.out.println("---------------FIN TEST---------------");
+		return 0;
 
 	}
 }

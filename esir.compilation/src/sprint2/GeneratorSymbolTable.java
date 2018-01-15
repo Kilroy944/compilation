@@ -75,18 +75,13 @@ public class GeneratorSymbolTable {
 
 	private SymbolTable symbolTable;
 	
-	private File output;
-	
 	public static GeneratorSymbolTable getInstance(){
 		return new WhdslStandaloneSetupGenerated().createInjectorAndDoEMFRegistration().getInstance(GeneratorSymbolTable.class);
 	}
-	
+
 	public int init(String inputFile,String outFile) throws DoubleFunctionException, IOException {
-		output = new File(outFile);
-		return init(inputFile);
-	}
-	
-	public int init(String inputFile) throws DoubleFunctionException, IOException {
+		
+		File output = new File(outFile);
 		
 		symbolTable =new SymbolTable();
 		
@@ -115,14 +110,9 @@ public class GeneratorSymbolTable {
 		
 		
 		System.out.println(symbolTable);
-		
-		if(output == null){
-			System.out.println(symbolTable.printCodeGo());
-		}else{
-			symbolTable.writeFileGo(output);
-		}
-		
-		
+		symbolTable.writeFile3Add(new File("3A.txt"));
+		symbolTable.writeFileGo(output);
+
 		return 0;
 	}
 	
