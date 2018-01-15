@@ -5,6 +5,7 @@ import java.util.List;
 
 import sprint2.Code3Address;
 import sprint2.FunctionRepresentation;
+import sprint2.MainSprint2;
 
 public class CALL extends Operation{
 
@@ -83,8 +84,12 @@ public class CALL extends Operation{
 
 
 	@Override
-	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
+	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3,int indent) {
 		String result="";
+		
+		String ind = "";
+		for (int i = 0; i < indent; i++)
+			ind += MainSprint2.Indent;
 		
 		for(String v : listVarReturn){
 			result+=v+",";
@@ -99,7 +104,7 @@ public class CALL extends Operation{
 		
 		result+=")\n";
 		
-		return result;
+		return ind+result;
 	}
 
 }

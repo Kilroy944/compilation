@@ -130,12 +130,13 @@ public class FunctionRepresentation {
 		result=result.substring(0, result.length()-2); 
 		result +=" *Tree)";
 		
-		result+="{\n";
+		result+="{\n\n";
 		
 		//Allocation var temporaires
 		for(int i=0;i<counterTempVar;i++){
 			result +="var vt"+i+" *libWH.Tree\n";
 		}
+		result+="\n";
 		
 		//Allocation var
 		for(int i=nbVarRead;i<variableTable.size();i++){
@@ -145,7 +146,7 @@ public class FunctionRepresentation {
 		//Parcours des autres codes 3@
 		for (Code3Address c : code)
 		{
-			result+=c.printCodeGo(this);
+			result+=c.printCodeGo(this,0);
 		    result+=System.getProperty("line.separator");
 		}
 		

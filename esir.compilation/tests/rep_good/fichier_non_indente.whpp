@@ -72,7 +72,7 @@ write Y
 function f6:
 read Abc
 %
-  if (cons (tl (hd bla))) then
+  if (cons (tl (hd bla)) A) then
     nop
   else
     nop ;
