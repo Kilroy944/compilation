@@ -97,6 +97,8 @@ public class FOREACH extends Operation{
 		
 		result+=ind+"for _,"+arg3+" := range libWH.TreeToRange("+arg2+"){\n";
 		
+		result+=ind+ MainSprint2.Indent+"_ = "+arg3+"\n";
+		
 		for (Code3Address c : listCodeDo)
 		{
 			result+=c.printCodeGo(fr,indent+1);

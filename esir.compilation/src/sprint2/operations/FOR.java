@@ -82,7 +82,7 @@ public class FOR extends Operation{
 		}
 		
 		String vtId = fr.getNewTempVar();
-		result += ind+"var "+vtId+" = libWH.TreeToNumber("+arg2+") \n"+ind+"for i:=0;i<"+vtId+";i++ {\n";
+		result += ind+"for i:=0;i<libWH.TreeToNumber("+arg2+");i++ {\n";
 		
 		//Parcours des autres codes 3@
 		for (Code3Address c : listCodeDo)
