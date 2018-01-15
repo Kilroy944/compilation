@@ -3,8 +3,7 @@ read A,B,C
 %
   if nil then
         A := (hd C) ;
-        B := (cons (hd A) B) ;
-        C := (testfunction A B C )
+        B := (cons (hd A) B)
   else
     foreach A in C do
     	for (cons A B) do
@@ -17,5 +16,5 @@ read A,B,C
     od
   fi
 %
-write A
+write A,B,C,D,F
 
