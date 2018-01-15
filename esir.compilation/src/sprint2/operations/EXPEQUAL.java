@@ -76,7 +76,7 @@ public class EXPEQUAL extends Operation{
 			result+=c.printCodeGo(fr,indent);
 		}
 		
-		result+= ind+arg1+"=libWH.Equal("+arg2+","+arg3+")\n";
+		result+= ind+arg1+"=libWH.Op_eg("+arg2+","+arg3+")\n";
 		return result;
 	}
 }
