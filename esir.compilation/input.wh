@@ -5,7 +5,7 @@ read A,B,C
         A := (hd C) ;
         B := (cons (hd A) B)
   else
-    foreach A in C do
+    foreach A in B do
     	for (cons A B) do
 			if (A and B and (A or B) ) then
 				while A do
