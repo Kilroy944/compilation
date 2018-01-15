@@ -5,6 +5,7 @@ import java.util.List;
 
 import sprint2.Code3Address;
 import sprint2.FunctionRepresentation;
+import sprint2.MainSprint2;
 
 public class FOREACH extends Operation{
 
@@ -75,31 +76,34 @@ public class FOREACH extends Operation{
 	}
 
 	@Override
-	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
+	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3,int indent) {
 		String result="";
 		
+		String ind = "";
+		for (int i = 0; i < indent; i++)
+			ind += MainSprint2.Indent;
 		
 		for (Code3Address c : listCodeCondition)
 		{
-			result+=c.printCodeGo(fr);
+			result+=c.printCodeGo(fr,indent);
 			result+=System.getProperty("line.separator");
 		}
 		
 		for (Code3Address c : listCodeIn)
 		{
-			result+=c.printCodeGo(fr);
+			result+=c.printCodeGo(fr,indent);
 			result+=System.getProperty("line.separator");
 		}
 		
-		result+="for "+arg3+" in treeToRange("+arg2+"){\n";
+		result+=ind+"for "+arg3+" in treeToRange("+arg2+"){\n";
 		
 		for (Code3Address c : listCodeDo)
 		{
-			result+=c.printCodeGo(fr);
+			result+=c.printCodeGo(fr,indent+1);
 			result+=System.getProperty("line.separator");
 		}
 		
-		result+="}\n";
+		result+=ind+"}";
 		return result;
 	}
 	

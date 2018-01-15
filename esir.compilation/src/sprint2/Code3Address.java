@@ -31,8 +31,8 @@ public class Code3Address {
 				+ ">";
 	}
 
-	public String printCodeGo(FunctionRepresentation fr){
-		return operator.printCodeGo(fr, arg1, arg2, arg3);
+	public String printCodeGo(FunctionRepresentation fr,int indent){
+		return operator.printCodeGo(fr, arg1, arg2, arg3, indent);
 	}
 	
 	public Operation getOperation(){

@@ -5,6 +5,7 @@ import java.util.List;
 
 import sprint2.Code3Address;
 import sprint2.FunctionRepresentation;
+import sprint2.MainSprint2;
 
 public class WHILE extends Operation{
 
@@ -65,19 +66,23 @@ public class WHILE extends Operation{
 	}
 
 	@Override
-	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
+	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3, int indent) {
 		String result="";
 
+		String ind = "";
+		for (int i = 0; i < indent; i++)
+			ind += MainSprint2.Indent;		
+		
 		for (Code3Address code3Address : listCodeCondition) {
-			result += code3Address.getOperation().printCodeGo(fr,code3Address.getArg1(),code3Address.getArg2(),code3Address.getArg3())+"\n";
+			result += ind+code3Address.getOperation().printCodeGo(fr,code3Address.getArg1(),code3Address.getArg2(),code3Address.getArg3(),indent)+"\n";
 		}
-		result+="for "+arg2+"{\n";
+		result+=ind+"for "+arg2+"{\n";
 
 		for (Code3Address code3Address : listCodeDo) {
-			result += code3Address.getOperation().printCodeGo(fr,code3Address.getArg1(),code3Address.getArg2(),code3Address.getArg3())+"\n";
+			result += ind+code3Address.getOperation().printCodeGo(fr,code3Address.getArg1(),code3Address.getArg2(),code3Address.getArg3(),indent+1)+"\n";
 		}
 
-		result+="}\n";
+		result+=ind+"}";
 
 		return result;
 	}

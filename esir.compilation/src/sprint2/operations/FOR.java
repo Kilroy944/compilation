@@ -5,6 +5,7 @@ import java.util.List;
 
 import sprint2.Code3Address;
 import sprint2.FunctionRepresentation;
+import sprint2.MainSprint2;
 
 public class FOR extends Operation{
 
@@ -66,26 +67,32 @@ public class FOR extends Operation{
 	}
 
 	@Override
-	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
+	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3,int indent) {
 	
 		String result="";
 		
+		String ind = "";
+		for (int i = 0; i < indent; i++)
+			ind += MainSprint2.Indent;
+		
 		for (Code3Address c : listCodeCondition)
 		{
-			result+=c.printCodeGo(fr);
+			result+=c.printCodeGo(fr,indent);
 			result+=System.getProperty("line.separator");
 		}
 		
-		result += "var e = treeToNumber("+arg2+") \nfor i:=0;i<e;i++ {\n  ";
+		String vtId = fr.getNewTempVar();
+		
+		result += ind+"var "+vtId+" = treeToNumber("+arg2+") \n"+ind+"for i:=0;i<"+vtId+";i++ {\n  ";
 		
 		//Parcours des autres codes 3@
 		for (Code3Address c : listCodeDo)
 		{
-			result+=c.printCodeGo(fr);
+			result+=c.printCodeGo(fr,indent+1);
 			result+=System.getProperty("line.separator");
 		}
 		
-		return result+"}";
+		return result+ind+"}";
 	}
 
 }

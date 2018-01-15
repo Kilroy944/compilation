@@ -12,6 +12,9 @@ import org.apache.commons.cli.ParseException;
 
 public class MainSprint2 {
 
+	
+	public static String Indent = "   ";
+
 
 	/*args[0] = fichier d'entrée args[1] = fichier de sortie*/
 	public static void main(String args[]) throws IOException{

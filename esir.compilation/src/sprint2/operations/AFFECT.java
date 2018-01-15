@@ -5,6 +5,7 @@ import java.util.List;
 
 import sprint2.Code3Address;
 import sprint2.FunctionRepresentation;
+import sprint2.MainSprint2;
 
 public class AFFECT extends Operation{
 
@@ -24,7 +25,10 @@ public class AFFECT extends Operation{
 	}
 
 	@Override
-	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
-		return arg1+"="+arg2+"\n";
+	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3,int indent) {
+		String ind = "";
+		for (int i = 0; i < indent; i++)
+			ind += MainSprint2.Indent;
+		return ind+arg1+"="+arg2+"\n";
 	}
 }

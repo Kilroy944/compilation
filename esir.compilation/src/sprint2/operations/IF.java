@@ -5,6 +5,7 @@ import java.util.List;
 
 import sprint2.Code3Address;
 import sprint2.FunctionRepresentation;
+import sprint2.MainSprint2;
 
 public class IF extends Operation{
 
@@ -81,27 +82,31 @@ public class IF extends Operation{
 	}
 
 	@Override
-	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
+	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3,int indent) {
 		String result="";
 
+		String ind = "";
+		for (int i = 0; i < indent; i++)
+			ind += MainSprint2.Indent;
+		
 		for (Code3Address code3Address : listCodeCondition) {
-			result += code3Address.printCodeGo(fr);
+			result += code3Address.printCodeGo(fr,indent);
 		}
-		result+="if isTrue("+arg2+"){\n";
+		result+="\n"+ind+"if isTrue("+arg2+"){\n";
 
 		for (Code3Address code3Address : listCodeThen) {
-			result += code3Address.printCodeGo(fr);
+			result += code3Address.printCodeGo(fr,indent+1);
 		}
 
-		result+="\n}\n";
+		result+="\n"+ind+"}";
 
 		if (listCodeElse.size() != 0){
-			result+="else{\n";
+			result+="\nelse{\n";
 			
 			for (Code3Address code3Address : listCodeElse) {
-				result += code3Address.printCodeGo(fr);
+				result += code3Address.printCodeGo(fr,indent+1);
 			}
-			result+="\n}\n";
+			result+="\n"+ind+"}";
 		}
 
 		return result;

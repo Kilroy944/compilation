@@ -5,6 +5,7 @@ import java.util.List;
 
 import sprint2.Code3Address;
 import sprint2.FunctionRepresentation;
+import sprint2.MainSprint2;
 
 public class EXPNOT extends Operation{
 
@@ -33,7 +34,7 @@ public class EXPNOT extends Operation{
 	public String toString(int indent) {
 		String ind = "";
 		for (int i = 0; i < indent; i++)
-			ind += "\t";
+			ind += MainSprint2.Indent;
 
 		String ret = "NOT \n";
 
@@ -46,14 +47,18 @@ public class EXPNOT extends Operation{
 	}
 
 	@Override
-	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
+	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3,int indent) {
 		String result="";
 		
+		String ind = "";
+		for (int i = 0; i < indent; i++)
+			ind += "\t";
+		
 		for(Code3Address c : listCode){
-			result+=c.printCodeGo(fr);
+			result+=ind+c.printCodeGo(fr,indent);
 		}
 		
-		result+=arg1+"=!("+arg2+")\n";
+		result+=ind+arg1+"=!("+arg2+")\n";
 		return result;
 	}
 }
