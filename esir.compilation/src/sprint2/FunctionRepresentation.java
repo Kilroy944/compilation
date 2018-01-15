@@ -113,24 +113,22 @@ public class FunctionRepresentation {
 
 		}
 		result=result.substring(0, result.length()-2); 
-		result +=" *libWH.Tree)";
+		result +=" *libWH.Tree) ";
 		
 		//Param Out
 		
 		int index = (code.size())-1;
-		
-		result+=" (";
-		
+				
+		String out="";
 		while(!code.isEmpty() && code.get(index).getOperation() instanceof WRITE){
-			result+=code.get(index).getArg1();
-			result+=", ";
+			out=code.get(index).getArg1()+","+out;
 			code.remove(index);
 			index=code.size()-1;
+			result+="*libWH.Tree ";
 		}
-		result=result.substring(0, result.length()-2); 
-		result +=" *libWH.Tree)";
+		out=out.substring(0, out.length()-1); 
 		
-		result+="{\n\n";
+		result+=" {\n\n";
 		
 		//Allocation var temporaires
 		for(int i=0;i<counterTempVar;i++){
@@ -151,6 +149,6 @@ public class FunctionRepresentation {
 		}
 		
 		
-		return result+="\nreturn \n}\n";
+		return result+="\nreturn "+out+" \n}\n";
 	}
 }
