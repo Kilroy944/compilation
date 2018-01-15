@@ -75,7 +75,7 @@ public class EXPAND extends Operation{
 		for(Code3Address c : listCodeRight){
 			result+=c.printCodeGo(fr,indent);
 		}
-		result+= ind+arg1+"=("+arg2+" && "+arg3+")\n";
+		result+= ind+arg1+"=libWH.IsTrue("+arg2+") && libWH.IsTrue("+arg3+")\n";
 		return result;
 	}
 }
