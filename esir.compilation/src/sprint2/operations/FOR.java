@@ -76,7 +76,7 @@ public class FOR extends Operation{
 			result+=System.getProperty("line.separator");
 		}
 		
-		result += "var e = treeToNumber("+arg2+") \nfor i:=0;i<e;i++ {\n  ";
+		result += "var e = libWH.TreeToNumber("+arg2+") \nfor i:=0;i<e;i++ {\n  ";
 		
 		//Parcours des autres codes 3@
 		for (Code3Address c : listCodeDo)

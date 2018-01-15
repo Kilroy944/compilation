@@ -10,7 +10,7 @@ public class TL extends Operation{
 
 	@Override
 	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
-		return arg1+"=tl("+arg2+")\n";
+		return arg1+"= libWH.Tl("+arg2+")\n";
 	}
 
 }

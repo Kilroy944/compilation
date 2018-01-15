@@ -87,7 +87,7 @@ public class IF extends Operation{
 		for (Code3Address code3Address : listCodeCondition) {
 			result += code3Address.printCodeGo(fr);
 		}
-		result+="if isTrue("+arg2+"){\n";
+		result+="if libWH.IsTrue("+arg2+"){\n";
 
 		for (Code3Address code3Address : listCodeThen) {
 			result += code3Address.printCodeGo(fr);

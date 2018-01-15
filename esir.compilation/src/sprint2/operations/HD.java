@@ -10,7 +10,7 @@ public class HD extends Operation{
 
 	@Override
 	public String printCodeGo(FunctionRepresentation fr, String arg1, String arg2, String arg3) {
-		return arg1+"=hd("+arg2+")\n";
+		return arg1+"= libWH.Hd("+arg2+")\n";
 	}
 
 }
