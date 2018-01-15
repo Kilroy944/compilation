@@ -76,7 +76,7 @@ public class WHILE extends Operation{
 		for (Code3Address code3Address : listCodeCondition) {
 			result += ind+code3Address.getOperation().printCodeGo(fr,code3Address.getArg1(),code3Address.getArg2(),code3Address.getArg3(),indent)+"\n";
 		}
-		result+=ind+"for "+arg2+"{\n";
+		result+=ind+"for libWH.IsTrue("+arg2+"){\n";
 
 		for (Code3Address code3Address : listCodeDo) {
 			result += ind+code3Address.getOperation().printCodeGo(fr,code3Address.getArg1(),code3Address.getArg2(),code3Address.getArg3(),indent+1)+"\n";
