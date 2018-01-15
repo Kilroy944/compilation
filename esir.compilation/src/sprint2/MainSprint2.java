@@ -69,13 +69,15 @@ public class MainSprint2 {
 	private static void execGo(String prog) {
 		System.out.println("###### COMPILATION GO #######");
 		Process p;
+		System.out.println("go build "+prog);
 		try {
 			p = Runtime.getRuntime().exec("go build "+prog);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
+/*
 		System.out.println("###### EXECUTION GO #######");
 		try {
 			p = Runtime.getRuntime().exec("./"+prog.split(".go")[0]);
@@ -83,6 +85,7 @@ public class MainSprint2 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
 	}
 
 	private static int test(CommandLine cmd, GeneratorSymbolTable genTs) {
