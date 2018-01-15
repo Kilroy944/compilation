@@ -132,12 +132,6 @@ public class FunctionRepresentation {
 		
 		result+="{\n\n";
 		
-		//Allocation var temporaires
-		for(int i=0;i<counterTempVar;i++){
-			result +="var vt"+i+" *libWH.Tree\n";
-		}
-		result+="\n";
-		
 		//Allocation var
 		for(int i=nbVarRead;i<variableTable.size();i++){
 			result +="var v"+i+" *libWH.Tree\n";
