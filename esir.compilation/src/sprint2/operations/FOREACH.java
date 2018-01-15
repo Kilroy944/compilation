@@ -95,7 +95,7 @@ public class FOREACH extends Operation{
 			result+=System.getProperty("line.separator");
 		}
 		
-		result+=ind+"for "+arg3+" := range libWH.TreeToRange("+arg2+"){\n";
+		result+=ind+"for _,"+arg3+" := range libWH.TreeToRange("+arg2+"){\n";
 		
 		for (Code3Address c : listCodeDo)
 		{

@@ -99,7 +99,7 @@ public class SymbolTable {
 
 	public String printCodeGo(){
 
-		String result = "package main\n";
+		String result = "package f0\n";
 		
 		result+= "import (libWH \"./libGO\")\n";
 
