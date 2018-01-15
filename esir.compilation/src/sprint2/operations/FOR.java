@@ -81,7 +81,6 @@ public class FOR extends Operation{
 			result+=System.getProperty("line.separator");
 		}
 		
-
 		String vtId = fr.getNewTempVar();
 		result += ind+"var "+vtId+" = libWH.TreeToNumber("+arg2+") \n"+ind+"for i:=0;i<"+vtId+";i++ {\n  ";
 		

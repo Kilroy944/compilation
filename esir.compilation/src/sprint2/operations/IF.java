@@ -102,7 +102,7 @@ public class IF extends Operation{
 		result+="\n"+ind+"}";
 
 		if (listCodeElse.size() != 0){
-			result+="\nelse{\n";
+			result+="else{\n";
 			
 			for (Code3Address code3Address : listCodeElse) {
 				result += code3Address.printCodeGo(fr,indent+1);

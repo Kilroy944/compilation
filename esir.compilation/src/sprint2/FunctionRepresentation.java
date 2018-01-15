@@ -113,7 +113,7 @@ public class FunctionRepresentation {
 
 		}
 		result=result.substring(0, result.length()-2); 
-		result +=" *Tree)";
+		result +=" *libWH.Tree)";
 		
 		//Param Out
 		
@@ -128,7 +128,7 @@ public class FunctionRepresentation {
 			index=code.size()-1;
 		}
 		result=result.substring(0, result.length()-2); 
-		result +=" *Tree)";
+		result +=" *libWH.Tree)";
 		
 		result+="{\n\n";
 		

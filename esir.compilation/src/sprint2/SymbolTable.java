@@ -105,7 +105,7 @@ public class SymbolTable {
 
 		//Allocation symbole
 		for(int i=0;i<listSymbol.size();i++){
-			result +="var s"+i+" *Tree\n";
+			result +="var s"+i+" *libWH.Tree\n";
 		}
 
 		for (Entry<String, FunctionRepresentation> entry : listFunctions.entrySet())
