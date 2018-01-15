@@ -117,7 +117,7 @@ public class GeneratorSymbolTable {
 		System.out.println(symbolTable);
 		
 		if(output == null){
-			symbolTable.printCodeGo();
+			System.out.println(symbolTable.printCodeGo());
 		}else{
 			symbolTable.writeFileGo(output);
 		}
