@@ -2,6 +2,7 @@ package sprint2;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map.Entry;
 
 import sprint2.operations.READ;
@@ -98,6 +99,8 @@ public class FunctionRepresentation {
 	
 	public String printCodeGo(){
 		
+		int nbVarRead = 0; 		
+		
 		String result = "\nfunc "+name+ "(";
 		
 		//Param In
@@ -106,6 +109,7 @@ public class FunctionRepresentation {
 			result+=code.get(0).getArg1();
 			result+=", ";
 			code.remove(0);
+			nbVarRead++;
 
 		}
 		result=result.substring(0, result.length()-2); 
@@ -130,13 +134,13 @@ public class FunctionRepresentation {
 		
 		//Allocation var temporaires
 		for(int i=0;i<counterTempVar;i++){
-			result +="var vt"+i+" *Tree\n";
+			result +="var vt"+i+" *libWH.Tree\n";
 		}
 		result+="\n";
 		
 		//Allocation var
-		for(int i=0;i<variableTable.size();i++){
-			result +="var v"+i+" *Tree\n";
+		for(int i=nbVarRead;i<variableTable.size();i++){
+			result +="var v"+i+" *libWH.Tree\n";
 		}
 		
 		//Parcours des autres codes 3@
