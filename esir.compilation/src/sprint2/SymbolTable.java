@@ -101,7 +101,7 @@ public class SymbolTable {
 
 		String result = "package main\n";
 		
-		result+= "import (\n\tlibWH \"./libGO\"\n\t\"fmt\"\n)\n";
+		result+= "import (libWH \"./libGO\")\n";
 
 		//Allocation symbole
 		for(int i=0;i<listSymbol.size();i++){
