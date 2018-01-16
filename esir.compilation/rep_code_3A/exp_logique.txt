@@ -1,0 +1,28 @@
+Table des symboles : 
+nil=0
+fonctiona=[f0, nbIn : 2, nbOut : 1]
+Table des variables : 
+A=0
+B=1
+Nombre de variables temporaires : 2
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<READ, v1, _, _>
+<nop, _, _, _>
+<IF 
+	(cond)
+	<AND 
+		(gauche)
+		<OR 
+			(gauche)
+			(droite)
+		, vt1, v0, v1>
+		(droite)
+	, vt0, vt1, v1>
+	(then)
+	<AFFECT, v0, v1, _>
+	(else)
+	<nop, _, _, _>
+, _, vt0, _>
+<WRITE, v1, _, _>
+

@@ -1,0 +1,262 @@
+Table des symboles : 
+nil=0
+toto=4
+a=7
+condition=3
+b=8
+bla=2
+azer=1
+tata=5
+titi=6
+f10=[f9, nbIn : 1, nbOut : 1]
+Table des variables : 
+Abc=0
+Ba=1
+Nombre de variables temporaires : 0
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<FOREACH 
+	(cond)
+	(do)
+	<nop, _, _, _>
+, _, s7, _>
+<WRITE, v1, _, _>
+
+f12=[f11, nbIn : 1, nbOut : 1]
+Table des variables : 
+X=0
+Y=1
+Nombre de variables temporaires : 4
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<nil, vt0, _, _>
+<AFFECT, v1, vt0, _>
+<WHILE 
+	(cond)
+	(do)
+	<HD, vt1, v0, _>
+	<cons, vt2, vt1, v1>
+	<AFFECT, v1, vt2, _>
+	<TL, vt3, v0, _>
+	<AFFECT, v0, vt3, _>
+, _, v0, _>
+<WRITE, v1, _, _>
+
+f11=[f10, nbIn : 1, nbOut : 1]
+Table des variables : 
+Var3=0
+Var=1
+Nombre de variables temporaires : 0
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<nop, _, _, _>
+<nop, _, _, _>
+<WRITE, v1, _, _>
+
+f13=[f12, nbIn : 1, nbOut : 3]
+Table des variables : 
+A=0
+B=1
+C=2
+Nombre de variables temporaires : 5
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<nil, vt0, _, _>
+<AFFECT, v0, vt0, _>
+<nil, vt1, _, _>
+<AFFECT, v0, vt1, _>
+<nil, vt2, _, _>
+<AFFECT, v0, vt2, _>
+<nil, vt3, _, _>
+<AFFECT, v1, vt3, _>
+<nil, vt4, _, _>
+<AFFECT, v2, vt4, _>
+<WRITE, v0, _, _>
+<WRITE, v1, _, _>
+<WRITE, v2, _, _>
+
+f1=[f0, nbIn : 1, nbOut : 1]
+Table des variables : 
+U=2
+W=3
+X=0
+Y=1
+Truc=4
+Nombre de variables temporaires : 1
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<nil, vt0, _, _>
+<AFFECT, v1, vt0, _>
+<WHILE 
+	(cond)
+	(do)
+	<nop, _, _, _>
+	<nop, _, _, _>
+	<nop, _, _, _>
+	<AFFECT, v1, v0, _>
+	<AFFECT, v3, v2, _>
+	<AFFECT, v4, s1, _>
+, _, v0, _>
+<WRITE, v1, _, _>
+
+f2=[f1, nbIn : 1, nbOut : 1]
+Table des variables : 
+X=0
+Y=1
+Nombre de variables temporaires : 1
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<nil, vt0, _, _>
+<AFFECT, v1, vt0, _>
+<WHILE 
+	(cond)
+	(do)
+	<nop, _, _, _>
+	<nop, _, _, _>
+	<AFFECT, v1, v0, _>
+, _, v0, _>
+<WRITE, v1, _, _>
+
+f3=[f2, nbIn : 1, nbOut : 1]
+Table des variables : 
+A=3
+U=4
+W=5
+X=0
+Y=1
+Z=2
+Nombre de variables temporaires : 2
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<nil, vt0, _, _>
+<AFFECT, v1, vt0, _>
+<FOREACH 
+	(cond)
+	(do)
+	<FOREACH 
+		(cond)
+		(do)
+		<FOREACH 
+			(cond)
+			(do)
+			<IF 
+				(cond)
+				<nil, vt1, _, _>
+				(then)
+				<nop, _, _, _>
+				(else)
+			, _, vt1, _>
+		, _, v2, _>
+	, _, v1, _>
+	<nop, _, _, _>
+	<AFFECT, v1, v0, _>
+	<AFFECT, v5, v4, _>
+, _, v0, _>
+<WRITE, v1, _, _>
+
+f4=[f3, nbIn : 1, nbOut : 1]
+Table des variables : 
+U=2
+W=3
+X=0
+Y=1
+Nombre de variables temporaires : 1
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<nil, vt0, _, _>
+<AFFECT, v1, vt0, _>
+<FOREACH 
+	(cond)
+	(do)
+	<nop, _, _, _>
+	<nop, _, _, _>
+	<AFFECT, v1, v0, _>
+	<AFFECT, v3, v2, _>
+, _, v0, _>
+<WRITE, v1, _, _>
+
+f5=[f4, nbIn : 1, nbOut : 1]
+Table des variables : 
+X=0
+Y=1
+Nombre de variables temporaires : 1
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<nil, vt0, _, _>
+<AFFECT, v1, vt0, _>
+<WHILE 
+	(cond)
+	(do)
+	<nop, _, _, _>
+	<nop, _, _, _>
+	<AFFECT, v1, v0, _>
+, _, v0, _>
+<WRITE, v1, _, _>
+
+f6=[f5, nbIn : 1, nbOut : 1]
+Table des variables : 
+Abc=0
+H=1
+Ba=2
+Nombre de variables temporaires : 3
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<IF 
+	(cond)
+	<HD, vt0, s2, _>
+	<TL, vt1, vt0, _>
+	<cons, vt2, vt1, v1>
+	(then)
+	<nop, _, _, _>
+	(else)
+	<nop, _, _, _>
+	<nop, _, _, _>
+, _, vt2, _>
+<WRITE, v2, _, _>
+
+f7=[f6, nbIn : 1, nbOut : 1]
+Table des variables : 
+Abc=0
+Ba=1
+Nombre de variables temporaires : 0
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<WHILE 
+	(cond)
+	(do)
+	<nop, _, _, _>
+, _, s3, _>
+<WRITE, v1, _, _>
+
+f8=[f7, nbIn : 1, nbOut : 1]
+Table des variables : 
+Abc=0
+Ba=1
+Nombre de variables temporaires : 0
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<FOR 
+	(cond)
+	(do)
+	<nop, _, _, _>
+, _, s3, _>
+<WRITE, v1, _, _>
+
+f9=[f8, nbIn : 1, nbOut : 1]
+Table des variables : 
+Abc=0
+T=4
+G=3
+Jd=1
+Hg=2
+Ba=5
+Nombre de variables temporaires : 1
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<nil, vt0, _, _>
+<AFFECT, v1, vt0, _>
+<AFFECT, v2, s4, _>
+<AFFECT, v3, s5, _>
+<AFFECT, v4, s6, _>
+<WRITE, v5, _, _>
+

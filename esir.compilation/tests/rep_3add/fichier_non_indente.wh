@@ -1,0 +1,28 @@
+function f1: read X%Y:=nil; while X do nop; nop; nop; Y:=X;W:=U;Truc:=azer od%write Y
+
+function f2: read X%Y:=nil;   while X do nop;nop;Y:=X od%write Y
+
+function f3: read X%Y:=nil;foreach X in Y do foreach Y in Z do foreach Z in A do if nil then nop fi od od; nop;Y:=X;W:=U od%write Y
+
+function f4: read X%Y:=nil;  foreach X in Y do nop;nop;Y:=X;W:=U od%write Y
+
+function f5: read X%Y:=nil;while X do nop; nop; Y:=X od%write Y
+
+function f6: read Abc%if (cons (tl (hd bla)) H) then nop else nop; nop fi%write Ba
+
+function f7: read Abc%while condition do nop od%write Ba
+
+function f8: read Abc%for condition do nop od%write Ba
+
+function f9: read Abc%Jd,Hg,G,T:=nil,toto,tata,titi%write Ba
+
+function f10: read Abc%foreach a in b do nop od%write Ba
+
+function
+f11: read Var3%nop; nop  %write Var
+
+function f12    : read X%Y:=    nil;while X do Y:=    (cons (hd X) Y);X:=(tl X) od%write Y
+
+function f13  : read A%A:=nil;A:=nil;A,B,C:=nil,nil,nil%write A,B,C
+
+

@@ -104,7 +104,7 @@ public class SymbolTable {
 
 		String result = "package main\n";
 		
-		result+= "import (libWH \"./libGO\")\n";
+		result+= "import (libWH \"./libGO\"\n\t\"fmt\"\n\t\"os\"\n)\n";
 
 		//Allocation symbole
 		for(int i=0;i<listSymbol.size();i++){
@@ -113,13 +113,13 @@ public class SymbolTable {
 
 		FunctionRepresentation fr = listFunctions.get(lastFunction);
 
-		result+="\nfunc main(){\n\t"+fr.getName()+"(";
+		result+="\nfunc main(){\n\t fmt.Println("+fr.getName()+"(";
 			
 		for(int i=0;i<fr.getNbInput();i++){
 			result+="nil,";
 		}
 		result=result.substring(0,result.length()-1);
-		result+=")\n}\n";
+		result+="))\n}\n";
 		
 		for (Entry<String, FunctionRepresentation> entry : listFunctions.entrySet())
 		{	

@@ -19,6 +19,13 @@ func TreeToRange (t *Tree)([] *Tree){
 	}
 	return tab
 }
+func NumberToTree(nb int)(*Tree){
+	var t *Tree	
+	for i := 0; i < nb; i++ {
+		t = Cons(nil,t)
+	}
+	return t
+}
 func Tl(t *Tree)(*Tree){
 	if t!=nil{
 		return t.Right

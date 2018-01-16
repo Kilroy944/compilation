@@ -1,0 +1,17 @@
+Table des symboles : 
+nil=0
+testfunction=[f0, nbIn : 3, nbOut : 3]
+Table des variables : 
+A=0
+B=1
+C=2
+Nombre de variables temporaires : 0
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<READ, v1, _, _>
+<READ, v2, _, _>
+<nop, _, _, _>
+<WRITE, v0, _, _>
+<WRITE, v1, _, _>
+<WRITE, v2, _, _>
+
