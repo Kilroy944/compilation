@@ -1,19 +1,21 @@
 package main
 import (libWH "./libGO"
 	"fmt"
-	"os"
+	
 )
 var s0 *libWH.Tree
 
 func main(){
-	v0:=f13(nil)
-	fmt.Println(v0)
+	v0:=f13(libWH.NumberToTree(5))
+	fmt.Println(libWH.TreeToNumber(v0))
 }
 
 func f0(v0 *libWH.Tree) (*libWH.Tree) {
 
 var v1 *libWH.Tree
+_ = v1
 var vt0 *libWH.Tree
+_ = vt0
 
 
 if libWH.IsTrue(v0){
@@ -31,7 +33,9 @@ return v1
 func f1(v0 *libWH.Tree) (*libWH.Tree) {
 
 var v1 *libWH.Tree
+_ = v1
 var vt0 *libWH.Tree
+_ = vt0
 
 
 if libWH.IsTrue(v0){
@@ -49,9 +53,13 @@ return v1
 func f2(v0 *libWH.Tree) (*libWH.Tree) {
 
 var v1 *libWH.Tree
+_ = v1
 var vt0 *libWH.Tree
+_ = vt0
 var vt1 *libWH.Tree
+_ = vt1
 var vt2 *libWH.Tree
+_ = vt2
 
 vt1 = libWH.Cons(s0,s0)
 vt0 = libWH.Op_eg(v0,vt1)
@@ -71,6 +79,7 @@ return v1
 func f3(v0 *libWH.Tree) (*libWH.Tree) {
 
 var vt0 *libWH.Tree
+_ = vt0
 
 vt0 = libWH.Cons(s0,v0)
 
@@ -83,6 +92,7 @@ return v0
 func f4(v0 *libWH.Tree) (*libWH.Tree) {
 
 var vt0 *libWH.Tree
+_ = vt0
 
 vt0 = libWH.Tl(v0)
 
@@ -95,7 +105,9 @@ return v0
 func f5(v0, v1 *libWH.Tree) (*libWH.Tree) {
 
 var v2 *libWH.Tree
+_ = v2
 var vt0 *libWH.Tree
+_ = vt0
 
 v2 = v0
 
@@ -112,12 +124,17 @@ return v2
 func f6(v0, v1 *libWH.Tree) (*libWH.Tree) {
 
 var v2 *libWH.Tree
+_ = v2
 var vt0 *libWH.Tree
+_ = vt0
 var vt1 *libWH.Tree
+_ = vt1
 var vt2 *libWH.Tree
+_ = vt2
 var vt3 *libWH.Tree
+_ = vt3
 
-vt0=f0(v1)
+vt0=f1(v1)
 
 if libWH.IsTrue(vt0){
    v2 = v0
@@ -136,7 +153,9 @@ return v2
 func f7(v0, v1 *libWH.Tree) (*libWH.Tree) {
 
 var v2 *libWH.Tree
+_ = v2
 var vt0 *libWH.Tree
+_ = vt0
 
 v2 = v0
 
@@ -153,7 +172,9 @@ return v2
 func f8(v0, v1 *libWH.Tree) (*libWH.Tree) {
 
 var v2 *libWH.Tree
+_ = v2
 var vt0 *libWH.Tree
+_ = vt0
 
 v2 = s0
 
@@ -170,8 +191,11 @@ return v2
 func f9(v0, v1 *libWH.Tree) (*libWH.Tree) {
 
 var v2 *libWH.Tree
+_ = v2
 var vt0 *libWH.Tree
+_ = vt0
 var vt1 *libWH.Tree
+_ = vt1
 
 vt0 = libWH.Cons(s0,s0)
 
@@ -190,11 +214,17 @@ return v2
 func f10(v0, v1 *libWH.Tree) (*libWH.Tree, *libWH.Tree) {
 
 var v2 *libWH.Tree
+_ = v2
 var v3 *libWH.Tree
+_ = v3
 var v4 *libWH.Tree
+_ = v4
 var vt0 *libWH.Tree
+_ = vt0
 var vt1 *libWH.Tree
+_ = vt1
 var vt2 *libWH.Tree
+_ = vt2
 
 v2 = s0
 
@@ -204,7 +234,7 @@ vt0=f7(v3,v1)
 
 v4 = vt0
 
-vt1=f1(v4)
+vt1=f0(v4)
 
 for libWH.IsTrue(vt1){
    vt2=f3(v2)
@@ -221,12 +251,19 @@ return v2,v3
 func f11(v0, v1 *libWH.Tree) (*libWH.Tree) {
 
 var v2 *libWH.Tree
+_ = v2
 var v3 *libWH.Tree
+_ = v3
 var v4 *libWH.Tree
+_ = v4
 var vt0 *libWH.Tree
+_ = vt0
 var vt1 *libWH.Tree
+_ = vt1
 var vt2 *libWH.Tree
+_ = vt2
 var vt3 *libWH.Tree
+_ = vt3
 
 vt0,vt1=f10(v0,v1)
 
@@ -236,7 +273,7 @@ vt0,vt1=f10(v0,v1)
 
 v3 = vt1
 
-vt2=f1(v3)
+vt2=f0(v3)
 
 if libWH.IsTrue(vt2){
    vt3=f11(v1,v3)
@@ -253,16 +290,21 @@ return v4
 func f12(v0 *libWH.Tree) (*libWH.Tree) {
 
 var v1 *libWH.Tree
+_ = v1
 var vt0 *libWH.Tree
+_ = vt0
 var vt1 *libWH.Tree
+_ = vt1
 var vt2 *libWH.Tree
+_ = vt2
 var vt3 *libWH.Tree
+_ = vt3
 
 vt0 = libWH.Cons(s0,s0)
 
 v1 = vt0
 
-vt1=f1(v0)
+vt1=f0(v0)
 
 for libWH.IsTrue(vt1){
    vt2=f4(v0)
@@ -281,18 +323,29 @@ return v1
 func f13(v0 *libWH.Tree) (*libWH.Tree) {
 
 var v1 *libWH.Tree
+_ = v1
 var vt0 *libWH.Tree
+_ = vt0
 var vt1 *libWH.Tree
+_ = vt1
 var vt2 *libWH.Tree
+_ = vt2
 var vt3 *libWH.Tree
+_ = vt3
 var vt4 *libWH.Tree
+_ = vt4
 var vt5 *libWH.Tree
+_ = vt5
 var vt6 *libWH.Tree
+_ = vt6
 var vt7 *libWH.Tree
+_ = vt7
 var vt8 *libWH.Tree
+_ = vt8
 var vt9 *libWH.Tree
+_ = vt9
 
-vt1=f0(v0)
+vt1=f1(v0)
 vt2=f2(v0)
 vt0 = libWH.Op_or(vt1,vt2)
 

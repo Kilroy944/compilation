@@ -140,7 +140,7 @@ public class SymbolTable {
 		result+=")\n";
 		
 		for(int i=0;i<fr.getNbInput();i++){
-			result+="\tfmt.Println(v"+i+")\n";
+			result+="\tfmt.Println(libWH.TreeToNumber(v"+i+"))\n";
 		}
 				
 		result+="}\n";
