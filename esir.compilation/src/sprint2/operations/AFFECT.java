@@ -29,6 +29,6 @@ public class AFFECT extends Operation{
 		String ind = "";
 		for (int i = 0; i < indent; i++)
 			ind += MainSprint2.Indent;
-		return ind+"*"+arg1+" = *"+arg2+"\n";
+		return ind+arg1+" = "+arg2+"\n";
 	}
 }

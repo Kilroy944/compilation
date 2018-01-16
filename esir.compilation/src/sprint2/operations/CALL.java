@@ -92,7 +92,7 @@ public class CALL extends Operation{
 			ind += MainSprint2.Indent;
 		
 		for(String v : listVarReturn){
-			result+="*"+v+",";
+			result+=v+",";
 		}
 		result=result.substring(0,result.length()-1);
 		

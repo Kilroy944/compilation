@@ -1,0 +1,77 @@
+Table des symboles : 
+nil=0
+a=[f0, nbIn : 1, nbOut : 1]
+Table des variables : 
+A=0
+Nombre de variables temporaires : 1
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<HD, vt0, v0, _>
+<AFFECT, v0, vt0, _>
+<WRITE, v0, _, _>
+
+testfunction=[f1, nbIn : 3, nbOut : 4]
+Table des variables : 
+A=0
+B=1
+C=2
+D=3
+Nombre de variables temporaires : 8
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<READ, v1, _, _>
+<READ, v2, _, _>
+<IF 
+	(cond)
+	(then)
+	<HD, vt0, v2, _>
+	<AFFECT, v0, vt0, _>
+	<HD, vt1, v0, _>
+	<cons, vt2, vt1, v1>
+	<AFFECT, v1, vt2, _>
+	(else)
+	<FOREACH 
+		(cond)
+		(do)
+		<FOR 
+			(cond)
+			<cons, vt3, v0, v1>
+			(do)
+			<IF 
+				(cond)
+				<AND 
+					(gauche)
+					<AND 
+						(gauche)
+						(droite)
+					, vt5, v0, v1>
+					(droite)
+					<OR 
+               	(gauche)
+               	(droite)
+               , vt6, v0, v1>
+				, vt4, vt5, vt6>
+				(then)
+				<WHILE 
+					(cond)
+					(do)
+					<nop, _, _, _>
+				, _, v0, _>
+				(else)
+			, _, vt4, _>
+		, _, vt3, _>
+	, _, v0, v2>
+, _, s0, _>
+<CALL 
+	(code param)
+	(var call)
+	v0
+	(var return)
+	vt7
+, _, f0, _>
+<AFFECT, v0, vt7, _>
+<WRITE, v0, _, _>
+<WRITE, v1, _, _>
+<WRITE, v2, _, _>
+<WRITE, v3, _, _>
+

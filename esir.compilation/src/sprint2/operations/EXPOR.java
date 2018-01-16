@@ -74,7 +74,7 @@ public class EXPOR extends Operation {
 		for(Code3Address c : listCodeRight){
 			result+=c.printCodeGo(fr,indent);
 		}
-		result+= ind+"*"+arg1+" = *libWH.Op_or("+arg2+","+arg3+")\n";
+		result+= ind+arg1+" = libWH.Op_or("+arg2+","+arg3+")\n";
 		return result;
 	}
 }
