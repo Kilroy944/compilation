@@ -583,15 +583,16 @@ public class GeneratorSymbolTable {
 			}
 			
 			//Verification nb input 
+			System.out.println(call.getListVarCall().size()+"a");
+			System.out.println(symbolTable.getFunction(c.getName()).getNbInput()+"b");
 
 			if( call.getListVarCall().size() != symbolTable.getFunction(c.getName()).getNbInput() ){
 				throw new SymbolTableError();
 			}
 
-			List<Code3Address> code = new ArrayList<>();
-			code.add(new Code3Address(call, "_", symbolTable.getFunction(c.getName()).getName(), "_"));			
+			listCodeExp.add(new Code3Address(call, "_", symbolTable.getFunction(c.getName()).getName(), "_"));			
 			
-			return new ReturnIterateExpr(call.getListVarReturn(), code);
+			return new ReturnIterateExpr(call.getListVarReturn(), listCodeExp);
 		}
 		else{
 			throw new SymbolTableError();

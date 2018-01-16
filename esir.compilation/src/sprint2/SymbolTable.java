@@ -99,7 +99,7 @@ public class SymbolTable {
 
 	public String printCodeGo(){
 
-		String result = "package f0\n";
+		String result = "package main\n";
 		
 		result+= "import (libWH \"./libGO\")\n";
 
@@ -108,8 +108,21 @@ public class SymbolTable {
 			result +="var s"+i+" *libWH.Tree\n";
 		}
 
+		boolean first = true;
+		
 		for (Entry<String, FunctionRepresentation> entry : listFunctions.entrySet())
 		{
+			if(first){
+				result+="\nfunc main(){\n\t"+entry.getValue().getName()+"(";
+				
+				for(int i=0;i<entry.getValue().getNbInput();i++){
+					result+="nil,";
+				}
+				result=result.substring(0,result.length()-1);
+				result+=")\n}\n";
+				
+				first=false;
+			}
 			result+=entry.getValue().printCodeGo();
 		}
 

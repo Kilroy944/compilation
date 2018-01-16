@@ -58,7 +58,7 @@ public class EXPNOT extends Operation{
 			result+=ind+c.printCodeGo(fr,indent);
 		}
 		
-		result+=ind+arg1+"=libWH.Op_not("+arg2+")\n";
+		result+=ind+"*"+arg1+" = *libWH.Op_not("+arg2+")\n";
 		return result;
 	}
 }

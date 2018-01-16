@@ -53,6 +53,10 @@ public class MainSprint2 {
 				System.out.println("Erreur dans les arguments : le fichier d'entrée doit avoir l'extension .wh");
 				return;
 			}
+			if (!args[1].endsWith(".go")) {
+				System.out.println("Erreur dans les arguments : le fichier de sortie doit avoir l'extension .go");
+				return;
+			}
 			try {
 				genTs.init(args[0], args[1]);
 				execGo(args[1]);
@@ -67,6 +71,7 @@ public class MainSprint2 {
 	}
 
 	private static void execGo(String prog) {
+		/*
 		System.out.println("###### COMPILATION GO #######");
 		Process p;
 		System.out.println("go build "+prog);
@@ -77,7 +82,7 @@ public class MainSprint2 {
 			e.printStackTrace();
 		}
 		
-/*
+
 		System.out.println("###### EXECUTION GO #######");
 		try {
 			p = Runtime.getRuntime().exec("./"+prog.split(".go")[0]);

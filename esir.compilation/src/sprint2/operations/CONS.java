@@ -14,7 +14,7 @@ public class CONS extends Operation{
 		String ind = "";
 		for (int i = 0; i < indent; i++)
 			ind += MainSprint2.Indent;
-		return ind+arg1+"= libWH.Cons("+arg2+","+arg3+")\n";
+		return ind+"*"+arg1+" = *libWH.Cons("+arg2+","+arg3+")\n";
 	}
 
 }

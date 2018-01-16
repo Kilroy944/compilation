@@ -1,3 +1,11 @@
+function a:
+read A
+%
+	A:=(hd A)
+%
+write A
+
+
 function testfunction:
 read A,B,C
 %
@@ -14,7 +22,8 @@ read A,B,C
 			fi
 		od
     od
-  fi
+  fi;
+  A := (a A)
 %
 write A,B,C,D
 
