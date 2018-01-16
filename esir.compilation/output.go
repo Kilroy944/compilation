@@ -1,13 +1,26 @@
 package main
 import (libWH "./libGO"
 	"fmt"
-	
+	"os"
+	 "strconv"
 )
 var s0 *libWH.Tree
 
 func main(){
-	v0:=f13(libWH.NumberToTree(5))
-	fmt.Println(libWH.TreeToNumber(v0))
+
+nbOut := 1
+if (len(os.Args)-1)>=nbOut {
+	i1, err1 := strconv.Atoi(os.Args[1])
+
+	if err1 == nil {
+		v0:=f13(libWH.NumberToTree(i1))
+		fmt.Println(libWH.TreeToNumber(v0))
+	}else{
+		fmt.Println("L'un des arguments n'est pas un nombre")
+	}
+}else{
+	fmt.Println("Nombre d'arguments incorrect") 
+}
 }
 
 func f0(v0 *libWH.Tree) (*libWH.Tree) {

@@ -42,7 +42,7 @@ public class MainSprint2 {
 			test(cmd, genTs);
 			return;
 		}
-
+		
 		if(args.length == 2){
 			if(!new File(args[0]).exists()){
 				System.out.println("Erreur: fichier d'entrée inexistant");
@@ -71,8 +71,8 @@ public class MainSprint2 {
 	}
 
 	private static void execGo(String prog) {
-		
-	/*	System.out.println("###### COMPILATION GO #######");
+		/*
+		System.out.println("###### COMPILATION GO #######");
 		Process p;
 		System.out.println("go build "+prog);
 		try {

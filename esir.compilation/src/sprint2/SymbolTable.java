@@ -104,53 +104,66 @@ public class SymbolTable {
 
 		String result = "package main\n";
 		
-		result+= "import (libWH \"./libGO\"\n\t\"fmt\"\n\t\"os\"\n)\n";
+		result+= "import (libWH \"./libGO\"\n\t\"fmt\"\n\t\"os\"\n\t \"strconv\"\n)\n";
 
 		//Allocation symbole
 		for(int i=0;i<listSymbol.size();i++){
 			result +="var s"+i+" *libWH.Tree\n";
 		}
 		
-
 		FunctionRepresentation fr = listFunctions.get(lastFunction);
 
-		result+="\nfunc main(){\n\t";
+		result+="\nfunc main(){\n";
+
+		result+="\nnbOut := "+fr.getNbInput()+"\n"
+				+"if (len(os.Args)-1)>=nbOut {\n";
 		
-		//Ajout var result
-		for(int i=0;i<fr.getNbInput();i++){
-			result+="v"+i+",";
+		//Ajout arg
+		for(int i=1;i<fr.getNbInput()+1;i++){
+			result+="\ti"+i+", err"+i+" := strconv.Atoi(os.Args["+i+"])\n";
 		}
+		result+="\n\tif ";
+		
+		for(int i=1;i<fr.getNbInput()+1;i++){
+			result+="err"+i+" == nil && ";
+		}
+		if(fr.getNbInput()!=0){
+			result=result.substring(0,result.length()-3);
+		}
+		result+="{\n\t\t";
 		
 		if(fr.getNbOutput()!=0){
+			//Ajout var result
+			for(int i=0;i<fr.getNbOutput();i++){
+				result+="v"+i+",";
+			}
 			result=result.substring(0,result.length()-1);
 			result+=":=";
 		}
 		
 		result+=fr.getName()+"(";
-		
 		//Ajout arg
-		for(int i=0;i<fr.getNbInput();i++){
-			result+="nil,";
+		for(int i=1;i<fr.getNbInput()+1;i++){
+			result+="libWH.NumberToTree(i"+i+"),";
 		}
-		
 		if(fr.getNbInput()!=0){
 			result=result.substring(0,result.length()-1);
 		}
-		
 		result+=")\n";
 		
-		for(int i=0;i<fr.getNbInput();i++){
-			result+="\tfmt.Println(libWH.TreeToNumber(v"+i+"))\n";
-		}
+		
 				
+		for(int i=0;i<fr.getNbOutput();i++){
+			result+="\t\tfmt.Println(libWH.TreeToNumber(v"+i+"))\n";
+		}
+		result+="\t}else{\n\t\tfmt.Println(\"L'un des arguments n'est pas un nombre\")\n\t}\n";
+		result+="}else{\n\tfmt.Println(\"Nombre d'arguments incorrect\") \n}\n";
 		result+="}\n";
 		
 		for (Entry<String, FunctionRepresentation> entry : listFunctions.entrySet())
 		{	
 			result+=entry.getValue().printCodeGo();
 		}
-		
-		
 
 		return result;
 	}
