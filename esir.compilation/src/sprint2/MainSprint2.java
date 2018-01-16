@@ -71,8 +71,8 @@ public class MainSprint2 {
 	}
 
 	private static void execGo(String prog) {
-		/*
-		System.out.println("###### COMPILATION GO #######");
+		
+	/*	System.out.println("###### COMPILATION GO #######");
 		Process p;
 		System.out.println("go build "+prog);
 		try {
@@ -87,7 +87,6 @@ public class MainSprint2 {
 		try {
 			p = Runtime.getRuntime().exec("./"+prog.split(".go")[0]);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		*/
