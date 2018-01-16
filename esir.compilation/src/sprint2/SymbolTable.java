@@ -16,7 +16,9 @@ public class SymbolTable {
 
 	private int counterFunction = 0;
 	private int counterSymbol = 0;
-
+	private String lastFunction = "";
+	
+	
 	public SymbolTable(){
 		listFunctions=new LinkedHashMap<>();
 		listSymbol=new HashMap<>();
@@ -28,6 +30,7 @@ public class SymbolTable {
 		if(!listFunctions.containsKey(name)){
 			listFunctions.put(name, new FunctionRepresentation("f"+counterFunction,nbInput,nbOutput));
 			counterFunction++;
+			lastFunction = name;
 		}
 		else{
 			throw new DoubleFunctionException(name);
@@ -108,24 +111,22 @@ public class SymbolTable {
 			result +="var s"+i+" *libWH.Tree\n";
 		}
 
-		boolean first = true;
+		FunctionRepresentation fr = listFunctions.get(lastFunction);
+
+		result+="\nfunc main(){\n\t"+fr.getName()+"(";
+			
+		for(int i=0;i<fr.getNbInput();i++){
+			result+="nil,";
+		}
+		result=result.substring(0,result.length()-1);
+		result+=")\n}\n";
 		
 		for (Entry<String, FunctionRepresentation> entry : listFunctions.entrySet())
-		{
-			if(first){
-				result+="\nfunc main(){\n\t"+entry.getValue().getName()+"(";
-				
-				for(int i=0;i<entry.getValue().getNbInput();i++){
-					result+="nil,";
-				}
-				result=result.substring(0,result.length()-1);
-				result+=")\n}\n";
-				
-				first=false;
-			}
+		{	
 			result+=entry.getValue().printCodeGo();
 		}
-
+		
+		
 
 		return result;
 	}

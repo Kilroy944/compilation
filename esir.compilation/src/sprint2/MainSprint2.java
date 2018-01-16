@@ -44,7 +44,7 @@ public class MainSprint2 {
 		}
 
 		if(args.length == 2){
-			if(!new File(args[1]).exists()){
+			if(!new File(args[0]).exists()){
 				System.out.println("Erreur: fichier d'entrée inexistant");
 				return;
 			}
