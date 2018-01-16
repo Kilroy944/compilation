@@ -110,16 +110,40 @@ public class SymbolTable {
 		for(int i=0;i<listSymbol.size();i++){
 			result +="var s"+i+" *libWH.Tree\n";
 		}
+		
 
 		FunctionRepresentation fr = listFunctions.get(lastFunction);
 
-		result+="\nfunc main(){\n\t fmt.Println("+fr.getName()+"(";
-			
+		result+="\nfunc main(){\n\t";
+		
+		//Ajout var result
+		for(int i=0;i<fr.getNbInput();i++){
+			result+="v"+i+",";
+		}
+		
+		if(fr.getNbOutput()!=0){
+			result=result.substring(0,result.length()-1);
+			result+=":=";
+		}
+		
+		result+=fr.getName()+"(";
+		
+		//Ajout arg
 		for(int i=0;i<fr.getNbInput();i++){
 			result+="nil,";
 		}
-		result=result.substring(0,result.length()-1);
-		result+="))\n}\n";
+		
+		if(fr.getNbInput()!=0){
+			result=result.substring(0,result.length()-1);
+		}
+		
+		result+=")\n";
+		
+		for(int i=0;i<fr.getNbInput();i++){
+			result+="\tfmt.Println(v"+i+")\n";
+		}
+				
+		result+="}\n";
 		
 		for (Entry<String, FunctionRepresentation> entry : listFunctions.entrySet())
 		{	
