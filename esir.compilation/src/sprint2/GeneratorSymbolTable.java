@@ -81,7 +81,7 @@ public class GeneratorSymbolTable {
 
 	public int init(String inputFile,String outFile ,boolean file_3a) throws DoubleFunctionException, IOException {
 		
-		File output = new File(outFile);
+		File output = new File(outFile+".go");
 		
 		symbolTable =new SymbolTable();
 		
@@ -583,9 +583,6 @@ public class GeneratorSymbolTable {
 			}
 			
 			//Verification nb input 
-			System.out.println(call.getListVarCall().size()+"a");
-			System.out.println(symbolTable.getFunction(c.getName()).getNbInput()+"b");
-
 			if( call.getListVarCall().size() != symbolTable.getFunction(c.getName()).getNbInput() ){
 				throw new SymbolTableError();
 			}

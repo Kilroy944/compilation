@@ -23,6 +23,8 @@ public class MainSprint2 {
 		
 		boolean file_3a = false;
 		boolean file_go = false;
+		
+		int nb_arg_needed = 2;
 
 
 		//Récupération arguments
@@ -52,12 +54,14 @@ public class MainSprint2 {
 		
 		if(cmd.hasOption("f3a")){
 			file_3a = true;
+			nb_arg_needed++;
 		}
 		if(cmd.hasOption("fGo")){
 			file_go = true;
+			nb_arg_needed++;
 		}
 		
-		if(args.length == 2){
+		if(args.length == nb_arg_needed){
 			if(!new File(args[0]).exists()){
 				System.out.println("Erreur: fichier d'entrée inexistant");
 				return;
@@ -68,7 +72,7 @@ public class MainSprint2 {
 				return;
 			}
 			try {
-				genTs.init(args[0], args[1]+".go", file_3a);
+				genTs.init(args[0], args[1], file_3a);
 				compileGo(args[1], file_go);
 			} catch (DoubleFunctionException e) {
 				e.printStackTrace();
@@ -100,17 +104,7 @@ public class MainSprint2 {
 		if(!file_go){
 			new File(prog+".go").delete();
 		}
-		/*
 		
-		
-
-		System.out.println("###### EXECUTION GO #######");
-		try {
-			p = Runtime.getRuntime().exec("./"+prog.split(".go")[0]);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		*/
 	}
 
 	private static int test(CommandLine cmd, GeneratorSymbolTable genTs) {
