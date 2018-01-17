@@ -20,10 +20,17 @@ public class MainSprint2 {
 
 	/*args[0] = fichier d'entrée args[1] = fichier de sortie*/
 	public static void main(String args[]) throws IOException{
+		
+		boolean file_3a = false;
+		boolean file_go = false;
+
 
 		//Récupération arguments
 		Options options = new Options();
 		options.addOption("test", false, "effectuer les tests");
+		options.addOption("f3a", false, "génére fichier 3@");
+		options.addOption("fGo", false, "génére fichier Go");
+
 
 		CommandLineParser parser = new BasicParser();
 		CommandLine cmd;
@@ -43,6 +50,13 @@ public class MainSprint2 {
 			return;
 		}
 		
+		if(cmd.hasOption("f3a")){
+			file_3a = true;
+		}
+		if(cmd.hasOption("fGo")){
+			file_go = true;
+		}
+		
 		if(args.length == 2){
 			if(!new File(args[0]).exists()){
 				System.out.println("Erreur: fichier d'entrée inexistant");
@@ -53,13 +67,9 @@ public class MainSprint2 {
 				System.out.println("Erreur dans les arguments : le fichier d'entrée doit avoir l'extension .wh");
 				return;
 			}
-			if (!args[1].endsWith(".go")) {
-				System.out.println("Erreur dans les arguments : le fichier de sortie doit avoir l'extension .go");
-				return;
-			}
 			try {
-				genTs.init(args[0], args[1]);
-				execGo(args[1]);
+				genTs.init(args[0], args[1]+".go", file_3a);
+				compileGo(args[1], file_go);
 			} catch (DoubleFunctionException e) {
 				e.printStackTrace();
 			}
@@ -70,17 +80,28 @@ public class MainSprint2 {
 		}
 	}
 
-	private static void execGo(String prog) {
-		/*
+	private static void compileGo(String prog, boolean file_go) {
+		
 		System.out.println("###### COMPILATION GO #######");
 		Process p;
-		System.out.println("go build "+prog);
 		try {
-			p = Runtime.getRuntime().exec("go build "+prog);
+			p = Runtime.getRuntime().exec("go build "+prog+".go");
+			try {
+				p.waitFor();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		if(!file_go){
+			new File(prog+".go").delete();
+		}
+		/*
+		
 		
 
 		System.out.println("###### EXECUTION GO #######");
@@ -125,10 +146,10 @@ public class MainSprint2 {
 		for (File file : fichier_a_test) {
 			System.out.println("Test code 3@: "+file.getName());
 
-			String path_fichier_sortie = "./"+rep_code_3A.getPath()+"/"+(file.getName().split(".wh")[0])+".txt";
+			String path_fichier_sortie = "./"+rep_code_3A.getPath()+"/"+(file.getName().split(".wh")[0]);
 
 			try{
-				genTs.init(file.getPath(), path_fichier_sortie);
+				genTs.init(file.getPath(), path_fichier_sortie, true);
 			}catch(IOException ioe){
 				ioe.printStackTrace();
 			}

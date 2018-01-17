@@ -115,14 +115,14 @@ public class SymbolTable {
 
 		result+="\nfunc main(){\n";
 
-		result+="\nnbOut := "+fr.getNbInput()+"\n"
+		result+="\n\tnbOut := "+fr.getNbInput()+"\n\t"
 				+"if (len(os.Args)-1)>=nbOut {\n";
 		
 		//Ajout arg
 		for(int i=1;i<fr.getNbInput()+1;i++){
-			result+="\ti"+i+", err"+i+" := strconv.Atoi(os.Args["+i+"])\n";
+			result+="\t\ti"+i+", err"+i+" := strconv.Atoi(os.Args["+i+"])\n";
 		}
-		result+="\n\tif ";
+		result+="\n\t\tif ";
 		
 		for(int i=1;i<fr.getNbInput()+1;i++){
 			result+="err"+i+" == nil && ";
@@ -130,7 +130,7 @@ public class SymbolTable {
 		if(fr.getNbInput()!=0){
 			result=result.substring(0,result.length()-3);
 		}
-		result+="{\n\t\t";
+		result+="{\n\t\t\t";
 		
 		if(fr.getNbOutput()!=0){
 			//Ajout var result
@@ -154,10 +154,10 @@ public class SymbolTable {
 		
 				
 		for(int i=0;i<fr.getNbOutput();i++){
-			result+="\t\tfmt.Println(libWH.TreeToNumber(v"+i+"))\n";
+			result+="\t\t\tfmt.Println(libWH.TreeToNumber(v"+i+"))\n";
 		}
-		result+="\t}else{\n\t\tfmt.Println(\"L'un des arguments n'est pas un nombre\")\n\t}\n";
-		result+="}else{\n\tfmt.Println(\"Nombre d'arguments incorrect\") \n}\n";
+		result+="\t\t}else{\n\t\t\tfmt.Println(\"L'un des arguments n'est pas un nombre\")\n\t\t}\n";
+		result+="\t}else{\n\t\tfmt.Println(\"Nombre d'arguments incorrect\") \n\t}\n";
 		result+="}\n";
 		
 		for (Entry<String, FunctionRepresentation> entry : listFunctions.entrySet())
