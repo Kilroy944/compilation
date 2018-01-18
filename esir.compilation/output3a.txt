@@ -1,6 +1,5 @@
 Table des symboles : 
 nil=0
-fake=1
 a=[f0, nbIn : 1, nbOut : 1]
 Table des variables : 
 A=0
@@ -16,7 +15,8 @@ Table des variables :
 A=0
 B=1
 C=2
-D=3
+D=4
+X=3
 Nombre de variables temporaires : 10
 Liste de codes 3@ : 
 <READ, v0, _, _>
@@ -25,13 +25,16 @@ Liste de codes 3@ :
 <IF 
 	(cond)
 	(then)
-	<HD, vt0, v2, _>
-	<AFFECT, v0, vt0, _>
-	<cons, vt1, v2, s0>
-	<cons, vt2, v1, vt1>
-	<cons, vt3, v0, vt2>
-	<cons, vt4, s1, vt3>
-	<AFFECT, v1, vt4, _>
+	<AFFECT, vt0, C, _>
+	<AFFECT, vt1, B, _>
+	<AFFECT, v0, v2, _>
+	<AFFECT, v1, v1, _>
+	<AFFECT, vt2, C, _>
+	<AFFECT, v0, v2, _>
+	<AFFECT, vt3, A, _>
+	<AFFECT, vt4, X, _>
+	<AFFECT, v1, v0, _>
+	<AFFECT, v2, v3, _>
 	(else)
 	<FOREACH 
 		(cond)
@@ -76,5 +79,5 @@ Liste de codes 3@ :
 <WRITE, v0, _, _>
 <WRITE, v1, _, _>
 <WRITE, v2, _, _>
-<WRITE, v3, _, _>
+<WRITE, v4, _, _>
 

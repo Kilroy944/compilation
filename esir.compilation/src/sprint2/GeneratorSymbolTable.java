@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -242,9 +243,20 @@ public class GeneratorSymbolTable {
 
 		List<Code3Address> listAffectation =new ArrayList<>();
 
+		HashMap<String, String> oldVariableValue = new HashMap<>();
 		
 		for (Expr e : exprs) {
+			if(e instanceof Variable && !oldVariableValue.containsKey(((Variable) e).getValue())){
+				String idVt = fr.getNewTempVar();
+				oldVariableValue.put(fr.addVar(((Variable) e).getValue()), idVt);
+				
+				Code3Address codeOldValue = new Code3Address(new AFFECT(), idVt,fr.addVar(((Variable) e).getValue()), "_");
+				listAffectation.add(codeOldValue);
+			}
+		}
 
+		for (Expr e : exprs) {
+			
 			ReturnIterateExpr rtExp = iterateElement(e, fr);
 			for (int i = 0; i < rtExp.getNbAddr(); i++) {
 				String v;
@@ -258,8 +270,16 @@ public class GeneratorSymbolTable {
 				listAffectation.addAll(rtExp.getListCode());
 
 				String idV = fr.addVar(v);
-				Code3Address codeIf = new Code3Address(new AFFECT(), idV, rtExp.getListAddr().get(i), "_");
-				listAffectation.add(codeIf);
+				Code3Address codeAff;
+				
+				if(oldVariableValue.containsKey(rtExp.getListAddr().get(i))){
+					codeAff = new Code3Address(new AFFECT(), idV, oldVariableValue.get(rtExp.getListAddr().get(i)), "_");
+				}
+				else{
+					codeAff = new Code3Address(new AFFECT(), idV, rtExp.getListAddr().get(i), "_");
+				}
+				
+				listAffectation.add(codeAff);
 			}
 
 		}

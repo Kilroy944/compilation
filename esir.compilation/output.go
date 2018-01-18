@@ -5,7 +5,6 @@ import (libWH "./libGO"
 	 "strconv"
 )
 var s0 *libWH.Tree
-var s1 *libWH.Tree
 
 func main(){
 
@@ -46,6 +45,8 @@ func f1(v0, v1, v2 *libWH.Tree) (*libWH.Tree, *libWH.Tree, *libWH.Tree, *libWH.T
 
 var v3 *libWH.Tree
 _ = v3
+var v4 *libWH.Tree
+_ = v4
 var vt0 *libWH.Tree
 _ = vt0
 var vt1 *libWH.Tree
@@ -69,13 +70,16 @@ _ = vt9
 
 
 if libWH.IsTrue(s0){
-   vt0 = libWH.Hd(v2)
-   v0 = vt0
-   vt1 = libWH.Cons(v2,s0)
-   vt2 = libWH.Cons(v1,vt1)
-   vt3 = libWH.Cons(v0,vt2)
-   vt4 = libWH.Cons(s1,vt3)
-   v1 = vt4
+   vt0 = C
+   vt1 = B
+   v0 = v2
+   v1 = v1
+   vt2 = C
+   v0 = v2
+   vt3 = A
+   vt4 = X
+   v1 = v0
+   v2 = v3
 
 }else{
    for _,v2 := range libWH.TreeToRange(v0){
@@ -100,5 +104,5 @@ vt9=f0(v0)
 v0 = vt9
 
 
-return v0,v1,v2,v3 
+return v0,v1,v2,v4 
 }
