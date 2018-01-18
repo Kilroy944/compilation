@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
@@ -24,11 +25,9 @@ public class MainSprint2 {
 		boolean file_3a = false;
 		boolean file_go = false;
 
-		int nb_arg_needed = 2;
-
-
 		//Récupération arguments
 		Options options = new Options();
+		options.addOption("o", true, "nom du fichier de sortie");
 		options.addOption("test", false, "effectuer les tests");
 		options.addOption("f3a", false, "génére fichier 3@");
 		options.addOption("fGo", false, "génére fichier Go");
@@ -54,14 +53,12 @@ public class MainSprint2 {
 
 		if(cmd.hasOption("f3a")){
 			file_3a = true;
-			nb_arg_needed++;
 		}
 		if(cmd.hasOption("fGo")){
 			file_go = true;
-			nb_arg_needed++;
 		}
 
-		if(args.length == nb_arg_needed){
+		if(args.length >= 1){
 			if(!new File(args[0]).exists()){
 				System.out.println("Erreur: fichier d'entrée inexistant");
 				return;
@@ -72,10 +69,13 @@ public class MainSprint2 {
 				return;
 			}
 			try {
-				genTs.init(args[0], args[1], file_3a);
-				compileGo(args[1], file_go);
-			} catch (DoubleFunctionException e) {
-				e.printStackTrace();
+				
+				String output = cmd.hasOption("o") ? cmd.getOptionValue("o") : args[0].split(".wh")[0];
+				
+				genTs.init(args[0], output, file_3a);
+				compileGo(output, file_go);
+			}  catch (SymbolTableError e) {
+				System.out.println("Une erreur est survenue : "+e.getMessage()+"\n");
 			}
 		}
 		else{
@@ -85,46 +85,36 @@ public class MainSprint2 {
 	}
 
 	private static void compileGo(String prog, boolean file_go) {
-
-		System.out.println("###### COMPILATION GO #######");
-		Process p;
-		try {
-			p = Runtime.getRuntime().exec("go build "+prog+".go");
-
-
-			// Consommation de la sortie standard de l'application externe dans un Thread separe
-			new Thread() {
-				public void run() {
-					try {
-						BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
-						String line = "";
-						try {
-							while((line = reader.readLine()) != null) {
-								System.out.println(line);
-							}
-						} finally {
-							reader.close();
-						}
-					} catch(IOException ioe) {
-						ioe.printStackTrace();
-					}
-				}
-			}.start();
-
-
-			p.waitFor();
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		System.out.println("###### BUILD GO #######");
+		 
+		try { 
+			Runtime r = Runtime.getRuntime(); 
+			Process p = r.exec("go build "+prog+".go"); 
+ 
+			String s =null; 
+ 
+			BufferedReader reader = new BufferedReader(new InputStreamReader(p.getErrorStream())); 
+ 
+			StringBuffer buffer = new StringBuffer();
+ 
+			while ((s = reader.readLine()) != null) { 
+				 buffer.append(s);
+			} 
+ 
+			String result = buffer.toString();
+			
+			System.out.println(result);
+ 
+		}catch(Exception e) { 
+				System.out.println("Erreur d'execution de la compilation"+ e.getMessage()); 
 		}
+
 
 		if(!file_go){
 			new File(prog+".go").delete();
 		}
+		
+		System.out.println("###### BUILD END #######");
 
 	}
 
@@ -167,6 +157,8 @@ public class MainSprint2 {
 				genTs.init(file.getPath(), path_fichier_sortie, true);
 			}catch(IOException ioe){
 				ioe.printStackTrace();
+			} catch (SymbolTableError e) {
+				System.out.println("Une erreur est survenue : "+e.getMessage()+"\n");
 			}
 
 		}

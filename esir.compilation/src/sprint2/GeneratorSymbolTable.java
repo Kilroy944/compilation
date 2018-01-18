@@ -2,13 +2,21 @@ package sprint2;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.util.CancelIndicator;
@@ -79,7 +87,7 @@ public class GeneratorSymbolTable {
 		return new WhdslStandaloneSetupGenerated().createInjectorAndDoEMFRegistration().getInstance(GeneratorSymbolTable.class);
 	}
 
-	public int init(String inputFile,String outFile ,boolean file_3a) throws DoubleFunctionException, IOException {
+	public int init(String inputFile,String outFile ,boolean file_3a) throws SymbolTableError, IOException {
 		
 		File output = new File(outFile+".go");
 		
@@ -122,7 +130,7 @@ public class GeneratorSymbolTable {
 	 * @param program
 	 * @throws DoubleFunctionException 
 	 */
-	private void registerFunctions(Program program) throws DoubleFunctionException {
+	private void registerFunctions(Program program) throws SymbolTableError {
 		
 		for (Function f : program.getFunctions()) {
 			
@@ -131,15 +139,15 @@ public class GeneratorSymbolTable {
 		}
 	}
 	
-	private void iterateElement(Program p){
+	private void iterateElement(Program p) throws SymbolTableError{
 		for (Function f : p.getFunctions()) {
 			iterateElement(f,symbolTable.getFunction(f.getName()));
 		}
 	}
-	private void iterateElement(Function f, FunctionRepresentation fr){
+	private void iterateElement(Function f, FunctionRepresentation fr) throws SymbolTableError{
 		iterateElement(f.getDefinition(),fr);
 	}
-	private void iterateElement(Definition c, FunctionRepresentation fr){
+	private void iterateElement(Definition c, FunctionRepresentation fr) throws SymbolTableError{
 		iterateElement(c.getInput(),fr);
 		ReturnIterateCmd rt = iterateElement(c.getCommands(), fr);
 		
@@ -172,7 +180,7 @@ public class GeneratorSymbolTable {
 		}
 	}
 	
-	private ReturnIterateCmd iterateElement(Commands c, FunctionRepresentation fr) {
+	private ReturnIterateCmd iterateElement(Commands c, FunctionRepresentation fr) throws SymbolTableError {
 		
 		ArrayList<Code3Address> fusion = new ArrayList<>();
 		
@@ -187,7 +195,7 @@ public class GeneratorSymbolTable {
 		return new ReturnIterateCmd(fusion);
 	}
 
-	private ReturnIterateCmd iterateElement(Command c, FunctionRepresentation fr) {
+	private ReturnIterateCmd iterateElement(Command c, FunctionRepresentation fr) throws SymbolTableError {
 		
 		EObject o = c.getCmd();
 		
@@ -229,15 +237,26 @@ public class GeneratorSymbolTable {
 		return new ReturnIterateCmd(la);
 	}
 	
-	private ReturnIterateCmd iterateElement(Affect a, FunctionRepresentation fr) {
+	private ReturnIterateCmd iterateElement(Affect a, FunctionRepresentation fr) throws SymbolTableError {
 		EList<String> vars =a.getVars().getList();
 		EList<Expr> exprs = a.getExprs().getList();
 
 		List<Code3Address> listAffectation =new ArrayList<>();
 
+		HashMap<String, String> oldVariableValue = new HashMap<>();
 		
 		for (Expr e : exprs) {
+			if(e instanceof Variable && !oldVariableValue.containsKey(((Variable) e).getValue())){
+				String idVt = fr.getNewTempVar();
+				oldVariableValue.put(fr.addVar(((Variable) e).getValue()), idVt);
+				
+				Code3Address codeOldValue = new Code3Address(new AFFECT(), idVt,fr.addVar(((Variable) e).getValue()), "_");
+				listAffectation.add(codeOldValue);
+			}
+		}
 
+		for (Expr e : exprs) {
+			
 			ReturnIterateExpr rtExp = iterateElement(e, fr);
 			for (int i = 0; i < rtExp.getNbAddr(); i++) {
 				String v;
@@ -245,26 +264,34 @@ public class GeneratorSymbolTable {
 					v = vars.get(0);
 					vars.remove(0);
 				} catch (IndexOutOfBoundsException ie) {
-					throw new VariablesCountException(0, 0);
+					throw new SymbolTableError("Le nombre de variable à gauche et à droite de l'affectation ne correspondent pas");
 				}
 
 				listAffectation.addAll(rtExp.getListCode());
 
 				String idV = fr.addVar(v);
-				Code3Address codeIf = new Code3Address(new AFFECT(), idV, rtExp.getListAddr().get(i), "_");
-				listAffectation.add(codeIf);
+				Code3Address codeAff;
+				
+				if(oldVariableValue.containsKey(rtExp.getListAddr().get(i))){
+					codeAff = new Code3Address(new AFFECT(), idV, oldVariableValue.get(rtExp.getListAddr().get(i)), "_");
+				}
+				else{
+					codeAff = new Code3Address(new AFFECT(), idV, rtExp.getListAddr().get(i), "_");
+				}
+				
+				listAffectation.add(codeAff);
 			}
 
 		}
 		
 		if (vars.size() != 0) {
-			throw new VariablesCountException(0, 0);
+			throw new SymbolTableError("Le nombre de variable à gauche et à droite de l'affectation ne correspondent pas");
 		}
 
 		return new ReturnIterateCmd(listAffectation);
 	}
 
-	private ReturnIterateExpr iterateElement(Expr e, FunctionRepresentation fr) {
+	private ReturnIterateExpr iterateElement(Expr e, FunctionRepresentation fr) throws SymbolTableError {
 		 
 		if (e instanceof Nill) {
 			return iterateElement((Nill) e, fr);
@@ -313,7 +340,7 @@ public class GeneratorSymbolTable {
 		return new ReturnIterateExpr(new ArrayList<>(), la);
 	}
 	
-	private ReturnIterateExpr iterateElement(esir.compilation.whdsl.List l, FunctionRepresentation fr) {			
+	private ReturnIterateExpr iterateElement(esir.compilation.whdsl.List l, FunctionRepresentation fr) throws SymbolTableError {			
 			
 			EList<Expr> listExp = l.getExprs().getList();
 			List<Code3Address> code = new ArrayList<>();
@@ -328,7 +355,7 @@ public class GeneratorSymbolTable {
 				listTempAddr.addAll(rtExp1.getListAddr());
 			}
 			
-			if (listTempAddr.size() < 2) throw new VariablesCountException(2, listTempAddr.size());
+			if (listTempAddr.size() < 2) throw new SymbolTableError("Deux paramètres sont attendu pour une list, nombre de paramètres données :"+listTempAddr.size());
 
 			boolean first = true;
 			String res="",previousRes="";
@@ -355,7 +382,12 @@ public class GeneratorSymbolTable {
 	}
 
 	
-	private ReturnIterateExpr iterateElement(Symbol s, FunctionRepresentation fr) {
+	private ReturnIterateExpr iterateElement(Symbol s, FunctionRepresentation fr) throws SymbolTableError {
+		
+		if(symbolTable.hasFunction(s.getValue())){
+			throw new SymbolTableError("La fonction "+s.getValue()+" ne peut être appelée sans paramètre");
+		}
+		
 		
 		String idS = symbolTable.addSymbol(s.getValue());
 		List<String> listAddr = new ArrayList<>();
@@ -366,7 +398,7 @@ public class GeneratorSymbolTable {
 
 	
 
-	private ReturnIterateExpr iterateElement(ExprAnd e, FunctionRepresentation fr) {
+	private ReturnIterateExpr iterateElement(ExprAnd e, FunctionRepresentation fr) throws SymbolTableError {
 		
 		EXPAND expAnd = new EXPAND();
 		
@@ -374,9 +406,9 @@ public class GeneratorSymbolTable {
 		
 		ReturnIterateExpr rtGauche = iterateElement(e.getLeft(),fr);
 		ReturnIterateExpr rtDroite = iterateElement(e.getRight(),fr);
-
-		if (rtDroite.getNbAddr() != 1) throw new VariablesCountException(1, rtDroite.getNbAddr());
-		if (rtGauche.getNbAddr() != 1) throw new VariablesCountException(1, rtGauche.getNbAddr());
+		
+		if (rtDroite.getNbAddr() != 1) throw new SymbolTableError("Un seul paramètre est attendu à droite pour l'expression and, nombre de paramètres données :"+ rtDroite.getNbAddr());
+		if (rtGauche.getNbAddr() != 1) throw new SymbolTableError("Un seul paramètre est attendu à gauche pour l'expression and, nombre de paramètres données :"+ rtGauche.getNbAddr());
 
 		
 		expAnd.getListCodeLeft().addAll(rtGauche.getListCode());
@@ -393,7 +425,7 @@ public class GeneratorSymbolTable {
 		
 	}
 	
-	private ReturnIterateExpr iterateElement(ExprOr e, FunctionRepresentation fr) {
+	private ReturnIterateExpr iterateElement(ExprOr e, FunctionRepresentation fr) throws SymbolTableError {
 		
 		EXPOR expOr = new EXPOR();
 		
@@ -402,8 +434,8 @@ public class GeneratorSymbolTable {
 		ReturnIterateExpr rtGauche = iterateElement(e.getLeft(),fr);
 		ReturnIterateExpr rtDroite = iterateElement(e.getRight(),fr);
 
-		if (rtDroite.getNbAddr() != 1) throw new VariablesCountException(1, rtDroite.getNbAddr());
-		if (rtGauche.getNbAddr() != 1) throw new VariablesCountException(1, rtGauche.getNbAddr());
+		if (rtDroite.getNbAddr() != 1) throw new SymbolTableError("Un seul paramètre est attendu à droite pour l'expression or, nombre de paramètres données :"+ rtDroite.getNbAddr());
+		if (rtGauche.getNbAddr() != 1) throw new SymbolTableError("Un seul paramètre est attendu à gauche pour l'expression or, nombre de paramètres données :"+ rtGauche.getNbAddr());
 
 		
 		expOr.getListCodeLeft().addAll(rtGauche.getListCode());
@@ -418,14 +450,14 @@ public class GeneratorSymbolTable {
 		return new ReturnIterateExpr(listAddr, listCode);
 	}
 	
-	private ReturnIterateExpr iterateElement(ExprNot e, FunctionRepresentation fr) {
+	private ReturnIterateExpr iterateElement(ExprNot e, FunctionRepresentation fr) throws SymbolTableError {
 		EXPNOT expNot = new EXPNOT();
 		
 		String idVt = fr.getNewTempVar();
 		
 		ReturnIterateExpr rtExp = iterateElement(e.getExpr(),fr);
 
-		if (rtExp.getNbAddr() != 1) throw new VariablesCountException(1, rtExp.getNbAddr());
+		if (rtExp.getNbAddr() != 1) throw new SymbolTableError("Un seul paramètre est attendu pour l'expression not, nombre de paramètres données :"+ rtExp.getNbAddr());
 		
 		expNot.getListCode().addAll(rtExp.getListCode());
 		
@@ -439,7 +471,7 @@ public class GeneratorSymbolTable {
 		return new ReturnIterateExpr(listAddr, listCode);	
 	}
 	
-	private ReturnIterateExpr iterateElement(ExprEq e, FunctionRepresentation fr) {
+	private ReturnIterateExpr iterateElement(ExprEq e, FunctionRepresentation fr) throws SymbolTableError {
 
 		EXPEQUAL expEqual = new EXPEQUAL();
 		
@@ -448,8 +480,8 @@ public class GeneratorSymbolTable {
 		ReturnIterateExpr rtGauche = iterateElement(e.getLeft(),fr);
 		ReturnIterateExpr rtDroite = iterateElement(e.getRight(),fr);
 
-		if (rtDroite.getNbAddr() != 1) throw new VariablesCountException(1, rtDroite.getNbAddr());
-		if (rtGauche.getNbAddr() != 1) throw new VariablesCountException(1, rtGauche.getNbAddr());
+		if (rtDroite.getNbAddr() != 1) throw new SymbolTableError("Un seul paramètre est attendu à droite pour l'expression equal, nombre de paramètres données :"+ rtDroite.getNbAddr());
+		if (rtGauche.getNbAddr() != 1) throw new SymbolTableError("Un seul paramètre est attendu à gauche pour l'expression equal, nombre de paramètres données :"+ rtGauche.getNbAddr());
 
 		
 		expEqual.getListCodeLeft().addAll(rtGauche.getListCode());
@@ -464,7 +496,7 @@ public class GeneratorSymbolTable {
 		return new ReturnIterateExpr(listAddr, listCode);	
 	}
 
-	private ReturnIterateExpr iterateElement(EnclosedExpr e, FunctionRepresentation fr) {
+	private ReturnIterateExpr iterateElement(EnclosedExpr e, FunctionRepresentation fr) throws SymbolTableError {
 
 
 		return iterateElement(e.getExpr(), fr);
@@ -486,11 +518,11 @@ public class GeneratorSymbolTable {
 		return new ReturnIterateExpr(addrs, new ArrayList<>());
 	}
 
-	private ReturnIterateExpr iterateElement(Hd h, FunctionRepresentation fr) {
+	private ReturnIterateExpr iterateElement(Hd h, FunctionRepresentation fr) throws SymbolTableError {
 		ReturnIterateExpr arg = iterateElement(h.getExpr(), fr);
 		
-		if (arg.getNbAddr() != 1) throw new VariablesCountException(1, arg.getNbAddr());
-
+		if (arg.getNbAddr() != 1) throw new SymbolTableError("Un seul paramètre est attendu pour le hd, nombre de paramètres données :"+ arg.getNbAddr());
+		
 		String res = fr.getNewTempVar();
 
 		List<Code3Address> code = new ArrayList<>();
@@ -503,11 +535,11 @@ public class GeneratorSymbolTable {
 	}
 	
 	
-	private ReturnIterateExpr iterateElement(Tl h, FunctionRepresentation fr) {
+	private ReturnIterateExpr iterateElement(Tl h, FunctionRepresentation fr) throws SymbolTableError {
 		ReturnIterateExpr arg = iterateElement(h.getExpr(), fr);
 
-		if (arg.getNbAddr() != 1) throw new VariablesCountException(1, arg.getNbAddr());
-
+		if (arg.getNbAddr() != 1) throw new SymbolTableError("Un seul paramètre est attendu pour le tl, nombre de paramètres données :"+ arg.getNbAddr());
+		
 		String res = fr.getNewTempVar();
 
 		List<Code3Address> code = new ArrayList<>();
@@ -519,7 +551,7 @@ public class GeneratorSymbolTable {
 		return new ReturnIterateExpr(addrs, code);
 	}
 	
-	private ReturnIterateExpr iterateElement(Cons c, FunctionRepresentation fr) {
+	private ReturnIterateExpr iterateElement(Cons c, FunctionRepresentation fr) throws SymbolTableError {
 	
 		EList<Expr> listExp = c.getExprs().getList();
 		List<Code3Address> code = new ArrayList<>();
@@ -534,8 +566,8 @@ public class GeneratorSymbolTable {
 			listTempAddr.addAll(rtExp1.getListAddr());
 		}
 		
-		if (listTempAddr.size() < 2) throw new VariablesCountException(2, listTempAddr.size());
-
+		if (listTempAddr.size() < 2) throw new SymbolTableError("Au moins deux paramètres sont attendu pour le cons, nombre de paramètres données :"+ listTempAddr.size());
+		
 		boolean first = true;
 		String res="",previousRes="";
 		
@@ -561,13 +593,12 @@ public class GeneratorSymbolTable {
 		return new ReturnIterateExpr(addrs, code);
 	}
 	
-	private ReturnIterateExpr iterateElement(Call c, FunctionRepresentation fr){
+	private ReturnIterateExpr iterateElement(Call c, FunctionRepresentation fr) throws SymbolTableError{
 		
-		
+		EList<Expr> le = c.getParams().getList();
+
 		if(symbolTable.hasFunction(c.getName())){
-			
-			
-			EList<Expr> le = c.getParams().getList();
+				
 			ArrayList<Code3Address> listCodeExp = new ArrayList<>();
 			CALL call = new CALL();
 			
@@ -584,7 +615,7 @@ public class GeneratorSymbolTable {
 			
 			//Verification nb input 
 			if( call.getListVarCall().size() != symbolTable.getFunction(c.getName()).getNbInput() ){
-				throw new SymbolTableError();
+				throw new SymbolTableError("Le nombre d'arguments données à la fonction "+c.getName()+" est incorrect");
 			}
 
 			listCodeExp.add(new Code3Address(call, "_", symbolTable.getFunction(c.getName()).getName(), "_"));			
@@ -592,11 +623,52 @@ public class GeneratorSymbolTable {
 			return new ReturnIterateExpr(call.getListVarReturn(), listCodeExp);
 		}
 		else{
-			throw new SymbolTableError();
+			//Symbol simple avec paramètre
+			//throw new SymbolTableError("La fonction "+c.getName()+" n'existe pas");
+			EList<Expr> listExp = c.getParams().getList();
+			List<Code3Address> code = new ArrayList<>();
+			List<String> addrs = new ArrayList<>();
+
+			List<String> listTempAddr = new ArrayList<>();
+			
+			
+			for(Expr e : listExp){
+				ReturnIterateExpr rtExp1 = iterateElement(e,fr);
+				code.addAll(rtExp1.getListCode());
+				listTempAddr.addAll(rtExp1.getListAddr());
+			}
+			
+			if (listTempAddr.size() < 2) throw new SymbolTableError("Deux paramètres sont attendu pour une list, nombre de paramètres données :"+listTempAddr.size());
+
+			boolean first = true;
+			String res="",previousRes="";
+			
+			while(listTempAddr.size() > 0)
+			{
+				res = fr.getNewTempVar();
+				
+				if(first){
+					code.add(new Code3Address(new CONS(), res,listTempAddr.get(listTempAddr.size()-1), symbolTable.getSymbol("nil") ));
+					listTempAddr.remove(listTempAddr.size()-1);
+					first=false;
+				}
+				else{
+					code.add(new Code3Address(new CONS(), res,listTempAddr.get(listTempAddr.size()-1), previousRes));
+					listTempAddr.remove(listTempAddr.size()-1);
+				}
+				previousRes = res;
+
+			}
+			res = fr.getNewTempVar();
+		
+			code.add(new Code3Address(new CONS(), res,symbolTable.addSymbol(c.getName()) , previousRes));
+			
+			addrs.add(res);
+			return new ReturnIterateExpr(addrs, code);
 		}
 	}
 
-	private ReturnIterateCmd iterateElement(For f, FunctionRepresentation fr) {
+	private ReturnIterateCmd iterateElement(For f, FunctionRepresentation fr) throws SymbolTableError {
 		
 		FOR fo = new FOR();
 		
@@ -604,7 +676,7 @@ public class GeneratorSymbolTable {
 		
 		ReturnIterateExpr rtCond = iterateElement(cond,fr);
 
-		if (rtCond.getNbAddr() != 1) throw new VariablesCountException(1, rtCond.getNbAddr());
+		if (rtCond.getNbAddr() != 1) throw new SymbolTableError("Un seul paramètre est attendu pour le for, nombre de paramètres données :"+ rtCond.getNbAddr());
 		
 		//Do
 		
@@ -622,7 +694,7 @@ public class GeneratorSymbolTable {
 	
 	}
 	
-	private ReturnIterateCmd iterateElement(While w, FunctionRepresentation fr) {
+	private ReturnIterateCmd iterateElement(While w, FunctionRepresentation fr) throws SymbolTableError {
 		
 		WHILE wh = new WHILE();
 		
@@ -630,8 +702,8 @@ public class GeneratorSymbolTable {
 		
 		ReturnIterateExpr rtCond = iterateElement(cond,fr);
 
-		if (rtCond.getNbAddr() != 1) throw new VariablesCountException(1, rtCond.getNbAddr());
-
+		if (rtCond.getNbAddr() != 1) throw new SymbolTableError("Un seul paramètre est attendu pour le while, nombre de paramètres données :"+ rtCond.getNbAddr());
+		
 		//Do
 		
 		Commands do_ = w.getCommands();
@@ -648,7 +720,7 @@ public class GeneratorSymbolTable {
 		
 	}	
 	
-	private ReturnIterateCmd iterateElement(ForEach fe, FunctionRepresentation fr) {
+	private ReturnIterateCmd iterateElement(ForEach fe, FunctionRepresentation fr) throws SymbolTableError {
 		
 		FOREACH fo = new FOREACH();
 		
@@ -662,9 +734,9 @@ public class GeneratorSymbolTable {
 		
 		ReturnIterateExpr rtIn = iterateElement(in,fr);
 
-		if (rtCond.getNbAddr() != 1) throw new VariablesCountException(1, rtCond.getNbAddr());
-		if (rtIn.getNbAddr() != 1) throw new VariablesCountException(1, rtIn.getNbAddr());
-
+		if (rtCond.getNbAddr() != 1) throw new SymbolTableError("Un seul paramètre est attendu pour le foreach, nombre de paramètres données :"+ rtCond.getNbAddr());
+		if (rtIn.getNbAddr() != 1) throw new SymbolTableError("Un seul paramètre est attendu pour le foreach, nombre de paramètres données :"+ rtIn.getNbAddr());
+		
 		//Do
 		
 		Commands do_ = fe.getCommands();
@@ -683,15 +755,14 @@ public class GeneratorSymbolTable {
 		
 	}	
 	
-	private ReturnIterateCmd iterateElement(If i, FunctionRepresentation fr) {
-		
+	private ReturnIterateCmd iterateElement(If i, FunctionRepresentation fr) throws SymbolTableError {
 		IF if_ = new IF();
 		
 		Expr cond = i.getCondition();
 		
 		ReturnIterateExpr rtCond = iterateElement(cond,fr);
 		
-		if (rtCond.getNbAddr() != 1) throw new VariablesCountException(1, rtCond.getNbAddr());
+		if (rtCond.getNbAddr() != 1) throw new SymbolTableError("Le if n'attend qu'un seul paramètre, nombre de paramètres donnés : "+ rtCond.getNbAddr());
 
 		//If
 		ReturnIterateCmd rtThen = iterateElement(i.getThenCommands(), fr);

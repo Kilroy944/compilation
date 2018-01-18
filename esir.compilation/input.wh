@@ -10,8 +10,9 @@ function testfunction:
 read A,B,C
 %
   if nil then
-        A := (hd C) ;
-        B := (cons (hd A) B)
+       B,A := C,B;
+       A := C;
+       B, C := A,X
   else
     foreach A in C do
     	for (cons A B) do

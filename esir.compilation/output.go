@@ -121,13 +121,17 @@ var v2 *libWH.Tree
 _ = v2
 var vt0 *libWH.Tree
 _ = vt0
+var vt1 *libWH.Tree
+_ = vt1
 
-v2 = v0
+vt0 = v0
+
+v2 = vt0
 
 for i:=0;i<libWH.TreeToNumber(v1);i++ {
-   vt0=f3(v2)
+   vt1=f3(v2)
 
-   v2 = vt0
+   v2 = vt1
 
 }
 
@@ -146,17 +150,20 @@ var vt2 *libWH.Tree
 _ = vt2
 var vt3 *libWH.Tree
 _ = vt3
+var vt4 *libWH.Tree
+_ = vt4
 
 vt0=f1(v1)
 
 if libWH.IsTrue(vt0){
-   v2 = v0
+   vt1 = v0
+   v2 = vt1
 
 }else{
-   vt1=f4(v1)
-   vt2=f6(v0,vt1)
-   vt3=f3(vt2)
-   v2 = vt3
+   vt2=f4(v1)
+   vt3=f6(v0,vt2)
+   vt4=f3(vt3)
+   v2 = vt4
 
 }
 
@@ -169,13 +176,17 @@ var v2 *libWH.Tree
 _ = v2
 var vt0 *libWH.Tree
 _ = vt0
+var vt1 *libWH.Tree
+_ = vt1
 
-v2 = v0
+vt0 = v0
+
+v2 = vt0
 
 for i:=0;i<libWH.TreeToNumber(v1);i++ {
-   vt0=f4(v2)
+   vt1=f4(v2)
 
-   v2 = vt0
+   v2 = vt1
 
 }
 
@@ -238,23 +249,31 @@ var vt1 *libWH.Tree
 _ = vt1
 var vt2 *libWH.Tree
 _ = vt2
+var vt3 *libWH.Tree
+_ = vt3
+var vt4 *libWH.Tree
+_ = vt4
+
+vt0 = v0
 
 v2 = s0
 
-v3 = v0
+v3 = vt0
 
-vt0=f7(v3,v1)
+vt1=f7(v3,v1)
 
-v4 = vt0
+v4 = vt1
 
-vt1=f0(v4)
+vt2=f0(v4)
 
-for libWH.IsTrue(vt1){
-   vt2=f3(v2)
+for libWH.IsTrue(vt2){
+   vt3 = v4
 
-   v2 = vt2
+   vt4=f3(v2)
 
-   v3 = v4
+   v2 = vt4
+
+   v3 = vt3
 
 }
 
@@ -277,6 +296,8 @@ var vt2 *libWH.Tree
 _ = vt2
 var vt3 *libWH.Tree
 _ = vt3
+var vt4 *libWH.Tree
+_ = vt4
 
 vt0,vt1=f10(v0,v1)
 
@@ -293,7 +314,8 @@ if libWH.IsTrue(vt2){
    v4 = vt3
 
 }else{
-   v4 = v1
+   vt4 = v1
+   v4 = vt4
 
 }
 

@@ -1,9 +1,9 @@
 package sprint2;
 
-public class SymbolTableError extends RuntimeException{
+public class SymbolTableError extends Exception{
 	
-	public SymbolTableError(){
-		super("Erreur");
+	public SymbolTableError(String msg){
+		super(msg);
 	}
 
 }
