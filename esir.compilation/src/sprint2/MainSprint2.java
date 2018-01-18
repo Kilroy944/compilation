@@ -20,10 +20,10 @@ public class MainSprint2 {
 
 	/*args[0] = fichier d'entrée args[1] = fichier de sortie*/
 	public static void main(String args[]) throws IOException{
-		
+
 		boolean file_3a = false;
 		boolean file_go = false;
-		
+
 		int nb_arg_needed = 2;
 
 
@@ -51,7 +51,7 @@ public class MainSprint2 {
 			test(cmd, genTs);
 			return;
 		}
-		
+
 		if(cmd.hasOption("f3a")){
 			file_3a = true;
 			nb_arg_needed++;
@@ -60,7 +60,7 @@ public class MainSprint2 {
 			file_go = true;
 			nb_arg_needed++;
 		}
-		
+
 		if(args.length == nb_arg_needed){
 			if(!new File(args[0]).exists()){
 				System.out.println("Erreur: fichier d'entrée inexistant");
@@ -85,26 +85,47 @@ public class MainSprint2 {
 	}
 
 	private static void compileGo(String prog, boolean file_go) {
-		
+
 		System.out.println("###### COMPILATION GO #######");
 		Process p;
 		try {
 			p = Runtime.getRuntime().exec("go build "+prog+".go");
-			try {
-				p.waitFor();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+
+
+			// Consommation de la sortie standard de l'application externe dans un Thread separe
+			new Thread() {
+				public void run() {
+					try {
+						BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+						String line = "";
+						try {
+							while((line = reader.readLine()) != null) {
+								System.out.println(line);
+							}
+						} finally {
+							reader.close();
+						}
+					} catch(IOException ioe) {
+						ioe.printStackTrace();
+					}
+				}
+			}.start();
+
+
+			p.waitFor();
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
+
 		if(!file_go){
 			new File(prog+".go").delete();
 		}
-		
+
 	}
 
 	private static int test(CommandLine cmd, GeneratorSymbolTable genTs) {
