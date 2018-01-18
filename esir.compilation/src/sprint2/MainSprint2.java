@@ -74,8 +74,8 @@ public class MainSprint2 {
 			try {
 				genTs.init(args[0], args[1], file_3a);
 				compileGo(args[1], file_go);
-			} catch (DoubleFunctionException e) {
-				e.printStackTrace();
+			}  catch (SymbolTableError e) {
+				System.out.println("Une erreur est survenue : "+e.getMessage()+"\n");
 			}
 		}
 		else{
@@ -85,7 +85,7 @@ public class MainSprint2 {
 	}
 
 	private static void compileGo(String prog, boolean file_go) {
-		
+		/*
 		System.out.println("###### COMPILATION GO #######");
 		Process p;
 		try {
@@ -103,7 +103,7 @@ public class MainSprint2 {
 		
 		if(!file_go){
 			new File(prog+".go").delete();
-		}
+		}*/
 		
 	}
 
@@ -146,6 +146,8 @@ public class MainSprint2 {
 				genTs.init(file.getPath(), path_fichier_sortie, true);
 			}catch(IOException ioe){
 				ioe.printStackTrace();
+			} catch (SymbolTableError e) {
+				System.out.println("Une erreur est survenue : "+e.getMessage()+"\n");
 			}
 
 		}

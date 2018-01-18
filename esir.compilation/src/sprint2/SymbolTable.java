@@ -19,13 +19,13 @@ public class SymbolTable {
 	private String lastFunction = "";
 	
 	
-	public SymbolTable(){
+	public SymbolTable() throws SymbolTableError{
 		listFunctions=new LinkedHashMap<>();
 		listSymbol=new HashMap<>();
 		addSymbol("nil");
 	}
 
-	public void addFunction(String name,int nbInput,int nbOutput) throws DoubleFunctionException{
+	public void addFunction(String name,int nbInput,int nbOutput) throws SymbolTableError{
 
 		if(!listFunctions.containsKey(name)){
 			listFunctions.put(name, new FunctionRepresentation("f"+counterFunction,nbInput,nbOutput));
@@ -33,11 +33,11 @@ public class SymbolTable {
 			lastFunction = name;
 		}
 		else{
-			throw new DoubleFunctionException(name);
+			throw new SymbolTableError("La fonction "+name+" est définie plusieurs fois");
 		}
 	}
 
-	public String addSymbol(String name) throws DoubleFunctionException{
+	public String addSymbol(String name) throws SymbolTableError{
 		if(!listSymbol.containsKey(name)){
 			listSymbol.put(name, counterSymbol);
 			return "s" + counterSymbol++;
