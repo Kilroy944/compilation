@@ -9,22 +9,9 @@ write A
 function testfunction:
 read A,B,C
 %
-  if nil then
-       B,A := C,B;
-       A := C;
-       B, C := A,X
-  else
-    foreach A in C do
-    	for (cons A B) do
-			if (A and B and (A or B) ) then
-				while A do
-					nop
-				od
-			fi
-		od
-    od
-  fi;
-  A := (a A)
+	while A do
+		B := C
+	od
 %
 write A,B,C,D
 

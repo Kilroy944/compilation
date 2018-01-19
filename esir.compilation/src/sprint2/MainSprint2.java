@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
@@ -12,6 +13,8 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+
+import esir.compilation.generator.Main;
 
 public class MainSprint2 {
 
@@ -31,6 +34,7 @@ public class MainSprint2 {
 		options.addOption("test", false, "effectuer les tests");
 		options.addOption("f3a", false, "génére fichier 3@");
 		options.addOption("fGo", false, "génére fichier Go");
+		options.addOption("help", false, "aide");
 
 
 		CommandLineParser parser = new BasicParser();
@@ -45,7 +49,12 @@ public class MainSprint2 {
 
 		GeneratorSymbolTable genTs = GeneratorSymbolTable.getInstance();
 
-
+		
+		if(cmd.hasOption("help")){
+			printMan();
+			return;
+		}
+		
 		if(cmd.hasOption("test")){
 			test(cmd, genTs);
 			return;
@@ -79,7 +88,7 @@ public class MainSprint2 {
 			}
 		}
 		else{
-			System.out.println("Erreur dans les arguments : nb d'arguments incorrect");
+			System.out.println("Erreur dans les arguments : nombre d'arguments incorrect");
 			return;
 		}
 	}
@@ -106,7 +115,7 @@ public class MainSprint2 {
 			System.out.println(result);
  
 		}catch(Exception e) { 
-				System.out.println("Erreur d'execution de la compilation"+ e.getMessage()); 
+				System.out.println("Erreur d'execution de la compilation :\n"+ e.getMessage()); 
 		}
 
 
@@ -165,5 +174,25 @@ public class MainSprint2 {
 		System.out.println("---------------FIN TEST---------------");
 		return 0;
 
+	}
+	
+	public static void printMan(){
+		BufferedReader fent;
+		try {
+			
+			InputStream is =Main.class.getClassLoader().getResourceAsStream("README_COMP.md");
+			fent = new BufferedReader(new InputStreamReader(is));
+			
+			//fent = new BufferedReader(new FileReader(new File("./README.md")));
+			String enr;
+			while ( ( enr = fent.readLine( ) ) != null ) // null en cas de fin de fichier
+			{
+				System.out.println( enr );
+			}
+			fent.close( );
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
