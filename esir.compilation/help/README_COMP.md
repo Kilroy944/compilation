@@ -5,7 +5,7 @@ NAME
 	
 
 SYNOPSIS
-	whpp [OPTIONS] source
+	whc source [OPTIONS] 
 
 DESCRIPTION
 	Compile un fichier en langage While par l'intermédiare du langage Go. Le fichier doit posséder l'extension .wh et le compilateur Go doit être accessible par la commande go build.
