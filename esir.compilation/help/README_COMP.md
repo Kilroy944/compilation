@@ -1,4 +1,4 @@
-PRETTY PRINTER		    Manuel de l'utilisateur
+COMPILATEUR WHILE		    Manuel de l'utilisateur
 
 NAME
 	whc - WHILE Compilateur
@@ -25,7 +25,7 @@ OPTIONS
 	-help	Affiche ce manuel.
 
 SEE ALSO
-	whc
+	whpp
 
 AUTHORS
 	Vincent Bonhomme - Valentin Conseil - Valention Lion - Karim Oubah - Corentin Roche - Adrien Riou - Adrien Taja
