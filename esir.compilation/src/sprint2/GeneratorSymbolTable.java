@@ -246,7 +246,7 @@ public class GeneratorSymbolTable {
 		HashMap<String, String> oldVariableValue = new HashMap<>();
 		
 		for (Expr e : exprs) {
-			if(e instanceof Variable && !oldVariableValue.containsKey(((Variable) e).getValue())){
+			if(e instanceof Variable && vars.contains(((Variable) e).getValue()) && !oldVariableValue.containsKey(fr.addVar(((Variable) e).getValue()))){
 				String idVt = fr.getNewTempVar();
 				oldVariableValue.put(fr.addVar(((Variable) e).getValue()), idVt);
 				

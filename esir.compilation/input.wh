@@ -7,11 +7,13 @@ write A
 
 
 function testfunction:
-read A,B,C
+read A,B,C,D
 %
-	while A do
-		B := C
-	od
+	A,B,C := B,C,A;
+	A := C;
+	A,B := C,C;
+	A,B,C := C,C,D
+	
 %
 write A,B,C,D
 

@@ -20,7 +20,7 @@ OPTIONS
 	-fGo 
 		Génère un fichier en langage Go du programme While lors de la compilation
 	-test REP_SOURCE REP_FORMATE
-		Que font les tests ????
+		
 
 	-help	Affiche ce manuel.
 
@@ -28,4 +28,4 @@ SEE ALSO
 	whpp
 
 AUTHORS
-	Vincent Bonhomme - Valentin Conseil - Valention Lion - Karim Oubah - Corentin Roche - Adrien Riou - Adrien Taja
+	Vincent Bonhomme - Valentin Conseil - Valentin Lion - Karim Oubah - Corentin Roche - Adrien Riou - Adrien Taja
