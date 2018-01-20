@@ -46,7 +46,15 @@ func Cons(g *Tree,d *Tree)(*Tree){
 }
 func IsTrue (t *Tree)(bool){
 	
-	return t!=nil
+	if t==nil {
+		return false
+	}
+
+	if t.Symbol=="nil" {
+		return false
+	}
+	
+	return true
 }
 func Op_or (t1,t2 *Tree)(*Tree){
     if(IsTrue(t1) || IsTrue(t2)){
