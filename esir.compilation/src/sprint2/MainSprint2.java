@@ -84,7 +84,7 @@ public class MainSprint2 {
 				genTs.init(args[0], output, file_3a);
 				compileGo(output, file_go);
 			}  catch (SymbolTableError e) {
-				System.out.println("Une erreur est survenue : "+e.getMessage()+"\n");
+				System.out.println("\nUne erreur est survenue : "+e.getMessage()+"\n");
 			}
 		}
 		else{
@@ -167,7 +167,7 @@ public class MainSprint2 {
 			}catch(IOException ioe){
 				ioe.printStackTrace();
 			} catch (SymbolTableError e) {
-				System.out.println("Une erreur est survenue : "+e.getMessage()+"\n");
+				System.out.println("\nUne erreur est survenue : "+e.getMessage()+"\n");
 			}
 
 		}

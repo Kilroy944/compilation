@@ -99,11 +99,14 @@ public class GeneratorSymbolTable {
 
 		//Vérifie si le fichier while est correct
 		List<Issue> list = validator.validate(resource, CheckMode.ALL, CancelIndicator.NullImpl);
+		
+		
 		if (!list.isEmpty()) {
+			String result="\n";
 			for (Issue issue : list) {
-				System.err.println(issue);
+				result+=issue+"\n";
 			}
-			return -1;
+			throw new SymbolTableError(result+"\nLe fichier while ne possède pas une syntaxe correcte");
 		}
 
 		//Création de l'arbre de parcours
