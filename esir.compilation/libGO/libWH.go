@@ -1,5 +1,8 @@
 package libWH
+
+
 type Tree struct {
+	Symbol string
 	Left  *Tree
 	Right *Tree
 }
@@ -39,24 +42,25 @@ func Hd(t *Tree)(*Tree){
 	return nil
 }
 func Cons(g *Tree,d *Tree)(*Tree){
-	return &(Tree{g,d})
+	return &(Tree{"",g,d})
 }
 func IsTrue (t *Tree)(bool){
+	
 	return t!=nil
 }
 func Op_or (t1,t2 *Tree)(*Tree){
     if(IsTrue(t1) || IsTrue(t2)){
-   	 return &(Tree{nil,nil})
+   	 return &(Tree{"",nil,nil})
     }
     return nil
 }
 func Op_eg (t1,t2 *Tree)(*Tree){
 	
 	if (t1==nil && t2==nil) {
-		return &(Tree{nil,nil})	
+		return &(Tree{"",nil,nil})	
 	}else if (t1!=nil && t2!=nil) {
 	   if Op_eg(t1.Right,t2.Right)!= nil && Op_eg(t1.Left,t2.Left) !=nil {
-		return &(Tree{nil,nil})	
+		return &(Tree{"",nil,nil})	
 	   }else{
 		return nil
 	   }
@@ -68,11 +72,11 @@ func Op_not (t *Tree)(*Tree){
     if IsTrue(t){
    	 return nil
     }
-    return &(Tree{nil,nil})
+    return &(Tree{"",nil,nil})
 }
 func Op_and (t1,t2 *Tree)(*Tree){
     if(IsTrue(t1) && IsTrue(t2)){
-   	 return &(Tree{nil,nil})
+   	 return &(Tree{"",nil,nil})
     }
     return nil
 }

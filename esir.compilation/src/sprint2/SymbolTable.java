@@ -104,7 +104,7 @@ public class SymbolTable {
 
 		String result = "package main\n";
 		
-		result+= "import (libWH \"./libGO\"\n\t\"fmt\"\n\t\"os\"\n\t \"strconv\"\n)\n";
+		result+= "import (libWH \"./libGO\"\n\t\"fmt\"\n\t\"os\"\n\t\"strconv\"\n)\n";
 
 		//Allocation symbole
 		for(int i=0;i<listSymbol.size();i++){
@@ -114,7 +114,13 @@ public class SymbolTable {
 		FunctionRepresentation fr = listFunctions.get(lastFunction);
 
 		result+="\nfunc main(){\n";
-
+		int x=0;
+		for (Entry<String, Integer> entry : listSymbol.entrySet())
+		{
+			result+="s"+x+"=&(libWH.Tree{\""+entry.getKey()+"\",nil,nil}) \n";
+			x++;
+		}
+		
 		result+="\n\tnbOut := "+fr.getNbInput()+"\n\t"
 				+"if (len(os.Args)-1)>=nbOut {\n";
 		

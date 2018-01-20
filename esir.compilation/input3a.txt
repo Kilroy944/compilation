@@ -1,0 +1,35 @@
+Table des symboles : 
+nil=0
+toto=1
+a=[f0, nbIn : 1, nbOut : 1]
+Table des variables : 
+A=0
+Nombre de variables temporaires : 1
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<HD, vt0, v0, _>
+<AFFECT, v0, vt0, _>
+<WRITE, v0, _, _>
+
+testfunction=[f1, nbIn : 4, nbOut : 4]
+Table des variables : 
+A=0
+B=1
+C=2
+D=3
+Nombre de variables temporaires : 0
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<READ, v1, _, _>
+<READ, v2, _, _>
+<READ, v3, _, _>
+<FOR 
+	(cond)
+	(do)
+	<AFFECT, v0, s1, _>
+, _, v0, _>
+<WRITE, v0, _, _>
+<WRITE, v1, _, _>
+<WRITE, v2, _, _>
+<WRITE, v3, _, _>
+

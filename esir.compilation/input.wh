@@ -9,11 +9,9 @@ write A
 function testfunction:
 read A,B,C,D
 %
-	A,B,C := B,C,A;
-	A := C;
-	A,B := C,C;
-	A,B,C := C,C,D
-	
+	for A do
+		A := toto
+	od	
 %
 write A,B,C,D
 
