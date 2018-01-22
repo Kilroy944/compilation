@@ -1,8 +1,5 @@
 package libWH
 
-import "fmt"
-
-
 type Tree struct {
 	Symbol string
 	Left  *Tree
@@ -60,9 +57,6 @@ func Op_or (t1,t2 *Tree)(*Tree){
     return &(Tree{"nil",nil,nil})
 }
 func Op_eg (t1,t2 *Tree)(*Tree){
-	
-fmt.Println(t1)
-fmt.Println(t2)
 
 	if (t1.Symbol== "nil" && t2.Symbol=="nil") {
 		return &(Tree{"",nil,nil})	

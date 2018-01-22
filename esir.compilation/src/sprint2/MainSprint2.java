@@ -8,6 +8,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
@@ -113,8 +116,10 @@ public class MainSprint2 {
 		
 		try {
 			
-			FileUtils.copyDirectory(new File("./libGO"),new File(rep_output));
-			
+			Path p1 = Paths.get(rep_output);
+			if(!Files.exists(p1)){
+				FileUtils.copyDirectory(new File("./libGO"),new File(rep_output));
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -146,6 +151,10 @@ public class MainSprint2 {
 		if(!file_go){
 			new File(prog+".go").delete();
 			try {
+				Path p1 = Paths.get(rep_output);
+				if(!Files.exists(p1)){
+					FileUtils.copyDirectory(new File("./libGO"),new File(rep_output));
+				}
 				FileUtils.deleteDirectory(new File(rep_output));
 			} catch (IOException e) {
 				e.printStackTrace();

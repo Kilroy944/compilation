@@ -1,17 +1,50 @@
-function a:
+function whileTest:
 read A
 %
-	A:=(hd A)
+nop
+%
+write A
+
+function forTest:
+read A
+%
+nop
+%
+write A
+
+function foreachTest:
+read A
+%
+nop
+%
+write A
+
+function affectationTest:
+read A
+%
+nop
 %
 write A
 
 
-function testfunction:
-read A,B,C,D
+function ifTest:
+read A
 %
-	for A do
-		A := toto
-	od	
+nop
 %
-write A,B,C,D
+write A
+
+function expressionLogiqueTest:
+read A
+%
+nop
+%
+write A
+
+function symbolTest:
+read A
+%
+	A := (cons A toto)
+%
+write A
 

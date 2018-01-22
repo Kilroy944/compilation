@@ -117,7 +117,8 @@ public class SymbolTable {
 		int x=0;
 		for (Entry<String, Integer> entry : listSymbol.entrySet())
 		{
-			result+="s"+x+"=&(libWH.Tree{\""+entry.getKey()+"\",nil,nil}) \n";
+			result+="s"+x+"=&(libWH.Tree{\""+entry.getKey()+"\",&(libWH.Tree{\"nil\",nil,nil}),&(libWH.Tree{\"nil\",nil,nil})})\n";
+			
 			x++;
 		}
 		
