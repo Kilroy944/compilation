@@ -1,35 +1,93 @@
 Table des symboles : 
 nil=0
 toto=1
-a=[f0, nbIn : 1, nbOut : 1]
+totoh=2
+whileTest=[f0, nbIn : 1, nbOut : 1]
 Table des variables : 
 A=0
-Nombre de variables temporaires : 1
+B=1
+Nombre de variables temporaires : 0
 Liste de codes 3@ : 
 <READ, v0, _, _>
-<HD, vt0, v0, _>
-<AFFECT, v0, vt0, _>
+<WHILE 
+	(cond)
+	(do)
+	<AFFECT, v0, v1, _>
+, _, v0, _>
 <WRITE, v0, _, _>
 
-testfunction=[f1, nbIn : 4, nbOut : 4]
+forTest=[f1, nbIn : 1, nbOut : 1]
+Table des variables : 
+A=0
+Nombre de variables temporaires : 0
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<nop, _, _, _>
+<WRITE, v0, _, _>
+
+foreachTest=[f2, nbIn : 1, nbOut : 1]
+Table des variables : 
+A=0
+Nombre de variables temporaires : 0
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<nop, _, _, _>
+<WRITE, v0, _, _>
+
+affectationTest=[f3, nbIn : 1, nbOut : 1]
+Table des variables : 
+A=0
+Nombre de variables temporaires : 0
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<nop, _, _, _>
+<WRITE, v0, _, _>
+
+ifTest=[f4, nbIn : 1, nbOut : 1]
+Table des variables : 
+A=0
+Nombre de variables temporaires : 0
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<nop, _, _, _>
+<WRITE, v0, _, _>
+
+expressionLogiqueTest=[f5, nbIn : 1, nbOut : 1]
+Table des variables : 
+A=0
+Nombre de variables temporaires : 0
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<nop, _, _, _>
+<WRITE, v0, _, _>
+
+symbolTest=[f6, nbIn : 2, nbOut : 3]
 Table des variables : 
 A=0
 B=1
 C=2
 D=3
-Nombre de variables temporaires : 0
+E=4
+Nombre de variables temporaires : 3
 Liste de codes 3@ : 
 <READ, v0, _, _>
 <READ, v1, _, _>
-<READ, v2, _, _>
-<READ, v3, _, _>
-<FOR 
-	(cond)
-	(do)
-	<AFFECT, v0, s1, _>
-, _, v0, _>
-<WRITE, v0, _, _>
-<WRITE, v1, _, _>
+<EQUAL 
+	(gauche)
+	(droite)
+, vt0, s1, s1>
+<AFFECT, v2, vt0, _>
+<EQUAL 
+	(gauche)
+	(droite)
+, vt1, s2, s1>
+<AFFECT, v3, vt1, _>
+<EQUAL 
+	(gauche)
+	(droite)
+, vt2, v0, v1>
+<AFFECT, v4, vt2, _>
 <WRITE, v2, _, _>
 <WRITE, v3, _, _>
+<WRITE, v4, _, _>
 

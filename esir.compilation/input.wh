@@ -1,7 +1,9 @@
 function whileTest:
 read A
 %
-nop
+while A do
+	A := B
+od
 %
 write A
 
@@ -42,9 +44,12 @@ nop
 write A
 
 function symbolTest:
-read A
+read A,B
 %
-	A := (cons A toto)
+	C := toto =? toto;
+	D := totoh =? toto;
+	E := A =? B
+	
 %
-write A
+write C,D,E
 
