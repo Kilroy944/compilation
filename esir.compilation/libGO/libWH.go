@@ -1,5 +1,8 @@
 package libWH
 
+import "fmt"
+
+
 type Tree struct {
 	Symbol string
 	Left  *Tree
@@ -22,7 +25,7 @@ func TreeToRange (t *Tree)([] *Tree){
 	return tab
 }
 func NumberToTree(nb int)(*Tree){
-	var t *Tree	
+	var t *Tree = &(Tree{"nil",nil,nil})	
 	for i := 0; i < nb; i++ {
 		t = Cons(&(Tree{"nil",nil,nil}),t)
 	}
@@ -58,10 +61,16 @@ func Op_or (t1,t2 *Tree)(*Tree){
 }
 func Op_eg (t1,t2 *Tree)(*Tree){
 	
+fmt.Println(t1)
+fmt.Println(t2)
+
 	if (t1.Symbol== "nil" && t2.Symbol=="nil") {
 		return &(Tree{"",nil,nil})	
 	}else if (t1.Symbol!="nil" && t2.Symbol!="nil") {
-	   if Op_eg(t1.Right,t2.Right)!= &(Tree{"nil",nil,nil}) && Op_eg(t1.Left,t2.Left) != &(Tree{"nil",nil,nil}) {
+	   var x =  Op_eg(t1.Right,t2.Right)
+	   var y =  Op_eg(t1.Left,t2.Left)
+	
+	   if x.Symbol != "nil" && y.Symbol != "nil" {
 		return &(Tree{"",nil,nil})	
 	   }else{
 		return &(Tree{"nil",nil,nil})
