@@ -52,7 +52,43 @@ Liste de codes 3@ :
 <nop, _, _, _>
 <WRITE, v0, _, _>
 
-expressionLogiqueTest=[f5, nbIn : 2, nbOut : 5]
+symbolTest=[f5, nbIn : 2, nbOut : 4]
+Table des variables : 
+A=0
+B=1
+C=2
+D=3
+E=4
+Nombre de variables temporaires : 4
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<READ, v1, _, _>
+<EQUAL 
+	(gauche)
+	(droite)
+, vt0, s1, s1>
+<AFFECT, v2, vt0, _>
+<EQUAL 
+	(gauche)
+	(droite)
+, vt1, s2, s1>
+<AFFECT, v3, vt1, _>
+<EQUAL 
+	(gauche)
+	(droite)
+, vt2, v0, v1>
+<AFFECT, v4, vt2, _>
+<EQUAL 
+	(gauche)
+	(droite)
+, vt3, v2, v1>
+<AFFECT, v0, vt3, _>
+<WRITE, v2, _, _>
+<WRITE, v3, _, _>
+<WRITE, v4, _, _>
+<WRITE, v0, _, _>
+
+expressionLogiqueTest=[f6, nbIn : 2, nbOut : 5]
 Table des variables : 
 A=0
 B=1
@@ -100,40 +136,4 @@ Liste de codes 3@ :
 <WRITE, v2, _, _>
 <WRITE, v3, _, _>
 <WRITE, v5, _, _>
-
-symbolTest=[f6, nbIn : 2, nbOut : 4]
-Table des variables : 
-A=0
-B=1
-C=2
-D=3
-E=4
-Nombre de variables temporaires : 4
-Liste de codes 3@ : 
-<READ, v0, _, _>
-<READ, v1, _, _>
-<EQUAL 
-	(gauche)
-	(droite)
-, vt0, s1, s1>
-<AFFECT, v2, vt0, _>
-<EQUAL 
-	(gauche)
-	(droite)
-, vt1, s2, s1>
-<AFFECT, v3, vt1, _>
-<EQUAL 
-	(gauche)
-	(droite)
-, vt2, v0, v1>
-<AFFECT, v4, vt2, _>
-<EQUAL 
-	(gauche)
-	(droite)
-, vt3, v2, v1>
-<AFFECT, v0, vt3, _>
-<WRITE, v2, _, _>
-<WRITE, v3, _, _>
-<WRITE, v4, _, _>
-<WRITE, v0, _, _>
 

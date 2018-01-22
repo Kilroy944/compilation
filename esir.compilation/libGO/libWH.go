@@ -1,6 +1,5 @@
 package libWH
 
-
 type Tree struct {
 	Symbol string
 	Left  *Tree
@@ -8,11 +7,6 @@ type Tree struct {
 }
 func TreeToNumber ( t *Tree)(int){
 	var counter = 0
-	
-
-	if t.Symbol==" " {
-		return 1
-	}
 
 	for t.Symbol=="" {
     		counter++
@@ -60,39 +54,36 @@ func IsTrue (t *Tree)(bool){
 }
 func Op_or (t1,t2 *Tree)(*Tree){
     if(IsTrue(t1) || IsTrue(t2)){
-   	 return &(Tree{" ",nil,nil})
+   	 return &(Tree{"",&(Tree{"nil",nil,nil}),&(Tree{"nil",nil,nil})})
     }
     return &(Tree{"nil",nil,nil})
 }
 func Op_eg (t1,t2 *Tree)(*Tree){
 
 	if (t1.Symbol != t2.Symbol ) {
-		/*if((t1.Symbol=="" && t2.Symbol==" ") | (t1.Symbol==" " && t2.Symbol=="") {
-	  		return &(Tree{" ",nil,nil})
-		}*/
 		return &(Tree{"nil",nil,nil})	
 	}else if (t1.Symbol=="" && t2.Symbol=="") {
 	   var x =  Op_eg(t1.Right,t2.Right)
 	   var y =  Op_eg(t1.Left,t2.Left)
 	
 	   if x.Symbol != "nil" && y.Symbol != "nil" {
-		return &(Tree{" ",nil,nil})	
+	  	return &(Tree{"",&(Tree{"nil",nil,nil}),&(Tree{"nil",nil,nil})})
 	   }else{
 		return &(Tree{"nil",nil,nil})
 	   }
 	}else{
-	  return &(Tree{" ",nil,nil})
+	  return &(Tree{"",&(Tree{"nil",nil,nil}),&(Tree{"nil",nil,nil})})
 	}
 }
 func Op_not (t *Tree)(*Tree){
     if IsTrue(t){
-   	 return &(Tree{"nil",nil,nil})
+	return &(Tree{"",&(Tree{"nil",nil,nil}),&(Tree{"nil",nil,nil})})
     }
     return &(Tree{" ",nil,nil})
 }
 func Op_and (t1,t2 *Tree)(*Tree){
     if(IsTrue(t1) && IsTrue(t2)){
-   	 return &(Tree{" ",nil,nil})
+	return &(Tree{"",&(Tree{"nil",nil,nil}),&(Tree{"nil",nil,nil})})
     }
     return &(Tree{"nil",nil,nil})
 }

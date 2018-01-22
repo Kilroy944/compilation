@@ -36,6 +36,19 @@ nop
 %
 write A
 
+
+function symbolTest:
+read A,B
+%
+	C := toto =? toto;
+	D := totoh =? toto;
+	E := A =? B;
+	A := C =? B
+	
+%
+write C,D,E,A
+
+
 function expressionLogiqueTest:
 read A,B
 %
@@ -47,13 +60,3 @@ read A,B
 	
 %
 write A,B,C,D,E
-function symbolTest:
-read A,B
-%
-	C := toto =? toto;
-	D := totoh =? toto;
-	E := A =? B;
-	A := C =? B
-	
-%
-write C,D,E,A

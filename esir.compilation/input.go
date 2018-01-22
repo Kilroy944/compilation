@@ -19,11 +19,12 @@ s2=&(libWH.Tree{"totoh",nil,nil})
 		i2, err2 := strconv.Atoi(os.Args[2])
 
 		if err1 == nil && err2 == nil {
-			v0,v1,v2,v3:=f6(libWH.NumberToTree(i1),libWH.NumberToTree(i2))
+			v0,v1,v2,v3,v4:=f6(libWH.NumberToTree(i1),libWH.NumberToTree(i2))
 			fmt.Println(libWH.TreeToNumber(v0))
 			fmt.Println(libWH.TreeToNumber(v1))
 			fmt.Println(libWH.TreeToNumber(v2))
 			fmt.Println(libWH.TreeToNumber(v3))
+			fmt.Println(libWH.TreeToNumber(v4))
 		}else{
 			fmt.Println("L'un des arguments n'est pas un nombre")
 		}
@@ -77,7 +78,44 @@ func f4(v0 *libWH.Tree) (*libWH.Tree) {
 return v0 
 }
 
-func f5(v0, v1 *libWH.Tree) (*libWH.Tree, *libWH.Tree, *libWH.Tree, *libWH.Tree, *libWH.Tree) {
+func f5(v0, v1 *libWH.Tree) (*libWH.Tree, *libWH.Tree, *libWH.Tree, *libWH.Tree) {
+
+var v2 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+_ = v2
+var v3 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+_ = v3
+var v4 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+_ = v4
+var vt0 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+_ = vt0
+var vt1 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+_ = vt1
+var vt2 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+_ = vt2
+var vt3 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+_ = vt3
+
+vt0 = libWH.Op_eg(s1,s1)
+
+v2 = vt0
+
+vt1 = libWH.Op_eg(s2,s1)
+
+v3 = vt1
+
+vt2 = libWH.Op_eg(v0,v1)
+
+v4 = vt2
+
+vt3 = libWH.Op_eg(v2,v1)
+
+v0 = vt3
+
+
+return v2,v3,v4,v0 
+}
+
+func f6(v0, v1 *libWH.Tree) (*libWH.Tree, *libWH.Tree, *libWH.Tree, *libWH.Tree, *libWH.Tree) {
 
 var v2 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
 _ = v2
@@ -127,41 +165,4 @@ v1 = vt5
 
 
 return v0,v1,v2,v3,v5 
-}
-
-func f6(v0, v1 *libWH.Tree) (*libWH.Tree, *libWH.Tree, *libWH.Tree, *libWH.Tree) {
-
-var v2 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
-_ = v2
-var v3 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
-_ = v3
-var v4 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
-_ = v4
-var vt0 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
-_ = vt0
-var vt1 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
-_ = vt1
-var vt2 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
-_ = vt2
-var vt3 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
-_ = vt3
-
-vt0 = libWH.Op_eg(s1,s1)
-
-v2 = vt0
-
-vt1 = libWH.Op_eg(s2,s1)
-
-v3 = vt1
-
-vt2 = libWH.Op_eg(v0,v1)
-
-v4 = vt2
-
-vt3 = libWH.Op_eg(v2,v1)
-
-v0 = vt3
-
-
-return v2,v3,v4,v0 
 }

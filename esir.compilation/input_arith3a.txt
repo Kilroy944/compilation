@@ -34,29 +34,7 @@ Liste de codes 3@ :
 , _, v0, _>
 <WRITE, v1, _, _>
 
-isOne=[f2, nbIn : 1, nbOut : 1]
-Table des variables : 
-B=1
-X=0
-Nombre de variables temporaires : 3
-Liste de codes 3@ : 
-<READ, v0, _, _>
-<IF 
-	(cond)
-	<EQUAL 
-		(gauche)
-		(droite)
-		<cons, vt1, s0, s0>
-	, vt0, v0, vt1>
-	(then)
-	<cons, vt2, s0, s0>
-	<AFFECT, v1, vt2, _>
-	(else)
-	<AFFECT, v1, s0, _>
-, _, vt0, _>
-<WRITE, v1, _, _>
-
-incr=[f3, nbIn : 1, nbOut : 1]
+incr=[f2, nbIn : 1, nbOut : 1]
 Table des variables : 
 X=0
 Nombre de variables temporaires : 1
@@ -66,7 +44,7 @@ Liste de codes 3@ :
 <AFFECT, v0, vt0, _>
 <WRITE, v0, _, _>
 
-decr=[f4, nbIn : 1, nbOut : 1]
+decr=[f3, nbIn : 1, nbOut : 1]
 Table des variables : 
 X=0
 Nombre de variables temporaires : 1
@@ -76,17 +54,16 @@ Liste de codes 3@ :
 <AFFECT, v0, vt0, _>
 <WRITE, v0, _, _>
 
-add=[f5, nbIn : 2, nbOut : 1]
+add=[f4, nbIn : 2, nbOut : 1]
 Table des variables : 
 S=2
 X=0
 Y=1
-Nombre de variables temporaires : 2
+Nombre de variables temporaires : 1
 Liste de codes 3@ : 
 <READ, v0, _, _>
 <READ, v1, _, _>
-<AFFECT, vt0, v0, _>
-<AFFECT, v2, vt0, _>
+<AFFECT, v2, v0, _>
 <FOR 
 	(cond)
 	(do)
@@ -95,18 +72,18 @@ Liste de codes 3@ :
 		(var call)
 		v2
 		(var return)
-		vt1
-	, _, f3, _>
-	<AFFECT, v2, vt1, _>
+		vt0
+	, _, f2, _>
+	<AFFECT, v2, vt0, _>
 , _, v1, _>
 <WRITE, v2, _, _>
 
-addR=[f6, nbIn : 2, nbOut : 1]
+addR=[f5, nbIn : 2, nbOut : 1]
 Table des variables : 
 S=2
 X=0
 Y=1
-Nombre de variables temporaires : 5
+Nombre de variables temporaires : 4
 Liste de codes 3@ : 
 <READ, v0, _, _>
 <READ, v1, _, _>
@@ -120,46 +97,44 @@ Liste de codes 3@ :
 		vt0
 	, _, f1, _>
 	(then)
-	<AFFECT, vt1, v0, _>
-	<AFFECT, v2, vt1, _>
+	<AFFECT, v2, v0, _>
 	(else)
 	<CALL 
 		(code param)
 		(var call)
 		v1
 		(var return)
-		vt2
-	, _, f4, _>
+		vt1
+	, _, f3, _>
 	<CALL 
 		(code param)
 		(var call)
 		v0
-		vt2
+		vt1
 		(var return)
-		vt3
-	, _, f6, _>
+		vt2
+	, _, f5, _>
 	<CALL 
 		(code param)
 		(var call)
-		vt3
+		vt2
 		(var return)
-		vt4
-	, _, f3, _>
-	<AFFECT, v2, vt4, _>
+		vt3
+	, _, f2, _>
+	<AFFECT, v2, vt3, _>
 , _, vt0, _>
 <WRITE, v2, _, _>
 
-subs=[f7, nbIn : 2, nbOut : 1]
+subs=[f6, nbIn : 2, nbOut : 1]
 Table des variables : 
 D=2
 X=0
 Y=1
-Nombre de variables temporaires : 2
+Nombre de variables temporaires : 1
 Liste de codes 3@ : 
 <READ, v0, _, _>
 <READ, v1, _, _>
-<AFFECT, vt0, v0, _>
-<AFFECT, v2, vt0, _>
+<AFFECT, v2, v0, _>
 <FOR 
 	(cond)
 	(do)
@@ -168,13 +143,13 @@ Liste de codes 3@ :
 		(var call)
 		v2
 		(var return)
-		vt1
-	, _, f4, _>
-	<AFFECT, v2, vt1, _>
+		vt0
+	, _, f3, _>
+	<AFFECT, v2, vt0, _>
 , _, v1, _>
 <WRITE, v2, _, _>
 
-mult=[f8, nbIn : 2, nbOut : 1]
+mult=[f7, nbIn : 2, nbOut : 1]
 Table des variables : 
 P=2
 X=0
@@ -194,12 +169,12 @@ Liste de codes 3@ :
 		v2
 		(var return)
 		vt0
-	, _, f5, _>
+	, _, f4, _>
 	<AFFECT, v2, vt0, _>
 , _, v1, _>
 <WRITE, v2, _, _>
 
-pow=[f9, nbIn : 2, nbOut : 1]
+pow=[f8, nbIn : 2, nbOut : 1]
 Table des variables : 
 P=2
 X=0
@@ -220,34 +195,33 @@ Liste de codes 3@ :
 		v2
 		(var return)
 		vt1
-	, _, f8, _>
+	, _, f7, _>
 	<AFFECT, v2, vt1, _>
 , _, v1, _>
 <WRITE, v2, _, _>
 
-div=[f10, nbIn : 2, nbOut : 2]
+div=[f9, nbIn : 2, nbOut : 2]
 Table des variables : 
 Q=2
 R=3
 NextR=4
 X=0
 Y=1
-Nombre de variables temporaires : 5
+Nombre de variables temporaires : 3
 Liste de codes 3@ : 
 <READ, v0, _, _>
 <READ, v1, _, _>
-<AFFECT, vt0, v0, _>
 <AFFECT, v2, s0, _>
-<AFFECT, v3, vt0, _>
+<AFFECT, v3, v0, _>
 <CALL 
 	(code param)
 	(var call)
 	v3
 	v1
 	(var return)
-	vt1
-, _, f7, _>
-<AFFECT, v4, vt1, _>
+	vt0
+, _, f6, _>
+<AFFECT, v4, vt0, _>
 <WHILE 
 	(cond)
 	<CALL 
@@ -255,31 +229,30 @@ Liste de codes 3@ :
 		(var call)
 		v4
 		(var return)
-		vt2
+		vt1
 	, _, f0, _>
 	(do)
-	<AFFECT, vt3, v4, _>
 	<CALL 
 		(code param)
 		(var call)
 		v2
 		(var return)
-		vt4
-	, _, f3, _>
-	<AFFECT, v2, vt4, _>
-	<AFFECT, v3, vt3, _>
-, _, vt2, _>
+		vt2
+	, _, f2, _>
+	<AFFECT, v2, vt2, _>
+	<AFFECT, v3, v4, _>
+, _, vt1, _>
 <WRITE, v2, _, _>
 <WRITE, v3, _, _>
 
-gcd=[f11, nbIn : 2, nbOut : 1]
+gcd=[f10, nbIn : 2, nbOut : 1]
 Table des variables : 
 Q=2
 R=3
 X=0
 Y=1
 GCD=4
-Nombre de variables temporaires : 5
+Nombre de variables temporaires : 4
 Liste de codes 3@ : 
 <READ, v0, _, _>
 <READ, v1, _, _>
@@ -291,8 +264,7 @@ Liste de codes 3@ :
 	(var return)
 	vt0
 	vt1
-, _, f10, _>
-<AFFECT, v2, vt0, _>
+, _, f9, _>
 <CALL 
 	(code param)
 	(var call)
@@ -301,7 +273,8 @@ Liste de codes 3@ :
 	(var return)
 	vt0
 	vt1
-, _, f10, _>
+, _, f9, _>
+<AFFECT, v2, vt0, _>
 <AFFECT, v3, vt1, _>
 <IF 
 	(cond)
@@ -320,15 +293,14 @@ Liste de codes 3@ :
 		v3
 		(var return)
 		vt3
-	, _, f11, _>
+	, _, f10, _>
 	<AFFECT, v4, vt3, _>
 	(else)
-	<AFFECT, vt4, v1, _>
-	<AFFECT, v4, vt4, _>
+	<AFFECT, v4, v1, _>
 , _, vt2, _>
 <WRITE, v4, _, _>
 
-fact=[f12, nbIn : 1, nbOut : 1]
+fact=[f11, nbIn : 1, nbOut : 1]
 Table des variables : 
 F=1
 X=0
@@ -353,8 +325,7 @@ Liste de codes 3@ :
 		v0
 		(var return)
 		vt2
-	, _, f4, _>
-	<AFFECT, v0, vt2, _>
+	, _, f3, _>
 	<CALL 
 		(code param)
 		(var call)
@@ -362,9 +333,32 @@ Liste de codes 3@ :
 		v0
 		(var return)
 		vt3
-	, _, f8, _>
+	, _, f7, _>
+	<AFFECT, v0, vt2, _>
 	<AFFECT, v1, vt3, _>
 , _, vt1, _>
+<WRITE, v1, _, _>
+
+isOne=[f12, nbIn : 1, nbOut : 1]
+Table des variables : 
+B=1
+X=0
+Nombre de variables temporaires : 3
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<IF 
+	(cond)
+	<EQUAL 
+		(gauche)
+		(droite)
+		<cons, vt1, s0, s0>
+	, vt0, v0, vt1>
+	(then)
+	<cons, vt2, s0, s0>
+	<AFFECT, v1, vt2, _>
+	(else)
+	<AFFECT, v1, s0, _>
+, _, vt0, _>
 <WRITE, v1, _, _>
 
 fib=[f13, nbIn : 1, nbOut : 1]
@@ -392,7 +386,7 @@ Liste de codes 3@ :
 			v0
 			(var return)
 			vt2
-		, _, f2, _>
+		, _, f12, _>
    , vt0, vt1, vt2>
 	(then)
 	<cons, vt3, s0, s0>
@@ -404,7 +398,7 @@ Liste de codes 3@ :
 		v0
 		(var return)
 		vt4
-	, _, f4, _>
+	, _, f3, _>
 	<CALL 
 		(code param)
 		(var call)
@@ -418,14 +412,14 @@ Liste de codes 3@ :
 		v0
 		(var return)
 		vt6
-	, _, f4, _>
+	, _, f3, _>
 	<CALL 
 		(code param)
 		(var call)
 		vt6
 		(var return)
 		vt7
-	, _, f4, _>
+	, _, f3, _>
 	<CALL 
 		(code param)
 		(var call)
@@ -440,7 +434,7 @@ Liste de codes 3@ :
 		vt8
 		(var return)
 		vt9
-	, _, f5, _>
+	, _, f4, _>
 	<AFFECT, v1, vt9, _>
 , _, vt0, _>
 <WRITE, v1, _, _>
