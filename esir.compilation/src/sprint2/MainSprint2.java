@@ -142,13 +142,14 @@ public class MainSprint2 {
 
 		if(!file_go){
 			new File(prog+".go").delete();
+			try {
+				FileUtils.deleteDirectory(new File(rep_output));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		
-		try {
-			FileUtils.deleteDirectory(new File(rep_output));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
 		
 		System.out.println("###### BUILD END #######");
 
