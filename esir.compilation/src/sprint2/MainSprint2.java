@@ -13,6 +13,7 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.apache.commons.io.FileUtils;
 
 import esir.compilation.generator.Main;
 
@@ -81,7 +82,9 @@ public class MainSprint2 {
 				
 				String output = cmd.hasOption("o") ? cmd.getOptionValue("o") : args[0].split(".wh")[0];
 				
-				genTs.init(args[0], output, file_3a);
+				if(genTs.init(args[0], output, file_3a) != 0){
+					return;
+				}
 				compileGo(output, file_go);
 			}  catch (SymbolTableError e) {
 				System.out.println("\nUne erreur est survenue : "+e.getMessage()+"\n");
@@ -92,13 +95,31 @@ public class MainSprint2 {
 			return;
 		}
 	}
+	
 
 	private static void compileGo(String prog, boolean file_go) {
 		System.out.println("###### BUILD GO #######");
+		
+		
+		//Copie librairie GO
+		String[] tab = prog.split("/");
+		String rep_output = "";
+		
+		for(int i=0 ; i<tab.length-1;i++){
+			rep_output = rep_output+tab[i]+"/";
+		}
+		rep_output = rep_output+"libGO";
+		
+		try {
+			FileUtils.copyDirectory(new File("./libGO"),new File(rep_output));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		 
+		//Execution commande build
 		try { 
-			Runtime r = Runtime.getRuntime(); 
-			Process p = r.exec("go build "+prog+".go"); 
+			Runtime r = Runtime.getRuntime();
+			Process p = r.exec("go build -o "+prog+" "+prog+".go"); 
  
 			String s =null; 
  
@@ -121,7 +142,14 @@ public class MainSprint2 {
 
 		if(!file_go){
 			new File(prog+".go").delete();
+			try {
+				FileUtils.deleteDirectory(new File(rep_output));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
+		
+		
 		
 		System.out.println("###### BUILD END #######");
 
