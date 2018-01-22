@@ -6,6 +6,7 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.cli.BasicParser;
@@ -111,7 +112,9 @@ public class MainSprint2 {
 		rep_output = rep_output+"libGO";
 		
 		try {
+			
 			FileUtils.copyDirectory(new File("./libGO"),new File(rep_output));
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

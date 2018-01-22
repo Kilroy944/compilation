@@ -135,14 +135,14 @@ public class FunctionRepresentation {
 		
 		//Allocation var
 		for(int i=nbVarRead;i<variableTable.size();i++){
-			result +="var v"+i+" *libWH.Tree\n";
+			result +="var v"+i+" *libWH.Tree = &(libWH.Tree{\"nil\",nil,nil})\n";
 			result +="_ = v"+i+"\n";
 		}
 
 
 		//Allocation var temporaires
 		for(int i=0;i<counterTempVar;i++){
-			result +="var vt"+i+" *libWH.Tree\n";
+			result +="var vt"+i+" *libWH.Tree = &(libWH.Tree{\"nil\",nil,nil})\n";
 			result +="_ = vt"+i+"\n";
 		}
 		result+="\n";

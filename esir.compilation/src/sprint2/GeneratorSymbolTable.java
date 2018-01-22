@@ -302,6 +302,7 @@ public class GeneratorSymbolTable {
 			}
 		}
 		listAffectation.addAll(listAffectationTemp);
+		
 
 		if (vars.size() != 0) {
 			throw new SymbolTableError("Le nombre de variable à gauche et à droite de l'affectation ne correspondent pas");
