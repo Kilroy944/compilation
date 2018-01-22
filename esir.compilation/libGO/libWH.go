@@ -58,9 +58,9 @@ func Op_or (t1,t2 *Tree)(*Tree){
 }
 func Op_eg (t1,t2 *Tree)(*Tree){
 	
-	if (t1.Symbol==nil && t2.Symbol==nil) {
+	if (t1.Symbol== "nil" && t2.Symbol=="nil") {
 		return &(Tree{"",nil,nil})	
-	}else if (t1.Symbol!=nil && t2.Symbol!=nil) {
+	}else if (t1.Symbol!="nil" && t2.Symbol!="nil") {
 	   if Op_eg(t1.Right,t2.Right)!= &(Tree{"nil",nil,nil}) && Op_eg(t1.Left,t2.Left) != &(Tree{"nil",nil,nil}) {
 		return &(Tree{"",nil,nil})	
 	   }else{
