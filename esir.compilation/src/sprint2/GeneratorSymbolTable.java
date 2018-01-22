@@ -246,6 +246,9 @@ public class GeneratorSymbolTable {
 
 		List<Code3Address> listAffectation =new ArrayList<>();
 
+		List<Code3Address> listAffectationTemp =new ArrayList<>();
+
+		
 		HashMap<String, String> oldVariableValue = new HashMap<>();
 		
 		for (Expr e : exprs) {
@@ -282,11 +285,11 @@ public class GeneratorSymbolTable {
 					codeAff = new Code3Address(new AFFECT(), idV, rtExp.getListAddr().get(i), "_");
 				}
 				
-				listAffectation.add(codeAff);
+				listAffectationTemp.add(codeAff);
 			}
-
 		}
-		
+		listAffectation.addAll(listAffectationTemp);
+
 		if (vars.size() != 0) {
 			throw new SymbolTableError("Le nombre de variable à gauche et à droite de l'affectation ne correspondent pas");
 		}

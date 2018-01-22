@@ -1,6 +1,5 @@
 package libWH
 
-
 type Tree struct {
 	Symbol string
 	Left  *Tree
@@ -8,7 +7,7 @@ type Tree struct {
 }
 func TreeToNumber ( t *Tree)(int){
 	var counter = 0
-	for t != nil {
+	for t != nil && t.Symbol!="nil" {
     	counter++
     	t = t.Right
 	}
@@ -30,13 +29,14 @@ func NumberToTree(nb int)(*Tree){
 	return t
 }
 func Tl(t *Tree)(*Tree){
-	if t!=nil{
+
+	if t!=nil {
 		return t.Right
 	}
 	return nil
 }
 func Hd(t *Tree)(*Tree){
-	if t!=nil{
+	if t!=nil {
 		return t.Left
 	}
 	return nil
