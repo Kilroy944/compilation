@@ -1,41 +1,11 @@
-function whileTest:
-read A
-%
-while A do
-	A := B
-od
-%
-write A
+function decr : read X % X := (tl X) % write X
 
-function forTest:
-read A
+function invertTest:
+read A, B, C, D, E
 %
 nop
 %
-write A
-
-function foreachTest:
-read A
-%
-nop
-%
-write A
-
-function affectationTest:
-read A
-%
-nop
-%
-write A
-
-
-function ifTest:
-read A
-%
-nop
-%
-write A
-
+write E, D, C, B, A
 
 function symbolTest:
 read A,B
@@ -60,3 +30,60 @@ read A,B
 	
 %
 write A,B,C,D,E
+
+function whileTest:
+read A
+%
+while A do
+	A :=( decr A )
+od
+%
+write A
+
+function forTest:
+read A,B
+%
+	for A do
+		B := (decr B);
+		A := C
+	od
+%
+write A,B
+
+function affectationTest:
+read A,B,C
+%
+	A := B;
+	B,A := C,B;
+	C := D
+	
+%
+write A,B,C
+
+
+function ifTest:
+read A, B
+%
+	if A then
+		A := B
+	else
+		A := (decr B)
+	fi
+%
+write A
+function foreachTest:
+read A,B
+%
+	C := B;
+	foreach A in B do
+		C := (decr C)
+	od
+%
+write C, A
+
+function appelFonctionTest:
+read A, B, C, D, E
+%
+	A, B, C, D, E := (invertTest A B C D E)
+%
+write A, B, C, D, E
