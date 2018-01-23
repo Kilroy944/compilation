@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URI;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -116,10 +117,9 @@ public class MainSprint2 {
 		
 		try {
 			
-			Path p1 = Paths.get(rep_output);
-			if(!Files.exists(p1)){
-				FileUtils.copyDirectory(new File("./libGO"),new File(rep_output));
-			}
+			URL path = MainSprint2.class.getResource("/libWH.go");
+			new File(rep_output).mkdirs();
+			FileUtils.copyURLToFile(path,new File(rep_output+"/libWH.go"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -151,10 +151,6 @@ public class MainSprint2 {
 		if(!file_go){
 			new File(prog+".go").delete();
 			try {
-				Path p1 = Paths.get(rep_output);
-				if(!Files.exists(p1)){
-					FileUtils.copyDirectory(new File("./libGO"),new File(rep_output));
-				}
 				FileUtils.deleteDirectory(new File(rep_output));
 			} catch (IOException e) {
 				e.printStackTrace();
