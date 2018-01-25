@@ -21,8 +21,6 @@ read A,B
 write C,D,E,A
 
 
-
-
 function whileTest:
 read A
 %
@@ -41,17 +39,6 @@ read A,B
 	od
 %
 write A,B
-
-function affectationTest:
-read A,B,C
-%
-	A := B;
-	B,A := C,B;
-	C := D
-	
-%
-write A,B,C
-
 
 function ifTest:
 read A, B
@@ -72,13 +59,6 @@ read A,B
 	od
 %
 write C, A
-
-function appelFonctionTest:
-read A, B, C, D, E
-%
-	A, B, C, D, E := (invertTest A B C D E)
-%
-write A, B, C, D, E
 
 
 function boucleImbrique:
@@ -104,3 +84,21 @@ read A,B,X
 	X := not C
 %
 write A,B,C,D,E,X
+
+function appelFonctionTest:
+read A, B, C, D, E
+%
+	A, B, C, D, E := (invertTest A B C D E)
+%
+write A, B, C, D, E
+
+function affectationTest:
+read A,B,C
+%
+	A := D;
+	B,A := C,B;
+	C := D
+	
+%
+write A,B,C
+

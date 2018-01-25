@@ -274,8 +274,10 @@ public class GeneratorSymbolTable {
 		}
 
 		for (Expr e : exprs) {
-
+		
 			ReturnIterateExpr rtExp = iterateElement(e, fr);
+			listAffectation.addAll(rtExp.getListCode());
+
 			for (int i = 0; i < rtExp.getNbAddr(); i++) {
 				String v;
 				try {
@@ -285,7 +287,6 @@ public class GeneratorSymbolTable {
 					throw new SymbolTableError("Le nombre de variable à gauche et à droite de l'affectation ne correspondent pas");
 				}
 
-				listAffectation.addAll(rtExp.getListCode());
 
 				String idV = fr.addVar(v);
 				Code3Address codeAff;
@@ -296,11 +297,11 @@ public class GeneratorSymbolTable {
 				else{
 					codeAff = new Code3Address(new AFFECT(), idV, rtExp.getListAddr().get(i), "_");
 				}
-				
 				listAffectationTemp.add(codeAff);
-
 			}
 		}
+		
+		
 		listAffectation.addAll(listAffectationTemp);
 		
 
@@ -639,7 +640,7 @@ public class GeneratorSymbolTable {
 			}
 
 			listCodeExp.add(new Code3Address(call, "_", symbolTable.getFunction(c.getName()).getName(), "_"));			
-
+			
 			return new ReturnIterateExpr(call.getListVarReturn(), listCodeExp);
 		}
 		else{
