@@ -77,7 +77,7 @@ func Op_eg (t1,t2 *Tree)(*Tree){
 }
 func Op_not (t *Tree)(*Tree){
     if IsTrue(t){
-	return &(Tree{" ",nil,nil})
+	return &(Tree{"nil",nil,nil})
     }
 	return &(Tree{"",&(Tree{"nil",nil,nil}),&(Tree{"nil",nil,nil})})
 

@@ -107,7 +107,7 @@ public class IF extends Operation{
 			for (Code3Address code3Address : listCodeElse) {
 				result += code3Address.printCodeGo(fr,indent+1);
 			}
-			result+="\n"+ind+"}";
+			result+="\n"+ind+"}\n";
 		}
 
 		return result;
