@@ -1,4 +1,6 @@
 function decr : read X % X := (tl X) % write X
+function incr : read X % X := (cons nil X) % write X
+function add : read X, Y % S := X ; for Y do S := (incr S) od % write S
 
 function invertTest:
 read A, B, C, D, E
@@ -19,17 +21,7 @@ read A,B
 write C,D,E,A
 
 
-function expressionLogiqueTest:
-read A,B
-%
-	C := (A and B) or C;
-	D := C or B;
-	E := F or C;
-	A := F and C;
-	B := G and H
-	
-%
-write A,B,C,D,E
+
 
 function whileTest:
 read A
@@ -87,3 +79,28 @@ read A, B, C, D, E
 	A, B, C, D, E := (invertTest A B C D E)
 %
 write A, B, C, D, E
+
+
+function boucleImbrique:
+read A,B
+%
+	while B do
+		for B do
+			A := (add A B)			
+		od;
+		B := (decr B)
+	od
+%
+write A
+
+function expressionLogiqueTest:
+read A,B,X
+%
+	C := (X and ((A and B) or C));
+	D := C or B or toto;
+	E := F or C;
+	A := F and C;
+	B := G and H;
+	X := not C
+%
+write A,B,C,D,E,X
