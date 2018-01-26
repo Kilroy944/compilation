@@ -41,8 +41,7 @@ function div : read X, Y % Q, R := nil, X ;  while ((greater R Y) or (R =? Y)) d
 
 function fact : read X % F := (cons nil nil) ; while (isNotZero X) do X, F := (decr X), (mult F X) od % write F
 
-
-function fib : read X % if (isZero X) or (isOne X) then F := (cons nil nil) else F := (add (fib (decr X)) (fib (decr (decr X)))) fi % write F
-
 function gcd : read X, Y % Q, R := (div X Y) ; if (isNotZero R) then GCD := (gcd Y R) else GCD := Y fi % write GCD
+
+function fib : read X % if (isZero X) then F := nil else if (isOne X) then F := (cons nil nil) else F := (add (fib (decr X)) (fib (decr (decr X)))) fi fi % write F
 
