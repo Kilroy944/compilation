@@ -2,7 +2,6 @@ package sprint2;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map.Entry;
 
 import sprint2.operations.READ;
@@ -113,7 +112,7 @@ public class FunctionRepresentation {
 
 		}
 		result=result.substring(0, result.length()-2); 
-		result +=" *libWH.Tree) ";
+		result += " libWH.BaseType) ";
 
 		//Param Out
 
@@ -126,7 +125,7 @@ public class FunctionRepresentation {
 			out=code.get(index).getArg1()+","+out;
 			code.remove(index);
 			index=code.size()-1;
-			result+="*libWH.Tree, ";
+			result += "libWH.BaseType, ";
 		}
 		out=out.substring(0, out.length()-1); 
 
@@ -135,15 +134,15 @@ public class FunctionRepresentation {
 		
 		//Allocation var
 		for(int i=nbVarRead;i<variableTable.size();i++){
-			result +="var v"+i+" *libWH.Tree = &(libWH.Tree{\"nil\",nil,nil})\n";
-			result +="_ = v"+i+"\n";
+			result += "var v" + i + " libWH.BaseType = nil\n";
+			result += "_ = v" + i + "\n";
 		}
 
 
 		//Allocation var temporaires
 		for(int i=0;i<counterTempVar;i++){
-			result +="var vt"+i+" *libWH.Tree = &(libWH.Tree{\"nil\",nil,nil})\n";
-			result +="_ = vt"+i+"\n";
+			result += "var vt" + i + " libWH.BaseType = nil\n";
+			result += "_ = vt" + i + "\n";
 		}
 		result+="\n";
 

@@ -1,89 +1,129 @@
 package libWH
 
-type Tree struct {
-	Symbol string
-	Left  *Tree
-	Right *Tree
+type BaseType interface {
+	isBaseType()
 }
-func TreeToNumber ( t *Tree)(int){
-	var counter = 0
 
-	for t.Symbol=="" {
-    		counter++
-    		t = t.Right
-	}
-	
-	return counter
+type Symbol struct {
+	name string
 }
-func TreeToRange (t *Tree)([] *Tree){
-	var tab = [](*Tree){}
-	for t.Symbol=="" {
-    		tab = append(tab,t.Right)
-    		t = t.Right
+func (*Symbol) isBaseType() {}
+
+type Tree struct {
+	left  BaseType
+	right BaseType
+}
+func (*Tree) isBaseType() {}
+
+var TRUE BaseType = &(Tree{nil,nil})
+var FALSE BaseType = nil
+
+func Tl(t BaseType) BaseType {
+	switch t.(type) {
+		case nil: return nil
+		case (*Symbol): return nil
+		default: return t.(*Tree).right
+	}
+}
+
+func Hd(t BaseType) BaseType {
+	switch t.(type) {
+		case nil: return nil
+		case (*Symbol): return nil
+		default: return t.(*Tree).left
+	}
+}
+
+func IsTrue(t BaseType) bool {
+	switch t.(type) {
+		case nil: return false
+		default: return true
+	}
+}
+
+
+func Cons(g BaseType, d BaseType) (BaseType) {
+	return &(Tree{g,d})
+}
+
+func TreeToNumber(t BaseType) (int) {
+	switch t.(type) {
+		case nil: return 0
+		case *Symbol: return 0
+		default: return 1 + TreeToNumber(t.(*Tree).right)
+	}
+}
+
+func TreeToRange(t BaseType) ([] BaseType) {
+	var tab = [](BaseType){}
+	for true {
+		switch t.(type) {
+			case nil: break
+			case *Symbol: break
+			default: 
+				tab = append(tab, t.(*Tree).right)
+				t = t.(*Tree).right
+		}
 	}
 	return tab
 }
-func NumberToTree(nb int)(*Tree){
-	var t *Tree = &(Tree{"nil",nil,nil})	
+
+func NumberToTree(nb int) (BaseType) {
+	var t BaseType = nil
 	for i := 0; i < nb; i++ {
-		t = Cons(&(Tree{"nil",nil,nil}),t)
+		t = Cons(nil, t)
 	}
 	return t
 }
-func Tl(t *Tree)(*Tree){
-	if t.Symbol=="" {
-		return t.Right
-	}
-	return &(Tree{"nil",nil,nil})
-}
-func Hd(t *Tree)(*Tree){
-	if t.Symbol=="" {
-		return t.Left
-	}
-	return &(Tree{"nil",nil,nil})
-}
-func Cons(g *Tree,d *Tree)(*Tree){
-	return &(Tree{"",g,d})
-}
-func IsTrue (t *Tree)(bool){
-	if t.Symbol=="nil" {
-		return false
-	}
-	
-	return true
-}
-func Op_or (t1,t2 *Tree)(*Tree){
-    if(IsTrue(t1) || IsTrue(t2)){
-   	 return &(Tree{"",&(Tree{"nil",nil,nil}),&(Tree{"nil",nil,nil})})
-    }
-    return &(Tree{"nil",nil,nil})
-}
-func Op_eg (t1,t2 *Tree)(*Tree){
 
-	if (t1.Symbol != t2.Symbol ) {
-		return &(Tree{"nil",nil,nil})	
-	}else if (t1.Symbol=="" && t2.Symbol=="") {
-	   var x =  Op_eg(t1.Right,t2.Right)
-	   var y =  Op_eg(t1.Left,t2.Left)
-	
-	   if x.Symbol != "nil" && y.Symbol != "nil" {
-	  	return &(Tree{"",&(Tree{"nil",nil,nil}),&(Tree{"nil",nil,nil})})
-	   }else{
-		return &(Tree{"nil",nil,nil})
-	   }
-	}else{
-	  return &(Tree{"",&(Tree{"nil",nil,nil}),&(Tree{"nil",nil,nil})})
+func Op_or(t1 BaseType, t2 BaseType) (BaseType) {
+    if (IsTrue(t1) || IsTrue(t2)) {
+    	return TRUE
+    } else {
+    	return FALSE
+    }
+}
+
+func Op_eg(t1 BaseType, t2 BaseType) (BaseType) {
+	if (t1 == nil || t2 == nil) {
+		if (t1 == nil && t2 == nil) {
+			return TRUE
+		} else {
+			return FALSE
+		}
+	} else {
+		var t1s, ok1s = t1.(*Symbol)
+		var t2s, ok2s = t2.(*Symbol)
+		
+		if (ok1s && ok2s && (t1s.name == t2s.name)) {
+			return TRUE
+		} else if (ok1s || ok2s) {
+			return FALSE
+		} else {
+			var left_eg = Op_eg(t1.(*Tree).left, t2.(*Tree).left)
+			var right_eg = Op_eg(t1.(*Tree).right, t2.(*Tree).right)
+			
+			if (IsTrue(left_eg) && right_eg == TRUE) {
+				return TRUE
+			} else {
+				return FALSE
+			}
+		}
 	}
 }
-func Op_not (t *Tree)(*Tree){
-    if IsTrue(t){
-	return &(Tree{"",&(Tree{"nil",nil,nil}),&(Tree{"nil",nil,nil})})
+
+func Op_not(t BaseType) (BaseType) {
+    if IsTrue(t) {
+		return FALSE
+    } else {
+    	return TRUE
     }
-    return &(Tree{" ",nil,nil})
 }
-func Op_and (t1,t2 *Tree)(*Tree){
-    if(IsTrue(t1) && IsTrue(t2)){
-	return &(Tree{"",&(Tree{"nil",nil,nil}),&(Tree{"nil",nil,nil})})
+
+func Op_and (t1 BaseType, t2 BaseType) (BaseType) {
+    if (IsTrue(t1) && IsTrue(t2)) {
+		return TRUE
+    } else {
+	    return FALSE
     }
-    return &(Tree{"nil",nil,nil})
 }

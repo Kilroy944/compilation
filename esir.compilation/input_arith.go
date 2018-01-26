@@ -4,10 +4,9 @@ import (libWH "./libGO"
 	"os"
 	"strconv"
 )
-var s0 *libWH.Tree
+var s0 libWH.BaseType = nil
 
 func main(){
-s0=&(libWH.Tree{"nil",nil,nil})
 
 	nbOut := 1
 	if (len(os.Args)-1)>=nbOut {
@@ -24,11 +23,11 @@ s0=&(libWH.Tree{"nil",nil,nil})
 	}
 }
 
-func f0(v0 *libWH.Tree) (*libWH.Tree) {
+func f0(v0 libWH.BaseType) (libWH.BaseType) {
 
-var v1 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var v1 libWH.BaseType = nil
 _ = v1
-var vt0 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt0 libWH.BaseType = nil
 _ = vt0
 
 
@@ -41,14 +40,15 @@ if libWH.IsTrue(v0){
 
 }
 
+
 return v1 
 }
 
-func f1(v0 *libWH.Tree) (*libWH.Tree) {
+func f1(v0 libWH.BaseType) (libWH.BaseType) {
 
-var v1 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var v1 libWH.BaseType = nil
 _ = v1
-var vt0 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt0 libWH.BaseType = nil
 _ = vt0
 
 
@@ -61,12 +61,13 @@ if libWH.IsTrue(v0){
 
 }
 
+
 return v1 
 }
 
-func f2(v0 *libWH.Tree) (*libWH.Tree) {
+func f2(v0 libWH.BaseType) (libWH.BaseType) {
 
-var vt0 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt0 libWH.BaseType = nil
 _ = vt0
 
 vt0 = libWH.Cons(s0,v0)
@@ -77,9 +78,9 @@ v0 = vt0
 return v0 
 }
 
-func f3(v0 *libWH.Tree) (*libWH.Tree) {
+func f3(v0 libWH.BaseType) (libWH.BaseType) {
 
-var vt0 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt0 libWH.BaseType = nil
 _ = vt0
 
 vt0 = libWH.Tl(v0)
@@ -90,11 +91,11 @@ v0 = vt0
 return v0 
 }
 
-func f4(v0, v1 *libWH.Tree) (*libWH.Tree) {
+func f4(v0, v1 libWH.BaseType) (libWH.BaseType) {
 
-var v2 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var v2 libWH.BaseType = nil
 _ = v2
-var vt0 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt0 libWH.BaseType = nil
 _ = vt0
 
 v2 = v0
@@ -108,20 +109,21 @@ for i:=0;i<vt1;i++ {
 
 }
 
+
 return v2 
 }
 
-func f5(v0, v1 *libWH.Tree) (*libWH.Tree) {
+func f5(v0, v1 libWH.BaseType) (libWH.BaseType) {
 
-var v2 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var v2 libWH.BaseType = nil
 _ = v2
-var vt0 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt0 libWH.BaseType = nil
 _ = vt0
-var vt1 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt1 libWH.BaseType = nil
 _ = vt1
-var vt2 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt2 libWH.BaseType = nil
 _ = vt2
-var vt3 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt3 libWH.BaseType = nil
 _ = vt3
 
 vt0=f1(v1)
@@ -137,14 +139,15 @@ if libWH.IsTrue(vt0){
 
 }
 
+
 return v2 
 }
 
-func f6(v0, v1 *libWH.Tree) (*libWH.Tree) {
+func f6(v0, v1 libWH.BaseType) (libWH.BaseType) {
 
-var v2 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var v2 libWH.BaseType = nil
 _ = v2
-var vt0 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt0 libWH.BaseType = nil
 _ = vt0
 
 v2 = v0
@@ -158,14 +161,15 @@ for i:=0;i<vt1;i++ {
 
 }
 
+
 return v2 
 }
 
-func f7(v0, v1 *libWH.Tree) (*libWH.Tree) {
+func f7(v0, v1 libWH.BaseType) (libWH.BaseType) {
 
-var v2 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var v2 libWH.BaseType = nil
 _ = v2
-var vt0 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt0 libWH.BaseType = nil
 _ = vt0
 
 v2 = s0
@@ -179,16 +183,17 @@ for i:=0;i<vt1;i++ {
 
 }
 
+
 return v2 
 }
 
-func f8(v0, v1 *libWH.Tree) (*libWH.Tree) {
+func f8(v0, v1 libWH.BaseType) (libWH.BaseType) {
 
-var v2 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var v2 libWH.BaseType = nil
 _ = v2
-var vt0 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt0 libWH.BaseType = nil
 _ = vt0
-var vt1 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt1 libWH.BaseType = nil
 _ = vt1
 
 vt0 = libWH.Cons(s0,s0)
@@ -204,23 +209,30 @@ for i:=0;i<vt2;i++ {
 
 }
 
+
 return v2 
 }
 
-func f9(v0, v1 *libWH.Tree) (*libWH.Tree, *libWH.Tree) {
+func f9(v0, v1 libWH.BaseType) (libWH.BaseType, libWH.BaseType) {
 
-var v2 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var v2 libWH.BaseType = nil
 _ = v2
-var v3 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var v3 libWH.BaseType = nil
 _ = v3
-var v4 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var v4 libWH.BaseType = nil
 _ = v4
-var vt0 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt0 libWH.BaseType = nil
 _ = vt0
-var vt1 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt1 libWH.BaseType = nil
 _ = vt1
-var vt2 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt2 libWH.BaseType = nil
 _ = vt2
+var vt3 libWH.BaseType = nil
+_ = vt3
+var vt4 libWH.BaseType = nil
+_ = vt4
+var vt5 libWH.BaseType = nil
+_ = vt5
 
 v2 = s0
 
@@ -230,40 +242,47 @@ vt0=f6(v3,v1)
 
 v4 = vt0
 
-vt1=f0(v4)
+vt2=f0(v4)
+vt3 = libWH.Op_eg(v3,v1)
+vt1 = libWH.Op_or(vt2,vt3)
 
 for libWH.IsTrue(vt1){
-   vt2=f2(v2)
+   vt4=f2(v2)
 
-   v2 = vt2
+   v2 = vt4
 
    v3 = v4
 
-vt1=f0(v4)
+   vt5=f6(v3,v1)
+
+   v4 = vt5
+
+vt2=f0(v4)
+vt3 = libWH.Op_eg(v3,v1)
+vt1 = libWH.Op_or(vt2,vt3)
 
 }
+
 
 return v2,v3 
 }
 
-func f10(v0, v1 *libWH.Tree) (*libWH.Tree) {
+func f10(v0, v1 libWH.BaseType) (libWH.BaseType) {
 
-var v2 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var v2 libWH.BaseType = nil
 _ = v2
-var v3 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var v3 libWH.BaseType = nil
 _ = v3
-var v4 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var v4 libWH.BaseType = nil
 _ = v4
-var vt0 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt0 libWH.BaseType = nil
 _ = vt0
-var vt1 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt1 libWH.BaseType = nil
 _ = vt1
-var vt2 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt2 libWH.BaseType = nil
 _ = vt2
-var vt3 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt3 libWH.BaseType = nil
 _ = vt3
-
-vt0,vt1=f9(v0,v1)
 
 vt0,vt1=f9(v0,v1)
 
@@ -282,20 +301,21 @@ if libWH.IsTrue(vt2){
 
 }
 
+
 return v4 
 }
 
-func f11(v0 *libWH.Tree) (*libWH.Tree) {
+func f11(v0 libWH.BaseType) (libWH.BaseType) {
 
-var v1 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var v1 libWH.BaseType = nil
 _ = v1
-var vt0 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt0 libWH.BaseType = nil
 _ = vt0
-var vt1 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt1 libWH.BaseType = nil
 _ = vt1
-var vt2 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt2 libWH.BaseType = nil
 _ = vt2
-var vt3 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt3 libWH.BaseType = nil
 _ = vt3
 
 vt0 = libWH.Cons(s0,s0)
@@ -317,18 +337,19 @@ vt1=f0(v0)
 
 }
 
+
 return v1 
 }
 
-func f12(v0 *libWH.Tree) (*libWH.Tree) {
+func f12(v0 libWH.BaseType) (libWH.BaseType) {
 
-var v1 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var v1 libWH.BaseType = nil
 _ = v1
-var vt0 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt0 libWH.BaseType = nil
 _ = vt0
-var vt1 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt1 libWH.BaseType = nil
 _ = vt1
-var vt2 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt2 libWH.BaseType = nil
 _ = vt2
 
 vt1 = libWH.Cons(s0,s0)
@@ -343,52 +364,58 @@ if libWH.IsTrue(vt0){
 
 }
 
+
 return v1 
 }
 
-func f13(v0 *libWH.Tree) (*libWH.Tree) {
+func f13(v0 libWH.BaseType) (libWH.BaseType) {
 
-var v1 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var v1 libWH.BaseType = nil
 _ = v1
-var vt0 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt0 libWH.BaseType = nil
 _ = vt0
-var vt1 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt1 libWH.BaseType = nil
 _ = vt1
-var vt2 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt2 libWH.BaseType = nil
 _ = vt2
-var vt3 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt3 libWH.BaseType = nil
 _ = vt3
-var vt4 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt4 libWH.BaseType = nil
 _ = vt4
-var vt5 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt5 libWH.BaseType = nil
 _ = vt5
-var vt6 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt6 libWH.BaseType = nil
 _ = vt6
-var vt7 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt7 libWH.BaseType = nil
 _ = vt7
-var vt8 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
+var vt8 libWH.BaseType = nil
 _ = vt8
-var vt9 *libWH.Tree = &(libWH.Tree{"nil",nil,nil})
-_ = vt9
 
-vt1=f1(v0)
-vt2=f12(v0)
-vt0 = libWH.Op_or(vt1,vt2)
+vt0=f1(v0)
 
 if libWH.IsTrue(vt0){
-   vt3 = libWH.Cons(s0,s0)
-   v1 = vt3
+   v1 = s0
 
 }else{
-   vt4=f3(v0)
-   vt5=f13(vt4)
-   vt6=f3(v0)
-   vt7=f3(vt6)
-   vt8=f13(vt7)
-   vt9=f4(vt5,vt8)
-   v1 = vt9
+   vt1=f12(v0)
+
+   if libWH.IsTrue(vt1){
+      vt2 = libWH.Cons(s0,s0)
+      v1 = vt2
+
+   }else{
+      vt3=f3(v0)
+      vt4=f13(vt3)
+      vt5=f3(v0)
+      vt6=f3(vt5)
+      vt7=f13(vt6)
+      vt8=f4(vt4,vt7)
+      v1 = vt8
+
+   }
 
 }
+
 
 return v1 
 }

@@ -92,7 +92,7 @@ public class FOR extends Operation{
 			result+=System.getProperty("line.separator");
 		}
 		
-		return result+ind+"}";
+		return result + ind + "}\n";
 	}
 
 }

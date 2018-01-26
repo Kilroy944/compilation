@@ -3,21 +3,14 @@ package sprint2;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.util.CancelIndicator;
@@ -47,7 +40,6 @@ import esir.compilation.whdsl.Function;
 import esir.compilation.whdsl.Hd;
 import esir.compilation.whdsl.If;
 import esir.compilation.whdsl.Input;
-import esir.compilation.whdsl.LExpr;
 import esir.compilation.whdsl.Nill;
 import esir.compilation.whdsl.Nop;
 import esir.compilation.whdsl.Output;
@@ -276,6 +268,8 @@ public class GeneratorSymbolTable {
 		for (Expr e : exprs) {
 
 			ReturnIterateExpr rtExp = iterateElement(e, fr);
+			listAffectation.addAll(rtExp.getListCode());
+
 			for (int i = 0; i < rtExp.getNbAddr(); i++) {
 				String v;
 				try {
@@ -284,8 +278,6 @@ public class GeneratorSymbolTable {
 				} catch (IndexOutOfBoundsException ie) {
 					throw new SymbolTableError("Le nombre de variable à gauche et à droite de l'affectation ne correspondent pas");
 				}
-
-				listAffectation.addAll(rtExp.getListCode());
 
 				String idV = fr.addVar(v);
 				Code3Address codeAff;

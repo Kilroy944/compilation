@@ -93,7 +93,7 @@ public class IF extends Operation{
 			result += code3Address.printCodeGo(fr,indent);
 		}
 		
-		result+="\n"+ind+"if libWH.IsTrue("+arg2+"){\n";
+		result += "\n" + ind + "if libWH.IsTrue(" + arg2 + "){\n";
 
 		for (Code3Address code3Address : listCodeThen) {
 			result += code3Address.printCodeGo(fr,indent+1);
@@ -107,7 +107,7 @@ public class IF extends Operation{
 			for (Code3Address code3Address : listCodeElse) {
 				result += code3Address.printCodeGo(fr,indent+1);
 			}
-			result+="\n"+ind+"}";
+			result += "\n" + ind + "}\n";
 		}
 
 		return result;

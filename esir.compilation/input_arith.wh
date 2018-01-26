@@ -2,7 +2,6 @@ function isNotZero : read X % if X then B := (cons nil nil) else B := nil fi % w
 
 function isZero : read X % if X then B := nil else B := (cons nil nil) fi % write B
 
-
 function incr : read X % X := (cons nil X) % write X
 
 function decr : read X % X := (tl X) % write X
@@ -17,7 +16,7 @@ function mult : read X, Y % P := nil ; for Y do P := (add X P) od % write P
 
 function pow : read X, Y % P := (cons nil nil) ; for Y do P := (mult X P) od % write P
 
-function div : read X, Y % Q, R := nil, X ; NextR := (subs R Y) ; while (isNotZero NextR) do Q, R := (incr Q), NextR od % write Q, R
+function div : read X, Y % Q, R := nil, X ; NextR := (subs R Y) ; while ((isNotZero NextR) or (R =? Y)) do Q, R := (incr Q), NextR; NextR := (subs R Y) od % write Q, R
 
 function gcd : read X, Y % Q, R := (div X Y) ; if (isNotZero R) then GCD := (gcd Y R) else GCD := Y fi % write GCD
 
@@ -25,4 +24,4 @@ function fact : read X % F := (cons nil nil) ; while (isNotZero X) do X, F := (d
 
 function isOne : read X % if X =? (cons nil nil) then B := (cons nil nil) else B := nil fi % write B
 
-function fib : read X % if (isZero X) or (isOne X) then F := (cons nil nil) else F := (add (fib (decr X)) (fib (decr (decr X)))) fi % write F
+function fib : read X % if (isZero X) then F := nil else if (isOne X) then F := (cons nil nil) else F := (add (fib (decr X)) (fib (decr (decr X)))) fi fi % write F

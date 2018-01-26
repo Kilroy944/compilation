@@ -15,7 +15,7 @@ public class TL extends Operation{
 		for (int i = 0; i < indent; i++)
 			ind += MainSprint2.Indent;
 		
-		return ind+arg1+" = libWH.Tl("+arg2+")\n";
+		return ind + arg1 + " = libWH.Tl(" + arg2 + ")\n";
 	}
 
 }

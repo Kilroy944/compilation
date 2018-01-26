@@ -107,21 +107,20 @@ public class SymbolTable {
 		result+= "import (libWH \"./libGO\"\n\t\"fmt\"\n\t\"os\"\n\t\"strconv\"\n)\n";
 
 		//Allocation symbole
-		for(int i=0;i<listSymbol.size();i++){
-			result +="var s"+i+" *libWH.Tree\n";
+		int x = 0;
+		for (Entry<String, Integer> entry : listSymbol.entrySet()) {
+			result += "var s" + x + " libWH.BaseType = ";
+			if (x == 0)
+				result += "nil\n";
+			else
+				result += "&(libWH.Symbol{\"" + entry.getKey() + "\"})\n";
+			x++;
 		}
-		
+
 		FunctionRepresentation fr = listFunctions.get(lastFunction);
 
 		result+="\nfunc main(){\n";
-		int x=0;
-		for (Entry<String, Integer> entry : listSymbol.entrySet())
-		{
-			result+="s"+x+"=&(libWH.Tree{\""+entry.getKey()+"\",nil,nil})\n";
-			
-			x++;
-		}
-		
+
 		result+="\n\tnbOut := "+fr.getNbInput()+"\n\t"
 				+"if (len(os.Args)-1)>=nbOut {\n";
 		
