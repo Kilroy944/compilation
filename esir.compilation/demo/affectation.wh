@@ -1,0 +1,9 @@
+function affectationTest:
+read A,B,C
+%
+	A := D;
+	B,A := C,B;
+	C := D
+	
+%
+write A,B,C

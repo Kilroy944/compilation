@@ -1,0 +1,22 @@
+Table des symboles : 
+nil=0
+affectationTest=[f0, nbIn : 3, nbOut : 3]
+Table des variables : 
+A=0
+B=1
+C=2
+D=3
+Nombre de variables temporaires : 1
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<READ, v1, _, _>
+<READ, v2, _, _>
+<AFFECT, v0, v3, _>
+<AFFECT, vt0, v1, _>
+<AFFECT, v1, v2, _>
+<AFFECT, v0, vt0, _>
+<AFFECT, v2, v3, _>
+<WRITE, v0, _, _>
+<WRITE, v1, _, _>
+<WRITE, v2, _, _>
+
