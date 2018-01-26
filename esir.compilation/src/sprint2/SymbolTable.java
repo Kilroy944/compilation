@@ -128,17 +128,24 @@ public class SymbolTable {
 		//Ajout arg
 		for(int i=1;i<fr.getNbInput()+1;i++){
 			result+="\t\ti"+i+", err"+i+" := strconv.Atoi(os.Args["+i+"])\n";
+			result+="\t\t _ = i"+i+"\n";
+
 		}
-		result+="\n\t\tif ";
 		
 		for(int i=1;i<fr.getNbInput()+1;i++){
-			result+="err"+i+" == nil && ";
+			result+="\t\tvar vi"+i+" = libWH.NumberToTree(i"+i+")\n";
 		}
-		if(fr.getNbInput()!=0){
-			result=result.substring(0,result.length()-3);
-		}
-		result+="{\n\t\t\t";
 		
+		for(int i=1;i<fr.getNbInput()+1;i++){
+			result+="\n\t\tif ";
+			result+="err"+i+" != nil {\n ";
+			result+="\t\t\tvi"+i+" = "+" libWH.TextToTree(os.Args["+i+"])\n";
+			result+="\t\t\t _ = i"+i+"\n";
+
+			result+="\t\t}\n";
+		}
+		
+		result+="\t\t";
 		if(fr.getNbOutput()!=0){
 			//Ajout var result
 			for(int i=0;i<fr.getNbOutput();i++){
@@ -151,19 +158,18 @@ public class SymbolTable {
 		result+=fr.getName()+"(";
 		//Ajout arg
 		for(int i=1;i<fr.getNbInput()+1;i++){
-			result+="libWH.NumberToTree(i"+i+"),";
+			result+="vi"+i+",";
 		}
 		if(fr.getNbInput()!=0){
 			result=result.substring(0,result.length()-1);
 		}
 		result+=")\n";
-		
-		
 				
 		for(int i=0;i<fr.getNbOutput();i++){
-			result+="\t\t\tfmt.Println(libWH.TreeToNumber(v"+i+"))\n";
+			result+="\t\tfmt.Println(libWH.TreeToNumber(v"+i+"))\n";
+			result+="\t\tfmt.Println(libWH.PrintTree(v"+i+"))\n";
+
 		}
-		result+="\t\t}else{\n\t\t\tfmt.Println(\"L'un des arguments n'est pas un nombre\")\n\t\t}\n";
 		result+="\t}else{\n\t\tfmt.Println(\"Nombre d'arguments incorrect\") \n\t}\n";
 		result+="}\n";
 		

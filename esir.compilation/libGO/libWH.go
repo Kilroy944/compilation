@@ -1,5 +1,7 @@
 package libWH
 
+import "strings"	
+
 type Tree struct {
 	Symbol string
 	Left  *Tree
@@ -88,3 +90,78 @@ func Op_and (t1,t2 *Tree)(*Tree){
     }
     return &(Tree{"nil",nil,nil})
 }
+
+func TextToTree (s string) (*Tree){
+// 3 =  "(cons (nil) (cons (nil) (cons (nil) (nil))))"
+// 0 =  (nil) "
+//Sensible aux espaces et aux nombres parenthèses
+	var treeReturn *Tree
+	treeReturn = &(Tree{"",nil,nil})
+	 
+
+	if s=="(nil)"{
+		return &(Tree{"nil",nil,nil})
+	}
+	var runes = []rune(s)
+	
+    	s = string(runes[1:len(s)])
+	
+	//param gauche
+	var x = strings.Index(s,"(")+1
+	
+	var nbOuv int 
+	nbOuv = 1
+	var nbFerm int 
+	nbFerm = 0
+	
+	var index int
+	index = x
+	var c string
+	var fin bool
+	fin = true 
+	for fin {
+		c = string(s[index])		
+		if c == ")" {
+			nbFerm = nbFerm+1
+		}
+		if c == "(" {
+			nbOuv = nbOuv+1
+		}
+		index = index + 1
+		if nbOuv == nbFerm {
+			fin = false
+		}	
+	}
+	runes = []rune(s)
+	
+    	var subLeft = string(runes[x-1:index])
+	treeReturn.Left = TextToTree(subLeft)		
+
+	//param droite
+
+	var subRight = string(runes[index+1:len(s)-1])
+	treeReturn.Right = TextToTree(subRight)
+
+
+	return treeReturn	
+}
+
+func PrintTree (t *Tree) (string){
+
+	if t.Symbol == "nil" {
+		return "nil"
+	}
+	if t.Symbol != "" {
+		return t.Symbol
+	}
+	var result string
+	result = "(cons "
+	result += PrintTree(t.Left)	
+	result += " "
+	result += PrintTree(t.Right)
+	result +=")"
+
+	return result
+}
+
+
