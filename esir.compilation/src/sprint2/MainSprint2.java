@@ -2,7 +2,6 @@ package sprint2;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -32,7 +31,6 @@ public class MainSprint2 {
 		//Récupération arguments
 		Options options = new Options();
 		options.addOption("o", true, "nom du fichier de sortie");
-		options.addOption("test", false, "effectuer les tests");
 		options.addOption("f3a", false, "génére fichier 3@");
 		options.addOption("fGo", false, "génére fichier Go");
 		options.addOption("help", false, "aide");
@@ -53,11 +51,6 @@ public class MainSprint2 {
 		
 		if(cmd.hasOption("help")){
 			printMan();
-			return;
-		}
-		
-		if(cmd.hasOption("test")){
-			test(cmd, genTs);
 			return;
 		}
 
@@ -155,56 +148,6 @@ public class MainSprint2 {
 		
 		
 		System.out.println("###### BUILD END #######");
-
-	}
-
-	private static int test(CommandLine cmd, GeneratorSymbolTable genTs) {
-
-		if (cmd.getArgs().length != 1) {
-			System.out.println("Erreur dans les arguments : répertoire de test");
-			return -1;
-		}
-
-		/*Ouverture du répertoire des fichiers à tester*/
-		File rep_test = new File(cmd.getArgs()[0]);
-
-		if(!(rep_test.exists() && rep_test.isDirectory())){
-			System.out.println("Repertoire de test inexistant");
-			return -1;
-		}
-
-
-		/*Récupération des fichiers .wh à indenter*/
-		File[] fichier_a_test = rep_test.listFiles(new FilenameFilter(){
-			@Override
-			public boolean accept(File dir, String name) {
-				return name.endsWith(".wh");
-			}
-		});
-
-		File rep_code_3A = new File("./rep_code_3A");
-		rep_code_3A.mkdir();
-
-		System.out.println("---------------DEBUT TEST---------------");
-
-		/*Pour tous les fichiers a tester */
-		for (File file : fichier_a_test) {
-			System.out.println("Test code 3@: "+file.getName());
-
-			String path_fichier_sortie = "./"+rep_code_3A.getPath()+"/"+(file.getName().split(".wh")[0]);
-
-			try{
-				genTs.init(file.getPath(), path_fichier_sortie, true);
-			}catch(IOException ioe){
-				ioe.printStackTrace();
-			} catch (SymbolTableError e) {
-				System.out.println("\nUne erreur est survenue : "+e.getMessage()+"\n");
-			}
-
-		}
-		System.out.println("---------------FIN TEST---------------");
-		
-		return 0;
 
 	}
 	
