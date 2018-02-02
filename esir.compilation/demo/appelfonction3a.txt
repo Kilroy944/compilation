@@ -1,0 +1,63 @@
+Table des symboles : 
+nil=0
+invertTest=[f0, nbIn : 5, nbOut : 5]
+Table des variables : 
+A=0
+B=1
+C=2
+D=3
+E=4
+Nombre de variables temporaires : 0
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<READ, v1, _, _>
+<READ, v2, _, _>
+<READ, v3, _, _>
+<READ, v4, _, _>
+<nop, _, _, _>
+<WRITE, v4, _, _>
+<WRITE, v3, _, _>
+<WRITE, v2, _, _>
+<WRITE, v1, _, _>
+<WRITE, v0, _, _>
+
+appelFonctionTest=[f1, nbIn : 5, nbOut : 5]
+Table des variables : 
+A=0
+B=1
+C=2
+D=3
+E=4
+Nombre de variables temporaires : 5
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<READ, v1, _, _>
+<READ, v2, _, _>
+<READ, v3, _, _>
+<READ, v4, _, _>
+<CALL 
+	(code param)
+	(var call)
+	v0
+	v1
+	v2
+	v3
+	v4
+	(var return)
+	vt0
+	vt1
+	vt2
+	vt3
+	vt4
+, _, f0, _>
+<AFFECT, v0, vt0, _>
+<AFFECT, v1, vt1, _>
+<AFFECT, v2, vt2, _>
+<AFFECT, v3, vt3, _>
+<AFFECT, v4, vt4, _>
+<WRITE, v0, _, _>
+<WRITE, v1, _, _>
+<WRITE, v2, _, _>
+<WRITE, v3, _, _>
+<WRITE, v4, _, _>
+

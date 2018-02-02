@@ -1,0 +1,13 @@
+function invertTest:
+read A, B, C, D, E
+%
+nop
+%
+write E, D, C, B, A
+
+function appelFonctionTest:
+read A, B, C, D, E
+%
+	A, B, C, D, E := (invertTest A B C D E)
+%
+write A, B, C, D, E

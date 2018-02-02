@@ -1,0 +1,11 @@
+function expressionLogiqueTest:
+read A,B,X
+%
+	C := (X and ((A and B) or C));
+	D := C or B or toto;
+	E := F or C;
+	A := F and C;
+	B := G and H;
+	X := not C
+%
+write A,B,C,D,E,X

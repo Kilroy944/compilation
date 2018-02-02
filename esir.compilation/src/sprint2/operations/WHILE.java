@@ -74,7 +74,7 @@ public class WHILE extends Operation{
 			ind += MainSprint2.Indent;		
 		
 		for (Code3Address code3Address : listCodeCondition) {
-			result += ind+code3Address.getOperation().printCodeGo(fr,code3Address.getArg1(),code3Address.getArg2(),code3Address.getArg3(),indent)+"\n";
+			result += code3Address.getOperation().printCodeGo(fr,code3Address.getArg1(),code3Address.getArg2(),code3Address.getArg3(),indent)+"\n";
 		}
 		result+=ind+"for libWH.IsTrue("+arg2+"){\n";
 
@@ -84,9 +84,9 @@ public class WHILE extends Operation{
 
 		
 		for (Code3Address code3Address : listCodeCondition) {
-			result += ind+code3Address.getOperation().printCodeGo(fr,code3Address.getArg1(),code3Address.getArg2(),code3Address.getArg3(),indent)+"\n";
+			result += code3Address.getOperation().printCodeGo(fr,code3Address.getArg1(),code3Address.getArg2(),code3Address.getArg3(),indent)+"\n";
 		}
-		result+=ind+"}";
+		result+=ind+"}\n";
 
 		return result;
 	}

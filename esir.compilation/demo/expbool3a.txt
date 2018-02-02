@@ -1,0 +1,66 @@
+Table des symboles : 
+nil=0
+toto=1
+expressionLogiqueTest=[f0, nbIn : 3, nbOut : 6]
+Table des variables : 
+A=0
+B=1
+C=3
+D=4
+E=6
+F=5
+G=7
+X=2
+H=8
+Nombre de variables temporaires : 9
+Liste de codes 3@ : 
+<READ, v0, _, _>
+<READ, v1, _, _>
+<READ, v2, _, _>
+<AND 
+	(gauche)
+	(droite)
+	<OR 
+   	(gauche)
+		<AND 
+			(gauche)
+			(droite)
+		, vt2, v0, v1>
+   	(droite)
+   , vt1, vt2, v3>
+, vt0, v2, vt1>
+<AFFECT, v3, vt0, _>
+<OR 
+	(gauche)
+	<OR 
+   	(gauche)
+   	(droite)
+   , vt4, v3, v1>
+	(droite)
+, vt3, vt4, s1>
+<AFFECT, v4, vt3, _>
+<OR 
+	(gauche)
+	(droite)
+, vt5, v5, v3>
+<AFFECT, v6, vt5, _>
+<AND 
+	(gauche)
+	(droite)
+, vt6, v5, v3>
+<AFFECT, v0, vt6, _>
+<AND 
+	(gauche)
+	(droite)
+, vt7, v7, v8>
+<AFFECT, v1, vt7, _>
+<NOT 
+, vt8, v3, _>
+<AFFECT, v2, vt8, _>
+<WRITE, v0, _, _>
+<WRITE, v1, _, _>
+<WRITE, v3, _, _>
+<WRITE, v4, _, _>
+<WRITE, v6, _, _>
+<WRITE, v2, _, _>
+

@@ -105,7 +105,7 @@ public class FOREACH extends Operation{
 			result+=System.getProperty("line.separator");
 		}
 		
-		result+=ind+"}";
+		result+=ind+"}\n";
 		return result;
 	}
 	
